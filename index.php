@@ -54,16 +54,42 @@
       echo "Username already taken ...";
     }
   }
+// User Login Code.
+  if (isset($_POST["user_login"]) && isset($_POST["password_login"])) {
+    $user_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["user_login"]); // filter everything but numbers and letters.
+    $password_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["password_login"]); // filter everything but numbers and letters.
+    $password_login_md5 = md5($password_login);
+    $sql = mysql_query("SELECT id FROM users WHERE username='$user_login' AND password='$password_login_md5' LIMIT 1");
+    // Check for their existance
+    $userCount = mysql_num_rows($sql); // Count the number of rows returned
+    if ($userCount == 1) {
+      while ($row = mysql_fetch_array($sql)) {
+        $id = $row["id"];
+      }
+        $_SESSION["user_login"] = $user_login;
+        header("location: index.php");
+        exit();
+    } else {
+      echo "Login incorrect, try again";
+      exit();
+    }
+  }
+
  ?>
     <div style="width: 800px; margin: 0px auto 0px auto;">
       <table>
         <tr>
           <td width="60%" valign="top">
-            <h2>Join Dz English Today!</h2>
+            <h2>Already a member? Sign in below!</h2>
+            <form class="" action="index.php" method="POST">
+              <input type="text" name="user_login" size="25" placeholder="Username"><br><br>
+              <input type="password" name="password_login" size="25" placeholder="Password"><br><br>
+              <input type="submit" name="Login" value="Login">
+            </form>
           </td>
           <td width="40%" valign="top">
-            <h2>Sign Up Below...</h2>
-            <form class="" action="#" method="POST">
+            <h2>Sign Up Below!</h2>
+            <form class="" action="index.php" method="POST">
               <input type="text" name="fname" size="25" placeholder="First Name"><br><br>
               <input type="text" name="lname" size="25" placeholder="Last Name"><br><br>
               <input type="text" name="username" size="25" placeholder="Username"><br><br>
