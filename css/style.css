@@ -3,16 +3,18 @@
   font-size: 50;
   margin: 0px;
   padding: 0px;
+  background-color: #EFF5F9;
 }
 .headerMenu{
-  background-color: #00B9ED;
-  height: 38px;
+  background-image: url(../img/menu_bg.png);
+  height: 56px;
   border-bottom: 0px;
   padding-left: auto;
   padding-right: auto;
   width: 100%;
 }
 #wrapper{
+  background-image: url(../img/menu_bg.png);
   margin-left: auto;
   margin-right: auto;
   width: 1000px;
@@ -20,9 +22,11 @@
   padding-bottom: 0px;
 }
 .logo{
+  background-image: url(../img/menu_bg.png);
   width: 125px;
 }
 .logo img {
+  background-image: url(../img/menu_bg.png);
   width: 50px;
   height: 38px;
 }
