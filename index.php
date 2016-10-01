@@ -1,4 +1,60 @@
 <?php include './inc/header.inc.php'; ?>
+<?php
+  $reg = @$_POST['reg'];
+  // Declaring variables to prevent errors.
+  $fn = ""; // First Name.
+  $ln = ""; // Last Name.
+  $un = ""; // Username.
+  $em = ""; // Email.
+  $pswd = ""; // Password.
+  $pswd2 = ""; // Password confirmation.
+  $d = ""; // Sign up date.
+  $u_check = ""; // Check is username exists;
+  // Registration form.
+  $fn = strip_tags(@$_POST['fname']);
+  $ln = strip_tags(@$_POST['lname']);
+  $un = strip_tags(@$_POST['username']);
+  $em = strip_tags(@$_POST['email']);
+  $pswd = strip_tags(@$_POST['password']);
+  $pswd2 = strip_tags(@$_POST['password2']);
+  $d = date("Y-m-d"); // Year - Month - Day
+
+  if ($reg) {
+    // Check if user already exists
+    $u_check = mysql_query("SELECT username FROM users WHERE username='$un'");
+    // Count the amount of rows where username = $un
+    $check = mysql_num_rows($u_check);
+    if ($check == 0) {
+      // check all of the fields have been filled in
+      if ($fn&&$ln&&$un&&$em&&$pswd&&$pswd2) {
+        // check that password match
+        if ($pswd==$pswd2) {
+          // check the maximum length of username/first name/last name does not exceed 25 characters
+          if (strlen($un)>25||strlen($fn)>25||strlen($ln)>25){
+            echo "The maximum limit for username/first name/last name is 25 characters!";
+          } else {
+            // check the maximum length of password does not exceed 25 characters and it is not less than 5 characters
+            if (strlen($pswd)>30||strlen($pswd)<5) {
+              echo "Your password must be between 5 and 30 characters long!";
+            } else {
+              // encrypt password and password 2 using md5 before sending to database
+              $pswd = md5($pswd);
+              $pswd2 = md5($pswd2);
+              $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0')");
+              die("<h2>Welcome to Dz English</h2>Login to your account to get started ...");
+            }
+          }
+        }else {
+          echo "Your passwords don't match!";
+        }
+      } else {
+        echo "Please fill in all of the fields";
+      }
+    }else {
+      echo "Username already taken ...";
+    }
+  }
+ ?>
     <div style="width: 800px; margin: 0px auto 0px auto;">
       <table>
         <tr>
@@ -12,13 +68,12 @@
               <input type="text" name="lname" size="25" placeholder="Last Name"><br><br>
               <input type="text" name="username" size="25" placeholder="Username"><br><br>
               <input type="text" name="email" size="25" placeholder="Email Address"><br><br>
-              <input type="text" name="password" size="25" placeholder="Password"><br><br>
-              <input type="text" name="password" size="25" placeholder="Confirm your password"><br><br>
-              <input type="submit" name="submit" value="Sign Up!">
+              <input type="password" name="password" size="25" placeholder="Password"><br><br>
+              <input type="password" name="password2" size="25" placeholder="Confirm your password"><br><br>
+              <input type="submit" name="reg" value="Sign Up!">
             </form>
           </td>
         </tr>
       </table>
     </div>
-
 <?php include './inc/footer.inc.php'; ?>
