@@ -9,11 +9,31 @@
         $username = $get['username'];
         $first_name = $get['first_name'];
       } else {
-        echo "<h2>User does not exist!</h2>";
+        echo "<meta http-equiv=\"refresh\" content=\"0; url=http://localhost/English/index.php\">";
         exit();
       }
     }
   }
  ?>
-<h2>Profile page for: <?php echo "$username"; ?></h2>
-<h2>First name: <?php echo "$firsname"; ?></h2>
+ <div class="postForm">
+   Post form will go here ...
+ </div>
+ <div class="profilePosts">
+   Your Posts will go here ...
+ </div>
+ <img src="" height="250" width="200" alt="<?php echo $username; ?>'s Profile" title="<?php echo $username; ?>'s Profile" />
+<br>
+<div class="textHeader"><?php echo $username; ?>'s Profile</div>
+<div class="profileLeftSideContent">Some content about this persons profile ...</div>
+<div class="textHeader"><?php echo $username; ?>'s Friends</div>
+<div class="profileLeftSideContent">
+  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
+  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
+  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
+  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
+  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
+  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
+  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
+  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
+  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
+</div>
