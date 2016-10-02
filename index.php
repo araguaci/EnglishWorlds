@@ -74,22 +74,21 @@
       exit();
     }
   }
-
  ?>
-    <div style="width: 800px; margin: 0px auto 0px auto;">
+    <!-- <div style="width: 900px; float: right; margin: 0px auto 0px auto;"> -->
       <table>
         <tr>
-          <td width="60%" valign="top">
+          <td width="50%" valign="top">
             <h2>Already a member? Sign in below!</h2>
-            <form class="" action="index.php" method="POST">
+            <form action="index.php" method="POST">
               <input type="text" name="user_login" size="25" placeholder="Username"><br><br>
               <input type="password" name="password_login" size="25" placeholder="Password"><br><br>
               <input type="submit" name="Login" value="Login">
             </form>
           </td>
-          <td width="40%" valign="top">
+          <td width="30%" valign="top">
             <h2>Sign Up Below!</h2>
-            <form class="" action="index.php" method="POST">
+            <form action="index.php" method="POST">
               <input type="text" name="fname" size="25" placeholder="First Name"><br><br>
               <input type="text" name="lname" size="25" placeholder="Last Name"><br><br>
               <input type="text" name="username" size="25" placeholder="Username"><br><br>

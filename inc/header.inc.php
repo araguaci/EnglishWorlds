@@ -31,6 +31,21 @@ if (!isset($_SESSION["user_login"])) {
           <a href="#">About</a>
           <a href="#">Sign Up</a>
           <a href="#">Sign In</a>
-        </div>
+          <form id="searchForm">
+            <fieldset><div class="input">
+              <input type="text" class="Search" id="s" value="Search Dz English...">
+            </div>
+            <input type="submit" id="searchSubmit" value="">
+          </fieldset>
+          </form>
+         </div><!-- end fnav feat -->
       </div>
     </div>
+    <div id="wrapper">
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>

@@ -15,12 +15,8 @@
     }
   }
  ?>
- <div class="postForm">
-   Post form will go here ...
- </div>
- <div class="profilePosts">
-   Your Posts will go here ...
- </div>
+ <div class="postForm">Post form will go here ...</div>
+ <div class="profilePosts">Your Posts will go here ...</div>
  <img src="" height="250" width="200" alt="<?php echo $username; ?>'s Profile" title="<?php echo $username; ?>'s Profile" />
 <br>
 <div class="textHeader"><?php echo $username; ?>'s Profile</div>
@@ -37,3 +33,4 @@
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
 </div>
+<?php include './inc/footer.inc.php' ?>

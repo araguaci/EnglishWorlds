@@ -17,9 +17,22 @@
   background-image: url(../img/menu_bg.png);
   margin-left: auto;
   margin-right: auto;
-  width: 1000px;
-  padding-top: 0px;
-  padding-bottom: 0px;
+  width: 800px;
+  height: auto;
+  border-left: 1px solid #DCE5EE;
+  border-right: 1px solid #DCE5EE;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+#menuwrapper{
+  margin-left: auto;
+  margin-right: auto;
+  width: 840px;
+}
+#searchForm fieldset {
+  width: 240px;
+  position: relative;
+  display: block;
 }
 .logo{
   background-image: url(../img/menu_bg.png);
@@ -152,14 +165,14 @@ p{
 }
 .postForm{
   float: right;
-  width: 580px;
+  width: 560px;
   height: 80px;
   background-color: #F3F6F9;
   padding: 5px;
 }
 .profilePosts{
   float: right;
-  width: 580px;
+  width: 560px;
   height: 414px;
   background-color: #DCE5EE;
   padding: 5px;
