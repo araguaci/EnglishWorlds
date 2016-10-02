@@ -67,7 +67,7 @@
         $id = $row["id"];
       }
         $_SESSION["user_login"] = $user_login;
-        header("location: index.php");
+        header("location: home.php");
         exit();
     } else {
       echo "Login incorrect, try again";
