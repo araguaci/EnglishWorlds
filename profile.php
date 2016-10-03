@@ -26,11 +26,11 @@
      $body = $row['body'];
      $date_added = $row['added_by'];
      $user_posted_to = $row['user_posted_to'];
-     echo "
+     echo '
      <div class="posted_by">
-       <a href='$added_by'>$added_by</a> - $date_added -
+       <a href='.$added_by.'>$added_by</a> - $date_added -
      </div>
-     &nbsp;&nbsp;$body<br><hr>";
+     &nbsp;&nbsp;$body<br><hr>';
    }
     ?>
 
