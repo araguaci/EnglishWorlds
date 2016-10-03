@@ -16,8 +16,8 @@ if (!isset($_SESSION["user_login"])) {
     <link rel="stylesheet" href="./css/master.css" media="screen">
     <link rel="stylesheet" href="./css/blue.css" media="screen">
     <link rel="stylesheet" href="./css/main.css" media="screen">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-    <script src="js/jquery.color.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-color.js"></script>
     <script src="js/script.js"></script>
     <script src="js/placeholder-js.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript">
