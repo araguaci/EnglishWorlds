@@ -15,7 +15,10 @@
     }
   }
  ?>
- <div class="postForm">Post form will go here ...</div>
+ <div class="postForm"><form action= "<?php echo $username; ?>" method="post">
+   <textarea id="post" name="post" rows="4" cols="58"></textarea>
+   <input type="submit" name="send" value="Post" style="background-color: #DCE5EE; float: right; border: 1px solid #666;">
+ </form></div>
  <div class="profilePosts">Your Posts will go here ...</div>
  <img src="" height="250" width="200" alt="<?php echo $username; ?>'s Profile" title="<?php echo $username; ?>'s Profile" />
 <br>
