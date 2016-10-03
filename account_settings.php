@@ -7,8 +7,35 @@ if ($username) {
 }
  ?>
  <?php
-  if ($_POST['senddata']) {
+ $senddata = @$_POST['senddata'];
+
+ // Password variables
+ $old_password = @$_POST['old_password'];
+ $new_password = @$_POST['new_password'];
+ $repeat_password = @$_POST['newpassword2'];
+
+  if ($senddata) {
     // If the form is submitted ....
+    $password_query = mysql_query("SELECT * FROM users WHERE username='$user'");
+    while ($row = mysql_fetch_assoc($password_query)) {
+      $db_password = $row['password'];
+
+      // hash the old password before we check if it matches
+      $old_pasword_md5 = md5($old_password);
+      // Check whether old password equals $db_password
+      if ($old_password == $db_password) {
+        // Continue Changing the users password ...
+        if ($new_password == $repeat_password) {
+          $new_password_md5 = md5($new_password);
+          $password_update_query = ("UPDATE users SET password='$new_password_md5' WHERE username='$username'");
+          echo "Success";
+        } else {
+          echo "Your two new passwords don't match!";
+        }
+      } else {
+        echo "The old password is incorrect!";
+      }
+    }
   } else {
     echo "Please submit some data!";
   }

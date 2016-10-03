@@ -8,7 +8,7 @@ if (!isset($_SESSION["user_login"])) {
 }
  ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Dz English</title>
@@ -20,9 +20,7 @@ if (!isset($_SESSION["user_login"])) {
     <script src="js/jquery-color.js"></script>
     <script src="js/script.js"></script>
     <script src="js/placeholder-js.js" type="text/javascript"></script>
-    <script src="js/main.js" type="text/javascript">
-
-    </script>
+    <script src="js/main.js" type="text/javascript"></script>
   </head>
   <body>
     <div class="mashmenu">
@@ -33,8 +31,7 @@ if (!isset($_SESSION["user_login"])) {
             <div class="snav">
               <a href="#" class="slink">About</a>
               <div class="insideContent">
-                <span class="featured">What is it?<br>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<a href="https://www.facebook.com/groups/IAMALGERIANANDISPEAKENGLISH/">Group</a>
+                <span class="featured">What is it?<br><a href="https://www.facebook.com/groups/IAMALGERIANANDISPEAKENGLISH/">Group</a>
                 </span>
               </div>
               <!-- End inside content. -->
@@ -43,7 +40,7 @@ if (!isset($_SESSION["user_login"])) {
             <div class="snav">
               <a href="#" class="slink">Open Source?</a>
               <div class="insideContent">
-                <span class="featured">All code is open source and freely available, <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                <span class="featured"></span>
               </div>
               <!-- End inside content. -->
             </div>
@@ -113,9 +110,6 @@ if (!isset($_SESSION["user_login"])) {
           <a href="#">Sign In</a>
          </div><!-- end fnav feat -->
       </div>
-    </div>
-    <div id="wrapper">
-
     </div>
     <br>
     <br>
