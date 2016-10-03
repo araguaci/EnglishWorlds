@@ -20,6 +20,9 @@ if (!isset($_SESSION["user_login"])) {
     <script src="js/jquery.color.js"></script>
     <script src="js/script.js"></script>
     <script src="js/placeholder-js.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript">
+
+    </script>
   </head>
   <body>
     <div class="mashmenu">
