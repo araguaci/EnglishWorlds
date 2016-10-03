@@ -24,31 +24,40 @@
     $u_check = mysql_query("SELECT username FROM users WHERE username='$un'");
     // Count the amount of rows where username = $un
     $check = mysql_num_rows($u_check);
+    // Check whether Email already exists in the database.
+    $e_check = mysql_query("SELECT email FROM users WHERE email='$em'");
+    // Count the numbers of rows returned.
+    $email_check = mysql_num_rows($e_check);
     if ($check == 0) {
-      // check all of the fields have been filled in
-      if ($fn&&$ln&&$un&&$em&&$pswd&&$pswd2) {
-        // check that password match
-        if ($pswd==$pswd2) {
-          // check the maximum length of username/first name/last name does not exceed 25 characters
-          if (strlen($un)>25||strlen($fn)>25||strlen($ln)>25){
-            echo "The maximum limit for username/first name/last name is 25 characters!";
-          } else {
-            // check the maximum length of password does not exceed 25 characters and it is not less than 5 characters
-            if (strlen($pswd)>30||strlen($pswd)<5) {
-              echo "Your password must be between 5 and 30 characters long!";
+      if ($email_check == 0) {
+        if ($fn&&$ln&&$un&&$em&&$pswd&&$pswd2) {
+          // check that password match
+          if ($pswd==$pswd2) {
+            // check the maximum length of username/first name/last name does not exceed 25 characters
+            if (strlen($un)>25||strlen($fn)>25||strlen($ln)>25){
+              echo "The maximum limit for username/first name/last name is 25 characters!";
             } else {
-              // encrypt password and password 2 using md5 before sending to database
-              $pswd = md5($pswd);
-              $pswd2 = md5($pswd2);
-              $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0')");
-              die("<h2>Welcome to Dz English</h2>Login to your account to get started ...");
+              // check the maximum length of password does not exceed 25 characters and it is not less than 5 characters
+              if (strlen($pswd)>30||strlen($pswd)<5) {
+                echo "Your password must be between 5 and 30 characters long!";
+              } else {
+                // encrypt password and password 2 using md5 before sending to database
+                $pswd = md5($pswd);
+                $pswd2 = md5($pswd2);
+                $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0')");
+                die("<h2>Welcome to Dz English</h2>Login to your account to get started ...");
+              }
             }
+          }else {
+            echo "Your passwords don't match!";
           }
-        }else {
-          echo "Your passwords don't match!";
+        } else {
+          // check all of the fields have been filled in
+          echo "Please fill in all of the fields";
         }
-      } else {
-        echo "Please fill in all of the fields";
+      }
+      else {
+        echo "Sorry, but it looks like someone has already used that email!";
       }
     }else {
       echo "Username already taken ...";

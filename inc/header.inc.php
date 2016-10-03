@@ -62,11 +62,11 @@ if (!isset($_SESSION["user_login"])) {
         <?php
         if (!$username) {
           echo '<div class="fnav">
-            <a href="#" class="flink">Sign Up</a>
+            <a href="index.php" class="flink">Sign Up</a>
           </div>
           <!-- end fnav -->
           <div class="fnav">
-            <a href="#" class="flink">Login</a>
+            <a href="index" class="flink">Login</a>
           </div>
           <!-- end fnav -->';
         } else {
