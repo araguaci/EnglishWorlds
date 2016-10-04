@@ -72,6 +72,15 @@ if ($username) {
   } else {
     // Do nothing
   }
+  // Check whether the user has uploaded a profile pic or not
+  $check_pic = mysql_query("SELECT profile_pic FROM users WHERE username = '$username'");
+  $get_pic_row = mysql_fetch_assoc($check_pic);
+  $profile_pic_db = $get_pic_row['profile_pic'];
+  if ($profile_pic_db == "") {
+    $profile_pic = "img/default-pp.jpg";
+  } else {
+    $profile_pic = "userdata/profile_pics/".$profile_pic_row;
+  }
   // Profile Image upload script
   if (isset($_FILES['profilepic'])) {
     if (@$_FILES["profilepic"]["type"]=="image/jpeg" || (@$_FILES["profilepic"]["type"]=="image/png") || (@$_FILES["profilepic"]["type"]=="image/gif") && (@$_FILES["profilepic"]["size"] < 1048576)) /* 1 Megabyte */{
@@ -83,10 +92,12 @@ if ($username) {
       } else {
         move_uploaded_file(@$_FILES["profilepic"]["tmp_name"], "userdata/profile_pic/$rand_dir_name".$_FILES["profilepic"]["name"]);
         // echo "Uploaded and stored in: userdata/profilepic/$rand_dir_name".@$_FILES["profilepic"]["name"];
-        $profile_pic_query = mysql_query("UPDATE users SET profile_pic='$rand_dir_name/$profile_pic_name WHERE username = '")
+        $profile_pic_name = @$_FILES["profilepic"]["name"];
+        $profile_pic_query = mysql_query("UPDATE users SET profile_pic='$rand_dir_name/$profile_pic_name' WHERE username = '$username'")
+        header("Location: account_settings.php")
       }
     } else {
-
+      echo "Invalid File! Your image must be no larger than 1MB and it must be either a .jpg, .jpeg, .png or .gif";
     }
   }
   ?>
@@ -94,9 +105,10 @@ if ($username) {
  <hr>
  <p>
    Upload your profile photo
+
  </p>
- <form action="index.html" method="post" enctype="multipart/form-data">
-   <img src="img/default-pp.jpg" width="70" alt="" />
+ <form action="" method="post" enctype="multipart/form-data">
+   <img src="<?php echo $profilepic; ?>" width="70" alt="" />
    <input type="file" name="profilepic"><br>
    <input type="submit" name="uploadpic" value="Upload Image">
  </form>

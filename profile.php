@@ -15,13 +15,33 @@
       }
     }
   }
+  $post = @$_POST['post'];
+  if ($post != "") {
+    $date_added = date("Y-m-d");
+    $added_by = $username;
+    $user_posted_to = $username;
+
+    $sqlCommand = "INSERT INTO posts VALUES('', '$post', '$date_added', '$added_by', '$user_posted_to')";
+    $query = mysql_query($sqlCommand) or die(mysql_error());
+  // Check whether the user has uploaded a profile pic or not
+  $check_pic = mysql_query("SELECT profile_pic FROM users WHERE username = '$username'");
+  $get_pic_row = mysql_fetch_assoc($check_pic);
+  $profile_pic_db = $get_pic_row['profile_pic'];
+  if ($profile_pic_db == "") {
+    $profile_pic = "img/default-pp.jpg";
+  } else {
+    $profile_pic = "userdata/profile_pics/".$profile_pic_db;
+  }
+
  ?>
  <div id="status">
 
  </div>
  <div class="postForm">
-   <textarea id="post" name="post" rows="4" cols="58"></textarea>
-   <input type="submit" name="send" onclick="javascript:send_post()" value="Post" style="background-color: #DCE5EE; float: right; border: 1px solid #666; color:#666; height: 73px; width: 65px;"></div>
+   <form action="<?php echo $username; ?>" method="post">
+     <textarea id="post" name="post" rows="4" cols="58"></textarea>
+     <input type="submit" name="send" value="Post" style="background-color: #DCE5EE; float: right; border: 1px solid #666; color:#666; height: 73px; width: 65px;"></div>
+   </form>
  <div class="profilePosts">
    <?php
    $getposts = mysql_query("SELECT * FROM posts WHERE user_posted_to='$username' ORDER BY id DESC LIMIT 10") or die(mysql_errno());
@@ -39,7 +59,7 @@
     ?>
 
  </div>
- <img src="img/default-pp.jpg" height="250" width="200" alt="<?php echo $username; ?>'s Profile" title="<?php echo $username; ?>'s Profile" />
+ <img src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $username; ?>'s Profile" title="<?php echo $username; ?>'s Profile" />
 <br>
 <div class="textHeader"><?php echo $username; ?>'s Profile</div>
 <div class="profileLeftSideContent">
