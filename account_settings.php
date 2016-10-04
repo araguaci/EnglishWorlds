@@ -72,8 +72,34 @@ if ($username) {
   } else {
     // Do nothing
   }
+  // Profile Image upload script
+  if (isset($_FILES['profilepic'])) {
+    if (@$_FILES["profilepic"]["type"]=="image/jpeg" || (@$_FILES["profilepic"]["type"]=="image/png") || (@$_FILES["profilepic"]["type"]=="image/gif") && (@$_FILES["profilepic"]["size"] < 1048576)) /* 1 Megabyte */{
+      $chars = "abcdefghijklmnopqrstuvwyzABCDEFGHIJKLMNOPQRSTUVWYZ1234567890";
+      $rand_dir_name = substr(str_shuffle($chars), 0, 15);
+      mkdir("userdata/profile_pic/$rand_dir_name");
+      if (file_exists("userdata/profile_pic/$rand_dir_name/".@$_FILES["profilepic"]["name"])) {
+        echo @$_FILES["profilepic"]["name"]." Already exists";
+      } else {
+        move_uploaded_file(@$_FILES["profilepic"]["tmp_name"], "userdata/profile_pic/$rand_dir_name".$_FILES["profilepic"]["name"]);
+        // echo "Uploaded and stored in: userdata/profilepic/$rand_dir_name".@$_FILES["profilepic"]["name"];
+        $profile_pic_query = mysql_query("UPDATE users SET profile_pic='$rand_dir_name/$profile_pic_name WHERE username = '")
+      }
+    } else {
+
+    }
+  }
   ?>
  <h2>Edit Your account settings below</h2>
+ <hr>
+ <p>
+   Upload your profile photo
+ </p>
+ <form action="index.html" method="post" enctype="multipart/form-data">
+   <img src="img/default-pp.jpg" width="70" alt="" />
+   <input type="file" name="profilepic"><br>
+   <input type="submit" name="uploadpic" value="Upload Image">
+ </form>
 <hr>
 <form class="" action="account_settings.php" method="post">
   <p>

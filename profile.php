@@ -39,7 +39,7 @@
     ?>
 
  </div>
- <img src="" height="250" width="200" alt="<?php echo $username; ?>'s Profile" title="<?php echo $username; ?>'s Profile" />
+ <img src="img/default-pp.jpg" height="250" width="200" alt="<?php echo $username; ?>'s Profile" title="<?php echo $username; ?>'s Profile" />
 <br>
 <div class="textHeader"><?php echo $username; ?>'s Profile</div>
 <div class="profileLeftSideContent">
