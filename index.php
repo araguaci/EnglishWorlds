@@ -84,7 +84,7 @@
     }
   }
  ?>
-    <!-- <div style="width: 900px; float: right; margin: 0px auto 0px auto;"> -->
+    <div style="width: 900px; float: center; margin: 0px auto 0px auto;">
       <table>
         <tr>
           <td width="50%" valign="top">

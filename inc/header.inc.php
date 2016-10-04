@@ -1,8 +1,9 @@
 <?php
 include './inc/connect.inc.php';
 session_start();
+$username = "";
 if (!isset($_SESSION["user_login"])) {
-  $username = "";
+  // $username = $_SESSION["user_login"];
 } else {
   $username = $_SESSION["user_login"];
 }
@@ -25,7 +26,7 @@ if (!isset($_SESSION["user_login"])) {
   <body>
     <div class="mashmenu">
       <div id="menuWrapper">
-        <div class="fnav">
+        <!-- <div class="fnav">
           <a href="#" class="flink">Find Friends</a>
           <div class="allContent">
             <div class="snav">
@@ -33,23 +34,23 @@ if (!isset($_SESSION["user_login"])) {
               <div class="insideContent">
                 <span class="featured">What is it?<br><a href="https://www.facebook.com/groups/IAMALGERIANANDISPEAKENGLISH/">Group</a>
                 </span>
-              </div>
+              </div> -->
               <!-- End inside content. -->
             </div>
             <!-- End snav -->
-            <div class="snav">
+            <!-- <div class="snav">
               <a href="#" class="slink">Open Source?</a>
               <div class="insideContent">
                 <span class="featured"></span>
-              </div>
+              </div> -->
               <!-- End inside content. -->
             </div>
             <!-- End snav -->
-            <div class="snav">
+            <!-- <div class="snav">
               <a href="https://www.facebook.com/Saly3301" class="slink">Developer account</a>
               <div class="insideContent">
                 <span class="featured"></span>
-              </div>
+              </div> -->
               <!-- end snav -->
             </div>
           </div>
@@ -81,7 +82,7 @@ if (!isset($_SESSION["user_login"])) {
         }
 
         ?>
-        <div class="feat">
+        <!-- <div class="feat">
           <form id="searchForm">
             <fieldset>
               <div class="input">
@@ -90,7 +91,7 @@ if (!isset($_SESSION["user_login"])) {
               <input type="submit" id="searchSubmit" value="">
             </fieldset>
           </form>
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="headerMenu">

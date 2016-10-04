@@ -15,6 +15,9 @@
     }
   }
  ?>
+ <div id="status">
+
+ </div>
  <div class="postForm">
    <textarea id="post" name="post" rows="4" cols="58"></textarea>
    <input type="submit" name="send" onclick="javascript:send_post()" value="Post" style="background-color: #DCE5EE; float: right; border: 1px solid #666; color:#666; height: 73px; width: 65px;"></div>
@@ -38,7 +41,15 @@
  <img src="" height="250" width="200" alt="<?php echo $username; ?>'s Profile" title="<?php echo $username; ?>'s Profile" />
 <br>
 <div class="textHeader"><?php echo $username; ?>'s Profile</div>
-<div class="profileLeftSideContent">Some content about this persons profile ...</div>
+<div class="profileLeftSideContent">
+<?php
+  $about_query = mysql_query("SELECT bio FROM users WHERE username='$username'");
+  $get_result = mysql_fetch_assoc($about_query);
+  $about_the_user = $get_result['bio'];
+  echo $about_the_user;
+ ?>
+
+</div>
 <div class="textHeader"><?php echo $username; ?>'s Friends</div>
 <div class="profileLeftSideContent">
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;

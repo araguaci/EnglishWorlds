@@ -4,24 +4,59 @@ html {
 body{
   margin: 0px;
   padding: 0px;
-  font-family: arial;
+  font-family: Arial;
   font-size: 12px;
   background-color: #FFFFFF;
-  height: 100%;
 }
 #wrapper{
   margin-left: auto;
   margin-right: auto;
   width: 800px;
   height: 100%;
-  border-left: 1px solid #DCE5EE;
-  border-right: 1px solid #DCE5EE;
   padding-left: 10px;
   padding-right: 10px;
-  overflow: auto;
 }
 #menuWrapper{
   margin-left: auto;
+  margin-right: auto;
+  width: 840px;
+}
+#searchForm fieldset {
+  width: 240px;
+  position: relative;
+  display: block;
+  height: 10px;
+}
+div.input{
+  width: 130px;
+  padding: 0px 15px 15px 15px;
+  height: 10px;
+  border: 1px solid #DCE5EE;
+  float: right;
+  background: #E8EDF1;
+}
+div.input:focus{
+  border: 1px solid #9ECBE2;
+  box-shadow: 0 0 6px #ABDCFF, inset 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+input#s:focus{
+  outline: none;
+}
+input#searchSubmit{
+  width: 19px;
+  height: 19px;
+  text-indent: -9999px;
+  overflow: hidden;
+  /* TODO: get a search icon */
+  background: url(../img/) no-repeat;
+  border: 0;
+  position: absolute;
+  top: 7px;
+  right: 13px;
+  z-index: 5;
+  display: none;
+  cursor: pointer;
+
 }
 .profilePosts{
   float: right;
@@ -50,4 +85,27 @@ body{
   font-weight: 800;
   color: #000;
   text-decoration: underline;
+}
+p {
+  padding-top: 10px;
+}
+.textHeader{
+  background-color: #F3F6F9;
+  width: 190px;
+  height: 15px;
+  padding: 5px;
+  border-bottom: 1px solid #DCE5EE;
+  font-weight: 600;
+}
+.profileLeftSideContent{
+  width: 194px;
+  padding-right: 0px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-left: 0px;
+  height: 200px;
+  text-align: justify;
+}
+.postForm{
+
 }
