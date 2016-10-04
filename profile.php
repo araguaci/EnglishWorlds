@@ -4,11 +4,12 @@
     if (ctype_alnum($username)) {
       // check user exists
       $check = mysql_query("SELECT username, first_name FROM users WHERE username='$username'");
-      if (mysql_num_rows($check)===1) {
+      if (mysql_num_rows($check)===1 && $username != "about") {
         $get = mysql_fetch_assoc($check);
         $username = $get['username'];
         $first_name = $get['first_name'];
       } else {
+        // If user doesn't exist then resirect to index
         echo "<meta http-equiv=\"refresh\" content=\"0; url=http://localhost/English/index.php\">";
         exit();
       }
@@ -43,10 +44,11 @@
 <div class="textHeader"><?php echo $username; ?>'s Profile</div>
 <div class="profileLeftSideContent">
 <?php
-  $about_query = mysql_query("SELECT bio FROM users WHERE username='$username'");
-  $get_result = mysql_fetch_assoc($about_query);
-  $about_the_user = $get_result['bio'];
-  echo $about_the_user;
+$about_query = mysql_query("SELECT bio FROM users WHERE username='$username'");
+echo $about_query;
+$get_result = mysql_fetch_assoc($about_query);
+$about_the_user = $get_result['bio'];
+echo $about_the_user;
  ?>
 
 </div>

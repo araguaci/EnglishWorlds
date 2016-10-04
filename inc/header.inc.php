@@ -26,31 +26,31 @@ if (!isset($_SESSION["user_login"])) {
   <body>
     <div class="mashmenu">
       <div id="menuWrapper">
-        <!-- <div class="fnav">
-          <a href="#" class="flink">Find Friends</a>
+        <div class="fnav">
+          <a href="index.php" class="flink">Find Friends</a>
           <div class="allContent">
             <div class="snav">
-              <a href="#" class="slink">About</a>
+              <a href="./about/index.html" class="slink">About</a>
               <div class="insideContent">
                 <span class="featured">What is it?<br><a href="https://www.facebook.com/groups/IAMALGERIANANDISPEAKENGLISH/">Group</a>
                 </span>
-              </div> -->
+              </div>
               <!-- End inside content. -->
             </div>
             <!-- End snav -->
-            <!-- <div class="snav">
+            <div class="snav">
               <a href="#" class="slink">Open Source?</a>
               <div class="insideContent">
                 <span class="featured"></span>
-              </div> -->
+              </div>
               <!-- End inside content. -->
             </div>
             <!-- End snav -->
-            <!-- <div class="snav">
+            <div class="snav">
               <a href="https://www.facebook.com/Saly3301" class="slink">Developer account</a>
               <div class="insideContent">
                 <span class="featured"></span>
-              </div> -->
+              </div>
               <!-- end snav -->
             </div>
           </div>
