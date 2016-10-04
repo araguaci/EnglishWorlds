@@ -63,7 +63,7 @@
       echo "Username already taken ...";
     }
   }
-// User Login Code.
+  // User Login Code.
   if (isset($_POST["user_login"]) && isset($_POST["password_login"])) {
     $user_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["user_login"]); // filter everything but numbers and letters.
     $password_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["password_login"]); // filter everything but numbers and letters.

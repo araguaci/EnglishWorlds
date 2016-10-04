@@ -61,6 +61,10 @@
  </div>
  <img src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $username; ?>'s Profile" title="<?php echo $username; ?>'s Profile" />
 <br>
+<form action="<?php echo $username; ?>" method="post">
+  <input type="submit" name="addfriend" value="Add as a friend">
+  <input type="submit" name="sendmsg" value="Send message">
+</form>
 <div class="textHeader"><?php echo $username; ?>'s Profile</div>
 <div class="profileLeftSideContent">
 <?php
@@ -84,4 +88,4 @@ echo $about_the_user;
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
 </div>
-<?php include './inc/footer.inc.php' ?>
+<?php include './inc/footer.inc.php'; ?>

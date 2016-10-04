@@ -1,9 +1,8 @@
 <?php
 include './inc/connect.inc.php';
 session_start();
-$username = "";
 if (!isset($_SESSION["user_login"])) {
-  // $username = $_SESSION["user_login"];
+  $username = "";
 } else {
   $username = $_SESSION["user_login"];
 }
@@ -14,6 +13,7 @@ if (!isset($_SESSION["user_login"])) {
     <meta charset="utf-8">
     <title>Dz English</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen">
+    <link rel="stylesheet" href="./css/reset.css" media="screen">
     <link rel="stylesheet" href="./css/master.css" media="screen">
     <link rel="stylesheet" href="./css/blue.css" media="screen">
     <link rel="stylesheet" href="./css/main.css" media="screen">
@@ -27,7 +27,7 @@ if (!isset($_SESSION["user_login"])) {
     <div class="mashmenu">
       <div id="menuWrapper">
         <div class="fnav">
-          <a href="index.php" class="flink">Find Friends</a>
+          <a href="index.php" class="flink">Dz English</a>
           <div class="allContent">
             <div class="snav">
               <a href="./about/index.html" class="slink">About</a>
@@ -64,7 +64,7 @@ if (!isset($_SESSION["user_login"])) {
           </div>
           <!-- end fnav -->
           <div class="fnav">
-            <a href="index" class="flink">Login</a>
+            <a href="index.php" class="flink">Login</a>
           </div>
           <!-- end fnav -->';
         } else {
@@ -107,8 +107,15 @@ if (!isset($_SESSION["user_login"])) {
         <div id="menu">
           <a href="#">Home</a>
           <a href="#">About</a>
-          <a href="#">Sign Up</a>
-          <a href="#">Sign In</a>
+          <?php
+          if (!$username) {
+            echo '<a href="#">Sign Up</a>
+            <a href="#">Sign In</a>';
+          } else {
+            echo '<a href="#">Profile</a>
+            <a href="#">Settings</a>';
+          }
+           ?>
          </div><!-- end fnav feat -->
       </div>
     </div>

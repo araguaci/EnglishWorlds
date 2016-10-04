@@ -6,5 +6,8 @@ CREATE TABLE  IF NOT EXISTS `users` (
   `password` VARCHAR(32) NOT NULL,
   `sign_up_date` DATE NOT NULL,
   `activated` ENUM('0', '1') NOT NULL,
+  `bio` text NOT NULL,
+  `profile_pic` text NOT NULL,
+  `friend_array` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;

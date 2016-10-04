@@ -1,0 +1,16 @@
+*{
+  position: relative;
+  align-items: center;
+}
+#Wrapper{
+  align-items: center;
+}
+.wrapper{
+  align-items: center;
+  margin-left: 40%;
+  margin-right: 60%;
+  margin-top: 20%;
+}
+#Wrapper input [type='submit']{
+  background-color: red;
+}
