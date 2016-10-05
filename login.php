@@ -6,7 +6,10 @@
     <title>Login</title>
     <link rel="shortcut icon" href="./img/favicon.ico">
   </head>
-  <body class="wrapper">
+  <body>
+    <header id="header">
+
+    </header>
     <div id="Wrapper">
       <form action="index.php" method="POST">
         <input type="text" name="user_login" size="25" placeholder="Username"><br><br>
