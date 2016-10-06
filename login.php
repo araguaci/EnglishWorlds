@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/login.css" media="screen" title="no title">
     <title>Login</title>
-    
+
   </head>
   <body>
   <div class="row" id="login">
@@ -31,8 +31,6 @@
         </div>
         <div class="form-group last">
           <div class="col-sm-offset-3 col-sm-9">
-            <button type="submit" class="btn btn-success btn-sm">
-            Sign in</button>
             <input type="submit" name="Login" class="btn btn-success btn-sm" value="Login" >
           </div>
         </div>
@@ -43,12 +41,6 @@
     </div>
   </div>
 </div>
-    <!-- <div id="Wrapper">
-      <form action="index.php" method="POST">
-        <input type="text" name="user_login" size="25" placeholder="Username"><br><br>
-        <input type="password" name="password_login" size="25" placeholder="Password"><br><br>
-
-      </form> -->
     </div>
   </body>
 </html>
