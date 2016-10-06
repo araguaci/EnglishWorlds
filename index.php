@@ -44,7 +44,7 @@
                 // encrypt password and password 2 using md5 before sending to database
                 $pswd = md5($pswd);
                 $pswd2 = md5($pswd2);
-                $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0')");
+                $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', '', '', '')");
                 die("<h2>Welcome to Dz English</h2>Login to your account to get started ...");
               }
             }
