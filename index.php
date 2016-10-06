@@ -84,12 +84,12 @@
     }
   }
  ?>
-    <div style="width: 900px; float: center; margin: 0px auto 0px auto;">
+    <div id="Registration" style="width: 900px; float: center; margin: 0px auto 0px auto;">
       <table>
         <tr>
           <td width="50%" valign="top">
             <h2>Already a member? Sign in below!</h2>
-            <form action="index.php" method="POST">
+            <form action="index.php" name="loginForm" method="POST" onsubmit="return validateLoginForm()">
               <input type="text" name="user_login" size="25" placeholder="Username"><br><br>
               <input type="password" name="password_login" size="25" placeholder="Password"><br><br>
               <input type="submit" name="Login" value="Login">

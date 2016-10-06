@@ -24,6 +24,7 @@ if (!isset($_SESSION["user_login"])) {
     <script src="js/placeholder-js.js" type="text/javascript"></script>
     <script src="js/main.js" type="text/javascript"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="./img/favicon.ico">
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -99,9 +100,6 @@ if (!isset($_SESSION["user_login"])) {
         ?>
       </div>
     </div>
-    <div class="headerMenu">
-      <div id="wrapper">
-
         <?php if ($username){
           echo '<div class="search_box">
             <form action="search.php" method="GET" id="search">
@@ -109,10 +107,8 @@ if (!isset($_SESSION["user_login"])) {
             </form>
           </div>';
         } else {
-          echo "";
+
         } ?>
-      </div>
-    </div>
     <br>
     <br>
     <br>
