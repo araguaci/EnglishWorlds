@@ -10,6 +10,7 @@
   $pswd2 = ""; // Password confirmation.
   $d = ""; // Sign up date.
   $u_check = ""; // Check is username exists;
+  $birthdate = ""; // Birthdate
   // Registration form.
   $fn = strip_tags(@$_POST['fname']);
   $ln = strip_tags(@$_POST['lname']);
@@ -17,6 +18,7 @@
   $em = strip_tags(@$_POST['email']);
   $pswd = strip_tags(@$_POST['password']);
   $pswd2 = strip_tags(@$_POST['password2']);
+  $birthdate = strip_tags(@$_POST['birthdate']);
   $d = date("Y-m-d"); // Year - Month - Day
 
   if ($reg) {
@@ -25,12 +27,12 @@
     // Count the amount of rows where username = $un
     $check = mysql_num_rows($u_check);
     // Check whether Email already exists in the database.
-    $e_check = mysql_query("SELECT email FROM users WHERE email='$em'");
+      $e_check = mysql_query("SELECT email FROM users WHERE email='$em'");
     // Count the numbers of rows returned.
     $email_check = mysql_num_rows($e_check);
     if ($check == 0) {
       if ($email_check == 0) {
-        if ($fn&&$ln&&$un&&$em&&$pswd&&$pswd2) {
+        if ($fn&&$ln&&$un&&$em&&$pswd&&$pswd2&&$birthdate) {
           // check that password match
           if ($pswd==$pswd2) {
             // check the maximum length of username/first name/last name does not exceed 25 characters
@@ -41,10 +43,9 @@
               if (strlen($pswd)>30||strlen($pswd)<5) {
                 echo "Your password must be between 5 and 30 characters long!";
               } else {
-                // encrypt password and password 2 using md5 before sending to database
+                // encrypt password using md5 before sending to database
                 $pswd = md5($pswd);
-                $pswd2 = md5($pswd2);
-                $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', '', '', '')");
+                $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', '$birthdate', NULL, NULL, NULL)");
                 die("<h2>Welcome to Dz English</h2>Login to your account to get started ...");
               }
             }
@@ -104,7 +105,7 @@
               <input type="text" name="email" size="25" placeholder="Email Address"><br><br>
               <input type="password" name="password" size="25" placeholder="Password"><br><br>
               <input type="password" name="password2" size="25" placeholder="Confirm your password"><br><br>
-              <input type="date" name="name"><br><br>
+              <input type="date" name="birthdate"><br><br>
               <input type="submit" class="btn btn-sm" name="reg" value="Sign Up!">
             </form>
           </td>
