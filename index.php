@@ -98,15 +98,19 @@
           </td>
           <td width="30%" valign="top">
             <h2>Sign Up Below!</h2>
-            <form action="index.php" method="POST">
-              <input type="text" name="fname" size="25" placeholder="First Name"><br><br>
-              <input type="text" name="lname" size="25" placeholder="Last Name"><br><br>
-              <input type="text" name="username" size="25" placeholder="Username"><br><br>
-              <input type="text" name="email" size="25" placeholder="Email Address"><br><br>
-              <input type="password" name="password" size="25" placeholder="Password"><br><br>
-              <input type="password" name="password2" size="25" placeholder="Confirm your password"><br><br>
-              <input type="date" name="birthdate"><br><br>
-              <input type="submit" class="btn btn-sm" name="reg" value="Sign Up!">
+            <form action="index.php" name="Registration" method="POST">
+              <input type="text" name="fname" size="25" placeholder="First Name" onKeyup="checkRegister()"><br><br>
+              <input type="text" name="lname" size="25" placeholder="Last Name" onKeyup="checkRegister()"><br><br>
+              <input type="text" name="username" size="25" placeholder="Username" onKeyup="checkRegister()"><br><br>
+              <input type="text" name="email" size="25" placeholder="Email Address" onKeyup="checkRegister()"><br><br>
+              <input type="password" name="password" size="25" placeholder="Password" onKeyup="checkRegister()"><br><br>
+              <input type="password" name="password2" size="25" placeholder="Confirm your password" onKeyup="checkRegister()"><br><br>
+              <!-- <input type="date" name="birthdate" onKeyup="checkRegister()"><br><br> -->
+              <!-- <div>I am:
+                <label class="radio-inline"><input type="radio" name="optradio">Male</label>
+                <label class="radio-inline"><input type="radio" name="optradio">Female</label>
+              </div> -->
+              <input type="submit" id="register" class="btn btn-sm" name="reg" value="Sign Up!" disabled="disabled">
             </form>
           </td>
         </tr>

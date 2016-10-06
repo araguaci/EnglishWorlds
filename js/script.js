@@ -1,4 +1,4 @@
-function validateLoginForm()
+    function validateLoginForm()
     {
       var username = document.forms["loginForm"]["user_login"].value;
       var password = document.forms["loginForm"]["password_login"].value;
@@ -11,4 +11,15 @@ function validateLoginForm()
           document.loginForm.appendChild(div);
           return false;
           }
+    }
+    function checkRegister()
+    {
+        var f = document.forms["Registration"].elements;
+        var cansubmit = true;
+        for (var i = 0; i < f.length; i++) {
+            if (f[i].value.length == 0) cansubmit = false;
+        }
+        if (cansubmit) {
+            document.getElementById('register').disabled = false;
+        }
     }
