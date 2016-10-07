@@ -11,6 +11,7 @@
   $d = ""; // Sign up date.
   $u_check = ""; // Check is username exists;
   $birthdate = ""; // Birthdate
+  $gender = ""; // Gender
   // Registration form.
   $fn = strip_tags(@$_POST['fname']);
   $ln = strip_tags(@$_POST['lname']);
@@ -19,6 +20,7 @@
   $pswd = strip_tags(@$_POST['password']);
   $pswd2 = strip_tags(@$_POST['password2']);
   $birthdate = strip_tags(substr_replace(substr(@$_POST['birthdate'], 3, strlen(@$_POST['birthdate'])), ',', 7, 0));
+  $gender = strip_tags(@$_POST['optradio']);
   $d = date("Y-m-d"); // Year - Month - Day
 
   if ($reg) {
@@ -45,8 +47,8 @@
               } else {
                 // encrypt password using md5 before sending to database
                 $pswd = md5($pswd);
-                $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', STR_TO_DATE('$birthdate','%M %d,%Y'), NULL, NULL, NULL)");
-                die("<h2>Welcome to Dz English</h2>Login to your account to get started $birthdate...");
+                $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', STR_TO_DATE('$birthdate','%M %d,%Y'), '$gender', NULL, NULL, NULL)");
+                die("<h2>Welcome to Dz English</h2>Login to your account to get started...");
               }
             }
           }else {
@@ -107,8 +109,8 @@
               <input type="password" name="password2" size="25" placeholder="Confirm your password" onKeyup="checkRegister()"><br><br>
               <input type="text" name="birthdate" id="datepicker" value="2 Oct 1994" onKeyup="checkRegister()"><br><br>
               <div>I am:
-                <label class="radio-inline"><input type="radio" name="optradio">Male</label>
-                <label class="radio-inline"><input type="radio" name="optradio">Female</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="m">Male</label>
+                <label class="radio-inline"><input type="radio" name="optradio" value="f">Female</label>
               </div><br>
               <input type="submit" id="register" class="btn btn-sm" name="reg" value="Sign Up!" disabled="disabled">
             </form>
