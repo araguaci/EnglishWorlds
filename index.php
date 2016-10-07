@@ -54,7 +54,7 @@
           }
         } else {
           // check all of the fields have been filled in
-          echo "Please fill in all of the fields";
+          echo '<div class="alert alert-danger" role="alert">Please fill in all of the fields</div>';
         }
       }
       else {
@@ -105,15 +105,26 @@
               <input type="text" name="email" size="25" placeholder="Email Address" onKeyup="checkRegister()"><br><br>
               <input type="password" name="password" size="25" placeholder="Password" onKeyup="checkRegister()"><br><br>
               <input type="password" name="password2" size="25" placeholder="Confirm your password" onKeyup="checkRegister()"><br><br>
-              <!-- <input type="date" name="birthdate" onKeyup="checkRegister()"><br><br> -->
-              <!-- <div>I am:
+              <input type="text" name="birthdate" id="datepicker" value="2 Oct 1994" onKeyup="checkRegister()"><br><br>
+              <div>I am:
                 <label class="radio-inline"><input type="radio" name="optradio">Male</label>
                 <label class="radio-inline"><input type="radio" name="optradio">Female</label>
-              </div> -->
+              </div><br>
               <input type="submit" id="register" class="btn btn-sm" name="reg" value="Sign Up!" disabled="disabled">
             </form>
           </td>
         </tr>
       </table>
     </div>
+    <script src="./js/pikaday.js"></script>
+    <script>
+    var picker = new Pikaday(
+    {
+        field: document.getElementById('datepicker'),
+        firstDay: 1,
+        minDate: new Date(1985, 0, 1),
+        maxDate: new Date(2000, 12, 31),
+        yearRange: [1985,2000]
+    });
+    </script>
 <?php include './inc/footer.inc.php'; ?>

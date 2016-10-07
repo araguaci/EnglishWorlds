@@ -18,6 +18,7 @@ if (!isset($_SESSION["user_login"])) {
     <link rel="stylesheet" href="./css/blue.css" media="screen">
     <link rel="stylesheet" href="./css/main.css" media="screen">
     <link rel="stylesheet" href="./css/bootstrap.min.css" media="screen" title="no title">
+    <link rel="stylesheet" href="./css/pikaday.css" media="screen" title="no title">
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-color.js"></script>
     <script src="js/script.js"></script>
