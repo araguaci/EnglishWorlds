@@ -18,7 +18,7 @@
   $em = strip_tags(@$_POST['email']);
   $pswd = strip_tags(@$_POST['password']);
   $pswd2 = strip_tags(@$_POST['password2']);
-  $birthdate = strip_tags(@$_POST['birthdate']);
+  $birthdate = strip_tags(substr_replace(substr(@$_POST['birthdate'], 3, strlen(@$_POST['birthdate'])), ',', 7, 0));
   $d = date("Y-m-d"); // Year - Month - Day
 
   if ($reg) {
@@ -45,8 +45,8 @@
               } else {
                 // encrypt password using md5 before sending to database
                 $pswd = md5($pswd);
-                $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', '$birthdate', NULL, NULL, NULL)");
-                die("<h2>Welcome to Dz English</h2>Login to your account to get started ...");
+                $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', STR_TO_DATE('$birthdate','%M %d,%Y'), NULL, NULL, NULL)");
+                die("<h2>Welcome to Dz English</h2>Login to your account to get started $birthdate...");
               }
             }
           }else {
