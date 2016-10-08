@@ -1,4 +1,5 @@
-<?php include './inc/header.inc.php';
+<?php
+  include './inc/header.inc.php';
   if (isset($_GET['u'])) {
     $username = mysql_real_escape_string($_GET['u']);
     if (ctype_alnum($username)) {
@@ -14,28 +15,28 @@
         exit();
       }
     }
+  } else {
+    // Do Nothing
   }
   $post = @$_POST['post'];
   if ($post != "") {
-    $date_added = date("Y-m-d");
-    $added_by = $username;
-    $user_posted_to = $username;
-
-    $sqlCommand = "INSERT INTO posts VALUES('', '$post', '$date_added', '$added_by', '$user_posted_to')";
-    $query = mysql_query($sqlCommand) or die(mysql_error());
+  $date_added = date("Y-m-d");
+  $added_by = $username;
+  $user_posted_to = $username;
+  $sqlCommand = "INSERT INTO posts VALUES('', '$post', '$date_added', '$added_by', '$user_posted_to')";
+  $query = mysql_query($sqlCommand) or die(mysql_error());
   // Check whether the user has uploaded a profile pic or not
   $check_pic = mysql_query("SELECT profile_pic FROM users WHERE username = '$username'");
   $get_pic_row = mysql_fetch_assoc($check_pic);
   $profile_pic_db = $get_pic_row['profile_pic'];
-  if ($profile_pic_db == "") {
+  }
+  if (@$profile_pic_db == "") {
     $profile_pic = "img/default-pp.jpg";
   } else {
     $profile_pic = "userdata/profile_pics/".$profile_pic_db;
   }
-
  ?>
  <div id="status">
-
  </div>
  <div class="postForm">
    <form action="<?php echo $username; ?>" method="post">
@@ -57,27 +58,24 @@
      &nbsp;&nbsp;$body<br><hr>';
    }
     ?>
-
  </div>
  <img src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $username; ?>'s Profile" title="<?php echo $username; ?>'s Profile" />
-<br>
-<form action="<?php echo $username; ?>" method="post">
+ <br>
+ <form action="<?php echo $username; ?>" method="post">
   <input type="submit" name="addfriend" value="Add as a friend">
   <input type="submit" name="sendmsg" value="Send message">
-</form>
-<div class="textHeader"><?php echo $username; ?>'s Profile</div>
-<div class="profileLeftSideContent">
-<?php
-$about_query = mysql_query("SELECT bio FROM users WHERE username='$username'");
-echo $about_query;
-$get_result = mysql_fetch_assoc($about_query);
-$about_the_user = $get_result['bio'];
-echo $about_the_user;
+ </form>
+ <div class="textHeader"><?php echo $username; ?>'s Profile</div>
+ <div class="profileLeftSideContent">
+ <?php
+ $about_query = mysql_query("SELECT bio FROM users WHERE username='$username'");
+ $get_result = mysql_fetch_assoc($about_query);
+ $about_the_user = $get_result['bio'];
+ echo $about_the_user;
  ?>
-
-</div>
-<div class="textHeader"><?php echo $username; ?>'s Friends</div>
-<div class="profileLeftSideContent">
+ </div>
+ <div class="textHeader"><?php echo $username; ?>'s Friends</div>
+ <div class="profileLeftSideContent">
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
@@ -87,5 +85,5 @@ echo $about_the_user;
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
-</div>
-<?php include './inc/footer.inc.php'; ?>
+ </div>
+ <?php include './inc/footer.inc.php'; ?>

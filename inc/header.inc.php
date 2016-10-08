@@ -44,19 +44,23 @@ if (!isset($_SESSION["user_login"])) {
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <!-- set class="active" to the current active list item -->
-          <li><a href="login.php">Login<span class="sr-only"></span></a></li>
+          <?php
+          if ($username) {
+            echo '<li><a href="logout.php">Logout<span class="sr-only"></span></a></li>';
+          } else {
+            echo '<li><a href="login.php">Login<span class="sr-only"></span></a></li>';
+          }
+           ?>
           <li><a href="./about/index.html">About</a></li>
+          <?php
+          if ($username) {
+            echo '<li><a href="profile.php">Profile<span class="sr-only"></span></a></li>';
+            echo '<li><a href="account_settings.php">Settings<span class="sr-only"></span></a></li>';
+          } else {
+            echo '<li><a href="signup.php">Sign Up<span class="sr-only"></span></a></li>';
+          }
+           ?>
         </ul>
-        <?php
-        if (!$username) {
-          echo '<ul class="nav navbar-nav navbar-right">
-            <li><a href="signup.php">Sign Up</a></li>
-            </ul>';
-        } else {
-          echo '<a href="#">Profile</a>
-          <a href="#">Settings</a>';
-        }
-         ?>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
   </nav>
@@ -88,15 +92,19 @@ if (!isset($_SESSION["user_login"])) {
         ?>
       </div>
     </div>
-        <?php if ($username){
+        <?php
+        /*
+         if ($username){
           echo '<div class="search_box">
             <form action="search.php" method="GET" id="search">
               <input type="text" name="q" value="" size="60" placeholder="Search ...">
             </form>
           </div>';
         } else {
-
-        } ?>
+          // Do nothing.
+        }
+        */
+         ?>
     <br>
     <br>
     <br>
