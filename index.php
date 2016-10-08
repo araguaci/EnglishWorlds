@@ -34,7 +34,7 @@
     $email_check = mysql_num_rows($e_check);
     if ($check == 0) {
       if ($email_check == 0) {
-        if ($fn&&$ln&&$un&&$em&&$pswd&&$pswd2&&$birthdate) {
+        if ($fn&&$ln&&$un&&$em&&$pswd&&$pswd2&&$birthdate&&$gender) {
           // check that password match
           if ($pswd==$pswd2) {
             // check the maximum length of username/first name/last name does not exceed 25 characters
@@ -56,7 +56,7 @@
           }
         } else {
           // check all of the fields have been filled in
-          echo '<div class="alert alert-danger" role="alert">Please fill in all of the fields</div>';
+          fillFields();
         }
       }
       else {
@@ -113,6 +113,10 @@
                 <label class="radio-inline"><input type="radio" name="optradio" value="f">Female</label>
               </div><br>
               <input type="submit" id="register" class="btn btn-sm" name="reg" value="Sign Up!" disabled="disabled">
+              <?php function fillFields()
+              {
+                echo '<div class="alert alert-danger" role="alert">Please fill in all of the fields</div>';
+              } ?>
             </form>
           </td>
         </tr>
