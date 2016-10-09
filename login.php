@@ -5,14 +5,13 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="./css/login.css" media="screen" title="no title">
     <title>Login</title>
-
   </head>
   <body>
   <div class="row" id="login">
-  <div class="col-md-4 col-md-offset-7">
+  <div class="col-md-3 col-md-offset-4">
     <div class="panel panel-default">
       <div class="panel-heading">
-         <span class="glyphicon glyphicon-lock"></span> Login</div>
+         <span class="glyphicon glyphicon-lock"></span> You must log in to continue.</div>
       <div class="panel-body">
       <form class="form-horizontal" role="form">
         <div class="form-group">
