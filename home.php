@@ -3,7 +3,7 @@ include './inc/header.inc.php';
 if (!$username) {
   header("location: login.php");
 } else {
-    include './inc/header.inc.php';
+    // include './inc/header.inc.php';
 }
  ?>
  <!DOCTYPE html>
