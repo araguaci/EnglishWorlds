@@ -23,7 +23,7 @@
   $gender = strip_tags(@$_POST['optradio']);
   $d = date("Y-m-d"); // Year - Month - Day
 
-  if ($reg) {
+  if ($reg) { 
     // Check if user already exists
     $u_check = mysql_query("SELECT username FROM users WHERE username='$un'");
     // Count the amount of rows where username = $un
