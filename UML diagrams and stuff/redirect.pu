@@ -1,4 +1,3 @@
 @startuml
-username -> page.php: if not logged in redirect to login.php
-username --> page.php: if logged in no redirect
+
 @enduml
