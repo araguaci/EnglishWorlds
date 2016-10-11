@@ -1,4 +1,7 @@
 <?php
+  if (!$username) {
+      header("location: login.php");
+  }
   include './inc/header.inc.php';
   if (isset($_GET['u'])) {
     $username = mysql_real_escape_string($_GET['u']);
@@ -10,8 +13,8 @@
         $username = $get['username'];
         $first_name = $get['first_name'];
       } else {
-        // If user doesn't exist then resirect to index
-        echo "<meta http-equiv=\"refresh\" content=\"0; url=http://localhost/English/index.php\">";
+        // If user doesn't exist then redirect to index
+        // echo "<meta http-equiv=\"refresh\" content=\"0; url=http://localhost/English/index.php\">";
         exit();
       }
     }
