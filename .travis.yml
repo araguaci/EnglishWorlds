@@ -6,6 +6,4 @@ php:
   - '7.0'
 before-install:
   - php /home/travis/.phpenv/versions/5.4.25/bin/composer.phar self-update
-before_script:
-  - composer install
 script: phpunit index.php
