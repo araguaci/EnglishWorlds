@@ -1,3 +1,0 @@
-user->login
-login->change username variable
-!login->redirect to home page
