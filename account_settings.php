@@ -42,7 +42,7 @@ if ($username) {
       }
     }
   } else {
-    echo "Please submit some data!";
+    // echo "Please submit some data!";
   }
 
   $updateinfo = @$_POST['updateinfo'];
@@ -50,7 +50,7 @@ if ($username) {
   // First name, last name, and about the user query
   $get_info = mysql_query("SELECT first_name, last_name, bio FROM users WHERE username='$username'");
   $get_row = mysql_fetch_assoc($get_info);
-  $db_fist_name = $get_row['first_name'];
+  $db_first_name = $get_row['first_name'];
   $db_last_name = $get_row['last_name'];
   $db_bio = $get_row['bio'];
 
@@ -61,13 +61,12 @@ if ($username) {
     $bio = strip_tags(@$_POST['bio']);
     if (strlen($firstname) < 3) {
       echo "Your first name must be 3 or more characters long!";
-    } elseif (strlen($last_name) < 5) {
+    } elseif (strlen($lastname) < 5) {
       echo "Your last name must be 5 or more characters long!";
     } else {
       // Submit the form to the database.
       $info_submit_query = mysql_query("UPDATE users SET first_name='$firstname', last_name='$lastname', bio='$bio' WHERE username='$username'");
       echo "Your Profile information has been updated";
-      header("Location: $username");
     }
   } else {
     // Do nothing
@@ -93,8 +92,8 @@ if ($username) {
         move_uploaded_file(@$_FILES["profilepic"]["tmp_name"], "userdata/profile_pic/$rand_dir_name".$_FILES["profilepic"]["name"]);
         // echo "Uploaded and stored in: userdata/profilepic/$rand_dir_name".@$_FILES["profilepic"]["name"];
         $profile_pic_name = @$_FILES["profilepic"]["name"];
-        $profile_pic_query = mysql_query("UPDATE users SET profile_pic='$rand_dir_name/$profile_pic_name' WHERE username = '$username'")
-        header("Location: account_settings.php")
+        $profile_pic_query = mysql_query("UPDATE users SET profile_pic='$rand_dir_name/$profile_pic_name' WHERE username = '$username'");
+        header("Location: account_settings.php");
       }
     } else {
       echo "Invalid File! Your image must be no larger than 1MB and it must be either a .jpg, .jpeg, .png or .gif";

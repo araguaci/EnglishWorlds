@@ -1,5 +1,7 @@
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+CREATE TABLE IF NOT EXISTS `users` (
+`id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
@@ -8,8 +10,8 @@ CREATE TABLE `users` (
   `sign_up_date` date NOT NULL,
   `activated` enum('0','1') NOT NULL,
   `birthdate` date NOT NULL,
+  `gender` enum('m','f') NOT NULL,
   `bio` text,
-  `profilepic` text,
-  `friendarray` text,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `profile_pic` text,
+  `friendarray` text
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
