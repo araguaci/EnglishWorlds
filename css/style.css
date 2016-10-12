@@ -50,8 +50,8 @@
   margin-left: 135px;
 }
 #search input[type="text"]{
-  /* TODO: Get a white search icon */
-  background: url() no-repeat 10px 6px #267BB6;
+ 
+  background: url(../img/Wsearch.png) no-repeat 10px 6px #267BB6;
   outline: none;
   border: 0 none;
   font: bold 12px Arial, Helvetica, Sans-serif;
@@ -68,8 +68,8 @@
   transition: all 0.7s ease 0s;
 }
 #search input[type="text"]:focus{
-  /* TODO: Get a dark search icon */
-  background: url() no-repeat 10px 6px #FCFCFC;
+  
+  background: url(../img/Bsearch.png) no-repeat 10px 6px #FCFCFC;
   color: #6A6F75;
   width: 350px;
   -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
