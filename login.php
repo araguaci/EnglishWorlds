@@ -18,7 +18,7 @@
           <label for="loginMail" class="col-sm-3 control-label">
            Email</label>
           <div class="col-sm-9">
-            <input type="email" class="form-control" name="loginMail" id="loginMail" placeholder="Email" required>
+            <input type="text" class="form-control" name="loginMail" id="loginMail" placeholder="Email" required>
           </div>
         </div>
         <div class="form-group">
@@ -48,7 +48,7 @@
     $user_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["user_login"]); // filter everything but numbers and letters.
     $password_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["password_login"]); // filter everything but numbers and letters.
     $password_login_md5 = md5($password_login);
-    $sql = mysql_query("SELECT id FROM users WHERE username='$user_login' AND password='$password_login_md5' LIMIT 1");
+    $sql = mysql_query("SELECT id FROM users WHERE email='$user_login' AND password='$password_login_md5' LIMIT 1");
     // Check for their existance
     $userCount = mysql_num_rows($sql); // Count the number of rows returned
     if ($userCount == 1) {
