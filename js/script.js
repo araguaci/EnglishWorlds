@@ -23,3 +23,12 @@
             document.getElementById('register').disabled = false;
         }
     }
+    function focusRegister() {
+        var input = document.forms["Registration"].elements;
+        var error = false;
+        for (var i = 0; i < input.length; i++) {
+          if (input[i].value.length == 0) {
+            document.getElementsByClassName('glyphicon glyphicon-exclamation-sign hidden');
+          }
+        }
+    }

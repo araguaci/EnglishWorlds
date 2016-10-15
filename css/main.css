@@ -16,6 +16,9 @@ body{
   padding-left: 10px;
   padding-right: 10px;
 }
+span.hidden {
+  visibility: hidden;
+}
 #menuWrapper{
   margin-left: auto;
   margin-right: auto;
