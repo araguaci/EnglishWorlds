@@ -23,7 +23,7 @@
   $gender = strip_tags(@$_POST['optradio']);
   $d = date("Y-m-d"); // Year - Month - Day
 
-  if ($reg) { 
+  if ($reg) {
     // Check if user already exists
     $u_check = mysql_query("SELECT username FROM users WHERE username='$un'");
     // Count the amount of rows where username = $un
@@ -48,7 +48,7 @@
                 // encrypt password using md5 before sending to database
                 $pswd = md5($pswd);
                 $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', STR_TO_DATE('$birthdate','%M %d,%Y'), '$gender', NULL, NULL, NULL)");
-                die("<h2>Welcome to Dz English</h2>Login to your account to get started...");
+                die("Welcome $un Login to your account to start using the website");
               }
             }
           }else {
