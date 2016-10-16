@@ -1,8 +1,10 @@
 <?php
 include './inc/header.inc.php';
+/*
 if (!$username) {
   header("location: login.php");
 }
+*/
  ?>
  <!DOCTYPE html>
  <html>

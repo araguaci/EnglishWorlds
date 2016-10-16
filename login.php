@@ -1,4 +1,4 @@
-<?php include './inc/header.inc.php'; ?>
+<?php require_once './inc/header.inc.php'; ?>
 <!DOCTYPE html>
 <html>
   <head lang="en">

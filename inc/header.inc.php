@@ -66,46 +66,28 @@ if (!isset($_SESSION["user_login"])) {
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
   </nav>
-        <?php
-        /*
-        if (!$username) {
-          echo '<div class="fnav">
-            <a href="index.php" class="flink">Sign Up</a>
-          </div>
-          <!-- end fnav -->
-          <div class="fnav">
-            <a href="index.php" class="flink">Login</a>
-          </div>
-          <!-- end fnav -->';
-        } else {
-          echo '<div class="fnav">
-            <a href="'.$username.'" class="flink">Profile</a>
-          </div>
-          <!-- end fnav -->
-          <div class="fnav">
-            <a href="account_settings.php" class="flink">Account settings</a>
-          </div>
-          <div class="fnav">
-            <a href="logout.php" class="flink">Logout</a>
-          </div>
-          <!-- end fnav -->';
-        }
-        */
-        ?>
       </div>
     </div>
         <?php
-        /*
          if ($username){
-          echo '<div class="search_box">
-            <form action="search.php" method="GET" id="search">
-              <input type="text" name="q" value="" size="60" placeholder="Search ...">
-            </form>
-          </div>';
+          // echo '<div class="search_box">
+          //   <form action="search.php" method="GET" id="search">
+          //     <input type="text" name="q" value="" size="60" placeholder="Search ...">
+          //   </form>
+          // </div>';
+          echo '<div class="feat">
+          <form id="searchForm">
+            <fieldset>
+              <div class="input">
+                <input type="text" class="Search" id="s" placeholder="Search Dz English...">
+              </div>
+              <input type="submit" id="searchSubmit" value="">
+            </fieldset>
+          </form>
+        </div>';
         } else {
           // Do nothing.
         }
-        */
          ?>
     <br>
     <br>
