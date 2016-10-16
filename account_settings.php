@@ -124,8 +124,8 @@ if ($username) {
   <hr>
   <form class="" action="account_settings.php" method="post">
     <b>UPDATE YOUR PROFILE INFO:</b><br>
-    First Name: <input type="text" name="fname" id="fname" size="40" value="<?php echo $db_first_name; ?>"><br>
-    Last Name: <input type="text" name="lname" id="lname" size="40" value="<?php echo $db_last_name; ?>"><br>
+    First Name: <input type="text" name="fname" id="fname" size="40" value="<?php echo capitalize($db_first_name); ?>"><br>
+    Last Name: <input type="text" name="lname" id="lname" size="40" value="<?php echo capitalize($db_last_name); ?>"><br>
     About You: <textarea name="bio" id="bio" rows="7" cols="40"><?php echo $db_bio; ?></textarea>
   <hr>
   <input type="submit" name="updateinfo" value="Update Information" id="updateinfo">

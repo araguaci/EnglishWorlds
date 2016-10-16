@@ -13,17 +13,17 @@
   $birthdate = ""; // Birthdate
   $gender = ""; // Gender
   // Registration form.
-  $fn = strip_tags(@$_POST['fname']);
-  $ln = strip_tags(@$_POST['lname']);
-  $un = strip_tags(@$_POST['username']);
-  $em = strip_tags(@$_POST['email']);
+  $fn = strtolower(strip_tags(@$_POST['fname']));
+  $ln = strtolower(strip_tags(@$_POST['lname']));
+  $un = strtolower(strip_tags(@$_POST['username']));
+  $em = strtolower(strip_tags(@$_POST['email']));
   $pswd = strip_tags(@$_POST['password']);
   $pswd2 = strip_tags(@$_POST['password2']);
   $birthdate = strip_tags(substr_replace(substr(@$_POST['birthdate'], 3, strlen(@$_POST['birthdate'])), ',', 7, 0));
   $gender = strip_tags(@$_POST['optradio']);
   $d = date("Y-m-d"); // Year - Month - Day
 
-  if ($reg) { 
+  if ($reg) {
     // Check if user already exists
     $u_check = mysql_query("SELECT username FROM users WHERE username='$un'");
     // Count the amount of rows where username = $un
@@ -48,7 +48,7 @@
                 // encrypt password using md5 before sending to database
                 $pswd = md5($pswd);
                 $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', STR_TO_DATE('$birthdate','%M %d,%Y'), '$gender', NULL, NULL, NULL)");
-                die("<h2>Welcome to Dz English</h2>Login to your account to get started...");
+                die("Welcome capitalize($un) Login to your account to start using the website");
               }
             }
           }else {
