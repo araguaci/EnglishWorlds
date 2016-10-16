@@ -1,27 +1,18 @@
-# CakePHP 3
+# Ignore MS Visual studio code text editor temporary files.
 .vscode
+# Ignore Mac OSX auto generated file.
 .DS_Store
+# Ignore the PHP MySQL connection configuration file.
 connect.inc.php
+# Ignore composer dependency manager auto generated files.
 /vendor/*
 /config/app.php
-
-/tmp/cache/models/*
-!/tmp/cache/models/empty
-/tmp/cache/persistent/*
-!/tmp/cache/persistent/empty
-/tmp/cache/views/*
-!/tmp/cache/views/empty
-/tmp/sessions/*
-!/tmp/sessions/empty
-/tmp/tests/*
-!/tmp/tests/empty
-
-/logs/*
-!/logs/empty
-
-# CakePHP 2
-
-/app/tmp/*
-/app/Config/core.php
-/app/Config/database.php
-/vendors/*
+composer.phar
+composer-setup.php
+# Commit your application's lock file http://getcomposer.org/doc/01-basic-usage.md
+#composer-lock-the-lock-file
+# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
+composer.lock
+composer.json
+# Ignore PHP Unit suits test
+phpunit.xml
