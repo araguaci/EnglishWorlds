@@ -28,7 +28,7 @@
         var error = false;
         for (var i = 0; i < input.length; i++) {
           if (input[i].value.length == 0) {
-            document.getElementsByClassName('glyphicon glyphicon-exclamation-sign hidden');
+            document.getElementsByClassName('glyphicon glyphicon-exclamation-sign hidden').hidden = false;
           }
         }
     }

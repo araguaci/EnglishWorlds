@@ -1,5 +1,6 @@
 <?php
 include './inc/connect.inc.php';
+include './inc/functions.inc.php';
 session_start();
 if (!isset($_SESSION["user_login"])) {
   $username = "";
