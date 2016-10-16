@@ -14,6 +14,7 @@ if (!isset($_SESSION["user_login"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>I am Dz And I Speak English</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen">
+    <link rel="stylesheet" href="./css/profile.css" media="screen" title="no title">
     <link rel="stylesheet" href="./css/reset.css" media="screen">
     <link rel="stylesheet" href="./css/master.css" media="screen">
     <link rel="stylesheet" href="./css/blue.css" media="screen">

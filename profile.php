@@ -1,7 +1,4 @@
 <?php
-  if (!$username) {
-      header("location: login.php");
-  }
   include './inc/header.inc.php';
   if (isset($_GET['u'])) {
     $username = mysql_real_escape_string($_GET['u']);
@@ -61,8 +58,22 @@
      &nbsp;&nbsp;'.@$body.'<br><hr>';
    }
     ?>
+    <?php
+      if (isset($_POST['addfriend'])) {
+        $friend_request = $_POST['addfriend'];
+        $user_to = $username;
+        $user_from = $username;
+        if (!$user_from == $username) {
+          @$errorMsg = "You can't send a friend request to yourself!<br>";
+        } else {
+          $create_request = mysql_query("INSERT INTO friend_requests VALUES ('', '$user_to', '$user_from')");
+          $errorMsg = "Your friend request has been sent";
+        }
+      }
+     ?>
  </div>
- <img src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $username; ?>'s Profile" title="<?php echo $username; ?>'s Profile" />
+ <img id="pp" src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $username; ?>'s Profile" title="<?php echo $username; ?>'s Profile" />
+ <?php echo @$errorMsg; ?>
  <br>
  <form action="<?php echo $username; ?>" method="post">
   <input type="submit" name="addfriend" value="Add as a friend">
