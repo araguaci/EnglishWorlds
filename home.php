@@ -1,10 +1,5 @@
 <?php
 include './inc/header.inc.php';
-/*
-if (!$username) {
-  header("location: login.php");
-}
-*/
  ?>
  <!DOCTYPE html>
  <html>
@@ -13,6 +8,9 @@ if (!$username) {
      <title>I am Dz And I Speak English</title>
    </head>
    <body>
-     <h1>News feed</h1>
+     <form action="home.php" method="post">
+       <textarea name="postText" rows="8" cols="40" placeholder="Share your thoughts..."></textarea>
+       <input type="submit" name="post" value="Post">
+     </form>
    </body>
  </html>

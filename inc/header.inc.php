@@ -71,21 +71,11 @@ if (!isset($_SESSION["user_login"])) {
     </div>
         <?php
          if ($username){
-          // echo '<div class="search_box">
-          //   <form action="search.php" method="GET" id="search">
-          //     <input type="text" name="q" value="" size="60" placeholder="Search ...">
-          //   </form>
-          // </div>';
-          echo '<div class="feat">
-          <form id="searchForm">
-            <fieldset>
-              <div class="input">
-                <input type="text" class="Search" id="s" placeholder="Search Dz English...">
-              </div>
-              <input type="submit" id="searchSubmit" value="">
-            </fieldset>
-          </form>
-        </div>';
+          echo '<div class="search_box">
+            <form action="search.php" method="GET" id="search">
+              <input type="text" name="q" value="" size="60" placeholder="Search ...">
+            </form>
+          </div>';
         } else {
           // Do nothing.
         }
