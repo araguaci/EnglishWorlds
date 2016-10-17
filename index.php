@@ -91,7 +91,7 @@
   if ($username) {
     header("location: home.php");
   } else {
-    include 'register.php';
+    include 'register.html';
   }
    ?>
 <?php include './inc/footer.inc.php'; ?>
