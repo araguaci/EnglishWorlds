@@ -9,4 +9,3 @@ php:
 before-install:
   - composer install
   - php /home/travis/.phpenv/versions/5.4.25/bin/composer.phar self-update
-script: phpunit index.php
