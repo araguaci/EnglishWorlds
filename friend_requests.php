@@ -16,7 +16,35 @@
  ?>
  <?php
   if (isset($_POST['acceptrequest'.$user_from])) {
-    echo "Friend Request accepted";
+    // Select the friend array row from the logged in user
+    // Select the friend array row from the user who sent the friend request
+    // If the user has no friends we just concat the friends username
+    // Get friend array  for the logged in user
+    $add_friend_check = mysql_query("SELECT friend_array FROM users WHERE username='$user'");
+    $get_friend_row = mysql_fetch_assoc($add_friend_check);
+    $friend_array = $get_friend_row['friend_array'];
+    $friendArray_explode = explode(", ", $friend_array);
+    $friend_array_count = count($friendArray_explode);
+    // Get friend array for the person who sent the request
+    $add_friend_check_friend = mysql_query("SELECT friend_array FROM users WHERE username='$user'");
+    $get_friend_row_friend = mysql_fetch_assoc($add_friend_check_friend);
+    $friend_array_friend = $get_friend_row['friend_array'];
+    $friendArray_explode_friend = explode(", ", $friend_array_friend);
+    $friend_array_count_friend = count($friendArray_explode_friend);
+
+    if ($friend_array == "") {
+      $friend_array_count = count(NULL);
+    }
+    if ($friend_array_friend == "") {
+      $friend_array_count_friend = count(NULL);
+    }
+    if ($friend_array_count == NULL) {
+      $add_friend_query = mysql_query("UPDATE users SET friend_array=CONCAT(friend_array,'$user_from') WHERE username='$user')");
+    }
+    if ($friend_array_count == NULL) {
+      $add_friend_query = mysql_query("UPDATE users SET friend_array=CONCAT(friend_array,'$user_to') WHERE username='$user_from')");
+    }
+    echo "You are now friends";
   }
   ?>
 <form action="friend_requests.php" method="post">
