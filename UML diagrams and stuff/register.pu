@@ -1,9 +1,0 @@
-@startuml
-If the user isn't registered already then redirect him/her to the signup page
-the signup page should not include the login form
-however try to include the register.html file and change the property of the login table tada to hidden
-
-the user hash for mysql password = d413eb6d8c9764ad63762b29afb41031
-compare the two after signing up   d413eb6d8c9764ad63762b29afb41031
-
-@enduml
