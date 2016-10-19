@@ -57,10 +57,10 @@ if (!isset($_SESSION["user_login"])) {
           <li><a href="../about/index.php">About</a></li>
           <?php
           if ($username) {
-            echo '<li><a href="profile.php">Profile<span class="sr-only"></span></a></li>';
-            echo '<li><a href="account_settings.php">Settings<span class="sr-only"></span></a></li>';
+            echo '<li><a href="../profile.php">Profile<span class="sr-only"></span></a></li>';
+            echo '<li><a href="../account_settings.php">Settings<span class="sr-only"></span></a></li>';
           } else {
-            echo '<li><a href="signup.php">Sign Up<span class="sr-only"></span></a></li>';
+            echo '<li><a href="../signup.php">Sign Up<span class="sr-only"></span></a></li>';
           }
            ?>
         </ul>

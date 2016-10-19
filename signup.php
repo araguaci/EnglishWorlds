@@ -9,8 +9,9 @@
     <?php
       require_once './inc/header.inc.php';
       include 'register.html';
-      if (isset(@$_POST['Registration'])) {
-        echo "test";
+      $reg = @$_POST['Registration'];
+      if (isset($reg)) {
+        
       }
      ?>
   </body>
