@@ -10,7 +10,9 @@
       $id = $get_row['id'];
       $user_to = $get_row['user_to'];
       $user_from = $get_row['user_from'];
-      echo '' . $user_to . ' wants to be your your friend';
+      if ($user_to != $username) {
+        echo $user_to . ' wants to be your your friend'.'<br><br>';
+      }
     }
   }
  ?>
