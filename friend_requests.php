@@ -12,12 +12,16 @@
       $user_from = $get_row['user_from'];
       if ($user_to != $username) {
         echo $user_to . ' wants to be your your friend'.'<br><br>';
+        echo '<form action="friend_requests.php" method="post">
+          <input type="submit" name="acceptrequest<?php echo $user_from; ?>" value="Accept Request">
+          <input type="submit" name="ignorerequest<?php echo $user_from; ?>" value="Ignore Request">
+        </form>';
       }
     }
   }
  ?>
  <?php
-  if (isset($_POST['acceptrequest'.$user_from])) {
+  if (isset($_POST['acceptrequest'.@$user_from])) {
     // Select the friend array row from the logged in user
     // Select the friend array row from the user who sent the friend request
     // If the user has no friends we just concat the friends username
@@ -52,7 +56,3 @@
     echo "You are now friends";
   }
   ?>
-<form action="friend_requests.php" method="post">
-  <input type="submit" name="acceptrequest<?php echo $user_from; ?>" value="Accept Request">
-  <input type="submit" name="ignorerequest<?php echo $user_from; ?>" value="Ignore Request">
-</form>
