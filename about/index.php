@@ -1,6 +1,6 @@
 <?php
-include './inc/connect.inc.php';
-include './inc/functions.inc.php';
+include '../inc/connect.inc.php';
+include '../inc/functions.inc.php';
 session_start();
 if (!isset($_SESSION["user_login"])) {
   $username = "";
@@ -14,21 +14,21 @@ if (!isset($_SESSION["user_login"])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>I am Dz And I Speak English</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen">
-    <link rel="stylesheet" href="./css/profile.css" media="screen" title="no title">
-    <link rel="stylesheet" href="./css/reset.css" media="screen">
-    <link rel="stylesheet" href="./css/master.css" media="screen">
-    <link rel="stylesheet" href="./css/blue.css" media="screen">
-    <link rel="stylesheet" href="./css/main.css" media="screen">
-    <link rel="stylesheet" href="./css/bootstrap.min.css" media="screen" title="no title">
-    <link rel="stylesheet" href="./css/pikaday.css" media="screen" title="no title">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-color.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/placeholder-js.js" type="text/javascript"></script>
-    <script src="js/main.js" type="text/javascript"></script>
-    <script src="./js/bootstrap.min.js"></script>
-    <link rel="shortcut icon" href="./img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../css/style.css" media="screen">
+    <link rel="stylesheet" href="../css/profile.css" media="screen" title="no title">
+    <link rel="stylesheet" href="../css/reset.css" media="screen">
+    <link rel="stylesheet" href="../css/master.css" media="screen">
+    <link rel="stylesheet" href="../css/blue.css" media="screen">
+    <link rel="stylesheet" href="../css/main.css" media="screen">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" media="screen" title="no title">
+    <link rel="stylesheet" href="../css/pikaday.css" media="screen" title="no title">
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/jquery-color.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/placeholder-js.js" type="text/javascript"></script>
+    <script src="../js/main.js" type="text/javascript"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="../img/favicon.ico">
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -54,7 +54,7 @@ if (!isset($_SESSION["user_login"])) {
             echo '<li><a href="login.php">Login<span class="sr-only"></span></a></li>';
           }
            ?>
-          <li><a href="./about/index.php">About</a></li>
+          <li><a href="../about/index.php">About</a></li>
           <?php
           if ($username) {
             echo '<li><a href="profile.php">Profile<span class="sr-only"></span></a></li>';
@@ -69,7 +69,6 @@ if (!isset($_SESSION["user_login"])) {
           echo '<div class="navbar-text navbar-right">Signed in as <a href="'.$username.'" class="navbar-link">'.$username.'</a></div>';
         }
          ?>
-
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
   </nav>
@@ -91,3 +90,7 @@ if (!isset($_SESSION["user_login"])) {
     <br>
     <br>
     <br>
+    
+    <?php
+    include '../inc/footer.inc.php';
+     ?>
