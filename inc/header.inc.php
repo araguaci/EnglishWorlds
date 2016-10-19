@@ -65,7 +65,9 @@ if (!isset($_SESSION["user_login"])) {
            ?>
         </ul>
         <?php
+        if ($username) {
           echo '<p class="navbar-text navbar-right">Signed in as <a href="'.$username.'" class="navbar-link">'.$username.'</a></p>';
+        }
          ?>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

@@ -44,6 +44,9 @@
     if ($friend_array_count == NULL) {
       $add_friend_query = mysql_query("UPDATE users SET friend_array=CONCAT(friend_array,'$user_to') WHERE username='$user_from')");
     }
+    if ($friend_array_count >= 1) {
+      $add_friend_query = mysql_query("UPDATE users SET friend_array=CONCAT(friend_array,',$user_to') WHERE username='$user')");
+    }
     echo "You are now friends";
   }
   ?>
