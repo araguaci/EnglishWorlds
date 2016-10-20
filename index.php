@@ -47,8 +47,9 @@
               } else {
                 // encrypt password using md5 before sending to database
                 $pswd = md5($pswd);
+                $username_with_capitalized_first_letter = capitalize($un);
                 $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', STR_TO_DATE('$birthdate','%M %d,%Y'), '$gender', NULL, NULL, NULL)");
-                die("Welcome capitalize($un) Login to your account to start using the website");
+                die("Welcome $username_with_capitalized_first_letter Login to your account to start using the website");
               }
             }
           }else {
