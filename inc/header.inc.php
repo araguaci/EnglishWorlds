@@ -2,11 +2,11 @@
 include './inc/connect.inc.php';
 include './inc/functions.inc.php';
 session_start();
-if (!isset($_SESSION["user_login"])) {
-  $username = "";
-} else {
-  $username = $_SESSION["user_login"];
-}
+  if (!isset($_SESSION["user_login"])) {
+    $username = "";
+  } else {
+    $username = $_SESSION["user_login"];
+  }
  ?>
 <!DOCTYPE html>
 <html lang="en">

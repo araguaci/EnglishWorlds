@@ -41,7 +41,7 @@ if (!isset($_SESSION["user_login"])) {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">English Dz</a>
+        <a class="navbar-brand" href="../index.php">English Dz</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -49,9 +49,9 @@ if (!isset($_SESSION["user_login"])) {
           <!-- set class="active" to the current active list item -->
           <?php
           if ($username) {
-            echo '<li><a href="logout.php">Logout<span class="sr-only"></span></a></li>';
+            echo '<li><a href="../logout.php">Logout<span class="sr-only"></span></a></li>';
           } else {
-            echo '<li><a href="login.php">Login<span class="sr-only"></span></a></li>';
+            echo '<li><a href="../login.php">Login<span class="sr-only"></span></a></li>';
           }
            ?>
           <li><a href="../about/index.php">About</a></li>
@@ -90,7 +90,7 @@ if (!isset($_SESSION["user_login"])) {
     <br>
     <br>
     <br>
-    
+
     <?php
     include '../inc/footer.inc.php';
      ?>
