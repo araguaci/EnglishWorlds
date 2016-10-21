@@ -66,17 +66,20 @@
         if (!$user_from == $user) {
           @$errorMsg = "You can't send a friend request to yourself!<br>";
         } else {
-          $create_request = mysql_query("INSERT INTO friend_requests VALUES ('', '$user_to', '$user_from')");
+          $create_request = mysql_query("INSERT INTO friend_requests VALUES ('', '$user_from', '$user_to')");
           $errorMsg = "Your friend request has been sent";
         }
       }
      ?>
+     <?php
+     echo "<h1>the profile owner is $user and the signed in user is $username</h1>";
+      ?>
  </div>
  <img id="pp" src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $user; ?>'s Profile" title="<?php echo $user; ?>'s Profile" />
  <?php echo @$errorMsg; ?>
  <br>
  <?php if (@$user != $username): ?>
-   <?php echo '<form action="<?php echo $user; ?>" method="post">'; ?>
+   <?php echo '<form action="'.$user.'" method="post">'; ?>
      <?php echo '<input type="submit" name="addfriend" value="Add as a friend">
      <input type="submit" name="sendmsg" value="Send message">
     </form>' ?>

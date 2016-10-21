@@ -5,14 +5,13 @@
   $numrows = mysql_num_rows($findRequests);
   if ($numrows == 0) {
     echo "You have no friend requests at this time";
-    $user_from;
   } else {
     while ($get_row = mysql_fetch_assoc($findRequests)) {
       $id = $get_row['id'];
       $user_to = $get_row['user_to'];
       $user_from = $get_row['user_from'];
-      if ($user_to != $username) {
-        echo $user_to . ' wants to be your your friend'.'<br><br>';
+      if ($user_to == $username) {
+        echo $user_from . ' wants to be your your friend'.'<br><br>';
         echo '<form action="friend_requests.php" method="post">
           <input type="submit" name="acceptrequest<?php echo ' . $user_from. '; ?>" value="Accept Request">
           <input type="submit" name="ignorerequest<?php echo '.$user_from.'; ?>" value="Ignore Request">

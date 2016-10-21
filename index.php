@@ -1,17 +1,6 @@
 <?php include './inc/header.inc.php'; ?>
 <?php
   $reg = @$_POST['reg'];
-  // Declaring variables to prevent errors.
-  $fn = ""; // First Name.
-  $ln = ""; // Last Name.
-  $un = ""; // Username.
-  $em = ""; // Email.
-  $pswd = ""; // Password.
-  $pswd2 = ""; // Password confirmation.
-  $d = ""; // Sign up date.
-  $u_check = ""; // Check is username exists;
-  $birthdate = ""; // Birthdate
-  $gender = ""; // Gender
   // Registration form.
   $fn = strtolower(strip_tags(@$_POST['fname']));
   $ln = strtolower(strip_tags(@$_POST['lname']));
