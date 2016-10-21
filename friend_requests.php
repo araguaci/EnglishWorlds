@@ -1,20 +1,28 @@
 <?php
   include './inc/header.inc.php';
-  // Find Friends Requests
+  // Friends Requests
   $findRequests = mysql_query("SELECT * FROM friend_requests WHERE user_to = '$username'");
   $numrows = mysql_num_rows($findRequests);
   if ($numrows == 0) {
-    echo "You have no friend requests at this time";
-  } else {
+    echo "No one wants to be your friend";
+  }
+  else {
+
     while ($get_row = mysql_fetch_assoc($findRequests)) {
       $id = $get_row['id'];
       $user_to = $get_row['user_to'];
       $user_from = $get_row['user_from'];
+    }
+    $first_name_and_last_name_of_the_user_sending_the_friend_request =  mysql_query("SELECT first_name, last_name FROM users WHERE username = '$user_from'");
+    $numrows_fn_ln = mysql_num_rows($first_name_and_last_name_of_the_user_sending_the_friend_request);
+    while ($get_name = mysql_fetch_assoc($first_name_and_last_name_of_the_user_sending_the_friend_request)) {
+      $first_name = $get_name['first_name'];
+      $last_name = $get_name['last_name'];
+      echo "$first_name $last_name wants to be your friend<br><br>";
       if ($user_to == $username) {
-        echo $user_from . ' wants to be your your friend'.'<br><br>';
         echo '<form action="friend_requests.php" method="post">
-          <input type="submit" name="acceptrequest<?php echo ' . $user_from. '; ?>" value="Accept Request">
-          <input type="submit" name="ignorerequest<?php echo '.$user_from.'; ?>" value="Ignore Request">
+          <input type="submit" name="acceptrequest '.$user_from.'" value="Accept Request">
+          <input type="submit" name="ignorerequest '.$user_from.'" value="Ignore Request">
         </form>';
       }
     }
