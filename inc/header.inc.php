@@ -29,7 +29,7 @@ session_start();
     <script src="js/main.js" type="text/javascript"></script>
     <script src="./js/bootstrap.min.js"></script>
     <link rel="shortcut icon" href="./img/favicon.ico">
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    
   </head>
   <body>
     <nav class="navbar navbar-default">
