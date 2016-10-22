@@ -1,8 +1,5 @@
 @startuml
 
-User -> (login)
-User --> (Use the website) : A small label
-
-:Main Admin: ---> (Use the application) : This is\nyet another\nlabel
+User -> (login) : correct credentials
 
 @enduml
