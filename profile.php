@@ -16,7 +16,7 @@
       }
     }
   } else {
-    // Do Nothing
+    header("location: $username");
   }
   $post = @$_POST['post'];
   if ($post != "") {
@@ -36,8 +36,6 @@
     $profile_pic = "userdata/profile_pics/".$profile_pic_db;
   }
  ?>
- <div id="status">
- </div>
  <div class="postForm">
    <form action="<?php echo $user; ?>" method="post">
      <textarea id="post" name="post" rows="4" cols="58"></textarea>
@@ -75,9 +73,9 @@
      echo "<h1>the profile owner is $user and the signed in user is $username</h1>";
       ?>
  </div>
- <img id="pp" src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $user; ?>'s Profile" title="<?php echo $user; ?>'s Profile" />
  <?php echo @$errorMsg; ?>
  <br>
+ <img id="pp" src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $user; ?>'s Profile" title="<?php echo $user; ?>'s Profile" />
  <?php if (@$user != $username): ?>
    <?php echo '<form action="'.$user.'" method="post">'; ?>
      <?php
@@ -124,5 +122,4 @@
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
  </div>
- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
  <?php include './inc/footer.inc.php'; ?>

@@ -20,6 +20,7 @@ session_start();
     <link rel="stylesheet" href="./css/master.css" media="screen">
     <link rel="stylesheet" href="./css/blue.css" media="screen">
     <link rel="stylesheet" href="./css/main.css" media="screen">
+    <link rel="stylesheet" href="./css/home.css" media="screen" title="no title">
     <link rel="stylesheet" href="./css/bootstrap.min.css" media="screen" title="no title">
     <link rel="stylesheet" href="./css/pikaday.css" media="screen" title="no title">
     <script src="js/jquery.min.js"></script>
@@ -29,7 +30,7 @@ session_start();
     <script src="js/main.js" type="text/javascript"></script>
     <script src="./js/bootstrap.min.js"></script>
     <link rel="shortcut icon" href="./img/favicon.ico">
-    
+
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -58,7 +59,7 @@ session_start();
           <li><a href="./about/index.php">About</a></li>
           <?php
           if ($username) {
-            echo '<li><a href="profile.php">Profile<span class="sr-only"></span></a></li>';
+            echo '<li><a href="'.$username.'">Profile<span class="sr-only"></span></a></li>';
             echo '<li><a href="account_settings.php">Settings<span class="sr-only"></span></a></li>';
           } else {
             echo '<li><a href="signup.php">Sign Up<span class="sr-only"></span></a></li>';
@@ -87,8 +88,3 @@ session_start();
           // Do nothing.
         }
          ?>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>

@@ -1,16 +1,11 @@
 <?php
 include './inc/header.inc.php';
  ?>
- <!DOCTYPE html>
- <html>
-   <head>
-     <meta charset="utf-8">
-     <title>I am Dz And I Speak English</title>
-   </head>
-   <body>
-     <form action="home.php" method="post">
-       <textarea name="postText" rows="8" cols="40" placeholder="Share your thoughts..."></textarea>
-       <input type="submit" name="post" value="Post">
+     <form id="postingForm" action="home.php" method="post">
+       <textarea name="postText" rows="4" cols="40" placeholder="Share your thoughts..."></textarea>
+       <br>
+       <input type="submit" class="btn btn-sm" name="post" value="Post">
      </form>
-   </body>
- </html>
+<?php
+  include './inc/footer.inc.php';
+ ?>
