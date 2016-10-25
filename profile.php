@@ -39,8 +39,9 @@
  <div class="postForm">
    <form action="<?php echo $user; ?>" method="post">
      <textarea id="post" name="post" rows="4" cols="58"></textarea>
-     <input type="submit" class="btn btn-lg" name="send" value="Post" style="background-color: #DCE5EE; float: right; border: 1px solid #666; color:#666; height: 73px; width: 65px;"></div>
+     <input type="submit" class="btn btn-lg" name="send" value="Post" style="background-color: #DCE5EE; float: right; border: 1px solid #666; color:#666; height: 73px; width: 65px;">
    </form>
+ </div>
  <div class="profilePosts">
    <?php
    $getposts = mysql_query("SELECT * FROM posts WHERE user_posted_to='$user' ORDER BY id DESC LIMIT 10") or die(mysql_errno());
