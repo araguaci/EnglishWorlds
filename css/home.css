@@ -5,3 +5,6 @@
 #postingForm{
   margin-left: 40%;
 }
+#postingForm input[type="submit"]{
+  /*float: right; */
+}

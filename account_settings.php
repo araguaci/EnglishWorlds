@@ -8,7 +8,6 @@ if ($username) {
  ?>
  <?php
  $senddata = @$_POST['senddata'];
-
  // Password variables
  $old_password = @$_POST['old_password'];
  $new_password = @$_POST['new_password'];
@@ -19,7 +18,6 @@ if ($username) {
     $password_query = mysql_query("SELECT * FROM users WHERE username='$user'");
     while ($row = mysql_fetch_assoc($password_query)) {
       $db_password = $row['password'];
-
       // hash the old password before we check if it matches
       $old_pasword_md5 = md5($old_password);
       // Check whether old password equals $db_password
@@ -44,16 +42,13 @@ if ($username) {
   } else {
     // echo "Please submit some data!";
   }
-
   $updateinfo = @$_POST['updateinfo'];
-
   // First name, last name, and about the user query
   $get_info = mysql_query("SELECT first_name, last_name, bio FROM users WHERE username='$username'");
   $get_row = mysql_fetch_assoc($get_info);
   $db_first_name = $get_row['first_name'];
   $db_last_name = $get_row['last_name'];
   $db_bio = $get_row['bio'];
-
   // Submit what the user types into the database.
   if ($updateinfo) {
     $firstname = strip_tags(@$_POST['fname']);
@@ -78,7 +73,7 @@ if ($username) {
   if ($profile_pic_db == "") {
     $profile_pic = "img/default-pp.jpg";
   } else {
-    $profile_pic = "userdata/profile_pics/".$profile_pic_row;
+    $profile_pic = "userdata/profile_pics/".$profile_pic_db;
   }
   // Profile Image upload script
   if (isset($_FILES['profilepic'])) {
@@ -89,7 +84,7 @@ if ($username) {
       if (file_exists("userdata/profile_pic/$rand_dir_name/".@$_FILES["profilepic"]["name"])) {
         echo @$_FILES["profilepic"]["name"]." Already exists";
       } else {
-        move_uploaded_file(@$_FILES["profilepic"]["tmp_name"], "userdata/profile_pic/$rand_dir_name".$_FILES["profilepic"]["name"]);
+        move_uploaded_file(@$_FILES["profilepic"]["tmp_name"], "userdata/profile_pic/$rand_dir_name/".$_FILES["profilepic"]["name"]);
         // echo "Uploaded and stored in: userdata/profilepic/$rand_dir_name".@$_FILES["profilepic"]["name"];
         $profile_pic_name = @$_FILES["profilepic"]["name"];
         $profile_pic_query = mysql_query("UPDATE users SET profile_pic='$rand_dir_name/$profile_pic_name' WHERE username = '$username'");
@@ -102,10 +97,7 @@ if ($username) {
   ?>
  <h2>Edit Your account settings below</h2>
  <hr>
- <p>
-   Upload your profile photo
-
- </p>
+ <p>Upload your profile photo</p>
  <form action="" method="post" enctype="multipart/form-data">
    <img src="<?php echo $profilepic; ?>" width="70" alt="" />
    <input type="file" name="profilepic"><br>
@@ -130,5 +122,3 @@ if ($username) {
   <hr>
   <input type="submit" name="updateinfo" value="Update Information" id="updateinfo">
   </form>
-<br>
-<br>

@@ -68,7 +68,8 @@ session_start();
         </ul>
         <?php
         if ($username) {
-          echo '<div class="navbar-text navbar-right">Signed in as <a href="'.$username.'" class="navbar-link">'.$username.'</a></div>';
+          echo '<div class="navbar-text navbar-right">Signed in as <a href="'.$username.'" class="navbar-link">'.$username.'</a> 
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>';
         }
          ?>
 

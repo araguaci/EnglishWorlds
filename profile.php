@@ -25,21 +25,21 @@
   $user_posted_to = $user;
   $sqlCommand = "INSERT INTO posts VALUES('', '$post', '$date_added', '$added_by', '$user_posted_to')";
   $query = mysql_query($sqlCommand) or die(mysql_error());
+  }
   // Check whether the user has uploaded a profile pic or not
   $check_pic = mysql_query("SELECT profile_pic FROM users WHERE username = '$user'");
   $get_pic_row = mysql_fetch_assoc($check_pic);
   $profile_pic_db = $get_pic_row['profile_pic'];
-  }
-  if (@$profile_pic_db == "") {
+  if (@$profile_pic_db == NULL) {
     $profile_pic = "img/default-pp.jpg";
   } else {
-    $profile_pic = "userdata/profile_pics/".$profile_pic_db;
+    $profile_pic = "userdata/profile_pic/".$profile_pic_db;
   }
  ?>
  <div class="postForm">
    <form action="<?php echo $user; ?>" method="post">
      <textarea id="post" name="post" rows="4" cols="58"></textarea>
-     <input type="submit" name="send" value="Post" style="background-color: #DCE5EE; float: right; border: 1px solid #666; color:#666; height: 73px; width: 65px;"></div>
+     <input type="submit" class="btn btn-lg" name="send" value="Post" style="background-color: #DCE5EE; float: right; border: 1px solid #666; color:#666; height: 73px; width: 65px;"></div>
    </form>
  <div class="profilePosts">
    <?php
@@ -77,7 +77,7 @@
  <br>
  <img id="pp" src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $user; ?>'s Profile" title="<?php echo $user; ?>'s Profile" />
  <?php if (@$user != $username): ?>
-   <?php echo '<form action="'.$user.'" method="post">'; ?>
+   <form action="<?php echo $username ?>" method="post">
      <?php
      // Check if the profile owner is in the signed in user friend list or not.
      $query = mysql_query("SELECT friend_array FROM users WHERE username='$username'");
