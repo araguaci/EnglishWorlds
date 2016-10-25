@@ -44,6 +44,11 @@
     } else {
       $add_friend_query = mysql_query("UPDATE users SET friend_array=CONCAT(friend_array,', $user_from') WHERE username='$username'");
     }
+    if ($friend_array == NULL) {
+      $add_friend_query = mysql_query("UPDATE users SET friend_array='$username' WHERE username='$user_from'");
+    } else {
+      $add_friend_query = mysql_query("UPDATE users SET friend_array=CONCAT(friend_array,', $username') WHERE username='$user_from'");
+    }
     $remove_friend_request = mysql_query("DELETE FROM friend_requests WHERE user_from = '$user_from'");
   }
   ?>
