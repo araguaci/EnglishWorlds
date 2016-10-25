@@ -80,9 +80,28 @@
  <br>
  <?php if (@$user != $username): ?>
    <?php echo '<form action="'.$user.'" method="post">'; ?>
-     <?php echo '<input type="submit" name="addfriend" value="Add as a friend">
-     <input type="submit" name="sendmsg" value="Send message">
-    </form>' ?>
+     <?php
+     // Check if the profile owner is in the signed in user friend list or not.
+     $query = mysql_query("SELECT friend_array FROM users WHERE username='$username'");
+     $get_friend_array_row = mysql_fetch_assoc($query);
+     $get_record = $get_friend_array_row['friend_array'];
+     $get_exploded_records = explode(', ', $get_record);
+     $isFriend = false;
+     foreach ($get_exploded_records as $friend) {
+       if ($user == $friend) {
+         $isFriend = true;
+       } else {
+         $isFriend = false;
+       }
+     }
+     if ($isFriend) {
+       echo '<input type="submit" name="unfriend" value="Unfriend">';
+     } else {
+       echo '<input type="submit" name="addfriend" value="Add as a friend">';
+     }
+     echo '<input type="submit" name="sendmsg" value="Send message">';
+    echo "</form>";
+    ?>
  <?php endif; ?>
  <div class="textHeader"><?php echo $user; ?>'s Profile</div>
  <div class="profileLeftSideContent">
@@ -105,4 +124,5 @@
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
   <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
  </div>
+ Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
  <?php include './inc/footer.inc.php'; ?>
