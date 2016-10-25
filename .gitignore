@@ -16,4 +16,4 @@ composer.lock
 # Ignore PHP Unit suits test
 phpunit.xml
 # Ignore profile pictures and their directories
-profile_pic/*
+*.jpg
