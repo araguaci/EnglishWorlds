@@ -162,8 +162,10 @@ p{
   padding-left: 0px;
   height: 200px;
 }
-.postForm{
-  float: right;
+.postForm form{
+  margin-left: 40%;
+  margin-top: 0%;
+  float: left;
   width: 560px;
   height: 80px;
   background-color: #F3F6F9;

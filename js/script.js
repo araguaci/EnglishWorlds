@@ -32,3 +32,7 @@
           }
         }
     }
+    function navigate() {
+      var url = document.getElementsByName('')
+      document.getElementById('pp').onclick = window.location.href = "https://www.google.com";
+    }

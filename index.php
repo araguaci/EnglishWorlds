@@ -1,5 +1,4 @@
-<?php include './inc/header.inc.php'; ?>
-<?php
+<?php include './inc/header.inc.php';
   $reg = @$_POST['reg'];
   // Registration form.
   $fn = strtolower(strip_tags(@$_POST['fname']));
@@ -11,7 +10,6 @@
   $birthdate = strip_tags(substr_replace(substr(@$_POST['birthdate'], 3, strlen(@$_POST['birthdate'])), ',', 7, 0));
   $gender = strip_tags(@$_POST['optradio']);
   $d = date("Y-m-d"); // Year - Month - Day
-
   if ($reg) {
     // Check if user already exists
     $u_check = mysql_query("SELECT username FROM users WHERE username='$un'");
@@ -76,12 +74,9 @@
       exit();
     }
   }
- ?>
-  <?php
   if ($username) {
     header("location: home.php");
   } else {
     include 'register.html';
   }
-   ?>
-<?php include './inc/footer.inc.php'; ?>
+ include './inc/footer.inc.php'; ?>

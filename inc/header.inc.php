@@ -67,25 +67,21 @@ session_start();
            ?>
         </ul>
         <?php
-        if ($username) {
-          echo '<div class="navbar-text navbar-right">Signed in as <a href="'.$username.'" class="navbar-link">'.$username.'</a> 
+         if ($username){
+          echo '<form class="navbar-form navbar-left" role="search" action="header.inc.php" method="post">
+            <div class="form-group">
+              <input type="text" name="search" class="form-control" placeholder="Search...">
+            </div>
+            <button type="submit" class="btn btn-default" name="button">Search</button>
+          </form>';
+          echo '<div class="navbar-text navbar-right">Signed in as <a href="'.$username.'" class="navbar-link">'.$username.'</a>
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>';
         }
          ?>
+         </div>
 
-        </div><!-- /.navbar-collapse -->
+        <!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
-  </nav>
+        </nav>
       </div>
     </div>
-        <?php
-         if ($username){
-          echo '<div class="search_box">
-            <form action="search.php" method="GET" id="search">
-              <input type="text" name="q" value="" size="60" placeholder="Search ...">
-            </form>
-          </div>';
-        } else {
-          // Do nothing.
-        }
-         ?>

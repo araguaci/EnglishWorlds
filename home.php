@@ -1,10 +1,12 @@
 <?php
 include './inc/header.inc.php';
  ?>
-     <form id="postingForm" action="home.php" method="post">
-       <textarea name="postText" rows="4" cols="40" placeholder="Share your thoughts..."></textarea>
-       <input type="submit" class="btn btn-sm" name="post" value="Post">
-     </form>
+    <div class="container">
+      <form id="postingForm" action="home.php" method="post">
+        <textarea name="postText" rows="4" cols="40" placeholder="Share your thoughts..."></textarea>
+        <input type="submit" class="btn btn-sm" name="post" value="Post">
+      </form>
+    </div>
      <?php
        $post = @$_POST['postText'];
        if ($post != "") {

@@ -2,12 +2,12 @@
 title Friend Request
 (*) --> "Visit Profile"
 --> "Click On Add Friend"
-if "profile owner accepts friend request" then
-->[true] "Insert username to friend array"
-if "isForward?" then
-->[no] "Process controls"
+if "profile owner treat friend request" then
+->[accept] "Insert username to friend array"
+if "isFirst?" then
+->[yes] "Adds a single comma with a space as a delimiter"
 if "continue processing?" then
--->[yes] ===RENDERING===
+-->[no] ===RENDERING===
 else
 -->[no] ===REDIRECT_CHECK===
 endif

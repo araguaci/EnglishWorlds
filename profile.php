@@ -36,10 +36,12 @@
     $profile_pic = "userdata/profile_pic/".$profile_pic_db;
   }
  ?>
+ <br>
+ <img id="pp" src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $user; ?>'s Profile" title="<?php echo $user; ?>'s Profile" onclick="navigate()" />
  <div class="postForm">
    <form action="<?php echo $user; ?>" method="post">
      <textarea id="post" name="post" rows="4" cols="58"></textarea>
-     <input type="submit" class="btn btn-lg" name="send" value="Post" style="background-color: #DCE5EE; float: right; border: 1px solid #666; color:#666; height: 73px; width: 65px;">
+     <input type="submit" class="btn btn-lg" name="send" value="Post" style="background-color: #DCE5EE; border: 1px solid #666; color:#666; height: 73px; width: 65px;">
    </form>
  </div>
  <div class="profilePosts">
@@ -70,13 +72,9 @@
         }
       }
      ?>
-     <?php
-     echo "<h1>the profile owner is $user and the signed in user is $username</h1>";
-      ?>
  </div>
  <?php echo @$errorMsg; ?>
- <br>
- <img id="pp" src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $user; ?>'s Profile" title="<?php echo $user; ?>'s Profile" />
+
  <?php if (@$user != $username): ?>
    <form action="<?php echo $username ?>" method="post">
      <?php
@@ -111,16 +109,21 @@
  echo $about_the_user;
  ?>
  </div>
- <div class="textHeader"><?php echo $user; ?>'s Friends</div>
+ <?php
+      // Get friends of the profile owner not the signed in user you loser.
+     $GetListOfFriends = mysql_query("SELECT friend_array FROM users WHERE username = '$user'");
+     $getRow = mysql_fetch_assoc($GetListOfFriends);
+     $friend_array = explode(', ', $getRow['friend_array']);
+     $friendsCount = Count($getRow['friend_array']);
+  ?>
+ <div class="textHeader"><?php echo $user; ?>'s Friends <?php echo $friendsCount;?></div><br>
  <div class="profileLeftSideContent">
-  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
-  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
-  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
-  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
-  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
-  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
-  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
-  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
-  <img src="#" alt="" height="50" width="40"/>&nbsp;&nbsp;
+   <?php
+    foreach ($friend_array as $friend) {
+      $GetImage = mysql_query("SELECT profile_pic FROM users WHERE username = '$friend'");
+      $getRow = mysql_fetch_assoc($GetImage);
+      echo '<a href="'.$friend.'"><img src="userdata/profile_pic/'.$getRow['profile_pic'].'" alt="'.$friend.'" title="'.$friend.'" name="FriendPhoto" height="50" width="40"/></a>&nbsp;&nbsp';
+    }
+    ?>
  </div>
  <?php include './inc/footer.inc.php'; ?>
