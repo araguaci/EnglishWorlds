@@ -99,7 +99,17 @@ if ($username) {
  <hr>
  <p>Upload your profile photo</p>
  <form action="" method="post" enctype="multipart/form-data">
-   <img src="<?php echo $profilepic; ?>" width="70" alt="" />
+   <?php
+   $check_pic = $db->query("SELECT profile_pic FROM users WHERE username = '$username'");
+   $get_pic_row = $check_pic->fetch_assoc();
+   $profile_pic_db = $get_pic_row['profile_pic'];
+   if (@$profile_pic_db == NULL) {
+     $profile_pic = "img/default-pp.jpg";
+   } else {
+     $profile_pic = "userdata/profile_pic/".$profile_pic_db;
+   }
+    ?>
+   <img src="<?php echo $profile_pic; ?>" width="70" alt="<?php echo $username; ?>" />
    <input type="file" name="profilepic"><br>
    <input type="submit" name="uploadpic" value="Upload Image">
  </form>
