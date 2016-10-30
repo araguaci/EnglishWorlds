@@ -77,6 +77,6 @@
   if ($username) {
     header("location: home.php");
   } else {
-    include 'register.html';
+    include 'register.php';
   }
  include './inc/footer.inc.php'; ?>

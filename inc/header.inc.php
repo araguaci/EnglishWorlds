@@ -79,7 +79,6 @@ session_start();
         }
          ?>
          </div>
-
         <!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
         </nav>

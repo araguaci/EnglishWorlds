@@ -58,9 +58,12 @@
         $id = $row["id"];
       }
         $_SESSION["user_login"] = $user_login;
-        header("location: home.php");
+        echo '
+       <script type="text/javascript">
+         window.location = "home.php";
+       </script>';
     } else {
-      echo "Login incorrect, try again $user_login $password_login";
+      echo "Login incorrect, try again";
     }
   }
  ?>

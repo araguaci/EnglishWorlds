@@ -70,12 +70,20 @@
           $create_request = mysql_query("INSERT INTO friend_requests VALUES ('', '$user_from', '$user_to')");
           $errorMsg = "Your friend request has been sent";
         }
+      } elseif (isset($_POST['unfriend'])) {
+        $query = mysql_query("SELECT friend_array FROM users WHERE username='$username'");
+        $get_friend_array_row = mysql_fetch_assoc($query);
+        $get_record = $get_friend_array_row['friend_array'];
+        $get_exploded_records = explode(', ', $get_record);
+        foreach ($get_exploded_records as $friend) {
+          echo $friend;
+        }
       }
      ?>
  </div>
- <?php echo @$errorMsg; ?>
-
- <?php if (@$user != $username): ?>
+ <?php echo @$errorMsg;
+  if (@$user != $username):
+    ?>
    <form action="<?php echo $username ?>" method="post">
      <?php
      // Check if the profile owner is in the signed in user friend list or not.
@@ -98,8 +106,7 @@
      }
      echo '<input type="submit" name="sendmsg" value="Send message">';
     echo "</form>";
-    ?>
- <?php endif; ?>
+    endif; ?>
  <div class="textHeader"><?php echo $user; ?>'s Profile</div>
  <div class="profileLeftSideContent">
  <?php
@@ -110,7 +117,6 @@
  ?>
  </div>
  <?php
-      // Get friends of the profile owner not the signed in user you loser.
      $GetListOfFriends = mysql_query("SELECT friend_array FROM users WHERE username = '$user'");
      $getRow = mysql_fetch_assoc($GetListOfFriends);
      $friend_array = explode(', ', $getRow['friend_array']);
