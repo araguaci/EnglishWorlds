@@ -15,8 +15,8 @@ include './inc/header.inc.php';
        $sqlCommand = "INSERT INTO posts VALUES('', '$post', '$date_added', '$added_by', NULL)";
        $query = mysql_query($sqlCommand) or die(mysql_error());
        }
-       $getposts = mysql_query("SELECT * FROM posts WHERE added_by='$username' ORDER BY id DESC LIMIT 10") or die(mysql_errno());
-       while ($row = mysql_fetch_assoc($getposts)) {
+       $getposts = $db->query("SELECT * FROM posts WHERE added_by='$username' ORDER BY id DESC LIMIT 10") or die(mysql_errno());
+       while ($row = $getposts->fetch_assoc()) {
          $id = $row['id'];
          $body = $row['body'];
          $date_added = $row['date_added'];

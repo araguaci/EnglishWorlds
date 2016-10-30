@@ -1,5 +1,7 @@
 <?php
-include './inc/connect.inc.php';
+// Replace E_ALL with 0 for production purposes.
+error_reporting(E_ALL);
+require './inc/connect.inc.php';
 include './inc/functions.inc.php';
 session_start();
   if (!isset($_SESSION["user_login"])) {
