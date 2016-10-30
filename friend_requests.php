@@ -14,7 +14,7 @@
       while ($get_name = $first_name_and_last_name_of_the_user_sending_the_friend_request->fetch_assoc()) {
         $first_name = $get_name['first_name'];
         $last_name = $get_name['last_name'];
-        echo "$first_name $last_name wants to be your friend<br>";
+        echo capitalize($first_name),' ', capitalize($last_name), ' wants to be your friend<br>';
         if ($user_to == $username) {
           echo '<form action="friend_requests.php" method="post">
             <input type="submit" name="acceptrequest'.$user_from.'" value="Accept Request">

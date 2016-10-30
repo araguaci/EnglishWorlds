@@ -90,7 +90,7 @@
  <?php echo @$errorMsg;
   if (@$user != $username):
     ?>
-   <form action="<?php echo $username ?>" method="post">
+   <form action="<?php echo $user; ?>" method="post">
      <?php
      // Check if the profile owner is in the signed in user friend list or not.
      $query = $db->query("SELECT friend_array FROM users WHERE username='$username'");
