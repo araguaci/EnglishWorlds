@@ -1,12 +1,12 @@
 <?php
   include './inc/header.inc.php';
   if (isset($_GET['u'])) {
-    $user = mysql_real_escape_string($_GET['u']);
+    $user = mysqli_real_escape_string($db, $_GET['u']);
     if (ctype_alnum($user)) {
       // check user exists
-      $check = mysql_query("SELECT username, first_name FROM users WHERE username='$user'");
-      if (mysql_num_rows($check)===1 && $user != "about") {
-        $get = mysql_fetch_assoc($check);
+      $check = $db->query("SELECT username, first_name FROM users WHERE username='$user'");
+      if ($check->num_rows===1 && $user != "about") {
+        $get = $check->fetch_assoc();
         $theUserName = $get['username'];
         $first_name = $get['first_name'];
       } else {
@@ -24,11 +24,11 @@
   $added_by = $user;
   $user_posted_to = $user;
   $sqlCommand = "INSERT INTO posts VALUES('', '$post', '$date_added', '$added_by', '$user_posted_to')";
-  $query = mysql_query($sqlCommand) or die(mysql_error());
+  $query = $db->query($sqlCommand) or die(mysql_error());
   }
   // Check whether the user has uploaded a profile pic or not
-  $check_pic = mysql_query("SELECT profile_pic FROM users WHERE username = '$user'");
-  $get_pic_row = mysql_fetch_assoc($check_pic);
+  $check_pic = $db->query("SELECT profile_pic FROM users WHERE username = '$user'");
+  $get_pic_row = $check_pic->fetch_assoc();
   $profile_pic_db = $get_pic_row['profile_pic'];
   if (@$profile_pic_db == NULL) {
     $profile_pic = "img/default-pp.jpg";
@@ -37,6 +37,7 @@
   }
  ?>
  <br>
+ <!-- TODO: Replace the navigate JS function with a way to upload picture -->
  <img id="pp" src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $user; ?>'s Profile" title="<?php echo $user; ?>'s Profile" onclick="navigate()" />
  <div class="postForm">
    <form action="<?php echo $user; ?>" method="post">
@@ -46,8 +47,8 @@
  </div>
  <div class="profilePosts">
    <?php
-   $getposts = mysql_query("SELECT * FROM posts WHERE user_posted_to='$user' ORDER BY id DESC LIMIT 10") or die(mysql_errno());
-   while ($row = mysql_fetch_assoc($getposts)) {
+   $getposts = $db->query("SELECT * FROM posts WHERE user_posted_to='$user' ORDER BY id DESC LIMIT 10") or die(mysql_errno());
+   while ($row = $getposts->fetch_assoc()) {
      $id = $row['id'];
      $body = $row['body'];
      $date_added = $row['added_by'];
@@ -67,11 +68,11 @@
         if (!$user_from == $user) {
           @$errorMsg = "You can't send a friend request to yourself!<br>";
         } else {
-          $create_request = mysql_query("INSERT INTO friend_requests VALUES ('', '$user_from', '$user_to')");
+          $create_request = $db->query("INSERT INTO friend_requests VALUES ('', '$user_from', '$user_to')");
           $errorMsg = "Your friend request has been sent";
         }
       } elseif (isset($_POST['unfriend'])) {
-        $query = mysql_query("SELECT friend_array FROM users WHERE username='$username'");
+        $query = $db->query("SELECT friend_array FROM users WHERE username='$username'");
         $get_friend_array_row = mysql_fetch_assoc($query);
         $get_record = $get_friend_array_row['friend_array'];
         $get_exploded_records = explode(', ', $get_record);
@@ -87,7 +88,7 @@
    <form action="<?php echo $username ?>" method="post">
      <?php
      // Check if the profile owner is in the signed in user friend list or not.
-     $query = mysql_query("SELECT friend_array FROM users WHERE username='$username'");
+     $query = $db->query("SELECT friend_array FROM users WHERE username='$username'");
      $get_friend_array_row = mysql_fetch_assoc($query);
      $get_record = $get_friend_array_row['friend_array'];
      $get_exploded_records = explode(', ', $get_record);
@@ -110,15 +111,15 @@
  <div class="textHeader"><?php echo $user; ?>'s Profile</div>
  <div class="profileLeftSideContent">
  <?php
- $about_query = mysql_query("SELECT bio FROM users WHERE username='$user'");
- $get_result = mysql_fetch_assoc($about_query);
+ $about_query = $db->query("SELECT bio FROM users WHERE username='$user'");
+ $get_result = $about_query->fetch_assoc();
  $about_the_user = $get_result['bio'];
  echo $about_the_user;
  ?>
  </div>
  <?php
-     $GetListOfFriends = mysql_query("SELECT friend_array FROM users WHERE username = '$user'");
-     $getRow = mysql_fetch_assoc($GetListOfFriends);
+     $GetListOfFriends = $db->query("SELECT friend_array FROM users WHERE username = '$user'");
+     $getRow = $GetListOfFriends->fetch_assoc();
      $friend_array = explode(', ', $getRow['friend_array']);
      $friendsCount = Count($getRow['friend_array']);
   ?>
@@ -126,8 +127,8 @@
  <div class="profileLeftSideContent">
    <?php
     foreach ($friend_array as $friend) {
-      $GetImage = mysql_query("SELECT profile_pic FROM users WHERE username = '$friend'");
-      $getRow = mysql_fetch_assoc($GetImage);
+      $GetImage = $db->query("SELECT profile_pic FROM users WHERE username = '$friend'");
+      $getRow = $GetImage->fetch_assoc();
       echo '<a href="'.$friend.'"><img src="userdata/profile_pic/'.$getRow['profile_pic'].'" alt="'.$friend.'" title="'.$friend.'" name="FriendPhoto" height="50" width="40"/></a>&nbsp;&nbsp';
     }
     ?>
