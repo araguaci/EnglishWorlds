@@ -1,5 +1,10 @@
 <?php
   include './inc/header.inc.php';
+  if ($username) {
+    // Do none
+  } else {
+    die('you must be logged in');
+  }
   if (isset($_GET['u'])) {
     $user = mysqli_real_escape_string($db, $_GET['u']);
     if (ctype_alnum($user)) {
@@ -73,7 +78,7 @@
         }
       } elseif (isset($_POST['unfriend'])) {
         $query = $db->query("SELECT friend_array FROM users WHERE username='$username'");
-        $get_friend_array_row = mysql_fetch_assoc($query);
+        $get_friend_array_row = $query->fetch_assoc();
         $get_record = $get_friend_array_row['friend_array'];
         $get_exploded_records = explode(', ', $get_record);
         foreach ($get_exploded_records as $friend) {
@@ -89,7 +94,7 @@
      <?php
      // Check if the profile owner is in the signed in user friend list or not.
      $query = $db->query("SELECT friend_array FROM users WHERE username='$username'");
-     $get_friend_array_row = mysql_fetch_assoc($query);
+     $get_friend_array_row = $query->fetch_assoc();
      $get_record = $get_friend_array_row['friend_array'];
      $get_exploded_records = explode(', ', $get_record);
      $isFriend = false;

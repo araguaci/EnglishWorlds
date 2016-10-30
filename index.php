@@ -12,13 +12,13 @@
   $d = date("Y-m-d"); // Year - Month - Day
   if ($reg) {
     // Check if user already exists
-    $u_check = mysql_query("SELECT username FROM users WHERE username='$un'");
+    $u_check = $db->query("SELECT username FROM users WHERE username='$un'");
     // Count the amount of rows where username = $un
-    $check = mysql_num_rows($u_check);
+    $check = $u_check->num_rows;
     // Check whether Email already exists in the database.
-      $e_check = mysql_query("SELECT email FROM users WHERE email='$em'");
+      $e_check = $db->query("SELECT email FROM users WHERE email='$em'");
     // Count the numbers of rows returned.
-    $email_check = mysql_num_rows($e_check);
+    $email_check = $e_check->num_rows;
     if ($check == 0) {
       if ($email_check == 0) {
         if ($fn&&$ln&&$un&&$em&&$pswd&&$pswd2&&$birthdate&&$gender) {
@@ -35,7 +35,7 @@
                 // encrypt password using md5 before sending to database
                 $pswd = md5($pswd);
                 $username_with_capitalized_first_letter = capitalize($un);
-                $query = mysql_query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', STR_TO_DATE('$birthdate','%M %d,%Y'), '$gender', NULL, NULL, NULL)");
+                $query = $db->query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', STR_TO_DATE('$birthdate','%M %d,%Y'), '$gender', NULL, NULL, NULL)");
                 die("Welcome $username_with_capitalized_first_letter Login to your account to start using the website");
               }
             }
@@ -61,7 +61,7 @@
     $password_login_md5 = md5($password_login);
     $sql = $db->query("SELECT id FROM users WHERE username='$user_login' AND password='$password_login_md5' LIMIT 1") or die($db->error);
     if ($sql->num_rows) {
-      while ($row = mysql_fetch_array($sql)) {
+      while ($row = mysqli_fetch_array($sql)) {
         $id = $row["id"];
       }
         $_SESSION["user_login"] = $user_login;

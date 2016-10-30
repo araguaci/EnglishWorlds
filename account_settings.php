@@ -15,8 +15,8 @@ if ($username) {
 
   if ($senddata) {
     // If the form is submitted ....
-    $password_query = mysql_query("SELECT * FROM users WHERE username='$user'");
-    while ($row = mysql_fetch_assoc($password_query)) {
+    $password_query = $db->query("SELECT * FROM users WHERE username='$user'");
+    while ($row = $password_query->fetch_assoc()) {
       $db_password = $row['password'];
       // hash the old password before we check if it matches
       $old_pasword_md5 = md5($old_password);
@@ -44,8 +44,8 @@ if ($username) {
   }
   $updateinfo = @$_POST['updateinfo'];
   // First name, last name, and about the user query
-  $get_info = mysql_query("SELECT first_name, last_name, bio FROM users WHERE username='$username'");
-  $get_row = mysql_fetch_assoc($get_info);
+  $get_info = $db->query("SELECT first_name, last_name, bio FROM users WHERE username='$username'");
+  $get_row = $get_info->fetch_assoc();
   $db_first_name = $get_row['first_name'];
   $db_last_name = $get_row['last_name'];
   $db_bio = $get_row['bio'];
@@ -60,15 +60,15 @@ if ($username) {
       echo "Your last name must be 5 or more characters long!";
     } else {
       // Submit the form to the database.
-      $info_submit_query = mysql_query("UPDATE users SET first_name='$firstname', last_name='$lastname', bio='$bio' WHERE username='$username'");
+      $info_submit_query = $db->query("UPDATE users SET first_name='$firstname', last_name='$lastname', bio='$bio' WHERE username='$username'");
       echo "Your Profile information has been updated";
     }
   } else {
     // Do nothing
   }
   // Check whether the user has uploaded a profile pic or not
-  $check_pic = mysql_query("SELECT profile_pic FROM users WHERE username = '$username'");
-  $get_pic_row = mysql_fetch_assoc($check_pic);
+  $check_pic = $db->query("SELECT profile_pic FROM users WHERE username = '$username'");
+  $get_pic_row = $check_pic->fetch_assoc();
   $profile_pic_db = $get_pic_row['profile_pic'];
   if ($profile_pic_db == "") {
     $profile_pic = "img/default-pp.jpg";
@@ -87,7 +87,7 @@ if ($username) {
         move_uploaded_file(@$_FILES["profilepic"]["tmp_name"], "userdata/profile_pic/$rand_dir_name/".$_FILES["profilepic"]["name"]);
         // echo "Uploaded and stored in: userdata/profilepic/$rand_dir_name".@$_FILES["profilepic"]["name"];
         $profile_pic_name = @$_FILES["profilepic"]["name"];
-        $profile_pic_query = mysql_query("UPDATE users SET profile_pic='$rand_dir_name/$profile_pic_name' WHERE username = '$username'");
+        $profile_pic_query = $db->query("UPDATE users SET profile_pic='$rand_dir_name/$profile_pic_name' WHERE username = '$username'");
         header("Location: account_settings.php");
       }
     } else {

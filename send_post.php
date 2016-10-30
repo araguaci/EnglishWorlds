@@ -14,7 +14,7 @@ if (isset($_SESSION["user_login"])) {
    $user_posted_to = "test123";
 
    $sqlCommand = "INSERT INTO posts VALUES('', '$post', '$date_added', '$added_by', '$user_posted_to')";
-   $query = mysql_query($sqlCommand) or die(mysql_error());
+   $query = $db->query($sqlCommand) or die(mysql_error());
  } else {
    echo "You must enter something in the post field before you can send it ....";
  }
