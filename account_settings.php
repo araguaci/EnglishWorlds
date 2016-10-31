@@ -110,7 +110,17 @@ if ($username) {
    }
     ?>
    <img src="<?php echo $profile_pic; ?>" width="70" alt="<?php echo $username; ?>" />
-   <input type="file" name="profilepic"><br>
+   <script type="text/javascript">
+      document.getElementById("uploadBtn").onchange = function () {
+      document.getElementById("uploadFile").value = this.value;
+    };
+   </script>
+   <input id="uploadFile" placeholder="Choose File" disabled="disabled" />
+    <div class="fileUpload btn btn-primary">
+        <span>Upload</span>
+        <input id="uploadBtn" type="file" class="upload" />
+    </div>
+   <input type="file" name="profilepic" placeholder="wiw"><br>
    <input type="submit" name="uploadpic" value="Upload Image">
  </form>
 <hr>

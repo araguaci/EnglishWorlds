@@ -11,7 +11,7 @@ if(!function_exists('timeAgoInWords')) {
 
 
 
-/** 
+/**
  * This class can help you find out just how much time has passed between
  * two dates.
  *
@@ -37,7 +37,7 @@ class TimeAgo {
   // translations variables
   private static $language;
   private static $timeAgoStrings = NULL;
-  
+
   public function __construct($timezone = NULL, $language = 'en') {
 
     // loads the translation files
@@ -45,7 +45,7 @@ class TimeAgo {
     // storing the current timezone
     $this->timezone = $timezone;
   }
-  
+
   public function inWords($past, $now = "now") {
     // sets the default timezone
     $this->changeTimezone();
@@ -53,13 +53,13 @@ class TimeAgo {
     $past = strtotime($past);
     // finds the current datetime
     $now = strtotime($now);
-    
+
     // creates the "time ago" string. This always starts with an "about..."
     $timeAgo = "";
-    
+
     // finds the time difference
     $timeDifference = $now - $past;
-    
+
     // rule 0
     // $past is null or empty or ''
     if ($past === '' || is_null($past) || empty($past)) {
@@ -168,7 +168,7 @@ class TimeAgo {
     // between 59days23hours59mins30secs and 1year (minus 1sec)
     else if(
       $timeDifference >= (
-        ($this->secondsPerDay * 59) + 
+        ($this->secondsPerDay * 59) +
         ($this->secondsPerHour * 23) +
         ($this->secondsPerMinute * 59) +
         30
@@ -181,7 +181,7 @@ class TimeAgo {
       if($months == 1) {
         $months = 2;
       }
-      
+
       $timeAgo = $this->_translate('months', $months);
     }
     // rule 10
@@ -204,7 +204,7 @@ class TimeAgo {
 
     return $timeAgo;
   }
-  
+
   public function dateDifference($past, $now = "now") {
     // initializes the placeholders for the different "times"
     $seconds = 0;
@@ -213,18 +213,18 @@ class TimeAgo {
     $days = 0;
     $months = 0;
     $years = 0;
-    
+
     // sets the default timezone
     $this->changeTimezone();
-    
+
     // finds the past in datetime
     $past = strtotime($past);
     // finds the current datetime
     $now = strtotime($now);
-    
+
     // calculates the difference
     $timeDifference = $now - $past;
-    
+
     // starts determining the time difference
     if($timeDifference >= 0) {
       switch($timeDifference) {
@@ -234,35 +234,35 @@ class TimeAgo {
           $years = floor($timeDifference / $this->secondsPerYear);
           // saves the amount of seconds left
           $timeDifference = $timeDifference-($years * $this->secondsPerYear);
-        
+
         // finds the number of months
         case ($timeDifference >= $this->secondsPerMonth && $timeDifference <= ($this->secondsPerYear-1)):
           // uses floor to remove decimals
           $months = floor($timeDifference / $this->secondsPerMonth);
           // saves the amount of seconds left
           $timeDifference = $timeDifference-($months * $this->secondsPerMonth);
-        
+
         // finds the number of days
         case ($timeDifference >= $this->secondsPerDay && $timeDifference <= ($this->secondsPerYear-1)):
           // uses floor to remove decimals
           $days = floor($timeDifference / $this->secondsPerDay);
           // saves the amount of seconds left
           $timeDifference = $timeDifference-($days * $this->secondsPerDay);
-        
+
         // finds the number of hours
         case ($timeDifference >= $this->secondsPerHour && $timeDifference <= ($this->secondsPerDay-1)):
           // uses floor to remove decimals
           $hours = floor($timeDifference / $this->secondsPerHour);
           // saves the amount of seconds left
           $timeDifference = $timeDifference-($hours * $this->secondsPerHour);
-        
+
         // finds the number of minutes
         case ($timeDifference >= $this->secondsPerMinute && $timeDifference <= ($this->secondsPerHour-1)):
           // uses floor to remove decimals
           $minutes = floor($timeDifference / $this->secondsPerMinute);
           // saves the amount of seconds left
           $timeDifference = $timeDifference-($minutes * $this->secondsPerMinute);
-          
+
         // finds the number of seconds
         case ($timeDifference <= ($this->secondsPerMinute-1)):
           // seconds is just what there is in the timeDifference variable
@@ -271,7 +271,7 @@ class TimeAgo {
     }
 
     $this->restoreTimezone();
-    
+
     $difference = array(
       "years" => $years,
       "months" => $months,
@@ -280,7 +280,7 @@ class TimeAgo {
       "minutes" => $minutes,
       "seconds" => $seconds
     );
-    
+
     return $difference;
   }
 
