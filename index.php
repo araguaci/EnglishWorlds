@@ -1,4 +1,5 @@
-<?php include './inc/header.inc.php';
+<?php
+  require_once './inc/header.inc.php';
   $reg = @$_POST['reg'];
   // Registration form.
   $fn = strtolower(strip_tags(@$_POST['fname']));
@@ -77,4 +78,5 @@
   } else {
     include 'register.php';
   }
- include './inc/footer.inc.php'; ?>
+ include './inc/footer.inc.php';
+ ?>
