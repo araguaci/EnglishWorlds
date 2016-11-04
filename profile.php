@@ -5,27 +5,23 @@
   } else {
     die('you must be logged in');
   }
-  // TODO: fix $user undefined bug.
-  $user = "caddydz";
-  // mysqli_real_escape_string($db, $_GET['u']);
-  if (ctype_alnum($user)) {
-    // check user exists
-    $check = $db->query("SELECT username, first_name FROM users WHERE username='$user'");
-    if ($check->num_rows===1 && $user != "about") {
-      $get = $check->fetch_assoc();
-      $theUserName = $get['username'];
-      $first_name = $get['first_name'];
-    } else {
-      // If user doesn't exist then redirect to index
-      echo "<meta http-equiv=\"refresh\" content=\"0; url=http://localhost/English/index.php\">";
-      exit();
+  if (isset($_GET['u'])) {
+    $user = mysqli_real_escape_string($db, $_GET['u']);
+    if (ctype_alnum($user)) {
+      // check user exists
+      $check = $db->query("SELECT username, first_name FROM users WHERE username='$user'");
+      if ($check->num_rows===1 && $user != "about") {
+        $get = $check->fetch_assoc();
+        $theUserName = $get['username'];
+        $first_name = $get['first_name'];
+      } else {
+        // If user doesn't exist then redirect to index
+        echo "<meta http-equiv=\"refresh\" content=\"0; url=http://localhost/English/index.php\">";
+        exit();
+      }
     }
-  }
-  if (isset($_POST['u'])) {
-    echo "string";
   } else {
-    echo "not working";
-    // header("location: $username");
+    header("location: $username");
   }
   $post = @$_POST['post'];
   if ($post != "") {
