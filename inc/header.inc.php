@@ -84,5 +84,3 @@ session_start();
         <!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
         </nav>
-      </div>
-    </div>

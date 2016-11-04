@@ -44,12 +44,13 @@
  <br>
  <!-- TODO: Replace the navigate JS function with a way to upload picture -->
  <img id="pp" src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $user; ?>'s Profile" title="<?php echo $user; ?>'s Profile" onclick="navigate()" />
- <div class="postForm">
-   <form action="<?php echo $user; ?>" method="post">
+ <br>
+ <!-- <div class="postForm">
+   <form action="<?php // echo $user; ?>" method="post">
      <textarea id="post" name="post" rows="4" cols="58"></textarea>
      <input type="submit" class="btn btn-lg" name="send" value="Post" style="background-color: #DCE5EE; border: 1px solid #666; color:#666; height: 73px; width: 65px;">
    </form>
- </div>
+ </div> -->
  <div class="profilePosts">
    <?php
    $getposts = $db->query("SELECT * FROM posts WHERE user_posted_to='$user' ORDER BY id DESC LIMIT 10") or die(mysql_errno());
@@ -93,7 +94,7 @@
  <?php echo @$errorMsg;
   if (@$user != $username):
     ?>
-   <form action="<?php echo $user; ?>" method="post">
+   <form class="postForm" action="<?php echo $user; ?>" method="post">
      <?php
      // Check if the profile owner is in the signed in user friend list or not.
      $query = $db->query("SELECT friend_array FROM users WHERE username='$username'");
