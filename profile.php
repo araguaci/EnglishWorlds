@@ -116,9 +116,10 @@
      $get_friend_array_row = $query->fetch_assoc();
      $get_record = $get_friend_array_row['friend_array'];
      $get_exploded_records = explode(', ', $get_record);
+     list($first_record) = $get_exploded_records;
      $isFriend = false;
      foreach ($get_exploded_records as $friend) {
-       if ($user == $friend) {
+       if ($user == $friend || $user == $first_record) {
          $isFriend = true;
        } else {
          $isFriend = false;
@@ -149,7 +150,7 @@
      $GetListOfFriends = $db->query("SELECT friend_array FROM users WHERE username = '$user'");
      $getRow = $GetListOfFriends->fetch_assoc();
      $friend_array = explode(', ', $getRow['friend_array']);
-     $friendsCount = Count($getRow['friend_array']);
+     $friendsCount = Count($friend_array);
   ?>
  <div class="textHeader"><?php echo $user; ?>'s Friends <?php echo $friendsCount;?></div><br>
  <div class="profileLeftSideContent">
