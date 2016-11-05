@@ -5,8 +5,8 @@ require('./inc/timeago.inc.php');
  ?>
     <div class="container">
       <form id="postingForm" action="home.php" method="post">
-        <textarea name="postText" rows="4" cols="40" placeholder="Share your thoughts..."></textarea>
-        <input type="submit" class="btn btn-sm" name="post" value="Post">
+        <textarea name="postText" class="input-medium" placeholder="Share your thoughts..."></textarea>
+        <button class="btn" type="submit">Post</button>
       </form>
     </div>
      <?php
@@ -38,7 +38,5 @@ require('./inc/timeago.inc.php');
          '.$body.'
          <hr>';
      }
-      ?>
-<?php
   include './inc/footer.inc.php';
  ?>

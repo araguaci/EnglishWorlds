@@ -67,6 +67,7 @@
    }
     ?>
     <?php
+      $isRequestSent = false;
       if (isset($_POST['addfriend'])) {
         $friend_request = $_POST['addfriend'];
         $user_to = $user;
@@ -76,6 +77,7 @@
         } else {
           $create_request = $db->query("INSERT INTO friend_requests VALUES ('', '$user_from', '$user_to')");
           $errorMsg = "Your friend request has been sent";
+          $isRequestSent = true;
         }
       } elseif (isset($_POST['unfriend'])) {
         // $username = logged in
@@ -96,6 +98,15 @@
     ?>
    <form class="postForm" action="<?php echo $user; ?>" method="post">
      <?php
+     // Check if the logged in user have a pending friend request
+     $friendRequestCheckQuery = $db->query("SELECT id FROM friend_requests WHERE user_from = '$username' AND user_to = '$user'");
+     $friendRequestCheckQueryGetRow = $friendRequestCheckQuery->fetch_assoc();
+     $getCheckResult = $friendRequestCheckQueryGetRow['id'];
+     if ($getCheckResult != NULL) {
+       $isRequestSent = true;
+     } else {
+       $isRequestSent = false;
+     }
      // Check if the profile owner is in the signed in user friend list or not.
      $query = $db->query("SELECT friend_array FROM users WHERE username='$username'");
      $get_friend_array_row = $query->fetch_assoc();
@@ -110,11 +121,15 @@
        }
      }
      if ($isFriend) {
-       echo '<input type="submit" name="unfriend" value="Unfriend">';
+       echo '<input type="submit" class="btn btn-sm" name="unfriend" value="Unfriend">';
      } else {
-       echo '<input type="submit" name="addfriend" value="Add as a friend">';
+       if ($isRequestSent) {
+         echo '<input type="submit" class="btn btn-sm" name="cancelrequest" value="Cancel Request">';
+       } else {
+          echo '<input type="submit" class="btn btn-sm" name="addfriend" value="Add as a friend">';
+       }
      }
-     echo '<input type="submit" name="sendmsg" value="Send message">';
+     echo '<input type="submit" class="btn btn-sm" name="sendmsg" value="Send message">';
     echo "</form>";
     endif; ?>
  <div class="textHeader"><?php echo $user; ?>'s Profile</div>

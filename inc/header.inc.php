@@ -45,7 +45,7 @@ session_start();
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">English Dz</a>
+        <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> English Dz</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -53,16 +53,16 @@ session_start();
           <!-- set class="active" to the current active list item -->
           <?php
           if ($username) {
-            echo '<li><a href="logout.php">Logout<span class="sr-only"></span></a></li>';
+            echo '<li><a href="logout.php">Logout<span class="sr-only"></span> <span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>';
           } else {
             echo '<li><a href="login.php">Login<span class="sr-only"></span></a></li>';
           }
            ?>
-          <li><a href="./about/index.php">About</a></li>
+          <li><a href="./about/index.php">About <span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a></li>
           <?php
           if ($username) {
             echo '<li><a href="'.$username.'">Profile<span class="sr-only"></span></a></li>';
-            echo '<li><a href="account_settings.php">Settings<span class="sr-only"></span></a></li>';
+            echo '<li><a href="account_settings.php">Settings<span class="sr-only"></span> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>';
           } else {
             echo '<li><a href="signup.php">Sign Up<span class="sr-only"></span></a></li>';
           }
