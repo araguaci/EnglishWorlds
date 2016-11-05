@@ -91,6 +91,10 @@
           echo $friend;
         }
       }
+      elseif (isset($_POST['cancelrequest'])) {
+        $cancelrequest = $_POST['cancelrequest'];
+        $cancelrequestquery = $db->query("DELETE FROM friend_requests WHERE user_from = '$username' AND user_to = '$user'");
+      }
      ?>
  </div>
  <?php echo @$errorMsg;
