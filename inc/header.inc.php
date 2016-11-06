@@ -15,7 +15,7 @@ session_start();
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>I am Dz And I Speak English</title>
+    <title><?php echo @$PageTitle ?></title>
     <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen">
     <link rel="stylesheet" href="./css/profile.css" media="screen" title="no title">
     <link rel="stylesheet" href="./css/reset.css" media="screen">
@@ -45,7 +45,7 @@ session_start();
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> English Dz</a>
+        <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Abd El Hak</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

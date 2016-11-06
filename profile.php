@@ -7,6 +7,7 @@
   }
   if (isset($_GET['u'])) {
     $user = mysqli_real_escape_string($db, $_GET['u']);
+    $PageTitle = $user;
     if (ctype_alnum($user)) {
       // check user exists
       $check = $db->query("SELECT username, first_name FROM users WHERE username='$user'");
@@ -87,8 +88,15 @@
         $get_friend_array_row = $query->fetch_assoc();
         $get_record = $get_friend_array_row['friend_array'];
         $get_exploded_records = explode(', ', $get_record);
+        list($first_record) = $get_exploded_records;
         foreach ($get_exploded_records as $friend) {
-          echo $friend;
+          // Query to delete the $user from friend array of $username and vice versa
+          if ($friend == $user || $first_record == $user) {
+            $new_array = array_splice($get_exploded_records, array_search($user, $get_exploded_records), 1);
+            $poped_out = implode(', ', $get_exploded_records);
+            echo $poped_out;
+            $db->query("UPDATE users SET friend_array = '$poped_out' WHERE username = $username");
+          }
         }
       }
       elseif (isset($_POST['cancelrequest'])) {
