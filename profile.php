@@ -1,5 +1,8 @@
 <?php
-  include './inc/header.inc.php';
+// Solved from https://goo.gl/zWNcLg
+  ob_start();
+  require_once './inc/header.inc.php';
+
   if ($username) {
     // Do none
   } else {
@@ -7,7 +10,10 @@
   }
   if (isset($_GET['u'])) {
     $user = mysqli_real_escape_string($db, $_GET['u']);
-    $PageTitle = $user;
+    $buffer=ob_get_contents();
+    ob_end_clean();
+    $buffer=str_replace("%TITLE%",$user,$buffer);
+    echo $buffer;
     if (ctype_alnum($user)) {
       // check user exists
       $check = $db->query("SELECT username, first_name FROM users WHERE username='$user'");

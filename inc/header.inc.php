@@ -15,7 +15,7 @@ session_start();
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php echo @$PageTitle ?></title>
+    <title>%TITLE%</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen">
     <link rel="stylesheet" href="./css/profile.css" media="screen" title="no title">
     <link rel="stylesheet" href="./css/reset.css" media="screen">
@@ -32,7 +32,6 @@ session_start();
     <script src="js/main.js" type="text/javascript"></script>
     <script src="./js/bootstrap.min.js"></script>
     <link rel="shortcut icon" href="./img/favicon.ico">
-
   </head>
   <body>
     <nav class="navbar navbar-default">
@@ -45,7 +44,7 @@ session_start();
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Abd El Hak</a>
+        <a class="navbar-brand" href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> English Dz</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

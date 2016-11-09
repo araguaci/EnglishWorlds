@@ -1,5 +1,10 @@
 <?php
-require './inc/header.inc.php';
+ob_start();
+require_once './inc/header.inc.php';
+$buffer = ob_get_contents();
+ob_end_clean();
+$buffer=str_replace("%TITLE%","Home Feed",$buffer);
+echo $buffer;
 require('./inc/westsworld.datetime.class.php');
 require('./inc/timeago.inc.php');
  ?>

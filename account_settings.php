@@ -1,10 +1,15 @@
 <?php
-include './inc/header.inc.php';
-if ($username) {
+  ob_start();
+  require_once './inc/header.inc.php';
+  $buffer = ob_get_contents();
+  ob_end_clean();
+  $buffer=str_replace("%TITLE%","Account Settings",$buffer);
+  echo $buffer;
+  if ($username) {
 
-} else {
-  die("You must be logged in to view this page!");
-}
+  } else {
+    die("You must be logged in to view this page!");
+  }
  ?>
  <?php
  $senddata = @$_POST['senddata'];

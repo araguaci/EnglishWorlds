@@ -1,5 +1,10 @@
 <?php
+  ob_start();
   require_once './inc/header.inc.php';
+  $buffer = ob_get_contents();
+  ob_end_clean();
+  $buffer=str_replace("%TITLE%","English Dz",$buffer);
+  echo $buffer;
   $reg = @$_POST['reg'];
   // Registration form.
   $fn = strtolower(strip_tags(@$_POST['fname']));

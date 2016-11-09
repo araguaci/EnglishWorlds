@@ -1,4 +1,10 @@
-<?php require_once './inc/header.inc.php';
+<?php
+  ob_start();
+  require_once './inc/header.inc.php';
+  $buffer = ob_get_contents();
+  ob_end_clean();
+  $buffer=str_replace("%TITLE%","Login",$buffer);
+  echo $buffer;
   if ($username) {
     header("location: home.php");
   }
