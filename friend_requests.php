@@ -1,5 +1,10 @@
 <?php
-  include './inc/header.inc.php';
+  ob_start();
+  require_once './inc/header.inc.php';
+    $buffer=ob_get_contents();
+    ob_end_clean();
+    $buffer=str_replace("%TITLE%","Friend Requests",$buffer);
+    echo $buffer;
   // Friends Requests
   $findRequests = $db->query("SELECT * FROM friend_requests WHERE user_to = '$username'");
   if ($findRequests->num_rows == 0) {

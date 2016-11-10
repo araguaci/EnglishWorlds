@@ -6,6 +6,10 @@
   if ($username) {
     // Do none
   } else {
+    $buffer=ob_get_contents();
+    ob_end_clean();
+    $buffer=str_replace("%TITLE%","Login",$buffer);
+    echo $buffer;
     die('you must be logged in');
   }
   if (isset($_GET['u'])) {
@@ -86,7 +90,120 @@
           $errorMsg = "Your friend request has been sent";
           $isRequestSent = true;
         }
+        /*
+          //$user = logged in user
+          //$username = user who owns profile
+          if (@$_POST['unfriend']) {
+            //Friend array for logged in user
+            $add_friend_check = mysql_query("SELECT friend_array FROM users WHERE username='$user'");
+            $get_friend_row = mysql_fetch_assoc($add_friend_check);
+            $friend_array = $get_friend_row['friend_array'];
+            $friend_array_explode = explode(",",$friend_array);
+            $friend_array_count = count($friend_array_explode);
+
+            //Friend array for user who owns profile
+            $add_friend_check_username = mysql_query("SELECT friend_array FROM users WHERE username='$username'");
+            $get_friend_row_username = mysql_fetch_assoc($add_friend_check_username);
+            $friend_array_username = $get_friend_row_username['friend_array'];
+            $friend_array_explode_username = explode(",",$friend_array_username);
+            $friend_array_count_username = count($friend_array_explode_username);
+
+            $usernameComma = ",".$username;
+            $usernameComma2 = $username.",";
+
+            $userComma = ",".$user;
+            $userComma2 = $user.",";
+
+            if (strstr($friend_array,$usernameComma)) {
+             $friend1 = str_replace("$usernameComma","",$friend_array);
+            }
+            else
+            if (strstr($friend_array,$usernameComma2)) {
+             $friend1 = str_replace("$usernameComma2","",$friend_array);
+            }
+            else
+            if (strstr($friend_array,$username)) {
+             $friend1 = str_replace("$username","",$friend_array);
+            }
+            //Remove logged in user from other persons array
+            if (strstr($friend_array,$userComma)) {
+             $friend2 = str_replace("$userComma","",$friend_array);
+            }
+            else
+            if (strstr($friend_array,$userComma2)) {
+             $friend2 = str_replace("$userComma2","",$friend_array);
+            }
+            else
+            if (strstr($friend_array,$user)) {
+             $friend2 = str_replace("$user","",$friend_array);
+            }
+
+            $friend2 = "";
+
+            $removeFriendQuery = mysql_query("UPDATE users SET friend_array='$friend1' WHERE username='$user'");
+            $removeFriendQuery_username = mysql_query("UPDATE users SET friend_array='$friend2' WHERE username='$username'");
+            echo "Friend Removed ...";
+            header("Location: $username");
+          }
+
+        */
       } elseif (isset($_POST['unfriend'])) {
+        //Friend array for logged in user
+        $add_friend_check = $db->query("SELECT friend_array FROM users WHERE username='$username'");
+        $get_friend_row = $add_friend_check->fetch_assoc();
+        $friend_array = $get_friend_row['friend_array'];
+        $friend_array_explode = explode(",",$friend_array);
+        print_r($friend_array_explode);
+
+        $friend_array_count = count($friend_array_explode);
+
+        //Friend array for user who owns profile
+        $add_friend_check_user = $db->query("SELECT friend_array FROM users WHERE username='$user'");
+        $get_friend_row_user = $add_friend_check_user->fetch_assoc();
+        $friend_array_user = $get_friend_row_user['friend_array'];
+        $friend_array_explode_user = explode(",",$friend_array_user);
+        $friend_array_count_user = count($friend_array_explode_user);
+        print_r($friend_array_explode_user);
+
+
+        $usernameComma = ",".$username;
+        $usernameComma2 = $username.",";
+
+        $userComma = ",".$user;
+        $userComma2 = $user.",";
+        $friend1 = "";
+        $friend2 = "";
+        if (strstr($friend_array,$usernameComma)) {
+         $friend1 = str_replace("$usernameComma","",$friend_array);
+        }
+        else
+        if (strstr($friend_array,$usernameComma2)) {
+         $friend1 = str_replace("$usernameComma2","",$friend_array);
+        }
+        else
+        if (strstr($friend_array,$username)) {
+         $friend1 = str_replace("$username","",$friend_array);
+        }
+        //Remove logged in user from other persons array
+        if (strstr($friend_array,$userComma)) {
+         $friend2 = str_replace("$userComma","",$friend_array);
+        }
+        else
+        if (strstr($friend_array,$userComma2)) {
+         $friend2 = str_replace("$userComma2","",$friend_array);
+        }
+        else
+        if (strstr($friend_array,$user)) {
+         $friend2 = str_replace("$user","",$friend_array);
+        }
+
+        /*
+        $removeFriendQuery = $db->query("UPDATE users SET friend_array='$friend1' WHERE username='$user'");
+        $removeFriendQuery_username = $db->query("UPDATE users SET friend_array='$friend2' WHERE username='$username'");
+        */
+        echo "Friend one is ".$friend1.'<br>'.'and Friend two is '.$friend2;
+        echo "<br>Friend Removed";
+        /*
         // $username = logged in
         // $user = profile
         $isFriend = true;
@@ -104,6 +221,7 @@
             $db->query("UPDATE users SET friend_array = '$poped_out' WHERE username = $username");
           }
         }
+        */
       }
       elseif (isset($_POST['cancelrequest'])) {
         $cancelrequest = $_POST['cancelrequest'];
@@ -165,6 +283,9 @@
      $getRow = $GetListOfFriends->fetch_assoc();
      $friend_array = explode(', ', $getRow['friend_array']);
      $friendsCount = Count($friend_array);
+     if ($friend_array[0] == '') {
+       $friendsCount = 0;
+     }
   ?>
  <div class="textHeader"><?php echo $user; ?>'s Friends <?php echo $friendsCount;?></div><br>
  <div class="profileLeftSideContent">

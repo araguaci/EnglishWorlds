@@ -54,16 +54,16 @@ session_start();
           if ($username) {
             echo '<li><a href="logout.php">Logout<span class="sr-only"></span> <span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>';
           } else {
-            echo '<li><a href="login.php">Login<span class="sr-only"></span></a></li>';
+            echo '<li><a href="login.php">Login<span class="sr-only"></span> <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a></li>';
           }
            ?>
-          <li><a href="./about/index.php">About <span class="glyphicon glyphicon-flag" aria-hidden="true"></span></a></li>
+          <li><a href="./about/index.php">About <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a></li>
           <?php
           if ($username) {
-            echo '<li><a href="'.$username.'">Profile<span class="sr-only"></span></a></li>';
+            echo '<li><a href="'.$username.'">Profile<span class="sr-only"></span> <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>';
             echo '<li><a href="account_settings.php">Settings<span class="sr-only"></span> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>';
           } else {
-            echo '<li><a href="signup.php">Sign Up<span class="sr-only"></span></a></li>';
+            echo '<li><a href="signup.php">Sign Up<span class="sr-only"></span> <span class="glyphicon glyphicon-check" aria-hidden="true"></a></li>';
           }
            ?>
         </ul>
