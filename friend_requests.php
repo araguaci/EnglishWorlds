@@ -45,13 +45,14 @@
     if ($friend_array_friend == NULL) {
       $add_friend_query = $db->query("UPDATE users SET friend_array='$user_from' WHERE username='$username'");
     } else {
-      $add_friend_query = $db->query("UPDATE users SET friend_array=CONCAT(friend_array,', $user_from') WHERE username='$username'");
+      $add_friend_query = $db->query("UPDATE users SET friend_array=CONCAT(friend_array,',$user_from') WHERE username='$username'");
     }
     if ($friend_array == NULL) {
       $add_friend_query = $db->query("UPDATE users SET friend_array='$username' WHERE username='$user_from'");
     } else {
-      $add_friend_query = $db->query("UPDATE users SET friend_array=CONCAT(friend_array,', $username') WHERE username='$user_from'");
+      $add_friend_query = $db->query("UPDATE users SET friend_array=CONCAT(friend_array,',$username') WHERE username='$user_from'");
     }
     $remove_friend_request = $db->query("DELETE FROM friend_requests WHERE user_from = '$user_from'");
+    header("location: friend_requests.php");
   }
   ?>
