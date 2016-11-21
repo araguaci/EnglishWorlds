@@ -27,11 +27,8 @@
   }
   function redirect($page)
   {
-    echo '<meta http-equiv="refresh" content="0">';
-    /*
       echo '<script type="text/javascript">
       window.location = "'.$page.'";
     </script>';
-    */
   }
  ?>
