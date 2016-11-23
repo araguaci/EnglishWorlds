@@ -62,6 +62,8 @@ session_start();
           if ($username) {
             echo '<li><a href="'.$username.'">Profile<span class="sr-only"></span> <span class="glyphicon glyphicon-user" aria-hidden="true"></span></a></li>';
             echo '<li><a href="account_settings.php">Settings<span class="sr-only"></span> <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>';
+            echo '<li><a href="my_messages.php">Messages<span class="sr-only"></span> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>';
+
           } else {
             echo '<li><a href="signup.php">Sign Up<span class="sr-only"></span> <span class="glyphicon glyphicon-check" aria-hidden="true"></a></li>';
           }

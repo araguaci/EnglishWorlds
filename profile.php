@@ -90,6 +90,8 @@
           $errorMsg = "Your friend request has been sent";
           $isRequestSent = true;
         }
+      }elseif (isset($_POST['sendmsg'])) {
+        redirect("send_msg.php?u=$user");
       } elseif (isset($_POST['unfriend'])) {
         //Friend array for logged in user
         $add_friend_check = $db->query("SELECT friend_array FROM users WHERE username='$username'");
@@ -148,9 +150,7 @@
         $cancelrequestquery = $db->query("DELETE FROM friend_requests WHERE user_from = '$username' AND user_to = '$user'");
       }
 
-      elseif (isset($_POST['sendmsg'])) {
-        header("Location: send_msg.php?u=$user");
-      }
+
      ?>
  </div>
  <?php echo @$errorMsg;

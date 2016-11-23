@@ -29,10 +29,10 @@
           }
         }
         echo '
-        <form action="send_msg.php?u=$user" method="POST">
+        <form action="send_msg.php?u='.$user.'" method="POST">
         <h2>Compose a Message: ('.$user.')</h2>
         <textarea cols="50" rows="12" name="msg_body">Enter the message you wish to send ...</textarea>
-        <input type="submit" name="submit" value="Send Message">
+        <input type="submit" name="submit" class="btn btn-success btn-sm" value="Send" >
         ';
       } else {
         redirect($username);
@@ -41,3 +41,5 @@
   }
 }
  ?>
+
+<!-- <input type="submit" name="submit" value="Send Message"> -->
