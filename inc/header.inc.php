@@ -69,6 +69,21 @@ session_start();
           }
            ?>
         </ul>
+        <form class="navbar-form navbar-right" action="index.html" method="post" role="form">
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-user"></span>
+            </span>
+            <input type="text" name="name" value="" class="form-control input-sm" placeholder="Username">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-lock"></span>
+            </span>
+            <input type="password" name="name" value="" class="form-control input-sm" placeholder="Password">
+          </div>
+          <button type="submit" name="button" class="btn btn-success">Login</button>
+        </form>
         <?php
          if ($username){
           echo '<form class="navbar-form navbar-left" role="search" action="header.inc.php" method="post">

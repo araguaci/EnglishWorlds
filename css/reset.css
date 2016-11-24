@@ -1,0 +1,9 @@
+@media (max-width: 768px) {
+  .input-group{
+    margin-bottom: 5px;
+  }
+}
+
+.brand{
+  max-height: 25px;
+}
