@@ -40,7 +40,7 @@
           <input type="button" name="openmsg" value="'.$msg_title.'" onclick="javascript:toggle()">
           <input type="submit" name="setopened_'.$id.'" value="I\'ve read this">
         </form>
-        <div id="toggleText" style="display: none;">
+        <div id="toggleText'.$id.'" style="display: none;">
         '.$msg_body.'
         </div><hr><br>
         ';
@@ -67,7 +67,16 @@
         echo substr($msg_body, 0, 150).' ....';
       } else {
         $msg_body = $msg_body;
-        echo '<b><a href="'.$user_from.'">'.$user_from.'</a></b><br>'.$msg_body.'<hr><br>';
+        echo '<form action="my_messages.php" name="'.$msg_title.'" method="POST">
+          <b><a href="'.$user_from.'">'.$user_from.'</a></b>
+          <input type="button" name="openmsg" value="'.$msg_title.'" onclick="javascript:toggle()">
+          <input type="submit" name="DeleteMessage" value="X" title="Delete message">
+        </form>
+        <div id="id">'.$id.'</div>
+        <div id="toggleText'.$id.'" style="display: none;">
+        '.$msg_body.'
+        </div><hr><br>
+        ';
       }
     }
   } else {

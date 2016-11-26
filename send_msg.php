@@ -20,6 +20,7 @@
           $msg_title = strip_tags(@$_POST['msg_title']);
           $msg_body = strip_tags(@$_POST['msg_body']);
           $opened = "no";
+          $deleted = 
           if ($msg_body == "Enter the message you wish to send ...") {
             echo "Please write a message.";
           } elseif (strlen($msg_body) < 3) {
