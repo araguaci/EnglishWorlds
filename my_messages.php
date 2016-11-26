@@ -40,6 +40,7 @@
           <input type="button" name="openmsg" value="'.$msg_title.'" onclick="javascript:toggle()">
           <input type="submit" name="setopened_'.$id.'" value="I\'ve read this">
         </form>
+        <div id="id">'.$id.'</div>
         <div id="toggleText'.$id.'" style="display: none;">
         '.$msg_body.'
         </div><hr><br>
@@ -53,7 +54,7 @@
 
   echo "<h2>My read messages:</h2>";
   // Grab the messages from the logged in user
-  $grab_messages = $db->query("SELECT * FROM pvt_messages WHERE user_to = '$username' AND opened = 'yes'");
+  $grab_messages = $db->query("SELECT * FROM pvt_messages WHERE user_to = '$username' AND opened = 'yes' AND deleted = 'no'");
   if ($grab_messages->num_rows) {
     while ($get_msgs = $grab_messages->fetch_assoc()) {
       $id = $get_msgs['id'];
@@ -67,16 +68,16 @@
         echo substr($msg_body, 0, 150).' ....';
       } else {
         $msg_body = $msg_body;
-        echo '<form action="my_messages.php" name="'.$msg_title.'" method="POST">
-          <b><a href="'.$user_from.'">'.$user_from.'</a></b>
-          <input type="button" name="openmsg" value="'.$msg_title.'" onclick="javascript:toggle()">
-          <input type="submit" name="DeleteMessage" value="X" title="Delete message">
-        </form>
-        <div id="id">'.$id.'</div>
-        <div id="toggleText'.$id.'" style="display: none;">
-        '.$msg_body.'
-        </div><hr><br>
-        ';
+          echo '<form action="my_messages.php" name="'.$msg_title.'" method="POST">
+            <b><a href="'.$user_from.'">'.$user_from.'</a></b>
+            <input type="button" name="openmsg" value="'.$msg_title.'" onclick="javascript:toggle()">
+            <input type="submit" name="DeleteMessage" value="X" title="Delete message">
+          </form>
+          <div id="id">'.$id.'</div>
+          <div id="toggleText'.$id.'" style="display: none;">
+          '.$msg_body.'
+          </div><hr><br>
+          ';
       }
     }
   } else {

@@ -27,6 +27,7 @@ session_start();
     <link rel="stylesheet" href="./css/bootstrap.css" media="screen" title="no title">
     <link rel="stylesheet" href="./css/pikaday.css" media="screen" title="no title">
     <link rel="stylesheet" href="./css/login.css" media="screen" title="no title">
+    <link rel="stylesheet" href="./css/messages.css" media="screen" title="no title">
     <script src="./js/jquery.js"></script>
     <script src="./js/jquery-ui.js" type="text/javascript"></script>
     <script src="./js/jquery.min.js"></script>

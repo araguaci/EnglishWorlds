@@ -20,13 +20,13 @@
           $msg_title = strip_tags(@$_POST['msg_title']);
           $msg_body = strip_tags(@$_POST['msg_body']);
           $opened = "no";
-          $deleted = 
+          $deleted = "no";
           if ($msg_body == "Enter the message you wish to send ...") {
             echo "Please write a message.";
           } elseif (strlen($msg_body) < 3) {
             echo "Your message can not be less than three characters";
           } else {
-            $send_msg = $db->query("INSERT INTO pvt_messages VALUES (NULL, '$username', '$user', '$msg_title', '$msg_body', NOW(), '$opened')");
+            $send_msg = $db->query("INSERT INTO pvt_messages VALUES (NULL, '$username', '$user', '$msg_title', '$msg_body', NOW(), '$opened', '$deleted')");
             echo "Your message has been sent...";
           }
         }
