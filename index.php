@@ -1,6 +1,11 @@
 <?php
   ob_start();
   require_once './inc/header.inc.php';
+  if ($username) {
+    header("location: home.php");
+  } else {
+    include 'register.php';
+  }
   $buffer = ob_get_contents();
   ob_end_clean();
   $buffer=str_replace("%TITLE%","English Dz",$buffer);
@@ -78,10 +83,6 @@
       exit();
     }
   }
-  if ($username) {
-    header("location: home.php");
-  } else {
-    include 'register.php';
-  }
+
  include './inc/footer.inc.php';
  ?>

@@ -18,3 +18,5 @@ composer-setup.php
 phpunit.xml
 # Ignore profile pictures and their directories
 *.jpg
+# Ignore test directory
+/test/*

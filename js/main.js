@@ -1,6 +1,6 @@
 function send_post() {
   var hr = new XMLHttpRequest();
-  var url = "send_post.php";
+  var url = "my_message_parse.php";
   var fn = document.getElementById("post").value;
   var vars = "post="+fn;
   hr.open("POST", url, true);

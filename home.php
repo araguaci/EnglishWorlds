@@ -1,6 +1,10 @@
 <?php
 ob_start();
 require_once './inc/header.inc.php';
+if (!$username) {
+  echo '<div class="alert alert-danger" role="alert">You must be logged in to view this page nigga!!</div>';
+  die();
+}
 $buffer = ob_get_contents();
 ob_end_clean();
 $buffer=str_replace("%TITLE%","Home Feed",$buffer);

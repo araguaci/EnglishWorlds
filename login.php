@@ -1,65 +1,44 @@
 <?php
   ob_start();
   require_once './inc/header.inc.php';
+  if (isset($_SESSION["username"])) {
+    header("location: home.php");
+  }
   $buffer = ob_get_contents();
   ob_end_clean();
   $buffer=str_replace("%TITLE%","Login",$buffer);
   echo $buffer;
-  if ($username) {
-    header("location: home.php");
-  }
-?>
-    <form class="form-horizontal" role="form" action="login.php" method="post">
-      <div class="row" id="login">
-        <div class="col-md-4 col-md-offset-4">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-            <span class="glyphicon glyphicon-lock"></span> You must log in to continue.</div>
-            <div class="panel-body">
-                <div class="form-group">
-                  <label for="loginMail" class="col-sm-3 control-label">
-                   Email</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" name="loginMail" id="loginMail" placeholder="Email" required>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="loginPass" class="col-sm-3 control-label">
-                  Password</label>
-                  <div class="col-sm-9">
-                    <input type="password" class="form-control" name="loginPass" id="loginPass" placeholder="Password" required>
-                  </div>
-                </div>
-                <div class="form-group last">
-                  <div class="col-sm-offset-3 col-sm-9">
-                    <input type="submit" name="Login" class="btn btn-success btn-sm" value="Login" >
-                  </div>
-                </div>
-          </div>
-          <div class="panel-footer">Not Registered? <a>Register here</a></div>
-          </div>
-              </div>
-            </div>
-      </form>
+ ?>
+ <div class="container">
+   <h2 align="center">Please enter your credentials</h2>
+   <div id="box">
+     <form method="POST">
+       <div class="form-group">
+         <label for="username">Username:</label>
+         <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+       </div>
+       <div class="form-group">
+         <label for="password">Password:</label>
+         <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+       </div>
+       <div class="form-group">
+         <input type="button" name="login" id="login" class="btn btn-success" value="Login">
+       </div>
+       <div id="error"></div>
+     </form>
+   </div>
+ </div>
 <?php
-  if (isset($_POST["loginMail"]) && isset($_POST["loginPass"])) {
-    $user_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["loginMail"]); // filter everything but numbers and letters.
-    $password_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["loginPass"]); // filter everything but numbers and letters.
-    $password_login_md5 = md5($password_login);
-    $sql = $db->query("SELECT id FROM users WHERE username='$user_login' AND password='$password_login_md5' LIMIT 1");
-    // Check for their existance
-    $userCount = $sql->num_rows; // Count the number of rows returned
-    if ($userCount == 1) {
-      while ($row = mysqli_fetch_array($sql)) {
-        $id = $row["id"];
-      }
-        $_SESSION["user_login"] = $user_login;
-        echo '
-       <script type="text/javascript">
-         window.location = "home.php";
-       </script>';
-    } else {
-      echo "Login incorrect, try again";
+  if (isset($_POST["username"]) && isset($_POST["password"])) {
+    $username = mysqli_real_escape_string($db, $_POST["username"]);
+    $password = mysqli_real_escape_string($db, $_POST["password"]);
+    $sql = "SELECT * FROM users WHERE username = '".$username."' AND password = '".md5($password)."'";
+    $result = mysqli_query($db, $sql);
+    $num_row = mysqli_num_rows($result);
+    if ($num_row > 0) {
+      $data = mysqli_fetch_array($result);
+      $_SESSION["username"] = $data["username"];
+      echo $data["data"];
     }
   }
   include './inc/footer.inc.php';

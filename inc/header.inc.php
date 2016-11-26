@@ -18,18 +18,25 @@ session_start();
     <title>%TITLE%</title>
     <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen">
     <link rel="stylesheet" href="./css/profile.css" media="screen" title="no title">
-    <link rel="stylesheet" href="./css/reset.css" media="screen">
-    <link rel="stylesheet" href="./css/master.css" media="screen">
-    <link rel="stylesheet" href="./css/blue.css" media="screen">
-    <link rel="stylesheet" href="./css/main.css" media="screen">
+    <link rel="stylesheet" href="./css/reset.css" media="screen" title="no title">
+    <link rel="stylesheet" href="./css/master.css" media="screen" title="no title">
+    <link rel="stylesheet" href="./css/blue.css" media="screen" title="no title">
+    <link rel="stylesheet" href="./css/main.css" media="screen" title="no title">
     <link rel="stylesheet" href="./css/home.css" media="screen" title="no title">
     <link rel="stylesheet" href="./css/bootstrap.min.css" media="screen" title="no title">
+    <link rel="stylesheet" href="./css/bootstrap.css" media="screen" title="no title">
     <link rel="stylesheet" href="./css/pikaday.css" media="screen" title="no title">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-color.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/placeholder-js.js" type="text/javascript"></script>
-    <script src="js/main.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="./css/login.css" media="screen" title="no title">
+    <script src="./js/jquery.js"></script>
+    <script src="./js/jquery-ui.js" type="text/javascript"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/jquery-color.js"></script>
+    <script src="./js/script.js"></script>
+    <script src="./js/messages.js"></script>
+    <script src="./js/placeholder-js.js" type="text/javascript"></script>
+    <script src="./js/main.js" type="text/javascript"></script>
+    <script src="./js/login.js" type="text/javascript"></script>
+    <script src="./js/bootstrap.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <link rel="shortcut icon" href="./img/favicon.ico">
   </head>
@@ -65,7 +72,7 @@ session_start();
             echo '<li><a href="my_messages.php">Messages<span class="sr-only"></span> <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>';
 
           } else {
-            echo '<li><a href="signup.php">Sign Up<span class="sr-only"></span> <span class="glyphicon glyphicon-check" aria-hidden="true"></a></li>';
+            echo '<li><a href="signup.php">Sign Up <span class="sr-only"></span> <span class="glyphicon glyphicon-check" aria-hidden="true"></span></a></li>';
           }
            ?>
         </ul>
