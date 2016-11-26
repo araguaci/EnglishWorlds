@@ -31,7 +31,7 @@
 
         if (@$_POST['setopened_'.$id.'']) {
           // Update the private messages table.
-          $setopened_query = $db-
+          $setopened_query = $db->query("UPDATE pvt_messages SET opened='yes' WHERE msg_title='$msg_title'");
         }
 
         echo '
