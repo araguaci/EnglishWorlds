@@ -6,7 +6,7 @@
   </head>
   <body>
     <?php
-    echo "string";
+    echo "string
      ?>
   </body>
 </html>
