@@ -21,6 +21,7 @@
       $msg_body = $get_msgs['msg_body'];
       $date = $get_msgs['date'];
       $opened = $get_msgs['opened'];
+      $deleted = $get_msgs['Deleted'];
       if (strlen($msg_title) > 50) {
         echo substr($msg_title, 0, 50).' ....';
       }
@@ -28,12 +29,14 @@
         echo substr($msg_body, 0, 150).' ....';
       } else {
         $msg_body = $msg_body;
-
+        if (@$_POST['DeleteMessage_'.$id.'']) {
+            $db->query("UPDATE pvt_messages SET Deleted = 'yes' WHERE msg_title='$msg_title'");
+            echo "Message deleted";
+        }
         if (@$_POST['setopened_'.$id.'']) {
           // Update the private messages table.
           $setopened_query = $db->query("UPDATE pvt_messages SET opened='yes' WHERE msg_title='$msg_title'");
         }
-
         echo '
         <form action="my_messages.php" name="'.$msg_title.'" method="POST">
           <b><a href="'.$user_from.'">'.$user_from.'</a></b>
@@ -54,7 +57,8 @@
 
   echo "<h2>My read messages:</h2>";
   // Grab the messages from the logged in user
-  $grab_messages = $db->query("SELECT * FROM pvt_messages WHERE user_to = '$username' AND opened = 'yes' AND deleted = 'no'");
+  $grab_messages = $db->query("SELECT * FROM pvt_messages WHERE user_to = '$username' AND opened = 'yes' AND Deleted = 'no'");
+
   if ($grab_messages->num_rows) {
     while ($get_msgs = $grab_messages->fetch_assoc()) {
       $id = $get_msgs['id'];
@@ -64,6 +68,7 @@
       $msg_body = $get_msgs['msg_body'];
       $date = $get_msgs['date'];
       $opened = $get_msgs['opened'];
+      $deleted = $get_msgs['Deleted'];
       if (strlen($msg_body) > 150) {
         echo substr($msg_body, 0, 150).' ....';
       } else {
@@ -71,7 +76,7 @@
           echo '<form action="my_messages.php" name="'.$msg_title.'" method="POST">
             <b><a href="'.$user_from.'">'.$user_from.'</a></b>
             <input type="button" name="openmsg" value="'.$msg_title.'" onclick="javascript:toggle()">
-            <input type="submit" name="DeleteMessage" value="X" title="Delete message">
+            <input type="submit" name="DeleteMessage_'.$id.'" value="X" title="Delete message">
           </form>
           <div id="id">'.$id.'</div>
           <div id="toggleText'.$id.'" style="display: none;">
@@ -82,5 +87,8 @@
     }
   } else {
     echo "You haven't read any messages yet";
+  }
+  if (@$_POST['DeleteMessage_'.$id.'']) {
+      $db->query("UPDATE pvt_messages SET Deleted = 'yes' WHERE id='$id'");
   }
  ?>
