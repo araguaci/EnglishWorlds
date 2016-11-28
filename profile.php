@@ -51,16 +51,40 @@
   } else {
     $profile_pic = "userdata/profile_pic/".$profile_pic_db;
   }
+  $GetListOfFriends = $db->query("SELECT friend_array FROM users WHERE username = '$user'");
+  $getRow = $GetListOfFriends->fetch_assoc();
+  $friend_array = explode(',', $getRow['friend_array']);
+  $friendsCount = Count($friend_array);
+  if ($friend_array[0] == '') {
+    $friendsCount = 0;
+  }
  ?>
- <br>
- <!-- TODO: Replace the navigate JS function with a way to upload picture -->
- <img id="pp" src="<?php echo $profile_pic; ?>" height="250" width="200" alt="<?php echo $user; ?>'s Profile" title="<?php echo $user; ?>'s Profile" onclick="navigate()" />
- <br>
- <div class="postForm">
-   <form action="<?php // echo $user; ?>" method="post">
-     <textarea id="post" name="post" rows="4" cols="58"></textarea>
-     <input type="submit" class="btn btn-lg" name="send" value="Post" style="background-color: #DCE5EE; border: 1px solid #666; color:#666; height: 73px; width: 65px;">
-   </form>
+ <div class="Container">
+   <div class="ProfilePicture">
+     <!-- TODO: Replace the navigate JS function with a way to upload picture -->
+     <img id="pp" src="<?php echo $profile_pic; ?>"  alt="<?php echo $user; ?>'s Profile" title="<?php echo $user; ?>'s Profile" onclick="navigate()" />
+     <div class="textHeader"><?php echo $user; ?>'s Profile</div>
+     <div class="Bio">
+       <?php
+        $query = $db->query("SELECT bio FROM users WHERE username = '$user'");
+        $get_row = $query->fetch_assoc();
+        $bio = $get_row['bio'];
+        if ($bio == '') {
+          echo "No information to show";
+        } else {
+          echo $bio;
+        }
+        ?>
+     </div>
+     <div class="textHeader"><?php echo $user; ?>'s Friends <?php echo $friendsCount;?></div><br>
+   </div>
+   <div class="PostOnProfile">
+     <form action="<?php  echo $username; ?>" method="post">
+       <textarea id="post" name="post" rows="4" cols="58"></textarea>
+       <input type="submit" class="btn btn-lg" name="send" value="Post">
+     </form>
+   </div>
+
  </div>
  <div class="profilePosts">
    <?php
@@ -75,6 +99,8 @@
        <a href='.@$added_by.'>'.@$added_by.'</a> - '.$date_added.' -
      </div>
      &nbsp;&nbsp;'.@$body.'<br><hr>';
+     $get_user_info = $db->query("SELECT * FROM users WHERE username='$added_by'");
+     echo $get_user_info;
    }
     ?>
     <?php
@@ -193,32 +219,13 @@
      echo '<input type="submit" class="btn btn-sm" name="sendmsg" value="Send message">';
     echo "</form>";
     endif; ?>
- <div class="textHeader"><?php echo $user; ?>'s Profile</div>
- <div class="profileLeftSideContent">
- <?php
- $about_query = $db->query("SELECT bio FROM users WHERE username='$user'");
- $get_result = $about_query->fetch_assoc();
- $about_the_user = $get_result['bio'];
- echo $about_the_user;
- ?>
- </div>
- <?php
-     $GetListOfFriends = $db->query("SELECT friend_array FROM users WHERE username = '$user'");
-     $getRow = $GetListOfFriends->fetch_assoc();
-     $friend_array = explode(',', $getRow['friend_array']);
-     $friendsCount = Count($friend_array);
-     if ($friend_array[0] == '') {
-       $friendsCount = 0;
+  <div class="profileLeftSideContent">
+    <?php
+     foreach ($friend_array as $friend) {
+       $GetImage = $db->query("SELECT profile_pic FROM users WHERE username = '$friend'");
+       $getRow = $GetImage->fetch_assoc();
+       echo '<a href="'.$friend.'"><img src="userdata/profile_pic/'.$getRow['profile_pic'].'" alt="'.$friend.'" title="'.$friend.'" name="FriendPhoto" height="50" width="40"/></a>&nbsp;&nbsp';
      }
-  ?>
- <div class="textHeader"><?php echo $user; ?>'s Friends <?php echo $friendsCount;?></div><br>
- <div class="profileLeftSideContent">
-   <?php
-    foreach ($friend_array as $friend) {
-      $GetImage = $db->query("SELECT profile_pic FROM users WHERE username = '$friend'");
-      $getRow = $GetImage->fetch_assoc();
-      echo '<a href="'.$friend.'"><img src="userdata/profile_pic/'.$getRow['profile_pic'].'" alt="'.$friend.'" title="'.$friend.'" name="FriendPhoto" height="50" width="40"/></a>&nbsp;&nbsp';
-    }
-    ?>
- </div>
+     ?>
+  </div>
  <?php include './inc/footer.inc.php'; ?>

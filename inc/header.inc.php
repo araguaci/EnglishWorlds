@@ -105,7 +105,7 @@ session_start();
          ?>
         <?php
          if ($username){
-          echo '<form class="navbar-form navbar-left" role="search" action="header.inc.php" method="post">
+          echo '<form class="navbar-form navbar-left" role="search" action="./inc/header.inc.php" method="post">
             <div class="form-group">
               <input type="text" name="search" class="form-control" placeholder="Search..." title="Search for people, posts and more...">
             </div>
