@@ -2,11 +2,10 @@
     "name": "salim/english",
     "type": "project",
     "require": {
-        "twbs/bootstrap": "3.3.7",
-        "jquery/jquery": "3.1.1"
+        "twbs/bootstrap": "3.3.7"
     },
     "require-dev": {
-        "ext-mysql": "5.7",
+        "ext-mysql": "1.0",
         "phpunit/phpunit": "3.7.*"
     },
     "license": "GPL-3.0",
