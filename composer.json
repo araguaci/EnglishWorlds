@@ -2,7 +2,8 @@
     "name": "salim/english",
     "type": "project",
     "require": {
-        "twbs/bootstrap": "3.3.7"
+        "twbs/bootstrap": "3.3.7",
+        "php": "*"
     },
     "require-dev": {
         "ext-mysql": "1.0",
