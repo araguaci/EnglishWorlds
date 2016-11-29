@@ -7,11 +7,22 @@
       header('Location: ./install/start.php');
       exit();
   } else {
-    /*
-      header('Location: index.php');
-      exit();
-      */
+    // TODO: do something xD
   }
+  if(isset($_COOKIE['junaid-hassan-alvi'] ['username']) && isset($_COOKIE['junaid-hassan-alvi'] ['password']))
+  {
+      $username = $_COOKIE['junaid-hassan-alvi'] ['username'];
+      $password = $_COOKIE['junaid-hassan-alvi'] ['password'];
+  }
+  if($_POST['setcookie'] {
+     setcookie("junaid-hassan-alvi[username]", $username, time() + 3600);
+     setcookie("junaid-hassan-alvi[password]", $password, time() + 3600);
+   }
+   if(isset($_COOKIE['junaid-hassan-alvi'] ['username']) && isset($_COOKIE['junaid-hassan-alvi'] ['password']))
+    {
+        setcookie("junaid-hassan-alvi[username]", time()- 3600);
+        setcookie("junaid-hassan-alvi[password]", time()- 3600);
+    }
   if ($username) {
     header("location: home.php");
   } else {
