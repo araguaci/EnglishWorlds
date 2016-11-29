@@ -1,6 +1,17 @@
 <?php
   ob_start();
   require_once './inc/header.inc.php';
+  if (!isset($_COOKIE['firsttime']))
+  {
+      setcookie("firsttime", "no");
+      header('Location: ./install/start.php');
+      exit();
+  } else {
+    /*
+      header('Location: index.php');
+      exit();
+      */
+  }
   if ($username) {
     header("location: home.php");
   } else {
