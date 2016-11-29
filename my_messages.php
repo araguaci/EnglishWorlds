@@ -77,6 +77,7 @@
             <b><a href="'.$user_from.'">'.$user_from.'</a></b>
             <input type="button" name="openmsg" value="'.$msg_title.'" onclick="javascript:toggle()">
             <input type="submit" name="DeleteMessage_'.$id.'" value="X" title="Delete message">
+            <input type="submit" name="ReplyToMessage_'.$id.'" value="Reply" title="Reply to message">
           </form>
           <div id="id">'.$id.'</div>
           <div id="toggleText'.$id.'" style="display: none;">
@@ -90,5 +91,8 @@
   }
   if (@$_POST['DeleteMessage_'.$id.'']) {
       $db->query("UPDATE pvt_messages SET Deleted = 'yes' WHERE id='$id'");
+  }
+  if (@$_POST['ReplyToMessage_' . $id . '']) {
+    redirect("msg_reply.php?u=$user_from");
   }
  ?>
