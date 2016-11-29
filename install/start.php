@@ -1,37 +1,20 @@
 <?php
-################################################################################
-##              -= YOU MAY NOT REMOVE OR CHANGE THIS NOTICE =-                 #
-## --------------------------------------------------------------------------- #
-##  ApPHP EasyInstaller Free version                                           #
-##  Developed by:  ApPHP <info@apphp.com>                                      #
-##  License:       GNU LGPL v.3                                                #
-##  Site:          http://www.apphp.com/php-easyinstaller/                     #
-##  Copyright:     ApPHP EasyInstaller (c) 2009-2013. All rights reserved.     #
-##                                                                             #
-##  Additional modules (embedded):                                             #
-##  -- jQuery (JavaScript Library)                           http://jquery.com #
-##                                                                             #
-################################################################################
-   
-    session_start();   
-
-	require_once('include/shared.inc.php');    
-    require_once('include/settings.inc.php');
+  session_start();
+	require_once('include/shared.inc.php');
+  require_once('include/settings.inc.php');
 	require_once('include/functions.inc.php');
-	require_once('include/languages.inc.php');	
+	require_once('include/languages.inc.php');
 
 	$task = isset($_POST['task']) ? prepare_input($_POST['task']) : '';
 	$installation_type = isset($_POST['installation_type']) ? prepare_input($_POST['installation_type']) : 'wizard';
 	$program_already_installed = false;
-	
+
 	// handle previous installation
 	// -------------------------------------------------
-    if(file_exists(EI_CONFIG_FILE_PATH)){ 
+    if(file_exists(EI_CONFIG_FILE_PATH)){
 		$program_already_installed = true;
-		///header('location: '.EI_APPLICATION_START_FILE);
-        ///exit;
 	}
-	
+
 	// handle form submission
 	// -------------------------------------------------
 	if($task == 'send'){
@@ -43,10 +26,10 @@
 		$_SESSION['passed_step'] = 0;
 		$_SESSION['installation_type'] = '';
 		@unlink(EI_CONFIG_FILE_PATH);
-		session_destroy();		
+		session_destroy();
 		// *** set new token
 		$_SESSION['token'] = md5(uniqid(rand(), true));
-	}	
+	}
 
 ?>
 
@@ -54,11 +37,9 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="author" content="ApPHP Company - Advanced Power of PHP">
-    <meta name="generator" content="ApPHP EasyInstaller">
-	<title><?php echo lang_key('installation_guide'); ?> | <?php echo lang_key('start'); ?></title>
+	<title>Installation Guide</title>
 
-	<link href="images/apphp.ico" rel="shortcut icon" />
+	<link href="../img/favicon.ico" rel="shortcut icon" />
 	<link rel="stylesheet" type="text/css" href="templates/<?php echo EI_TEMPLATE; ?>/css/styles.css" />
 	<?php
 		if($curr_lang_direction == 'rtl'){
@@ -76,7 +57,7 @@
 
 	<div id="content">
 		<?php
-			draw_side_navigation(1);		
+			draw_side_navigation(1);
 		?>
 		<div class="central-part">
 
@@ -102,7 +83,7 @@
 			<tr><td nowrap="nowrap" height="10px"></td></tr>
 			<tr>
 				<td>
-					<h3><?php echo lang_key('select_installation_language'); ?></h3>					
+					<h3><?php echo lang_key('select_installation_language'); ?></h3>
 					<?php
 						if(count($arr_active_languages) > 1){
 							echo lang_key('language').': ';
@@ -110,10 +91,10 @@
 							foreach($arr_active_languages as $key => $val){
 								echo '<option '.(($key == $curr_lang) ? 'selected="selected"' : '').' value="'.$key.'">'.$val['name'].'</option>';
 							}
-							echo '</select>';						
+							echo '</select>';
 						}
 					?>
-				</td>                
+				</td>
 			</tr>
 			<tr><td nowrap="nowrap" height="30px"></td></tr>
 			<tr>
@@ -124,11 +105,11 @@
 			</tbody>
 			</table>
 			</form>
-		
+
 		</div>
 		<div class="clear"></div>
 	</div>
-	
+
 	<?php include_once('include/footer.inc.php'); ?>
 
 </div>
