@@ -1,4 +1,5 @@
 <?php
+/*
   if (!$do_login) {
     exit;
   } else {
@@ -18,8 +19,9 @@
          $password_hash = md5($config_password); // will result in a 32 characters hash
          setcookie($cookie_name, 'usr='.$config_username.'&hash='.$password_hash, time() + $cookie_time);
       }
-      header("Location: home.php");
+      // header("Location: home.php");
       exit;
     }
   }
+  */
  ?>

@@ -4,8 +4,8 @@
       <td width="50%" valign="top" id="loginTD">
         <h2>Already a member?<br><br> Sign in below!</h2>
         <form action="index.php" name="loginForm" method="POST" onsubmit="return validateLoginForm()">
-          <input type="text" name="user_login" size="25" placeholder="Username"><br><br>
-          <input type="password" name="password_login" size="25" placeholder="Password"><br><br>
+          <input type="text" name="user_login" size="25" placeholder="Username" required="true"><br><br>
+          <input type="password" name="password_login" size="25" placeholder="Password" required="true"><br><br>
           <input type="submit" class="btn btn-sm" name="Login" value="Login">
         </form>
       </td>
@@ -27,6 +27,7 @@
           <input type="submit" id="register" class="btn btn-sm" name="reg" value="Sign Up!" disabled="disabled">
           <?php function fillFields()
           {
+            //TODO: this function is getting executed many times
             echo '<div class="alert alert-danger" role="alert">Please fill in all of the fields</div>';
           } ?>
         </form>
