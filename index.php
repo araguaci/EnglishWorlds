@@ -1,6 +1,11 @@
 <?php
   ob_start();
   require_once './inc/header.inc.php';
+  /*
+  if(!file_exists(EI_CONFIG_FILE_PATH)){
+    header('location: install/start.php');
+    exit;
+  }
   if (!isset($_COOKIE['firsttime']))
   {
       setcookie("firsttime", "no");
@@ -9,12 +14,14 @@
   } else {
     // TODO: do something xD
   }
+  */
   if(isset($_COOKIE['junaid-hassan-alvi'] ['username']) && isset($_COOKIE['junaid-hassan-alvi'] ['password']))
   {
       $username = $_COOKIE['junaid-hassan-alvi'] ['username'];
       $password = $_COOKIE['junaid-hassan-alvi'] ['password'];
   }
-  if($_POST['setcookie'] {
+  /*
+  if($_POST['setcookie']) {
      setcookie("junaid-hassan-alvi[username]", $username, time() + 3600);
      setcookie("junaid-hassan-alvi[password]", $password, time() + 3600);
    }
@@ -23,6 +30,7 @@
         setcookie("junaid-hassan-alvi[username]", time()- 3600);
         setcookie("junaid-hassan-alvi[password]", time()- 3600);
     }
+    */
   if ($username) {
     header("location: home.php");
   } else {
@@ -89,6 +97,8 @@
   }
   // User Login Code.
   if (isset($_POST["user_login"]) && isset($_POST["password_login"])) {
+    $do_login = true;
+    include_once 'do_login.php';
     $user_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["user_login"]); // filter everything but numbers and letters.
     $password_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["password_login"]); // filter everything but numbers and letters.
     $password_login_md5 = md5($password_login);
