@@ -8,3 +8,10 @@
 #postingForm input[type="submit"]{
   /*float: right; */
 }
+.container li{
+  width: 120px;
+  height: 40px;
+}
+.container a {
+  font-size: 10px;
+}
