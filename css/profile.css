@@ -8,10 +8,13 @@
 .ProfilePicture{
   width: 200px;
   height: 500px;
-  cursor: pointer;
+
   margin-left: 5px;
-  margin-top: 5px;
+  margin-top: 0px;
   float: left;
+}
+.ProfilePicture img {
+  cursor: pointer;
 }
 .textHeader{
   background-color: #F3F6F9;
@@ -29,6 +32,36 @@
   height: 250px;
   width: 200px;
 }
+.ProfilePosts{
+  width: 300px;
+  height: 150px;
+  background-color: #FFFFFF;
+  padding: 5px;
+  text-align: justify;
+  margin-left: 40%
+}
+.ProfilePosts hr {
+  background-color: #DCE5EE;
+  height: 1px;
+  border: 0px;
+  margin-left: 40%;
+}
+.PostForm{
+  float: right;
+  width: 580px;
+  height: 80px;
+  background-color: #F3F6F9;
+  padding: 5px;
+}
 /*
+.PostForm form{
+  margin-left: 40%;
+  margin-top: 0%;
+  float: left;
+  width: 560px;
+  height: 80px;
+  background-color: #F3F6F9;
+  padding: 5px;
+}
 style="background-color: #DCE5EE; border: 1px solid #666; color:#666; height: 73px; width: 65px;
 */
