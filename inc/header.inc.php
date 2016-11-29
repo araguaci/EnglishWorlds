@@ -1,14 +1,24 @@
 <?php
-// Replace E_ALL with 0 for production purposes.
-error_reporting(E_ALL);
-require 'connect.inc.php';
-require 'functions.inc.php';
-session_start();
-  if (!isset($_SESSION["user_login"])) {
-    $username = "";
-  } else {
-    $username = $_SESSION["user_login"];
-  }
+    // Replace E_ALL with 0 for production purposes.
+    error_reporting(E_ALL ^ E_NOTICE);
+    header('Cache-control: private'); // IE 6 Fix
+    // always modified
+    header('Last-Modified: ' . gmdate("D, d M Y H:i:s") . ' GMT');
+    // HTTP/1.1
+    header('Cache-Control: no-store, no-cache, must-revalidate');
+    header('Cache-Control: post-check=0, pre-check=0', false);
+    // HTTP/1.0
+    header('Pragma: no-cache');
+    require 'connect.inc.php';
+    require 'functions.inc.php';
+    session_start();
+    $cookie_name = 'siteAuth';
+    $cookie_time = (3600 * 24 * 30); // 30 days
+    if (!isset($_SESSION["user_login"])) {
+      $username = "";
+    } else {
+      $username = $_SESSION["user_login"];
+    }
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -37,6 +47,7 @@ session_start();
     <script src="./js/placeholder-js.js" type="text/javascript"></script>
     <script src="./js/main.js" type="text/javascript"></script>
     <script src="./js/login.js" type="text/javascript"></script>
+    <script src="./js/home.js" type="text/javascript"></script>
     <script src="./js/bootstrap.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <link rel="shortcut icon" href="./img/favicon.ico">
