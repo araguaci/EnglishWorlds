@@ -69,19 +69,7 @@ input#searchSubmit{
   display: none;
   cursor: pointer;
 }
-.profilePosts{
-  float: right;
-  width: 580px;
-  height: 414px;
-  background-color: #FFFFFF;
-  padding: 5px;
-  text-align: justify;
-}
-.profilePosts hr {
-  background-color: #DCE5EE;
-  height: 1px;
-  border: 0px;
-}
+
 .posted_by{
   font-weight: 800;
   color: #000;
@@ -110,13 +98,7 @@ p {
   height: 200px;
   text-align: justify;
 }
-.postForm{
-  float: right;
-  width: 580px;
-  height: 80px;
-  background-color: #F3F6F9;
-  padding: 5px;
-}
+
 input[type="submit"]{
   border: 1px solid #DCE5EE;
   background-color: #F3F6F9;
