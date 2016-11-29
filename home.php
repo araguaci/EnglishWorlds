@@ -14,6 +14,11 @@ require('./inc/timeago.inc.php');
  ?>
     <div class="container">
       <form id="postingForm" action="home.php" method="post">
+        <ul class="nav nav-tabs">
+          <li id="PostTab" role="presentation" onclick="javascript:SelectTab()"><a href="#">Write Post</a></li>
+          <li id="PhotoTab" role="presentation"><a href="#" onclick="javascript:SelectTab()">Add Photo / Video</a></li>
+          <li id="PollTab" role="presentation"><a href="#" onclick="javascript:SelectTab()">Create poll</a></li>
+        </ul>
         <textarea name="postText" class="input-medium" placeholder="Share your thoughts..."></textarea>
         <button class="btn" type="submit">Post</button>
       </form>
