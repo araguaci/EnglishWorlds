@@ -165,21 +165,22 @@
        $isFriend = false;
      }
    }
-   $message_button = "none";
-   $unfriend_button = "none";
-   $cancelrequest_button = "none";
-   $addfriend_button = "none";
+   $message_btn = "none";
+   $unfriend_btn = "none";
+   $cancelrequest_btn = "none";
+   $addfriend_btn = "none";
+   $poke = "none";
    if ($username != $user) {
      if ($isFriend) {
-       $unfriend_button = "";
+       $unfriend_btn = "";
      } else {
        if ($isRequestSent) {
-         $cancelrequest_button = "";
+         $cancelrequest_btn = "";
        } else {
-          $addfriend_button = "";
+          $addfriend_btn = "";
        }
      }
-     $message_button = "";
+     $message_btn = "";
      foreach ($friend_array as $friend) {
        $GetImage = $db->query("SELECT profile_pic FROM users WHERE username = '$friend'");
        $getRow = $GetImage->fetch_assoc();
@@ -193,10 +194,11 @@
      <img id="pp" src="<?php echo $profile_pic; ?>"  alt="<?php echo $user; ?>'s Profile" title="<?php echo $user; ?>'s Profile" onclick="navigate()" />
      <div class="textHeader"><?php echo $user; ?>'s Profile</div>
      <form class="postForm" action="<?php echo $user; ?>" method="post">
-       <input style="display: <?php echo $addfriend_button;?>;" type="submit" class="btn btn-sm" name="addfriend" value="Add as a friend" >
-       <input style="display: <?php echo $cancelrequest_button;?>;" type="submit" class="btn btn-sm" name="cancelrequest" value="Cancel Request">
-       <input style="display: <?php echo $unfriend_button;?>;" type="submit" class="btn btn-sm" name="unfriend" value="Unfriend">
-       <input style="display: <?php echo $message_button;?>;" type="submit" class="btn btn-sm" name="sendmsg" value="Send a message">
+       <input style="display: <?php echo $poke_btn;?>;" type="submit" class="btn btn-sm" name="poke" value="Poke">
+       <input style="display: <?php echo $addfriend_btn;?>;" type="submit" class="btn btn-sm" name="addfriend" value="Add as a friend">
+       <input style="display: <?php echo $cancelrequest_btn;?>;" type="submit" class="btn btn-sm" name="cancelrequest" value="Cancel Request">
+       <input style="display: <?php echo $unfriend_btn;?>;" type="submit" class="btn btn-sm" name="unfriend" value="Unfriend">
+       <input style="display: <?php echo $message_btn;?>;" type="submit" class="btn btn-sm" name="sendmsg" value="Send a message">
      </form>
      <div class="Bio">
        <?php echo $bio; ?>
@@ -211,8 +213,8 @@
    </div>
  </div>
  <div class="ProfilePosts">
-   <img src="userdata/profile_pic/<?php echo $profile_pic_info ?>" alt="" height="30" width="30" />
    <div class="posted_by">
+     <img src="userdata/profile_pic/<?php echo $profile_pic_info ?>" alt="" height="30" width="30" />
      <a href="<?php echo $added_by ?>"><?php echo $added_by; ?></a>
    </div>
    &nbsp;&nbsp;<?php echo @$body; ?><br><hr>
