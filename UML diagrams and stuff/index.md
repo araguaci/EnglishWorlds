@@ -1,4 +1,6 @@
 1- Write business logic
+  Users reputation to gain priveleges
+  Points to become a moderator
 2- Analyse existing social networks (Facebook, Twitter, Linked In)
 3- Analyse existing SN software such as Drupal and Joomla
 4- Design a framework
