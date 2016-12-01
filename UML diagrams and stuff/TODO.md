@@ -5,4 +5,5 @@
 4- Add tooltips across the site :negative_squared_cross_mark:   
 5- Change style of buttons to bootstrap :negative_squared_cross_mark:   
 6- Switch sources to CDN :negative_squared_cross_mark:   
-7- Change title from username to First and last name :negative_squared_cross_mark: 
+7- Change title from username to First and last name :negative_squared_cross_mark:
+8- Posts voting system :negative_squared_cross_mark: 
