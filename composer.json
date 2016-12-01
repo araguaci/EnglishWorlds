@@ -7,7 +7,7 @@
     },
     "require-dev": {
         "ext-mysql": "1.0",
-        "phpunit/phpunit": "3.7.*"
+        "phpunit/phpunit": "4.8"
     },
     "license": "GPL-3.0",
     "authors": [
