@@ -6,8 +6,7 @@
   $buffer=str_replace("%TITLE%","Messages",$buffer);
   echo $buffer;
   if (!$username) {
-    echo '<div class="alert alert-danger" role="alert">You must be logged in to view this page nigga!!</div>';
-    die();
+    LoginAlert();
   }
   echo "<h2>My unread messages:</h2>";
   // Grab the messages from the logged in user
