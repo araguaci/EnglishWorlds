@@ -141,7 +141,21 @@
     elseif (isset($_POST['cancelrequest'])) {
       $cancelrequest = $_POST['cancelrequest'];
       $cancelrequestquery = $db->query("DELETE FROM friend_requests WHERE user_from = '$username' AND user_to = '$user'");
-    }
+    } /* elseif (isset($_POST['poke'])) {
+      // Poke code
+      $check_if_poked = $db->query("SELECT * FROM pokes WHERE user_to='$user' && user_from='$username'");
+      $num_rows = $check_if_poked->num_rows;
+      if ($num_rows == 1) {
+        echo "You must wait to be poked back";
+      } else {
+        if ($username == $user) {
+          echo "You can not poke yourself";
+        } else {
+          $poke_user = $db->query("INSERT INTO pokes VALUES(NULL, '$username', '$user')");
+          echo "$user has been poked";
+        }
+      }
+    } */
    // Check if the logged in user have a pending friend request
    $friendRequestCheckQuery = $db->query("SELECT id FROM friend_requests WHERE user_from = '$username' AND user_to = '$user'");
    $friendRequestCheckQueryGetRow = $friendRequestCheckQuery->fetch_assoc();
@@ -187,18 +201,19 @@
        echo '<a href="'.$friend.'"><img src="userdata/profile_pic/'.$getRow['profile_pic'].'" alt="'.$friend.'" title="'.$friend.'" name="FriendPhoto" height="50" width="40"/></a>&nbsp;&nbsp';
      }
    }
+
    ?>
  <div class="Container">
    <div class="ProfilePicture">
      <!-- TODO: Replace the navigate JS function with a way to upload picture -->
      <img id="pp" src="<?php echo $profile_pic; ?>"  alt="<?php echo $user; ?>'s Profile" title="<?php echo $user; ?>'s Profile" onclick="navigate()" />
      <div class="textHeader"><?php echo $user; ?>'s Profile</div>
-     <form class="postForm" action="<?php echo $user; ?>" method="post">
-       <input style="display: <?php echo $poke_btn;?>;" type="submit" class="btn btn-sm" name="poke" value="Poke">
+     <form class="postForm" action="<?php echo $user; ?>">
+       <input style="display: <?php echo $poke_btn;?>;" type="button" class="btn btn-sm" value="Poke" onclick="ShowMessage()">
        <input style="display: <?php echo $addfriend_btn;?>;" type="submit" class="btn btn-sm" name="addfriend" value="Add as a friend">
        <input style="display: <?php echo $cancelrequest_btn;?>;" type="submit" class="btn btn-sm" name="cancelrequest" value="Cancel Request">
        <input style="display: <?php echo $unfriend_btn;?>;" type="submit" class="btn btn-sm" name="unfriend" value="Unfriend">
-       <input style="display: <?php echo $message_btn;?>;" type="submit" class="btn btn-sm" name="sendmsg" value="Send a message">
+       <input style="display: <?php echo $message_btn;?>;" type="submit" class="btn btn-sm" name="message" value="SendMessage">
      </form>
      <div class="Bio">
        <?php echo $bio; ?>
@@ -219,5 +234,6 @@
    </div>
    &nbsp;&nbsp;<?php echo @$body; ?><br><hr>
   <div class="profileLeftSideContent">
+    <span id="MessageBox"></span>
   </div>
  <?php include './inc/footer.inc.php'; ?>
