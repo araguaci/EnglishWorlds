@@ -6,8 +6,7 @@
   $buffer=str_replace("%TITLE%","Pokes",$buffer);
   echo $buffer;
   if (!$username) {
-    echo '<div class="alert alert-danger" role="alert">You must be logged in to view this page nigga!!</div>';
-    die();
+    LoginAlert();
   }
   $check_for_pokes = $db->query("SELECT * FROM pokes WHERE user_to='$username'");
   $poke = $check_for_pokes->fetch_assoc();
