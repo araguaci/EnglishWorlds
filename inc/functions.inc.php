@@ -34,4 +34,9 @@
       window.location = "'.$page.'";
     </script>';
   }
+  function LoginAlert()
+  {
+    echo '<div class="alert alert-danger" role="alert">You must be logged in to view this page nigga!!</div>';
+    die();
+  }
  ?>
