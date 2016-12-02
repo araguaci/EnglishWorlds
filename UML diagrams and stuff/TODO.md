@@ -6,4 +6,5 @@
 5- Change style of buttons to bootstrap :negative_squared_cross_mark:   
 6- Switch sources to CDN :negative_squared_cross_mark:   
 7- Change title from username to First and last name :negative_squared_cross_mark:
-8- Posts voting system :negative_squared_cross_mark: 
+8- Posts voting system :negative_squared_cross_mark:
+9- Ajax everything :negative_squared_cross_mark:
