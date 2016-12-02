@@ -1,5 +1,6 @@
 <?php
   require_once './inc/header.inc.php';
+
   if (isset($_GET['u'])) {
   $user = mysqli_real_escape_string($db, $_GET['u']);
   $buffer=ob_get_contents();
@@ -7,6 +8,9 @@
   // TODO: fix this bug
   $buffer=str_replace("%TITLE%","Message $user",$buffer);
   echo $buffer;
+  if (!$username) {
+    LoginAlert();
+  }
   if (ctype_alnum($user)) {
     // check user exists
     $check = $db->query("SELECT username FROM users WHERE username='$user'");
