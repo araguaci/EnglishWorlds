@@ -48,12 +48,13 @@
     <script src="./js/main.js" type="text/javascript"></script>
     <script src="./js/login.js" type="text/javascript"></script>
     <script src="./js/home.js" type="text/javascript"></script>
+    <script src="./js/profile.js" type="text/javascript"></script>
     <script src="./js/bootstrap.js"></script>
     <script src="./js/bootstrap.min.js"></script>
     <link rel="shortcut icon" href="./img/favicon.ico">
   </head>
   <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -127,6 +128,5 @@
         }
          ?>
          </div>
-        <!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
+      </div>
         </nav>
