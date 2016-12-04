@@ -21,64 +21,78 @@
   if ($senddata) {
     // If the form is submitted ....
     $password_query = $db->query("SELECT * FROM users WHERE username='$user'");
-    while ($row = $password_query->fetch_assoc()) {
-      $db_password = $row['password'];
-      // hash the old password before we check if it matches
-      $old_pasword_md5 = md5($old_password);
-      // Check whether old password equals $db_password
-      if ($old_password == $db_password) {
-        // Continue Changing the users password ...
-        if ($new_password == $repeat_password) {
-          if (strlen($new_password) <= 4) {
-            echo "Sorry! But your password must be more than 4 characters";
+    if ($password_query) {
+      while ($row = $password_query->fetch_assoc()) {
+        $db_password = $row['password'];
+        // hash the old password before we check if it matches
+        $old_pasword_md5 = md5($old_password);
+        // Check whether old password equals $db_password
+        if ($old_password == $db_password) {
+          // Continue Changing the users password ...
+          if ($new_password == $repeat_password) {
+            if (strlen($new_password) <= 4) {
+              echo "Sorry! But your password must be more than 4 characters";
+            } else {
+              // hash the new password before we add it to the database.
+              $new_password_md5 = md5($new_password);
+              $password_update_query = ("UPDATE users SET password='$new_password_md5' WHERE username='$username'");
+              echo "Success";
+            }
           } else {
-            // hash the new password before we add it to the database.
-            $new_password_md5 = md5($new_password);
-            $password_update_query = ("UPDATE users SET password='$new_password_md5' WHERE username='$username'");
-            echo "Success";
+            echo "Your two new passwords don't match!";
           }
         } else {
-          echo "Your two new passwords don't match!";
+          echo "The old password is incorrect!";
         }
-      } else {
-        echo "The old password is incorrect!";
       }
+    } else {
+      echo mysqli_error($db);
     }
+
   } else {
     // echo "Please submit some data!";
   }
   $updateinfo = @$_POST['updateinfo'];
   // First name, last name, and about the user query
   $get_info = $db->query("SELECT first_name, last_name, bio FROM users WHERE username='$username'");
-  $get_row = $get_info->fetch_assoc();
-  $db_first_name = $get_row['first_name'];
-  $db_last_name = $get_row['last_name'];
-  $db_bio = $get_row['bio'];
-  // Submit what the user types into the database.
-  if ($updateinfo) {
-    $firstname = strip_tags(@$_POST['fname']);
-    $lastname = strip_tags(@$_POST['lname']);
-    $bio = strip_tags(@$_POST['bio']);
-    if (strlen($firstname) < 3) {
-      echo "Your first name must be 3 or more characters long!";
-    } elseif (strlen($lastname) < 5) {
-      echo "Your last name must be 5 or more characters long!";
+  if ($get_info) {
+    $get_row = $get_info->fetch_assoc();
+    $db_first_name = $get_row['first_name'];
+    $db_last_name = $get_row['last_name'];
+    $db_bio = $get_row['bio'];
+    // Submit what the user types into the database.
+    if ($updateinfo) {
+      $firstname = strip_tags(@$_POST['fname']);
+      $lastname = strip_tags(@$_POST['lname']);
+      $bio = strip_tags(@$_POST['bio']);
+      if (strlen($firstname) < 3) {
+        echo "Your first name must be 3 or more characters long!";
+      } elseif (strlen($lastname) < 5) {
+        echo "Your last name must be 5 or more characters long!";
+      } else {
+        // Submit the form to the database.
+        $info_submit_query = $db->query("UPDATE users SET first_name='$firstname', last_name='$lastname', bio='$bio' WHERE username='$username'");
+        echo "Your Profile information has been updated";
+      }
     } else {
-      // Submit the form to the database.
-      $info_submit_query = $db->query("UPDATE users SET first_name='$firstname', last_name='$lastname', bio='$bio' WHERE username='$username'");
-      echo "Your Profile information has been updated";
+      // Do nothing
     }
   } else {
-    // Do nothing
+    echo mysqli_error($db);
   }
+
   // Check whether the user has uploaded a profile pic or not
   $check_pic = $db->query("SELECT profile_pic FROM users WHERE username = '$username'");
-  $get_pic_row = $check_pic->fetch_assoc();
-  $profile_pic_db = $get_pic_row['profile_pic'];
-  if ($profile_pic_db == "") {
-    $profile_pic = "img/default-pp.jpg";
+  if ($check_pic) {
+    $get_pic_row = $check_pic->fetch_assoc();
+    $profile_pic_db = $get_pic_row['profile_pic'];
+    if ($profile_pic_db == "") {
+      $profile_pic = "img/default-pp.jpg";
+    } else {
+      $profile_pic = "userdata/profile_pics/".$profile_pic_db;
+    }
   } else {
-    $profile_pic = "userdata/profile_pics/".$profile_pic_db;
+    echo mysqli_error($db);
   }
   // Profile Image upload script
   if (isset($_FILES['profilepic'])) {
@@ -92,8 +106,11 @@
         move_uploaded_file(@$_FILES["profilepic"]["tmp_name"], "userdata/profile_pic/$rand_dir_name/".$_FILES["profilepic"]["name"]);
         // echo "Uploaded and stored in: userdata/profilepic/$rand_dir_name".@$_FILES["profilepic"]["name"];
         $profile_pic_name = @$_FILES["profilepic"]["name"];
-        $profile_pic_query = $db->query("UPDATE users SET profile_pic='$rand_dir_name/$profile_pic_name' WHERE username = '$username'");
-        header("Location: account_settings.php");
+        if ($db->query("UPDATE users SET profile_pic='$rand_dir_name/$profile_pic_name' WHERE username = '$username'")) {
+          header("Location: account_settings.php");
+        } else {
+          echo mysqli_error($db);
+        }
       }
     } else {
       echo "Invalid File! Your image must be no larger than 1MB and it must be either a .jpg, .jpeg, .png or .gif";
@@ -106,12 +123,16 @@
  <form action="" method="post" enctype="multipart/form-data">
    <?php
    $check_pic = $db->query("SELECT profile_pic FROM users WHERE username = '$username'");
-   $get_pic_row = $check_pic->fetch_assoc();
-   $profile_pic_db = $get_pic_row['profile_pic'];
-   if (@$profile_pic_db == NULL) {
-     $profile_pic = "img/default-pp.jpg";
+   if ($check_pic) {
+     $get_pic_row = $check_pic->fetch_assoc();
+     $profile_pic_db = $get_pic_row['profile_pic'];
+     if (@$profile_pic_db == NULL) {
+       $profile_pic = "img/default-pp.jpg";
+     } else {
+       $profile_pic = "userdata/profile_pic/".$profile_pic_db;
+     }
    } else {
-     $profile_pic = "userdata/profile_pic/".$profile_pic_db;
+     echo mysqli_error($db);
    }
     ?>
    <img src="<?php echo $profile_pic; ?>" width="70" alt="<?php echo $username; ?>" />
