@@ -5,6 +5,9 @@
 4- Add tooltips across the site :negative_squared_cross_mark:   
 5- Change style of buttons to bootstrap :negative_squared_cross_mark:   
 6- Switch sources to CDN :negative_squared_cross_mark:   
-7- Change title from username to First and last name :negative_squared_cross_mark:
-8- Posts voting system :negative_squared_cross_mark:
-9- Ajax everything :negative_squared_cross_mark:
+7- Change title from username to First and last name :negative_squared_cross_mark:  
+8- Posts voting system :negative_squared_cross_mark:  
+9- Ajax everything :negative_squared_cross_mark:  
+10- Store passwords in the databases with hashed triple DES encrypted token algorithm :negative_squared_cross_mark:  
+11- Write cross platform installation guide :negative_squared_cross_mark:  
+12- Log SQL query errors rather than echoing out using mysqli_error() function :negative_squared_cross_mark:  
