@@ -11,3 +11,4 @@
 10- Store passwords in the databases with hashed triple DES encrypted token algorithm :negative_squared_cross_mark:  
 11- Write cross platform installation guide :negative_squared_cross_mark:  
 12- Log SQL query errors rather than echoing out using mysqli_error() function :negative_squared_cross_mark:  
+13- Use mysqli_num_rows before any while loop data selection :negative_squared_cross_mark:  
