@@ -23,34 +23,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <base href="http://localhost/English/" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>%TITLE%</title>
-    <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen">
-    <link rel="stylesheet" href="./css/profile.css" media="screen" title="no title">
-    <link rel="stylesheet" href="./css/reset.css" media="screen" title="no title">
-    <link rel="stylesheet" href="./css/master.css" media="screen" title="no title">
-    <link rel="stylesheet" href="./css/blue.css" media="screen" title="no title">
-    <link rel="stylesheet" href="./css/main.css" media="screen" title="no title">
-    <link rel="stylesheet" href="./css/home.css" media="screen" title="no title">
-    <link rel="stylesheet" href="./css/bootstrap.min.css" media="screen" title="no title">
-    <link rel="stylesheet" href="./css/bootstrap.css" media="screen" title="no title">
-    <link rel="stylesheet" href="./css/pikaday.css" media="screen" title="no title">
-    <link rel="stylesheet" href="./css/login.css" media="screen" title="no title">
-    <link rel="stylesheet" href="./css/messages.css" media="screen" title="no title">
-    <script src="./js/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css" media="screen" title="no title">
+    <link rel="stylesheet" type="text/css" href="./css/profile.css" media="screen" title="no title">
+    <link rel="stylesheet" type="text/css" href="./css/reset.css" media="screen" title="no title">
+    <link rel="stylesheet" type="text/css" href="./css/master.css" media="screen" title="no title">
+    <link rel="stylesheet" type="text/css" href="./css/blue.css" media="screen" title="no title">
+    <link rel="stylesheet" type="text/css" href="./css/main.css" media="screen" title="no title">
+    <link rel="stylesheet" type="text/css" href="./css/home.css" media="screen" title="no title">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" media="screen" title="no title">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.css" media="screen" title="no title">
+    <link rel="stylesheet" type="text/css" href="./css/pikaday.css" media="screen" title="no title">
+    <link rel="stylesheet" type="text/css" href="./css/login.css" media="screen" title="no title">
+    <link rel="stylesheet" type="text/css" href="./css/messages.css" media="screen" title="no title">
+    <script src="./js/jquery.js" type="text/javascript"></script>
     <script src="./js/jquery-ui.js" type="text/javascript"></script>
-    <script src="./js/jquery.min.js"></script>
-    <script src="./js/jquery-color.js"></script>
-    <script src="./js/script.js"></script>
-    <script src="./js/messages.js"></script>
+    <script src="./js/jquery.min.js" type="text/javascript"></script>
+    <script src="./js/jquery-color.js" type="text/javascript"></script>
+    <script src="./js/script.js" type="text/javascript"></script>
+    <script src="./js/messages.js" type="text/javascript"></script>
     <script src="./js/placeholder-js.js" type="text/javascript"></script>
     <script src="./js/main.js" type="text/javascript"></script>
     <script src="./js/login.js" type="text/javascript"></script>
     <script src="./js/home.js" type="text/javascript"></script>
     <script src="./js/profile.js" type="text/javascript"></script>
-    <script src="./js/bootstrap.js"></script>
-    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/bootstrap.js" type="text/javascript"></script>
+    <script src="./js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="shortcut icon" href="./img/favicon.ico">
   </head>
   <body>
@@ -117,7 +118,7 @@
          ?>
         <?php
          if ($username){
-          echo '<form class="navbar-form navbar-left" role="search" action="./inc/header.inc.php" method="post">
+          echo '<form class="navbar-form navbar-left" role="search" action="/inc/header.inc.php" method="post">
             <div class="form-group">
               <input type="text" name="search" class="form-control" placeholder="Search..." title="Search for people, posts and more...">
             </div>
