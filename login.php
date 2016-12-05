@@ -32,7 +32,7 @@
   if (isset($_POST["username"]) && isset($_POST["password"])) {
     $username = mysqli_real_escape_string($db, $_POST["username"]);
     $password = mysqli_real_escape_string($db, $_POST["password"]);
-    $sql = "SELECT * FROM users WHERE username = '".$username."' AND password = '".md5($password)."'";
+    $sql = "SELECT * FROM users WHERE username = '$username' AND password = '".password_verify($password)."'";
     $result = mysqli_query($db, $sql);
     $num_row = mysqli_num_rows($result);
     if ($num_row > 0) {

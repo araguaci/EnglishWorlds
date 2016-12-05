@@ -25,7 +25,10 @@
       while ($row = $password_query->fetch_assoc()) {
         $db_password = $row['password'];
         // hash the old password before we check if it matches
-        $old_pasword_md5 = md5($old_password);
+        $options = [
+          'cost' => 11 // TODO: change this for production.
+        ];
+        $old_hashed_password = password_hash($old_password, PASSWORD_BCRYPT, $options);
         // Check whether old password equals $db_password
         if ($old_password == $db_password) {
           // Continue Changing the users password ...
@@ -34,8 +37,8 @@
               echo "Sorry! But your password must be more than 4 characters";
             } else {
               // hash the new password before we add it to the database.
-              $new_password_md5 = md5($new_password);
-              $password_update_query = ("UPDATE users SET password='$new_password_md5' WHERE username='$username'");
+              $new_hashed_password = password_hash($new_password, PASSWORD_BCRYPT, $options);
+              $password_update_query = $db->query("UPDATE users SET password='$new_hashed_password' WHERE username='$username'");
               echo "Success";
             }
           } else {

@@ -73,8 +73,11 @@
               if (strlen($pswd)>30||strlen($pswd)<5) {
                 echo "Your password must be between 5 and 30 characters long!";
               } else {
-                // encrypt password using md5 before sending to database
-                $pswd = md5($pswd);
+                // Hash the passwords before sending them to the database.
+                $options = [
+                  'cost' => 11 // TODO: Change this number and add a salt for production
+                ];
+                $pswd = password_hash($pswd, PASSWORD_BCRYPT, $options);
                 $username_with_capitalized_first_letter = capitalize($un);
                 $query = $db->query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', STR_TO_DATE('$birthdate','%M %d,%Y'), '$gender', NULL, NULL, NULL)");
                 die("Welcome $username_with_capitalized_first_letter Login to your account to start using the website");
@@ -97,20 +100,21 @@
   }
   // User Login Code.
   if (isset($_POST["user_login"]) && isset($_POST["password_login"])) {
-    $do_login = true;
-    include_once 'do_login.php';
     $user_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["user_login"]); // filter everything but numbers and letters.
     $password_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["password_login"]); // filter everything but numbers and letters.
-    $password_login_md5 = md5($password_login);
-    $sql = $db->query("SELECT id FROM users WHERE username='$user_login' AND password='$password_login_md5' LIMIT 1") or die($db->error);
-    if ($sql->num_rows) {
-      while ($row = mysqli_fetch_array($sql)) {
-        $id = $row["id"];
-      }
-        $_SESSION["user_login"] = $user_login;
-        redirect("home.php");
-        exit();
-    } else {
+    $options = [
+      'cost' => 11
+    ];
+    $sql = $db->query("SELECT password FROM users WHERE username='$user_login' LIMIT 1") or die($db->error);
+    while ($row = mysqli_fetch_array($sql)) {
+      $hash = $row['password'];
+    }
+    if (password_verify($password_login, $hash)) {
+      $_SESSION["user_login"] = $user_login;
+      redirect("home.php");
+      exit();
+    }
+    else {
       echo "Login incorrect, try again";
       exit();
     }
