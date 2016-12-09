@@ -4,6 +4,10 @@
 #PostingForm input[type="submit"]{
   float: right;
 }
+.PostContainer {
+  width: 600px;
+  border: 1px solid grey;
+}
 .PostedBy a{
   font-weight: 800;
   color: #000;

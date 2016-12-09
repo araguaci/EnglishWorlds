@@ -11,4 +11,4 @@ CREATE TABLE `posts` (
   `added_by` varchar(255) NOT NULL,
   `user_posted_to` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=70 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

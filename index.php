@@ -83,7 +83,7 @@
                 die("Welcome $username_with_capitalized_first_letter Login to your account to start using the website");
               }
             }
-          }else {
+          } else {
             echo "Your passwords don't match!";
           }
         } else {
@@ -103,7 +103,7 @@
     $user_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["user_login"]); // filter everything but numbers and letters.
     $password_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["password_login"]); // filter everything but numbers and letters.
     $options = [
-      'cost' => 11
+      'cost' => 11 // TODO: change this for production.
     ];
     $sql = $db->query("SELECT password FROM users WHERE username='$user_login' LIMIT 1") or die($db->error);
     while ($row = mysqli_fetch_array($sql)) {

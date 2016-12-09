@@ -13,4 +13,4 @@ CREATE TABLE `pvt_messages` (
   `opened` enum('yes','no') NOT NULL,
   `Deleted` enum('yes','no') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

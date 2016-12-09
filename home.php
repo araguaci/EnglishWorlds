@@ -60,11 +60,10 @@
         $added_by = $row['added_by'];
         $user_posted_to = $row['user_posted_to'];
         $timeAgo = new TimeAgo();
-        echo '<div class="PostedBy" ><a href='."$added_by".'>'.capitalize($first_name).' '.capitalize($last_name).'</a></div>
+        echo '<div class="PostContainer"><div class="PostedBy" ><a href='."$added_by".'>'.capitalize($first_name).' '.capitalize($last_name).'</a></div>
         <span style="margin-left: 1em;">'.$timeAgo->inWords($time_added, $current_time).'</span>
         <br>
-        '.$body.'
-        <hr>';
+        '.$body.'<br><input type="text" name="comment" placeholder="Write a comment..."><hr></div>';
       }
      ?>
     </div>

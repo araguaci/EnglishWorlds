@@ -18,4 +18,4 @@ CREATE TABLE `users` (
   `profile_pic` text,
   `friend_array` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
