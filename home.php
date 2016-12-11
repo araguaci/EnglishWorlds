@@ -24,6 +24,13 @@
   $first_name = $readname['first_name'];
   $last_name = $readname['last_name'];
   $current_time = date('Y/m/d H:i:s', time());
+  // Insert comment to DB
+  $CommentBody = $_POST['CommentBody'];
+  if ($db->query("INSERT INTO comments VALUES(NULL, '$CommentBody', '1', '1')")) {
+    echo "Query successful";
+  } else {
+    echo "Query failed";
+  }
   ?>
     <center>
       <div class="container">
@@ -60,10 +67,24 @@
         $added_by = $row['added_by'];
         $user_posted_to = $row['user_posted_to'];
         $timeAgo = new TimeAgo();
-        echo '<div class="PostContainer"><div class="PostedBy" ><a href='."$added_by".'>'.capitalize($first_name).' '.capitalize($last_name).'</a></div>
-        <span style="margin-left: 1em;">'.$timeAgo->inWords($time_added, $current_time).'</span>
+        echo '
+        <div class="PostContainer">
+          <div class="PostedBy" >
+            <a href='."$added_by".'>'.capitalize($first_name).' '.capitalize($last_name).'</a>
+          </div>
+          <span style="margin-left: 1em;">'.$timeAgo->inWords($time_added, $current_time).'</span>
         <br>
-        '.$body.'<br><input type="text" name="comment" placeholder="Write a comment..."><hr></div>';
+        '.$body.'
+        <br>
+        <br>
+        <form action="home.php" method="post" id="CommentForm">
+          <input type="text" name="CommentBody" placeholder="Write a comment....">
+          <button id="PostComment">Post</button>
+        </form>
+        <script src="./js/home.js"></script
+        <hr>
+        </div>
+        ';
       }
      ?>
     </div>
