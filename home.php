@@ -26,11 +26,14 @@
   $current_time = date('Y/m/d H:i:s', time());
   // Insert comment to DB
   $CommentBody = $_POST['CommentBody'];
-  if ($db->query("INSERT INTO comments VALUES(NULL, '$CommentBody', '1', '1')")) {
+  $db->query("INSERT INTO comments VALUES(NULL, '$CmmentBody', '1', '1')")
+  /*
+  if ($db->query("INSERT INTO comments VALUES(NULL, '$CmmentBody', '1', '1')")) {
     echo "Query successful";
   } else {
     echo "Query failed";
   }
+  */
   ?>
     <center>
       <div class="container">
@@ -48,7 +51,7 @@
           <div class="tab-content">
               <div class="tab-pane fade in active" id="Post">
                 <form action="home.php" method="post">
-                  <input type="text" name="PostText" class="input-medium" placeholder="Share your thoughts">
+                  <input type="text" name="PostText" class="input-medium" placeholder="Share your thoughts" autocomplete="off">
                   <button class="btn btn-sm" type="submit">Post</button>
                 </form>
               </div>
@@ -78,7 +81,7 @@
         <br>
         <br>
         <form action="home.php" method="post" id="CommentForm">
-          <input type="text" name="CommentBody" placeholder="Write a comment....">
+          <input type="text" name="CommentBody" placeholder="Write a comment...." autocomplete="off">
           <button id="PostComment">Post</button>
         </form>
         <script src="./js/home.js"></script
