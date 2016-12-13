@@ -1,36 +1,6 @@
 <?php
   ob_start();
   require_once './inc/header.inc.php';
-  /*
-  if(!file_exists(EI_CONFIG_FILE_PATH)){
-    header('location: install/start.php');
-    exit;
-  }
-  if (!isset($_COOKIE['firsttime']))
-  {
-      setcookie("firsttime", "no");
-      header('Location: ./install/start.php');
-      exit();
-  } else {
-    // TODO: do something xD
-  }
-  */
-  if(isset($_COOKIE['junaid-hassan-alvi'] ['username']) && isset($_COOKIE['junaid-hassan-alvi'] ['password']))
-  {
-      $username = $_COOKIE['junaid-hassan-alvi'] ['username'];
-      $password = $_COOKIE['junaid-hassan-alvi'] ['password'];
-  }
-  /*
-  if($_POST['setcookie']) {
-     setcookie("junaid-hassan-alvi[username]", $username, time() + 3600);
-     setcookie("junaid-hassan-alvi[password]", $password, time() + 3600);
-   }
-   if(isset($_COOKIE['junaid-hassan-alvi'] ['username']) && isset($_COOKIE['junaid-hassan-alvi'] ['password']))
-    {
-        setcookie("junaid-hassan-alvi[username]", time()- 3600);
-        setcookie("junaid-hassan-alvi[password]", time()- 3600);
-    }
-    */
   if ($username) {
     header("location: home.php");
   } else {

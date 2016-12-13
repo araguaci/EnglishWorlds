@@ -22,6 +22,10 @@
          <input type="password" name="password" class="form-control" id="password" placeholder="Password">
        </div>
        <div class="form-group">
+         <label for="RememberMe">Keep me logged in:</label>
+         <input type="checkbox" name="RememberMe" class="form-control" id="RememberMe">
+       </div>
+       <div class="form-group">
          <input type="button" name="login" id="login" class="btn btn-success" value="Login">
        </div>
        <div id="error"></div>

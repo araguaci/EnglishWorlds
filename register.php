@@ -5,7 +5,9 @@
         <h2>Already a member?<br><br> Sign in below!</h2>
         <form action="index.php" name="loginForm" method="POST" onsubmit="return validateLoginForm()">
           <input type="text" name="user_login" size="25" placeholder="Username" required="true"><br><br>
-          <input type="password" name="password_login" size="25" placeholder="Password" required="true"><br><br>
+          <input type="password" name="password_login" size="25" placeholder="Password" required="true"><br>
+          Keep me logged in :
+          <input type="checkbox" name="RememberMe" value="1">
           <input type="submit" class="btn btn-sm" name="Login" value="Login">
         </form>
       </td>
