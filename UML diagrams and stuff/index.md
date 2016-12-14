@@ -34,3 +34,8 @@
           Loggin In  
           Checking the log  
           Logging out  
+          Remember Me  
+        Forgot username/password ?  
+          Username  
+          Resetting password  
+        

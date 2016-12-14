@@ -20,3 +20,4 @@ phpunit.xml
 *.jpg
 # Ignore test directory
 /test/*
+PersonalTasks.md
