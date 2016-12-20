@@ -13,3 +13,5 @@
 12- Log SQL query errors rather than echoing out using mysqli_error() function :negative_squared_cross_mark:  
 13- Use mysqli_num_rows before any while loop data selection :negative_squared_cross_mark:  
 14- Patch SQL Injection on GET method forms :negative_squared_cross_mark:  
+15- Implement Infinite posts scrolling through JQuery on the home page :negative_squared_cross_mark:  
+16- Implement a way for deleting posts :negative_squared_cross_mark:  

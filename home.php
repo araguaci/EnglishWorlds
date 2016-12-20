@@ -26,14 +26,11 @@
   $current_time = date('Y/m/d H:i:s', time());
   // Insert comment to DB
   $CommentBody = $_POST['CommentBody'];
-  $db->query("INSERT INTO comments VALUES(NULL, '$CmmentBody', '1', '1')")
-  /*
-  if ($db->query("INSERT INTO comments VALUES(NULL, '$CmmentBody', '1', '1')")) {
-    echo "Query successful";
+  if ($CommentBody == '') {
+      // Do nothing
   } else {
-    echo "Query failed";
+      $db->query("INSERT INTO comments VALUES(NULL, '$CommentBody', '1', '1')");
   }
-  */
   ?>
     <center>
       <div class="container">
@@ -82,7 +79,7 @@
         <br>
         <form action="home.php" method="post" id="CommentForm">
           <input type="text" name="CommentBody" placeholder="Write a comment...." autocomplete="off">
-          <button id="PostComment">Post</button>
+          <button id="PostComment"">Post</button>
         </form>
         <script src="./js/home.js"></script
         <hr>
@@ -93,3 +90,14 @@
     </div>
   </center>
 <?php include './inc/footer.inc.php'; ?>
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+      <li role="presentation" class="divider"></li>
+      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+    </ul>
+  </div>

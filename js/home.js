@@ -11,3 +11,9 @@ $('#PostComment').click(function(){
    }
    );
 });
+$(document).ready(function() {
+    // TODO: Work on task N° 15
+    $(window).onload(function InfiniteScrolling() {
+        var height = document.getElementsByTagName('')
+    })
+})
