@@ -9,7 +9,7 @@ CREATE TABLE `users` (
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(32) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `sign_up_date` date NOT NULL,
   `activated` enum('0','1') NOT NULL,
   `birthdate` date NOT NULL,
