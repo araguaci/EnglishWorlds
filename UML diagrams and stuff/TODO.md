@@ -15,3 +15,6 @@
 14- Patch SQL Injection on GET method forms :negative_squared_cross_mark:  
 15- Implement Infinite posts scrolling through JQuery on the home page :negative_squared_cross_mark:  
 16- Implement a way for deleting posts :negative_squared_cross_mark:  
+17- Instant Messaging tab :negative_squared_cross_mark:  
+18- Title bar for notofocations :negative_squared_cross_mark:  
+19- Chat groups tab for fast joining :negative_squared_cross_mark:  
