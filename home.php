@@ -4,6 +4,7 @@
   if (!$username) {
     LoginAlert();
   }
+  // Sending the buffer
   $buffer = ob_get_contents();
   ob_end_clean();
   $buffer=str_replace("%TITLE%","Home Feed",$buffer);
