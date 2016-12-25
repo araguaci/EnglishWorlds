@@ -7,6 +7,7 @@
   echo $buffer;
   if (!$username) {
     LoginAlert();
+    // Okay ket's test this out'
   }
   echo "<h2>My unread messages:</h2>";
   // Grab the messages from the logged in user
