@@ -99,7 +99,6 @@
         </ul>
         <?php
           if (!$username) {
-            include_once 'autologin.php';
             echo '<form class="navbar-form navbar-right" action="index.html" method="post" role="form">
               <div class="input-group">
                 <span class="input-group-addon">

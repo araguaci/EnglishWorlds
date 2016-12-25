@@ -1,6 +1,5 @@
 <?php
   require_once './inc/header.inc.php';
-
   if (isset($_GET['u'])) {
   $user = mysqli_real_escape_string($db, $_GET['u']);
   $buffer=ob_get_contents();
@@ -17,7 +16,6 @@
     if ($check->num_rows===1 && $user != "about") {
       $get = $check->fetch_assoc();
       $theUserName = $get['username'];
-
       // Check user isn't sending themselves a private message
       if ($user != $username) {
         if (isset($_POST['submit'])) {

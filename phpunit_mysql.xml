@@ -5,13 +5,11 @@
           <var name="db_username" value="root"/>
           <var name="db_password" value=""/>
       </php>
-
       <testsuites>
           <testsuite name="English Test suite">
               <directory>./Tests/</directory>
           </testsuite>
       </testsuites>
-
       <filter>
           <whitelist>
               <directory>./</directory>
