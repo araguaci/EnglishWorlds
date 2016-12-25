@@ -17,4 +17,3 @@ if (isset($_SESSION["user_login"])) {
    echo "You must enter something in the post field before you can send it ....";
  }
  ?>
-Alright let's hope this will work

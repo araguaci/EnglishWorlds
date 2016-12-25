@@ -3,3 +3,4 @@
   session_destroy();
   header("Location: index.php");
  ?>
+<link rel="shortcut icon" href=".ico">
