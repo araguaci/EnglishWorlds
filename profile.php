@@ -141,22 +141,7 @@
     elseif (isset($_POST['cancelrequest'])) {
       $cancelrequest = $_POST['cancelrequest'];
       $cancelrequestquery = $db->query("DELETE FROM friend_requests WHERE user_from = '$username' AND user_to = '$user'");
-    } /* elseif (isset($_POST['poke'])) {
-      // Poke code
-      $check_if_poked = $db->query("SELECT * FROM pokes WHERE user_to='$user' && user_from='$username'");
-      $num_rows = $check_if_poked->num_rows;
-      if ($num_rows == 1) {
-        echo "You must wait to be poked back";
-      } else {
-        if ($username == $user) {
-          echo "You can not poke yourself";
-        } else {
-          $poke_user = $db->query("INSERT INTO pokes VALUES(NULL, '$username', '$user')");
-          echo "$user has been poked";
-        }
-      }
-    } */
-   // Check if the logged in user have a pending friend request
+    }
    $friendRequestCheckQuery = $db->query("SELECT id FROM friend_requests WHERE user_from = '$username' AND user_to = '$user'");
    $friendRequestCheckQueryGetRow = $friendRequestCheckQuery->fetch_assoc();
    $getCheckResult = $friendRequestCheckQueryGetRow['id'];
@@ -237,3 +222,4 @@
     <span id="MessageBox"></span>
   </div>
  <?php include './inc/footer.inc.php'; ?>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
