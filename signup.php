@@ -59,27 +59,9 @@
       </div>
     </div>
   </div>
-    <!-- <div id="Registration" style="width: 900px; float: center; margin: 0px auto 0px auto;">
-            <h2>Sign Up Below!</h2>
-            <form action="index.php" name="Registration" method="POST">
-              <input type="text" name="fname" size="25" placeholder="First Name" onKeyup="checkRegister()" onblur="focusRegister()"><span class="glyphicon glyphicon-exclamation-sign hidden" aria-hidden="true" hidden="false"></span><br><br>
-              <input type="text" name="lname" size="25" placeholder="Last Name" onKeyup="checkRegister()" onblur="focusRegister()"><br><br>
-              <input type="text" name="username" size="25" placeholder="Username" onKeyup="checkRegister()" onblur="focusRegister()"><br><br>
-              <input type="text" name="email" size="25" placeholder="Email Address" onKeyup="checkRegister()" onblur="focusRegister()"><br><br>
-              <input type="password" name="password" size="25" placeholder="Password" onKeyup="checkRegister()" onblur="focusRegister()"><br><br>
-              <input type="password" name="password2" size="25" placeholder="Confirm your password" onKeyup="checkRegister()" onblur="focusRegister()"><br><br>
-              <input type="text" name="birthdate" id="datepicker" value="2 Oct 1994" onKeyup="checkRegister()" onblur="focusRegister()"><br><br>
-              <div>I am:
-                <label class="radio-inline"><input type="radio" name="optradio" value="m">Male</label>
-                <label class="radio-inline"><input type="radio" name="optradio" value="f">Female</label>
-              </div><br>
-              <input type="submit" id="register" class="btn btn-sm" name="reg" value="Sign Up!" disabled="disabled"> -->
-              <?php function fillFields()
-              {
+              <?php function fillFields() {
                 echo '<div class="alert alert-danger" role="alert">Please fill in all of the fields</div>';
               } ?>
-            <!-- </form>
-    </div> -->
     <script src="./js/pikaday.js"></script>
     <script>
     var picker = new Pikaday(

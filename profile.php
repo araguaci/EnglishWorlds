@@ -26,7 +26,7 @@
         $first_name = $get['first_name'];
       } else {
         // If user doesn't exist then redirect to index
-        echo "<meta http-equiv=\"refresh\" content=\"0; url=http://localhost/English/index.php\">";
+       // TODO : redirect to index
         exit();
       }
     }
