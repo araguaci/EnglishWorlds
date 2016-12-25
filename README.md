@@ -14,6 +14,7 @@ Join the developers discussion at [Gitter](https://gitter.im/EnglishDz/Lobby)
 [![GitHub contributors][contributors-image]][contributors-url]
 [![license][license-image]][license-url]
 [![Open Issues][OpenIssues-Image]][OpenIssues-URL]
+[![Code Climate](https://codeclimate.com/github/CaddyDz/English/badges/gpa.svg)](https://codeclimate.com/github/CaddyDz/English)
 
 [prs-merged-url]: https://github.com/CaddyDz/English/pulls?q=is:pr+is:merged
 [prs-merged-image]: https://img.shields.io/github/issues-pr-closed-raw/caddydz/english.svg?label=merged+PRs
