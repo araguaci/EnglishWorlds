@@ -25,8 +25,7 @@
         $theUserName = $get['username'];
         $first_name = $get['first_name'];
       } else {
-        // If user doesn't exist then redirect to index
-       // TODO : redirect to index
+        //  TODO: If user doesn't exist then redirect to index
         exit();
       }
     }
@@ -42,7 +41,6 @@
       echo $body, $date_added, $added_by, $user_posted_to;
       $sqlCommand = "INSERT INTO posts VALUES(NULL, '$body', '$date_added', NOW(), '$added_by', '$user_posted_to')";
       $query = $db->query($sqlCommand);
-      // or die(mysql_error());
     } else {
       echo "Post can not be empty";
     }
@@ -222,4 +220,3 @@
     <span id="MessageBox"></span>
   </div>
  <?php include './inc/footer.inc.php'; ?>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
