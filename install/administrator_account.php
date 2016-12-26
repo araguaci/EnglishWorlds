@@ -11,26 +11,26 @@
 ################################################################################
 
 	session_start();
-	
-	require_once('include/shared.inc.php');    
-    require_once('include/settings.inc.php');    
+
+	require_once('include/shared.inc.php');
+    require_once('include/settings.inc.php');
 	require_once('include/functions.inc.php');
-	require_once('include/languages.inc.php');	
+	require_once('include/languages.inc.php');
 
 	$task = isset($_POST['task']) ? prepare_input($_POST['task']) : '';
 	$passed_step = isset($_SESSION['passed_step']) ? (int)$_SESSION['passed_step'] : 0;
 	$focus_field = 'admin_username';
 	$error_msg = '';
-	
+
 	// handle previous steps
 	// -------------------------------------------------
 	if($passed_step >= 3){
 		// OK
 	}else{
 		header('location: start.php');
-		exit;				
+		exit;
 	}
-	
+
 	// handle form submission
 	// -------------------------------------------------
 	if($task == 'send'){
@@ -41,7 +41,7 @@
 			$_SESSION['admin_password'] = '';
 			$_SESSION['admin_email'] = '';
 			$_SESSION['password_encryption'] = '';
-			
+
 			$_SESSION['passed_step'] = 4;
 			header('location: ready_to_install.php');
 			exit;
@@ -56,13 +56,13 @@
 		// -------------------------------------------------
 		if($admin_username == ''){
 			$focus_field = 'admin_username';
-			$error_msg = lang_key('alert_admin_username_empty');	
+			$error_msg = lang_key('alert_admin_username_empty');
 		}else if($admin_password == ''){
 			$focus_field = 'admin_password';
-			$error_msg = lang_key('alert_admin_password_empty');				
+			$error_msg = lang_key('alert_admin_password_empty');
 		}else if($admin_email != '' && !is_email($admin_email)){
 			$focus_field = 'admin_email';
-			$error_msg = lang_key('alert_admin_email_wrong');				
+			$error_msg = lang_key('alert_admin_email_wrong');
 		}else{
 
 			if(EI_MODE == 'demo'){
@@ -75,7 +75,7 @@
 				$_SESSION['admin_username'] = $admin_username;
 				$_SESSION['admin_password'] = $admin_password;
 				$_SESSION['admin_email'] = $admin_email;
-				$_SESSION['password_encryption'] = $password_encryption;				
+				$_SESSION['password_encryption'] = $password_encryption;
 
 				$_SESSION['passed_step'] = 4;
 				header('location: ready_to_install.php');
@@ -88,15 +88,15 @@
 		$admin_password = isset($_SESSION['admin_password']) ? $_SESSION['admin_password'] : '';
 		$password_encryption = isset($_SESSION['password_encryption']) ? $_SESSION['password_encryption'] : EI_PASSWORD_ENCRYPTION_TYPE;
 		$install_type = isset($_SESSION['install_type']) ? $_SESSION['install_type'] : '';
-		
+
 		// skip administrator settings
 		if($install_type == 'un-install'){
 			$_SESSION['passed_step'] = 3;
-			header('location: database_settings.php');					
+			header('location: database_settings.php');
 		}
 	}
 
-?>	
+?>
 
 <!DOCTYPE html>
 <html>
@@ -128,19 +128,19 @@
 <div id="main">
 	<h1><?php echo lang_key('new_installation_of'); ?> <?php echo EI_APPLICATION_NAME.' '.EI_APPLICATION_VERSION;?>!</h1>
 	<h2 class="sub-title"><?php echo lang_key('sub_title_message'); ?></h2>
-	
+
 	<div id="content">
 		<?php
-			draw_side_navigation(4);		
+			draw_side_navigation(4);
 		?>
 		<div class="central-part">
 			<h2><?php echo lang_key('step_4_of'); ?> - <?php echo lang_key('administrator_account'); ?></h2>
 			<h3><?php echo lang_key('admin_access_data'); ?></h3>
 
-			<form action="administrator_account.php" method="post">
+			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 			<input type="hidden" name="task" value="send" />
 			<input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>" />
-			
+
 			<?php
 				if(!empty($error_msg)){
 					echo '<div class="alert alert-error">'.$error_msg.'</div>';
@@ -156,7 +156,7 @@
 			<tr>
 				<td width="250px">&nbsp;<?php echo lang_key('admin_login'); ?>&nbsp;<span class="star">*</span></td>
 				<td><input name="admin_username" id="admin_username" class="form_text" size="28" maxlength="22" value="<?php echo $admin_username; ?>" onfocus="textboxOnFocus('notes_admin_username')" onblur="textboxOnBlur('notes_admin_username')" <?php if(EI_MODE != 'debug') echo 'autocomplete="off"'; ?> placeholder="<?php if(EI_MODE == 'demo') echo 'demo: test'; ?>" /></td>
-				<td rowspan="6" valign="top">					
+				<td rowspan="6" valign="top">
 					<div id="notes_admin_email" class="notes_container">
 						<h4><?php echo lang_key('admin_email'); ?></h4>
 						<p><?php echo lang_key('admin_email_info'); ?></p>
@@ -170,7 +170,7 @@
 						<p><?php echo lang_key('admin_password_info'); ?></p>
 					</div>
 					<img class="loading_img" src="images/ajax_loading.gif" alt="<?php echo lang_key('loading'); ?>..." />
-					<div id="notes_message" class="notes_container"></div>					
+					<div id="notes_message" class="notes_container"></div>
 				</td>
 			</tr>
 			<tr>
@@ -190,10 +190,10 @@
 						<option <?php echo (($password_encryption == 'MD5') ? 'selected="selected"' : ''); ?> value="MD5">MD5</option>
 						</select>
 					</td>
-				</tr>							
+				</tr>
 				<?php } ?>
 			<?php }else{ ?>
-				<tr><td colspan="2"><?php echo lang_key('administrator_account_skipping'); ?></td></tr>			
+				<tr><td colspan="2"><?php echo lang_key('administrator_account_skipping'); ?></td></tr>
 			<?php } ?>
 			<tr><td colspan="2" nowrap height="50px">&nbsp;</td></tr>
 			<tr>
@@ -202,21 +202,21 @@
 					&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="submit" class="form_button" value="<?php echo lang_key('continue'); ?>" />
 				</td>
-			</tr>                        
+			</tr>
 			</table>
-			</form>                        
+			</form>
 		</div>
 		<div class="clear"></div>
 	</div>
-	
-	<?php include_once('include/footer.inc.php'); ?>        
+
+	<?php include_once('include/footer.inc.php'); ?>
 
 </div>
 
 <script type="text/javascript">
 	function bodyOnLoad(){
 		setFocus("<?php echo $focus_field; ?>");
-	}	
+	}
 </script>
 </body>
 </html>

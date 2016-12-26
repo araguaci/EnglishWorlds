@@ -70,7 +70,7 @@
 
 			<p><?php echo lang_key('we_are_ready_to_installation_text'); ?></p>
 
-			<form method="post" action="ready_to_install.php">
+			<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 			<input type="hidden" name="task" value="send" />
 			<input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>" />
 

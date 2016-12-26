@@ -167,7 +167,7 @@
 			<div class="central-part">
 			<h2><?php echo lang_key('step_2_of'); ?> - <?php echo lang_key('server_requirements'); ?></h2>
 
-			<form action="server_requirements.php" method="post">
+			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 			<input type="hidden" name="task" value="send" />
 			<input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>" />
 

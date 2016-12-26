@@ -38,7 +38,7 @@
           $setopened_query = $db->query("UPDATE pvt_messages SET opened='yes' WHERE msg_title='$msg_title'");
         }
         echo '
-        <form action="my_messages.php" name="'.$msg_title.'" method="POST">
+        <form action="'.$_SERVER['PHP_SELF'].'" name="'.$msg_title.'" method="POST">
           <b><a href="'.$user_from.'">'.$user_from.'</a></b>
           <input type="button" name="openmsg" value="'.$msg_title.'" onclick="javascript:toggle()">
           <input type="submit" name="setopened_'.$id.'" value="I\'ve read this">
@@ -73,7 +73,7 @@
         echo substr($msg_body, 0, 150).' ....';
       } else {
         $msg_body = $msg_body;
-          echo '<form action="my_messages.php" name="'.$msg_title.'" method="POST">
+          echo '<form action="' . echo $_SERVER['PHP_SELF'] . '" name="'.$msg_title.'" method="POST">
             <b><a href="'.$user_from.'">'.$user_from.'</a></b>
             <input type="button" name="openmsg" value="'.$msg_title.'" onclick="javascript:toggle()">
             <input type="submit" name="DeleteMessage_'.$id.'" value="X" title="Delete message">
