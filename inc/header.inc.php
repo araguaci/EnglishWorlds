@@ -23,7 +23,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <base href="http://localhost/English/" />
+    <base href="http://127.0.0.1/English/" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>%TITLE%</title>

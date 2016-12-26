@@ -13,7 +13,6 @@
     if ($check->num_rows===1 && $user != "about") {
       $get = $check->fetch_assoc();
       $theUserName = $get['username'];
-
       // Check user isn't sending themselves a private message
       if ($user != $username) {
         if (isset($_POST['submit'])) {
