@@ -21,7 +21,7 @@
         $last_name = $get_name['last_name'];
         echo capitalize($first_name),' ', capitalize($last_name), ' wants to be your friend<br>';
         if ($user_to == $username) {
-          echo '<form action="friend_requests.php" method="post">
+          echo '<form action="'.$_SERVER['PHP_SELF'].'" method="post">
             <input type="submit" name="acceptrequest'.$user_from.'" value="Accept Request">
             <input type="submit" name="ignorerequest'.$user_from.'" value="Ignore Request">
           </form>';

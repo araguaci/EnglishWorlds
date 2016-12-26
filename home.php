@@ -48,7 +48,7 @@
           </ul>
           <div class="tab-content">
               <div class="tab-pane fade in active" id="Post">
-                <form action="home.php" method="post">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                   <input type="text" name="PostText" class="input-medium" placeholder="Share your thoughts" autocomplete="off">
                   <button class="btn btn-sm" type="submit">Post</button>
                 </form>
@@ -78,7 +78,7 @@
         '.$body.'
         <br>
         <br>
-        <form action="home.php" method="post" id="CommentForm">
+        <form action="'.$_SERVER['PHP_SELF'].'" method="post" id="CommentForm">
           <input type="text" name="CommentBody" placeholder="Write a comment...." autocomplete="off">
           <button id="PostComment"">Post</button>
         </form>

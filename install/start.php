@@ -61,7 +61,7 @@
 		?>
 		<div class="central-part">
 
-			<form action="start.php" method="post">
+			<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 			<input type="hidden" name="task" value="send" />
 			<input type="hidden" name="token" value="<?php echo $_SESSION['token']; ?>" />
 

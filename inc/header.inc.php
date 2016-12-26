@@ -23,7 +23,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <base href="http://127.0.0.1/English/" />
+    <base href="http://127.0.0.1/" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>%TITLE%</title>
@@ -99,7 +99,7 @@
         </ul>
         <?php
           if (!$username) {
-            echo '<form class="navbar-form navbar-right" action="index.html" method="post" role="form">
+            echo '<form class="navbar-form navbar-right" action="'.$_SERVER['PHP_SELF'].'" method="post" role="form">
               <div class="input-group">
                 <span class="input-group-addon">
                   <span class="glyphicon glyphicon-user"></span>
@@ -118,7 +118,7 @@
          ?>
         <?php
          if ($username){
-          echo '<form class="navbar-form navbar-left" role="search" action="/inc/header.inc.php" method="post">
+          echo '<form class="navbar-form navbar-left" role="search" action="'.$_SERVER['PHP_SELF'].'" method="post">
             <div class="form-group">
               <input type="text" name="search" class="form-control" placeholder="Search..." title="Search for people, posts and more...">
             </div>

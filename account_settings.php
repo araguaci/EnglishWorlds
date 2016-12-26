@@ -123,7 +123,7 @@
  <h2>Edit Your account settings below</h2>
  <hr>
  <p>Upload your profile photo</p>
- <form action="" method="post" enctype="multipart/form-data">
+ <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
 	 <?php
 	 $check_pic = $db->query("SELECT profile_pic FROM users WHERE username = '$username'");
 	 if ($check_pic) {
@@ -153,7 +153,7 @@
 	 <input type="submit" name="uploadpic" value="Upload Image">
  </form>
 <hr>
-<form class="" action="account_settings.php" method="post">
+<form class="" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 	<p>
 		<b>Change Your Password:</b><br>
 	</p>
@@ -163,7 +163,7 @@
 	<input type="submit" name="senddata" id="senddata" value="Update Information">
 	</form>
 	<hr>
-	<form class="" action="account_settings.php" method="post">
+	<form class="" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 		<b>UPDATE YOUR PROFILE INFO:</b><br>
 		First Name: <input type="text" name="fname" id="fname" size="40" value="<?php echo capitalize($db_first_name); ?>"><br>
 		Last Name: <input type="text" name="lname" id="lname" size="40" value="<?php echo capitalize($db_last_name); ?>"><br>
