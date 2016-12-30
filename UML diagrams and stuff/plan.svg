@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="305px" preserveAspectRatio="none" style="width:566px;height:305px;" version="1.1" viewBox="0 0 566 305"
+    width="566px" zoomAndPan="magnify">
+    <defs>
+        <filter height="300%" id="fs8aaly" width="300%" x="-1" y="-1">
+            <feGaussianBlur result="blurOut" stdDeviation="2.0" />
+            <feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0" />
+            <feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3" />
+            <feBlend in="SourceGraphic" in2="blurOut3" mode="normal" />
+        </filter>
+    </defs>
+    <g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacingAndGlyphs" textLength="257" x="160.5" y="16.708">"Restaurant Client Use Case"</text>
+        <!--entity Client-->
+        <ellipse cx="81" cy="234.9531" fill="#FEFECE" filter="url(#fs8aaly)" rx="8" ry="8" style="stroke: #A80036; stroke-width: 2.0;" />
+        <path d="M81,242.9531 L81,269.9531 M68,250.9531 L94,250.9531 M81,269.9531 L68,284.9531 M81,269.9531 L94,284.9531 " fill="#FEFECE" filter="url(#fs8aaly)" style="stroke: #A80036; stroke-width: 2.0;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="39" x="61.5" y="304.9482">Client</text>
+        <ellipse cx="236.2401" cy="266.4768" fill="#FEFECE" filter="url(#fs8aaly)" rx="56.7401" ry="14.5236"
+            style="stroke: #A80036; stroke-width: 1.5;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="76" x="198.2401" y="271.1252">Restaurant</text>
+        <ellipse cx="281.0269" cy="149.4768" fill="#FEFECE" filter="url(#fs8aaly)" rx="35.5269" ry="14.5236"
+            style="stroke: #A80036; stroke-width: 1.5;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="46" x="258.0269" y="154.1252">Tables</text>
+        <ellipse cx="441.0624" cy="43.4768" fill="#FEFECE" filter="url(#fs8aaly)" rx="39.0624" ry="14.5236"
+            style="stroke: #A80036; stroke-width: 1.5;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="51" x="415.5624" y="48.1252">Cuisine</text>
+        <ellipse cx="175.0269" cy="149.4768" fill="#FEFECE" filter="url(#fs8aaly)" rx="35.5269" ry="14.5236"
+            style="stroke: #A80036; stroke-width: 1.5;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="46" x="152.0269" y="154.1252">Caisse</text>
+        <ellipse cx="525.9056" cy="149.4768" fill="#FEFECE" filter="url(#fs8aaly)" rx="33.4056" ry="14.5236"
+            style="stroke: #A80036; stroke-width: 1.5;" /><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacingAndGlyphs" textLength="43" x="504.4056" y="154.1252">Depot</text>
+        <polygon fill="#FBFB77" filter="url(#fs8aaly)" points="386.5,136.9531,386.5,162.0859,457.5,162.0859,457.5,146.9531,447.5,136.9531,386.5,136.9531"
+            style="stroke: #A80036; stroke-width: 1.0;" />
+        <polygon fill="#FBFB77" points="386.5,136.9531,386.5,145.4531,316.525,149.4531,386.5,153.4531,386.5,162.0859,457.5,162.0859,457.5,146.9531,447.5,136.9531,386.5,136.9531" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="447.5" x2="447.5" y1="136.9531" y2="146.9531" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="457.5" x2="447.5" y1="146.9531" y2="146.9531" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="50" x="392.5" y="154.02">Serveur</text>
+        <polygon fill="#FBFB77" filter="url(#fs8aaly)" points="6,136.9531,6,162.0859,70,162.0859,70,146.9531,60,136.9531,6,136.9531"
+            style="stroke: #A80036; stroke-width: 1.0;" />
+        <polygon fill="#FBFB77" points="6,136.9531,6,162.0859,70,162.0859,70,154.9531,139.354,149.4531,70,146.9531,70,146.9531,60,136.9531,6,136.9531" style="stroke: #A80036; stroke-width: 1.0;" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="60" x2="60" y1="136.9531" y2="146.9531" />
+        <line style="stroke: #A80036; stroke-width: 1.0;" x1="70" x2="60" y1="146.9531" y2="146.9531" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="43" x="12" y="154.02">Argent</text>
+        <path d="M100.6309,266.4531 C119.112,266.4531 147.795,266.4531 174.009,266.4531 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"
+        />
+        <polygon fill="#A80036" points="179.215,266.4531,170.215,262.4531,174.215,266.4531,170.215,270.4531,179.215,266.4531" style="stroke: #A80036; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="42" x="119" y="259.52">Entree</text>
+        <path d="M268.274,182.9761 C259.367,205.7361 247.925,234.977 241.332,251.8272 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"
+        />
+        <polygon fill="none" points="261.854,180.1711,275.661,164.0971,274.892,185.2721,261.854,180.1711" style="stroke: #A80036; stroke-width: 1.0;" />
+        <path d="M191.697,181.9301 C203.845,204.8331 219.697,234.7178 228.772,251.8272 " fill="none" style="stroke: #A80036; stroke-width: 1.0;" />
+        <polygon fill="none" points="185.425,185.0451,182.237,164.0971,197.793,178.4851,185.425,185.0451" style="stroke: #A80036; stroke-width: 1.0;" />
+        <path d="M405.683,67.4091 C372.748,88.8171 324.939,119.8921 299.14,136.6621 " fill="none" style="stroke: #A80036; stroke-width: 1.0;" />
+        <polygon fill="none" points="402.062,61.4141,422.646,56.3831,409.692,73.1521,402.062,61.4141" style="stroke: #A80036; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="53" x="371" y="101.02">Requete</text>
+        <path d="M464.53,73.2431 C481.155,93.5841 502.653,119.8871 515.322,135.3881 " fill="none" style="stroke: #A80036; stroke-width: 1.0;"
+        />
+        <polygon fill="none" points="459.002,77.5401,451.765,57.6251,469.842,68.6811,459.002,77.5401" style="stroke: #A80036; stroke-width: 1.0;" /><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="59" x="489" y="101.02">Resource</text></g>
+    </svg>
