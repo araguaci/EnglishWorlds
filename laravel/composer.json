@@ -22,7 +22,7 @@
         "psr-4": {
             "English\\": "app/"
         }
-    }
+    },
     "autoload-dev": {
         "classmap": [
             "tests/TestCase.php"
