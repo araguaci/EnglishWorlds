@@ -1,4 +1,5 @@
 <?php
+  error_reporting(E_ALL);
   ob_start();
   require_once './inc/header.inc.php';
   if ($username) {
@@ -89,6 +90,5 @@
       exit();
     }
   }
-
  include './inc/footer.inc.php';
  ?>
