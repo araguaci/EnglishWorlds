@@ -1,4 +1,4 @@
-@@startuml
+@startuml
 title Servlet Container
 (*) --> "ClickServlet.handleRequest()"
 --> "new Page"
