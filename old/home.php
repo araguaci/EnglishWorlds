@@ -4,7 +4,6 @@
   if (!$username) {
     LoginAlert();
   }
-  // Sending the buffer
   $buffer = ob_get_contents();
   ob_end_clean();
   $buffer=str_replace("%TITLE%","Home Feed",$buffer);
@@ -28,7 +27,6 @@
   // Insert comment to DB
   $CommentBody = $_POST['CommentBody'];
   if ($CommentBody == '') {
-      // Do nothing
   } else {
       $db->query("INSERT INTO comments VALUES(NULL, '$CommentBody', '1', '1')");
   }
