@@ -85,4 +85,41 @@
     public function getRows(){
       return $this->last->fetch_array(MYSQLI_ASSOC);
     }
+    /**
+    * Delete records from the database
+    * @param String the table to remove rows from
+    * @param String the condition for which rows are to be removed
+    * @param int the number of rows to be removed
+    * @return void
+    */
+    public function deleteRecords($table, $condition, $limit)
+    {
+      $limit = ($limit == '') ? '' : ' LIMIT ' . $limit;
+      $delete = "DELETE FROM {$table} WHERE {$condition} {$limit}";
+      $this->executeQuery($delete);
+    }
+    /**
+    * Update records in the database
+    * @param String the table
+    * @param array of changes field => value
+    * @param String the condition
+    * @return bool
+    */
+    public function updateRecords($table, $changes, $condition)
+    {
+      $update = "UPDATE " . $table . " SET ";
+      foreach ($changes as $field => $value) {
+        $update .= "`" . $field . "`='{$value}',";
+      }
+
+      // remove our trailing ,
+      $update = substr($update, 0, -1);
+      if ($condition != '') {
+        $update .= "WHERE " . $condition;
+      }
+      $this->executeQuery($update);
+
+      return true;
+    }
+}
 ?>
