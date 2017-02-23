@@ -85,7 +85,19 @@
     public function getRows(){
       return $this->last->fetch_array(MYSQLI_ASSOC);
     }
-    /**
+    public function numRows()
+    {
+      return $this->last->num_rows;
+    }
+   /**
+    * Gets the number of affected rows from the previous query
+    * @return int the number of affected rows
+    */
+    public function affectedRows()
+    {
+      return $this->last->affected_rows;
+    }
+   /**
     * Delete records from the database
     * @param String the table to remove rows from
     * @param String the condition for which rows are to be removed
@@ -98,7 +110,7 @@
       $delete = "DELETE FROM {$table} WHERE {$condition} {$limit}";
       $this->executeQuery($delete);
     }
-    /**
+   /**
     * Update records in the database
     * @param String the table
     * @param array of changes field => value
@@ -121,7 +133,7 @@
 
       return true;
     }
-    /**
+   /**
     * Insert records into the database
     * @param String the database table
     * @param array data to insert field => value
@@ -148,6 +160,37 @@
       // echo $insert;
       $this->executeQuery($Insert);
       return true;
+    }
+
+   /**
+    * Sanitize data
+    * @param String the data to be sanitized
+    * @return String the sanitized data
+    */
+    public function sanitizeData($value)
+    {
+      // Stripslashes
+      if (get_magic_quotes_gpc()) {
+        $value = stripslashes($value);
+      }
+
+      // Quote value
+      if (version_compare(phpversion(), "4.3.0") == "-1") {
+        $value = $this->connections[$this->activeConnection] ->escape_string($value);
+      } else {
+        $value = $this->connections[$this->activeConnection]->real_escape_string($value);
+      }
+      return $value;
+    }
+   /**
+    * Deconstruct the object
+    * close all of the database connections
+    */
+    public function _deconstruct()
+    {
+      foreach ($this->connections as $connections) {
+        $connection->close();
+      }
     }
 }
 ?>
