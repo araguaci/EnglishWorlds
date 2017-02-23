@@ -186,7 +186,7 @@
     * Deconstruct the object
     * close all of the database connections
     */
-    public function _deconstruct()
+    public function __deconstruct()
     {
       foreach ($this->connections as $connections) {
         $connection->close();
