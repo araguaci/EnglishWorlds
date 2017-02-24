@@ -136,9 +136,17 @@
               public function getBlock($tag)
               {
                 // echo $tag;
-
+                // TODO: end of p52
+                preg_match();
                 $tor = str_replace();
+                $tor = str_replace();
+                return $tor;
               }
+              public function getContent()
+              {
+                return $this->content;
+              }
+              
   }
 
  ?>
