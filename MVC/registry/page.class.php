@@ -4,7 +4,7 @@
    * @author Salim Djerbouh
    * @version 0.1
    */
-  class ClassName extends AnotherClass
+  class page
   {
     // page title
     private $title = '';
@@ -92,7 +92,53 @@
            {
              return $this->postParseTags;
            }
-           
+           /**
+            * Add a template bit to the page, doesn't actually add the content just yet
+            * @param String the tag where the template is added
+            * @param String the template file name
+            * @return void
+            */
+            public function addTemplateBit($tag, $bit)
+            {
+              $this->bits[$tag] = $bit;
+            }
+            /**
+             * Adds additional parsing data
+             * A.P.D is used in parsing loops. we may want to have an extra biti of data depending on iterations value
+             * for example on a form list, we may want a specific item to be "selected"
+             * @param String block the condition applies to
+             * @param String tag within the block the condition applied to
+             * @param String condition : what the tag must equal
+             * @param String extratag : if the tag value = condition then we have an extra tag called extratag
+             * @param String data : if the tag value = condition then extra tag is replaced with this value
+             */
+            public function addAdditionalParsingData($block, $tag, $condition, $extratag, $data)
+            {
+              $this->apd[$block] = array($tag => array('condition' => $condition, 'tag' => $extratag, 'data' => $data));
+            }
+            /**
+             * Get the template bits to be entered into the page
+             * @return array the array of template tags and template file names
+             */
+             public function getBits()
+             {
+               return $this->bits;
+             }
+             public function getAdditionalParsingData()
+             {
+               return $this->apd;
+             }
+             /**
+              * Gets a chunck of page content
+              * @param String the tag wrapping the block (<!-- START tag --> block <!-- END tag -->)
+              * @return String the block of content
+              */
+              public function getBlock($tag)
+              {
+                // echo $tag;
+
+                $tor = str_replace();
+              }
   }
 
  ?>
