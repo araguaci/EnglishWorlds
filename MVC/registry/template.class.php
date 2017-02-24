@@ -163,5 +163,37 @@
         $newContent = str_replace('<!-- START '.$tag.' -->'.$blockOld.'<!-- END '.$tag.' -->', $block, $pageContent);
         $this->page->setContent($newContent);
       }
+     /**
+      * Convert an array of data into some tags
+      * @param array the data
+      * @param string a prefix which is added to field name to create the tag name
+      * @return void
+      */
+      public function dataToTags($data, $prefix)
+      {
+        foreach ($data as $key => $content) {
+          $this->page->addTag($prefix, $key, $content);
+        }
+      }
+     /**
+      * Take the title we set in the page object, and insert them into the view
+      */
+      public function parseTitle()
+      {
+        $newContent = str_replace('<title>', '<title>' . $this->page->getTitle(), $this->page->getContent());
+        $this->page->setContent($newContent);
+      }
+     /**
+      * Parse the page object into some output
+      * @return void
+      */
+      public function parseOutput()
+      {
+        $this->replaceBits();
+        $this->replaceTags(false);
+        $this->replaceBits();
+        $this->replaceTags(true);
+        $this->parseTitle();
+      }
     }
  ?>
