@@ -102,7 +102,66 @@
       */
       private function replaceDBTags($tag, $cachedId)
       {
-        
+        $block = '';
+        $blockOld = $this->page->getBlock($tag);
+        $apd = $this->page->getAdditionalParsingData();
+        $apdkeys = array_keys($apd);
+        // foreach record relating to the query..
+        while ($tags = $this->registry->getObject('db')->resultsFromCache($cachedId)) {
+              $blockNew = $blockOld;
+              // Do we have APD tags?
+              if (in_array($tag, $apdkeys)) {
+                // Yes we do!
+                foreach ($tags as $ntag => $data) {
+                  $blockNew = str_replace("{" . $ntag . "}", $data, $blockNew);
+                  // Is this tag the one with extra parsing to be done?
+                  if (array_key_exists($ntag, $apd[$tag])) {
+                    // Yes it is
+                    $extra = $apd [$tag][$ntag];
+                    // Does the tag equal the condition?
+                    if ($data == $extra['condition']) {
+                      // Yep! Replace the extratag with the data
+                      $blockNew = str_replace("{" . $extra['tag'] . "}", '', $blockNew);
+                    }
+                  }
+                }
+              }
+              else {
+                // Create a new block of content with the results replaced into it
+                foreach ($tags as $ntag => $data) {
+                  $blockNew = str_replace("{" . $ntag . "}", $data, $blockNew);
+                }
+              }
+              $block .= $blockNew;
+        }
+        $pageContent = $this->page->getContent();
+        // remove the separator in the template, cleaner HTML
+        $newContent = str_replace('<!-- START ' . $tag . ' -->' . $blockOld . '<!-- END ' . $tag . ' -->', $block, $pageContent);
+        // update the page content
+        $this->page->setContent($newContent);
+      }
+     /**
+      * Replace content on the page with data from the cache
+      * @param String $tag the tag defining the area of content
+      * @param int $cacheId the datas ID in the data cache
+      * @return void
+      */
+      private function replaceDataTags($tag, $cacheId)
+      {
+        $blockOld = $this->page->getBlock($tag);
+        $block = '';
+        $tags = $this->registry->getObject('db')->dataFromCache($cacheId);
+        foreach ($tags as $key => $tagsdata) {
+          $blockNew = $blockOld;
+          foreach ($tagsdata as $taga => $data) {
+            $blockNew = str_replace("{" . $taga . "}", $data, $blockNew);
+          }
+          $block .= $blockNew;
+        }
+
+        $pageContent = $this->page->getContent();
+        $newContent = str_replace('<!-- START '.$tag.' -->'.$blockOld.'<!-- END '.$tag.' -->', $block, $pageContent);
+        $this->page->setContent($newContent);
       }
     }
  ?>
