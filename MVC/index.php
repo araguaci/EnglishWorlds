@@ -13,7 +13,66 @@
     * Array of settings
     */
     private $settings;
-    public function __construct() {
+    public function __construct(Registry $registry, $id=0,  $username='',$password='') {
+      $this->registry = $registry;
+      if ($id=0 && $username != '' && $password != '') {
+        $user = $this->registry->getObject('db')->sanitizeData($username);
+        $hash = md5($password);
+        $sql = "SELECT * FROM users WHERE username='{$user}' AND password_hash='{$hash}' AND deleted=0";
+        $this->registry->getObject('db')->executeQuery($sql);
+        if ($this->registry->getObject('db')->numRows() == 1) {
+          $data = $this->registry->getObject('db')->getRows();
+          $this->id = $data['ID'];
+          $this->username = $data['username'];
+          $this->active = $data['active'];
+          $this->banned = $data['banned'];
+          $this->admin = $data['admin'];
+          $this->email = $data['email'];
+          $this->pwd_reset_key = $data['pwd_reset_key'];
+          $this->valid = true;
+        }
+      }
+      elseif ($id > 0) {
+        $id = intval($id);
+        $sql = "SELECT * FROM users WHERE ID='{$id}' AND deleted=0";
+        $this->registry->getObject('db')->executeQuery($sql);
+        if ($this->registry->getObject('db')->numRows() == 1) {
+          $data = $this->registry->getObject('db')->getRows();
+          $this->id = $data['ID'];
+          $this->username = $data['username'];
+          $this->active = $data['active'];
+          $this->banned = $data['banned'];
+          $this->admin = $data['admin'];
+          $this->email = $data['email'];
+          $this->pwd_reset_key = $data['pwd_reset_key'];
+          $this->valid = true;
+        }
+      }
+    }
+    public function checkForAuthebtication()
+    {
+      $this->registry->getObject('template')->getPage()->addTag('error', '');
+      if (isset($_SESSION['sn_auth_session_uid']) && intval($_SESSION['sn_auth_session_uid']) > 0) {
+        $this->sessionAuthentication(intval($_SESSION['sn_auth_sn_auth_session_uid']));
+        if ($this->loggedIn == true) {
+          $this->registry->getObject('template')->getPage()->addTag('error', '');
+        }
+        else {
+          $this->registry->getObject('template')->getPage()->addTag('error', '<strong><p>Error: Your username or password was not correct, please try again</p><strong>');
+        }
+      }
+      elseif (isset($_POST['sn_auth_user']) && $_POST['sn_auth_user'] != '' && isset($_POST['sn_auth_pass']) && $_POST['sn_auth_pass'] != '') {
+        $this->postAuthenticate($_POST['sn_auth_user'], $_POST['sn_auth_pass']);
+        if ($this->loggedIn == true) {
+          $this->registry->getObject('template')->getPage()->addTag('error', '');
+        }
+        else {
+          $this->registry->getObject('template')->getPage()->addTag('error', '<p><strong>Error: Your username or password was not correct, please try again<strong></p>');
+        }
+      }
+      elseif (isset($_POST['login'])) {
+        $this->registry->getObject('template')->getPage()->addTag('error', '<strong><p>Error: You must enter a username and a password</p><strong>');
+      }
     }
      /**
       * Create a new object and store it in the registry
