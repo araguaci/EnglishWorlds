@@ -23,7 +23,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <base href="http://127.0.0.1/" />
+    <base href="http://englishdz.netne.net/" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>%TITLE%</title>
@@ -34,24 +34,10 @@
     <link rel="stylesheet" type="text/css" href="./css/blue.css" media="screen" title="no title">
     <link rel="stylesheet" type="text/css" href="./css/main.css" media="screen" title="no title">
     <link rel="stylesheet" type="text/css" href="./css/home.css" media="screen" title="no title">
-    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" media="screen" title="no title">
-    <link rel="stylesheet" type="text/css" href="./css/bootstrap.css" media="screen" title="no title">
     <link rel="stylesheet" type="text/css" href="./css/pikaday.css" media="screen" title="no title">
     <link rel="stylesheet" type="text/css" href="./css/login.css" media="screen" title="no title">
     <link rel="stylesheet" type="text/css" href="./css/messages.css" media="screen" title="no title">
-    <script src="./js/jquery.js" type="text/javascript"></script>
-    <script src="./js/jquery-ui.js" type="text/javascript"></script>
-    <script src="./js/jquery.min.js" type="text/javascript"></script>
-    <script src="./js/jquery-color.js" type="text/javascript"></script>
-    <script src="./js/script.js" type="text/javascript"></script>
-    <script src="./js/messages.js" type="text/javascript"></script>
-    <script src="./js/placeholder-js.js" type="text/javascript"></script>
-    <script src="./js/main.js" type="text/javascript"></script>
-    <script src="./js/login.js" type="text/javascript"></script>
-    <script src="./js/home.js" type="text/javascript"></script>
-    <script src="./js/profile.js" type="text/javascript"></script>
-    <script src="./js/bootstrap.js" type="text/javascript"></script>
-    <script src="./js/bootstrap.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="shortcut icon" href="./img/favicon.ico">
   </head>
   <body>
@@ -131,3 +117,11 @@
          </div>
       </div>
         </nav>
+        <script src="./js/script.js" type="text/javascript"></script>
+        <script src="./js/messages.js" type="text/javascript"></script>
+        <script src="./js/placeholder-js.js" type="text/javascript"></script>
+        <script src="./js/main.js" type="text/javascript"></script>
+        <script src="./js/login.js" type="text/javascript"></script>
+        <script src="./js/home.js" type="text/javascript"></script>
+        <script src="./js/profile.js" type="text/javascript"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>

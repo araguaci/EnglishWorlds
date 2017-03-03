@@ -44,9 +44,9 @@
                 echo "Your password must be between 5 and 30 characters long!";
               } else {
                 // Hash the passwords before sending them to the database.
-                $options = [
+                $options = array(
                   'cost' => 11 // TODO: Change this number and add a salt for production
-                ];
+                );
                 $pswd = password_hash($pswd, PASSWORD_BCRYPT, $options);
                 $username_with_capitalized_first_letter = capitalize($un);
                 $query = $db->query("INSERT INTO users VALUES(NULL,'$un','$fn','$ln','$em', '$pswd', '$d', '0', STR_TO_DATE('$birthdate','%M %d,%Y'), '$gender', NULL, NULL, NULL)");
@@ -72,9 +72,9 @@
   if (isset($_POST["user_login"]) && isset($_POST["password_login"])) {
     $user_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["user_login"]); // filter everything but numbers and letters.
     $password_login = preg_replace('#[^A-Za-z0-9]#i', '', $_POST["password_login"]); // filter everything but numbers and letters.
-    $options = [
+    $options = array(
       'cost' => 11 // TODO: change this for production.
-    ];
+    );
     $sql = $db->query("SELECT password FROM users WHERE username='$user_login' LIMIT 1") or die($db->error);
     while ($row = mysqli_fetch_array($sql)) {
       $hash = $row['password'];
