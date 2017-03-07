@@ -21,3 +21,4 @@ phpunit.xml
 # Ignore test directory
 /test/*
 PersonalTasks.md
+.idea/
