@@ -22,3 +22,5 @@ phpunit.xml
 /test/*
 PersonalTasks.md
 /.idea
+/bootstrap
+/storage
