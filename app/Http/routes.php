@@ -43,3 +43,12 @@ Route::get('/signout', [
   'uses' => '\English\Http\Controllers\AuthController@getSignout',
   'as' => 'auth.signout',
 ]);
+
+/**
+ * Search
+ */
+
+Route::get('/search', [
+  'uses' => '\English\Http\Controllers\SearchController@getResults',
+  'as' => 'search.results',
+]);
