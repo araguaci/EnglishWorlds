@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => English\User::class,
+    'model' => English\Models\User::class,
 
     /*
     |--------------------------------------------------------------------------
