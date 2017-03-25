@@ -52,3 +52,12 @@ Route::get('/search', [
   'uses' => '\English\Http\Controllers\SearchController@getResults',
   'as' => 'search.results',
 ]);
+
+/**
+ * User profile
+ */
+
+Route::get('/user/{username}', [
+  'uses' => '\English\Http\Controllers\ProfileController@getProfile',
+  'as' => 'profile.index',
+]);
