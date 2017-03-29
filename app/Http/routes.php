@@ -9,7 +9,7 @@ Route::get('/', [
   'as' => 'home',
 ]);
 
-Route::get('/alerts', function() {
+Route::get('/alerts', function(){
   return redirect()->route('home')->with('info', 'You have signed up!');
 });
 
@@ -60,4 +60,15 @@ Route::get('/search', [
 Route::get('/user/{username}', [
   'uses' => '\English\Http\Controllers\ProfileController@getProfile',
   'as' => 'profile.index',
+]);
+
+Route::get('/profile/edit', [
+  'uses' => '\English\Http\Controllers\ProfileController@getEdit',
+  'as' => 'profile.edit',
+  'middleware' => ['auth'],
+]);
+
+Route::post('/profile/edit', [
+  'uses' => '\English\Http\Controllers\ProfileController@postEdit',
+  'middleware' => ['auth'],
 ]);
