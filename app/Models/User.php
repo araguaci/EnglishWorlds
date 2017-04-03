@@ -70,12 +70,12 @@ class User extends Model implements AuthenticatableContract{
 
     public function friendRequestPending()
     {
-      return $this->friendOf()->wherePivot('accepted', false())->get();
+      return $this->friendOf()->wherePivot('accepted', false)->get();
     }
 
     public function hadFriendRequestPending(User $user)
     {
-      return (bool) $this->friendRequestsPending()->where('id', $user->id)->count();
+      return (bool) $this->friendRequestPending()->where('id', $user->id)->count();
     }
 
     public function hasFriendRequestReceived(User $user)
