@@ -82,3 +82,9 @@ Route::get('/friends', [
   'as' => 'friend.index',
   'middleware' => ['auth'],
 ]);
+
+Route::get('/friends/add/{username}',[
+  'uses' => '\English\Http\Controllers\FriendController@getAdd',
+  'as' => 'friend.add',
+  'middleware' => ['auth'],
+]);
