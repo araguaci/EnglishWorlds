@@ -17,7 +17,7 @@
       <h4>Friends requests</h4>
 
       @if (!$requests->count())
-        <p>YOu have no friend requests.</p>
+        <p>You have no friend requests.</p>
       @else
         @foreach ($requests as $user)
           @include('user.partials.userblock')

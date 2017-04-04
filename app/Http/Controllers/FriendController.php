@@ -23,7 +23,7 @@ class FriendController extends Controller{
       return redirect()->route('home')->with('info', 'That user could not be found');
     }
 
-    if (Auth::user()->hadFriendRequestPending($user) || $user->hasFriendRequestPending(Auth::user())) {
+    if (Auth::user()->hadFriendRequestPending($user) || $user->hadFriendRequestPending(Auth::user())) {
       return redirect()->route('profile.index', ['username' => $user->username])->with('info', 'Friend request already pending.');
     }
 
@@ -49,7 +49,7 @@ class FriendController extends Controller{
       return redirect()->route('home');
     }
 
-    if (!Auth::user()->hadFriendRequestReceived($user)) {
+    if (!Auth::user()->hasFriendRequestReceived($user)) {
       return redirect()->route('home');
     }
 
