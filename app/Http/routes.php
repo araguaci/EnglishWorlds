@@ -91,6 +91,16 @@ Route::get('/friends/add/{username}',[
 
 Route::get('/friends/accept/{username}', [
   'uses' => '\English\Http\Controllers\FriendController@getAccept',
-  'as' => 'friend.add',
+  'as' => 'friend.accept',
+  'middleware' => ['auth'],
+]);
+
+/**
+ * Statuses
+ */
+
+Route::post('/status', [
+  'uses' => '\English\Http\Controllers\StatusController@postStatus',
+  'as' => 'status.post',
   'middleware' => ['auth'],
 ]);
