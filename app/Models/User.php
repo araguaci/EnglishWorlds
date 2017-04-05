@@ -2,6 +2,7 @@
 
 namespace English\Models;
 
+use English\Models\Status;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -55,7 +56,11 @@ class User extends Model implements AuthenticatableContract{
     {
       return $this->hasMany('English\Models\Status', 'user_id');
     }
-    
+
+    public function likes() {
+      return $this->hasMany('English\Models\Like', 'user_id');
+    }
+
     public function friendsOfMine()
     {
       return $this->belongsToMany('English\Models\User', 'friends', 'user_id', 'friend_id');
@@ -84,27 +89,30 @@ class User extends Model implements AuthenticatableContract{
       return (bool) $this->friendRequestPending()->where('id', $user->id)->count();
     }
 
-    public function hasFriendRequestReceived(User $user)
-    {
+    public function hasFriendRequestReceived(User $user) {
       return (bool) $this->friendRequests()->where('id', $user->id)->count();
     }
 
-    public function addFriend(User $user)
-    {
+    public function addFriend(User $user) {
       $this->friendOf()->attach($user->id);
     }
 
-    public function acceptFriendRequest(User $user)
-    {
-      $this->friendRequests()->where('id', $user->id)->first()->pivot->update([
+    public function acceptFriendRequest(User $user) {
+      $this->friendRequests()->where('id', $user->id)->first()->pivot->update(
+        [
         'accepted' => true,
       ]);
     }
 
-    public function isFriendsWith(User $user)
-    {
+    public function isFriendsWith(User $user) {
       return (bool) $this->friends()->where('id', $user->id)->count();
     }
 
-
+    public function hasLikedStatus(Status $status) {
+      return (bool) $status->likes
+      ->where('likeable_id', $status->id)
+      ->where('likeable_type', get_class($status))
+      ->where('user_id', $this->id)
+      ->count();
+    }
 }

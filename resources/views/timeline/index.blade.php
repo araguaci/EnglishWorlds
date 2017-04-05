@@ -31,13 +31,15 @@
               <p>{{ $status->body }}</p>
               <ul class="list-inline">
                 <li>{{ $status->created_at->diffForHumans() }}</li>
-                <li><a href="#">Like</a></li>
-                <li>10 likes</li>
+                @if ($status->user->id !== Auth::user()->id)
+                  <li><a href="{{ route('status.like', ['statusId' => $status->id]) }}">Like</a></li>
+                  <li>10 likes</li>
+                @endif
               </ul>
 
               @foreach ($status->replies as $reply)
                 <div class="media">
-                  <a href="{{ route('profile.index', ['username' => $reply->user->username]) }}" class="pull-left">
+                  <a href="#" class="pull-left">
                     <img src="{{ $reply->user->getAvatarUrl() }}" alt="{{ $reply->user->getNameOrUsername() }}" class="media-object">
                   </a>
                   <div class="media-body">
@@ -45,8 +47,10 @@
                     <p>{{ $reply->body }}</p>
                     <ul class="list-inline">
                       <li>{{ $reply->created_at->diffForHumans() }}</li>
-                      <li><a href="#">Like</a></li>
-                      <li>4 likes</li>
+                      @if ($status->user->id !== Auth::user()->id)
+                        <li><a href="{{ route('status.like', ['statusId' => $reply->id]) }}">Like</a></li>
+                        <li>4 likes</li>
+                      @endif
                     </ul>
                   </div>
                 </div>
