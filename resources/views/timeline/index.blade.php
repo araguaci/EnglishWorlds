@@ -34,22 +34,23 @@
                 <li><a href="#">Like</a></li>
                 <li>10 likes</li>
               </ul>
-<!--
-              <div class="media">
-                <a href="#" class="pull-left">
-                  <img src="" alt="" class="media-object">
-                </a>
-                <div class="media-body">
-                  <h5 class="media-heading"><a href="#">Salim</a></h5>
-                  <p>Yes, it is lovely!</p>
-                  <ul class="list-inline">
-                    <li>8 minutes ago.</li>
-                    <li><a href="#">Like</a></li>
-                    <li>4 likes</li>
-                  </ul>
-                </div>
-              </div> -->
 
+              @foreach ($status->replies as $reply)
+                <div class="media">
+                  <a href="{{ route('profile.index', ['username' => $reply->user->username]) }}" class="pull-left">
+                    <img src="{{ $reply->user->getAvatarUrl() }}" alt="{{ $reply->user->getNameOrUsername() }}" class="media-object">
+                  </a>
+                  <div class="media-body">
+                    <h5 class="media-heading"><a href="route('profile.index', ['username' => $reply->user->username])">{{ $reply->user->getNameOrUsername() }}</a></h5>
+                    <p>{{ $reply->body }}</p>
+                    <ul class="list-inline">
+                      <li>{{ $reply->created_at->diffForHumans() }}</li>
+                      <li><a href="#">Like</a></li>
+                      <li>4 likes</li>
+                    </ul>
+                  </div>
+                </div>
+              @endforeach
 
               <form role="form" action="{{ route('status.reply', ['statusId' => $status->id]) }}" method="post">
                 <div class="form-group{{ $errors->has("reply-{statusId}") ? ' has-error' : '' }}">
