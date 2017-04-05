@@ -39,7 +39,7 @@
 
               @foreach ($status->replies as $reply)
                 <div class="media">
-                  <a href="#" class="pull-left">
+                  <a href="{{ route('profile.index', ['username' => $reply->user->username]) }}" class="pull-left">
                     <img src="{{ $reply->user->getAvatarUrl() }}" alt="{{ $reply->user->getNameOrUsername() }}" class="media-object">
                   </a>
                   <div class="media-body">
