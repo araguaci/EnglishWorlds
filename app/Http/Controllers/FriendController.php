@@ -61,7 +61,7 @@ class FriendController extends Controller{
   public function postDelete($username) {
     $user = User::where('username', $username)->first();
 
-    if (Auth::user()->isFriendsWith($user)) {
+    if (!Auth::user()->isFriendsWith($user)) {
       return redirect()->back();
     }
 
