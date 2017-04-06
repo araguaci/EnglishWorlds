@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @author Salim Djerbouh
  * @version 0.1
  */
-class ClassName extends AnotherClass {
+class Like extends Model {
   protected $table = 'likeable';
 
   public function likeable() {

@@ -28,6 +28,6 @@ class Status extends Model {
   }
 
   public function likes() {
-    return $this->morphyMany('English\Models\Like', 'likeable');
+    return $this->morphMany('English\Models\Like', 'likeable');
   }
 }

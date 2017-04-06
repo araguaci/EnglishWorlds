@@ -6,8 +6,10 @@ use English\Models\User;
 use Illuminate\Http\Request;
 use Auth;
 
-class ProfileController extends Controller{
-  public function getProfile($username){
+class ProfileController extends Controller {
+
+  public function getProfile($username) {
+
     $user = User::where('username', $username)->first();
 
     if(!$user){
@@ -16,8 +18,7 @@ class ProfileController extends Controller{
 
     $statuses = $user->statuses()->notReply()->get();
 
-    return view('profile.index')
-    ->with('user', $user)->with('statuses', $statuses)->with('authUserIsFriend', Auth::user()->isFriendsWith($user));
+    return view('profile.index')->with('user', $user)->with('statuses', $statuses)->with('authUserIsFriend', Auth::user()->isFriendsWith($user));
   }
 
   public function getEdit(){
