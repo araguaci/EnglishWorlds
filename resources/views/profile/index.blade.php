@@ -24,7 +24,7 @@
                 @endif
                 <li>{{ $status->likes->count() }} {{ str_plural('like', $status->likes->count()) }}</li>
               </ul>
-              
+
               @foreach ($status->replies as $reply)
                 <div class="media">
                   <a href="{{ route('profile.index', ['username' => $reply->user->username]) }}" class="pull-left">
@@ -70,6 +70,11 @@
         <a href="{{ route('friend.accept', ['username' => $user->username]) }}" class="btn btn-primary">Accept friend request</a>
       @elseif (Auth::user()->isFriendsWith($user))
         <p>You and {{ $user->getNameOrUsername() }} are friends.</p>
+
+        <form class="" action="{{ route('friend.delete', ['username' => $user->username]) }}" method="post">
+          <input type="submit" name="" value="Delete friend" class="btn btn-primary">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}">
+        </form>
       @elseif (Auth::user()->id != $user->id)
         <a href="{{ route('friend.add', ['username' => $user->username]) }}" class="btn btn-primary">Add as friend</a>
       @endif
