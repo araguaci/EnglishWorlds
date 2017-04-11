@@ -2,6 +2,7 @@
 
 namespace English;
 
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -9,6 +10,6 @@ use Illuminate\Database\Eloquent\Model;
  * @version v0.1.1
  */
 
-class User extends Model {
-    //
+class User extends Model implements Authenticatable {
+    use \Illuminate\Auth\Authenticatable;
 }
