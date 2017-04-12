@@ -9,5 +9,13 @@
 		<div class="container">
 			@yield('content')
 		</div>
+		<div id="bootstrapCssTest" class="hidden"></div>
+  <script>
+    $(function() {
+      if ($('#bootstrapCssTest').is(':visible')) {
+        $("head").prepend('<link rel="stylesheet" href="/storage/bootstrap.min.css">');
+      }
+    });
+  </script>
 	</body>
 </html>
