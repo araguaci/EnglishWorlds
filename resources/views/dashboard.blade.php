@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+Timeline
+@endsection
+
 @section('content')
   @include('includes.message-block')
   <section class="row new-post">
@@ -17,10 +21,11 @@
   <section class="row posts">
     <div class="col-md-6 col-md-offset-3">
       <header><h3>What other people say...</h3></header>
+      @foreach($posts as $post)
       <article class="post">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>{{ $post->body }}</p>
         <div class="info">
-          Posted by Salim on 12 April 2017
+          Posted by {{ $post->user->first_name }} about {{ $post->created_at->diffForHumans() }}
         </div>
         <div class="interaction">
           <a href="#">Like</a>
@@ -29,18 +34,7 @@
           <a href="#">Delete</a>
         </div>
       </article>
-      <article class="post">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <div class="info">
-          Posted by Salim on 12 April 2017
-        </div>
-        <div class="interaction">
-          <a href="#">Like</a>
-          <a href="#">Dislike</a>
-          <a href="#">Edit</a>
-          <a href="#">Delete</a>
-        </div>
-      </article>
+      @endforeach
     </div>
   </section>
 @endsection
