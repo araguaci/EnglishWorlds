@@ -4,6 +4,7 @@ namespace English\Http\Controllers;
 
 use English\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @author Salim Djerbouh <tbitw31@gmail.com>
