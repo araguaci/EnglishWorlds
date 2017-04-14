@@ -31,7 +31,7 @@ Timeline
           <a href="#">Like</a>
           <a href="#">Dislike</a>
           @if(Auth::user() == $post->user)
-            <a href="#" data-toggle="modal" data-target="#edit-modal">Edit</a>
+            <a href="#" data-toggle="modal" data-target="#edit-modal" class="edit">Edit</a>
             <a href="{{ route('post.delete', ['post_id' => $post->id]) }}">Delete</a>
           @endif
         </div>
