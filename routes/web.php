@@ -39,3 +39,8 @@ Route::get('logout', [
   'uses' => 'UserController@getLogout',
   'as' => 'logout'
 ]);
+
+Route::post('edit', [
+  'uses' => 'PostController@postEditPost',
+  'as' => 'edit'
+]);
