@@ -28,8 +28,8 @@ Timeline
           Posted by {{ $post->user->first_name }} about {{ $post->created_at->diffForHumans() }}
         </div>
         <div class="interaction">
-          <a href="#">Like</a>
-          <a href="#">Dislike</a>
+          <a href="#" class="like">Like</a>
+          <a href="#" class="like">Dislike</a>
           @if(Auth::user() == $post->user)
             <a href="#" data-toggle="modal" data-target="#edit-modal" class="edit">Edit</a>
             <a href="{{ route('post.delete', ['post_id' => $post->id]) }}">Delete</a>
@@ -64,6 +64,7 @@ Timeline
   </div><!-- /.modal -->
   <script type="text/javascript">
     var token = '{{ Session::token() }}';
-    var url = '{{ route('edit') }}';
+    var urlEdit = '{{ route('edit') }}';
+    var urlLike = '{{ route('like') }}';
   </script>
 @endsection

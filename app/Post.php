@@ -16,4 +16,8 @@ class Post extends Model {
       return $this->belongsTo('English\User');
 
     }
+
+    public function likes() {
+      return $this->hasMany('English\Like');
+    }
 }
