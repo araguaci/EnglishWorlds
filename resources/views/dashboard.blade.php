@@ -28,8 +28,8 @@ Timeline
           Posted by {{ $post->user->first_name }} about {{ $post->created_at->diffForHumans() }}
         </div>
         <div class="interaction">
-          <a href="#" class="like">Like</a>
-          <a href="#" class="like">Dislike</a>
+          <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 1 ? 'You like this post' : 'Like' : 'Like'}}</a>
+          <a href="#" class="like">{{ Auth::user()->likes()->where('post_id', $post->id)->first() ? Auth::user()->likes()->where('post_id', $post->id)->first()->like == 0 ? 'You don\'t this post' : 'Dislike' : 'Dislike'}}</a>
           @if(Auth::user() == $post->user)
             <a href="#" data-toggle="modal" data-target="#edit-modal" class="edit">Edit</a>
             <a href="{{ route('post.delete', ['post_id' => $post->id]) }}">Delete</a>
