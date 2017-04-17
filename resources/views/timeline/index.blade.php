@@ -23,11 +23,11 @@
       @else
         @foreach($statuses as $status)
           <div class="media">
-            <a href="{{ route('profile.index', ['username' => $status->user->username]) }}" class="pull-left">
+            <a href="{{ route('profile.index', ['username' => $status->user->name]) }}" class="pull-left">
               <img src="{{ $status->user->getAvatarUrl() }}" alt="{{ $status->user->getNameOrUsername() }}" class="media-object">
             </a>
             <div class="media-body">
-              <h4 class="media-heading"><a href="{{ route('profile.index', ['username' => $status->user->username]) }}">{{ $status->user->getNameOrUsername() }}</a></h4>
+              <h4 class="media-heading"><a href="{{ route('profile.index', ['username' => $status->user->name]) }}">{{ $status->user->getNameOrUsername() }}</a></h4>
               <p>{{ $status->body }}</p>
               <ul class="list-inline">
                 <li>{{ $status->created_at->diffForHumans() }}</li>
@@ -38,11 +38,11 @@
               </ul>
               @foreach ($status->replies as $reply)
                 <div class="media">
-                  <a href="{{ route('profile.index', ['username' => $reply->user->username]) }}" class="pull-left">
+                  <a href="{{ route('profile.index', ['username' => $reply->user->name]) }}" class="pull-left">
                     <img src="{{ $reply->user->getAvatarUrl() }}" alt="{{ $reply->user->getNameOrUsername() }}" class="media-object">
                   </a>
                   <div class="media-body">
-                    <h5 class="media-heading"><a href="route('profile.index', ['username' => $reply->user->username])">Salim</a></h5>
+                    <h5 class="media-heading"><a href="{{ route('profile.index', ['username' => $reply->user->name]) }}">{{ $reply->user->getNameOrUsername() }}</a></h5>
                     <p>{{ $reply->body }}</p>
                     <ul class="list-inline">
                       <li>{{ $reply->created_at->diffForHumans() }}</li>

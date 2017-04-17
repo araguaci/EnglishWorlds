@@ -64,7 +64,7 @@
       @if (Auth::user()->hadFriendRequestPending($user))
         <p>Waiting for {{ $user->getNameOrUsername() }} to accept your request.</p>
       @elseif (Auth::user()->hasFriendRequestReceived($user))
-        <a href="{{ route('friend.accept', ['username' => $user->username]) }}" class="btn btn-primary">Accept friend request</a>
+        <a href="{{ route('friend.accept', ['username' => $user->name]) }}" class="btn btn-primary">Accept friend request</a>
       @elseif (Auth::user()->isFriendsWith($user))
         <p>You and {{ $user->getNameOrUsername() }} are friends.</p>
         <form class="" action="{{ route('friend.delete', ['username' => $user->username]) }}" method="post">

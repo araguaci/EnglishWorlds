@@ -1,22 +1,10 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Auth::routes();
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-
-Auth::routes();
 
 Route::get('home', [
   'uses' => 'HomeController@index',
@@ -56,13 +44,13 @@ Route::get('friends/add/{username}',[
   'middleware' => ['auth']
 ]);
 
-Route::get('/friends/accept/{username}', [
+Route::get('friends/accept/{username}', [
   'uses' => '\English\Http\Controllers\FriendController@getAccept',
   'as' => 'friend.accept',
   'middleware' => ['auth']
 ]);
 
-Route::post('/friends/delete/{username}', [
+Route::post('friends/delete/{username}', [
   'uses' => '\English\Http\Controllers\FriendController@postDelete',
   'as' => 'friend.delete',
   'middleware' => ['auth'],
