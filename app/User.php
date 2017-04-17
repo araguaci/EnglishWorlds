@@ -4,10 +4,11 @@ namespace English;
 
 use English\Status;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Reminders\RemindableTrait;
+use Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
     use Notifiable;
 
     /**
@@ -28,7 +29,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function getName(){
+    public function getName() {
+
       if ($this->name){
         return "{$this->name}";
       }
@@ -36,6 +38,7 @@ class User extends Authenticatable
     }
 
     public function getNameOrUsername(){
+
       return $this->getName() ?: $this->name;
     }
 
@@ -89,7 +92,7 @@ class User extends Authenticatable
     }
 
     public function deleteFriend(User $user) {
-      
+
       $this->friendOf()->detach($user->id);
       $this->friendsOfMine()->detach($user->id);
     }
