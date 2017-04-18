@@ -19,19 +19,30 @@ class ProfileController extends Controller
     return view('profile.index')->with('user', $user)->with('statuses', $statuses)->with('authUserIsFriend', Auth::user()->isFriendsWith($user));
   }
 
-  public function getEdit(){
+  public function getEdit() {
     return view('profile.edit');
   }
 
-  public function postEdit(Request $request){
+  // Edit profile information
+
+  public function postEdit(Request $request) {
+    // Validate input data
     $this->validate($request, [
-      'name' => 'alpha|max:50'
+      'name' => 'required|alpha|max:50',
+      'firstName' => 'min:3|max:10',
+      'lastName' => 'min:3|max:15',
+      'location' => 'min:4|max:30'
     ]);
 
     Auth::user()->update([
-      'name' => $request->input('name')
+      // Update the data in DB
+      'name' => $request->input('name'),
+      'firstName' => $request->input('firstName'),
+      'lastName' => $request->input('lastName'),
+      'location' => $request->input('location')
     ]);
 
+    // Redirect to the same page with a flashed message
     return redirect()->route('profile.edit')->with('info', 'Your profile has been updated.');
   }
 }

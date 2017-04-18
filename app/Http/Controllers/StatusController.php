@@ -24,7 +24,7 @@ class StatusController extends Controller {
 
   public function postReply(Request $request, $statusId) {
     $this->validate($request, [
-      "reply-{$statusId}" =>  'required|max:1000', 'required' => 'The replied body is required.'
+      "reply-{$statusId}" =>  'required|max:1000', 'required' => 'The reply body is required.'
     ]);
 
     $status = Status::notReply()->find($statusId);
