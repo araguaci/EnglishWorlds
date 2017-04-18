@@ -13,23 +13,23 @@ Route::get('home', [
 
 Route::get('search', [
   'uses' => '\English\Http\Controllers\SearchController@getResults',
-  'as' => 'search.results',
+  'as' => 'search.results'
 ]);
 
 Route::get('user/{username}', [
   'uses' => '\English\Http\Controllers\ProfileController@getProfile',
-  'as' => 'profile.index',
+  'as' => 'profile.index'
 ]);
 
 Route::get('profile/edit', [
   'uses' => '\English\Http\Controllers\ProfileController@getEdit',
   'as' => 'profile.edit',
-  'middleware' => ['auth'],
+  'middleware' => ['auth']
 ]);
 
 Route::post('profile/edit', [
   'uses' => '\English\Http\Controllers\ProfileController@postEdit',
-  'middleware' => ['auth'],
+  'middleware' => ['auth']
 ]);
 
 Route::get('friends', [
@@ -53,7 +53,7 @@ Route::get('friends/accept/{username}', [
 Route::post('friends/delete/{username}', [
   'uses' => '\English\Http\Controllers\FriendController@postDelete',
   'as' => 'friend.delete',
-  'middleware' => ['auth'],
+  'middleware' => ['auth']
 ]);
 /**
  * Statuses
