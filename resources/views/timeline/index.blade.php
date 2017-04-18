@@ -31,10 +31,12 @@
               <p>{{ $status->body }}</p>
               <ul class="list-inline">
                 <li>{{ $status->created_at->diffForHumans() }}</li>
-                @if ($status->user->id !== Auth::user()->id)
+                @if (!Auth::user()->hasLikedStatus($status))
+                  @if ($status->user->id !== Auth::user()->id)
                   <li><a href="{{ route('status.like', ['statusId' => $status->id]) }}">Like</a></li>
-                  <li>{{ $status->likes->count() }} {{ str_plural('like', $status->likes->count()) }}</li>
+                  @endif
                 @endif
+                <li>{{ $status->likes->count() }} {{ str_plural('like', $status->likes->count()) }}</li>
               </ul>
               @foreach ($status->replies as $reply)
                 <div class="media">
@@ -46,8 +48,10 @@
                     <p>{{ $reply->body }}</p>
                     <ul class="list-inline">
                       <li>{{ $reply->created_at->diffForHumans() }}</li>
-                      @if ($status->user->id !== Auth::user()->id)
-                        <li><a href="{{ route('status.like', ['statusId' => $reply->id]) }}">Like</a></li>
+                      @if (!Auth::user()->hasLikedStatus($reply))
+                        @if ($status->user->id !== Auth::user()->id)
+                          <li><a href="{{ route('status.like', ['statusId' => $reply->id]) }}">Like</a></li>
+                        @endif
                       @endif
                       <li>{{ $reply->likes->count() }} {{ str_plural('like', $reply->likes->count()) }}</li>
                     </ul>

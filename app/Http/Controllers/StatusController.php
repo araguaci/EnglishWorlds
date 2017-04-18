@@ -34,7 +34,7 @@ class StatusController extends Controller {
       return redirect()->route('home');
     }
 
-    if (!Auth::user()->isFriendsWith($status->user) && Auth::user()->id !== $status->user->id) {
+    if (Auth::user()->id == $status->user->id) {
       return redirect()->route('home');
     }
 
