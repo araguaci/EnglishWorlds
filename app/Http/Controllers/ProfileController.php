@@ -2,16 +2,18 @@
 
 namespace English\Http\Controllers;
 
+use Auth;
 use English\User;
 use Illuminate\Http\Request;
-use Auth;
 
-class ProfileController extends Controller
-{
+class ProfileController extends Controller {
+
   public function getProfile($username) {
+
     $user = User::where('name', $username)->first();
 
     if(!$user){
+
       abort(404);
     }
     $statuses = $user->statuses()->notReply()->get();
@@ -20,6 +22,7 @@ class ProfileController extends Controller
   }
 
   public function getEdit() {
+    
     return view('profile.edit');
   }
 

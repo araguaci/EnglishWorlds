@@ -2,12 +2,12 @@
 
 namespace English\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Auth;
 use English\User;
+use Illuminate\Http\Request;
 
-class FriendController extends Controller
-{
+class FriendController extends Controller {
+
   public function getIndex() {
 
     $friends = Auth::user()->friends();
@@ -15,8 +15,8 @@ class FriendController extends Controller
     return view('friends.index')->with('friends', $friends)->with('requests', $requests);
   }
 
-  public function getAdd($username)
-  {
+  public function getAdd($username) {
+
     $user = User::where('name', $username)->first();
 
     if (!$user) {
@@ -24,10 +24,12 @@ class FriendController extends Controller
     }
 
     if (Auth::user()->hadFriendRequestPending($user) || $user->hadFriendRequestPending(Auth::user())) {
+
       return redirect()->route('profile.index', ['username' => $user->username])->with('info', 'Friend request already pending.');
     }
 
     if (Auth::user()->isFriendsWith($user)) {
+
       return redirect()->route('profile.index', ['username' => $user->username])->with('info', 'You are already friends.');
     }
 
@@ -39,17 +41,19 @@ class FriendController extends Controller
   public function getAccept($username) {
 
     $user = User::where('name', $username)->first();
-    
+
     if (!$user) {
       return redirect()->route('home')->with('info', 'That user could not be found');
     }
 
     // Prevent adding the user itself as a friend via URL
     if (Auth::user()->id === $user->id) {
+
       return redirect()->route('home');
     }
 
     if (!Auth::user()->hasFriendRequestReceived($user)) {
+
       return redirect()->route('home');
     }
 
@@ -59,9 +63,11 @@ class FriendController extends Controller
   }
 
   public function postDelete($username) {
+
     $user = User::where('username', $username)->first();
 
     if (!Auth::user()->isFriendsWith($user)) {
+      
       return redirect()->back();
     }
 

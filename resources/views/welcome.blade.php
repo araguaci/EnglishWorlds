@@ -28,11 +28,11 @@
         </div>
         <div class="row usr-login">
             <div class="col-3 offset-2 usr-login-sec">
-                <p>Existing user ?</p>
+                <p>Existing user?</p>
                 <button class="usr-btn"><a href="{{ url('/login') }}">Login</a></button>
             </div>
             <div class="col-3 offset-2 usr-register-sec">
-                <p>New user ?</p>
+                <p>New user?</p>
                 <button class="usr-btn"><a href="{{ url('/register') }}">Register</a></button>
             </div>
         </div>
