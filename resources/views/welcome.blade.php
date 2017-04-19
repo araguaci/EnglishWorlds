@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <!-- Scripts -->
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -29,11 +31,11 @@
         <div class="row usr-login">
             <div class="col-3 offset-2 usr-login-sec">
                 <p>Existing user?</p>
-                <button class="usr-btn"><a href="{{ url('/login') }}">Login</a></button>
+                <a class="usr-btn" href="{{ url('/login') }}">Login</a>
             </div>
             <div class="col-3 offset-2 usr-register-sec">
                 <p>New user?</p>
-                <button class="usr-btn"><a href="{{ url('/register') }}">Register</a></button>
+                <a class="usr-btn" href="{{ url('/register') }}">Register</a>
             </div>
         </div>
     </div>
