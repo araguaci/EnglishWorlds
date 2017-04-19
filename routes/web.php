@@ -12,46 +12,46 @@ Route::get('home', [
 ]);
 
 Route::get('search', [
-  'uses' => '\English\Http\Controllers\SearchController@getResults',
+  'uses' => 'SearchController@getResults',
   'as' => 'search.results'
 ]);
 
 Route::get('user/{username}', [
-  'uses' => '\English\Http\Controllers\ProfileController@getProfile',
+  'uses' => 'ProfileController@getProfile',
   'as' => 'profile.index'
 ]);
 
 Route::get('profile/edit', [
-  'uses' => '\English\Http\Controllers\ProfileController@getEdit',
+  'uses' => 'ProfileController@getEdit',
   'as' => 'profile.edit',
   'middleware' => ['auth']
 ]);
 
 Route::post('profile/edit', [
-  'uses' => '\English\Http\Controllers\ProfileController@postEdit',
+  'uses' => 'ProfileController@postEdit',
   'middleware' => ['auth']
 ]);
 
 Route::get('friends', [
-  'uses' => '\English\Http\Controllers\FriendController@getIndex',
+  'uses' => 'FriendController@getIndex',
   'as' => 'friends.index',
   'middleware' => ['auth']
 ]);
 
 Route::get('friends/add/{username}',[
-  'uses' => '\English\Http\Controllers\FriendController@getAdd',
+  'uses' => 'FriendController@getAdd',
   'as' => 'friend.add',
   'middleware' => ['auth']
 ]);
 
 Route::get('friends/accept/{username}', [
-  'uses' => '\English\Http\Controllers\FriendController@getAccept',
+  'uses' => 'FriendController@getAccept',
   'as' => 'friend.accept',
   'middleware' => ['auth']
 ]);
 
 Route::post('friends/delete/{username}', [
-  'uses' => '\English\Http\Controllers\FriendController@postDelete',
+  'uses' => 'FriendController@postDelete',
   'as' => 'friend.delete',
   'middleware' => ['auth']
 ]);
@@ -60,19 +60,19 @@ Route::post('friends/delete/{username}', [
  */
 
 Route::post('status', [
-  'uses' => '\English\Http\Controllers\StatusController@postStatus',
+  'uses' => 'StatusController@postStatus',
   'as' => 'status.post',
   'middleware' => ['auth']
 ]);
 
 Route::post('status/{statusId}/reply', [
-  'uses' => '\English\Http\Controllers\StatusController@postReply',
+  'uses' => 'StatusController@postReply',
   'as' => 'status.reply',
   'middleware' => ['auth']
 ]);
 
 Route::get('status/{statusId}/like', [
-  'uses' => '\English\Http\Controllers\StatusController@getLike',
+  'uses' => 'StatusController@getLike',
   'as' => 'status.like',
   'middleware' => ['auth']
 ]);
