@@ -1,15 +1,14 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 
-class DatabaseSeeder extends Seeder {
+class UsersTableSeeder extends Seeder {
 		/**
 		 * Run the database seeds.
 		 *
 		 * @return void
 		 */
 		public function run() {
-			$this->call(UsersTableSeeder::class);
+			$users = factory(English\User::class, 1000)->create();
 		}
 }
