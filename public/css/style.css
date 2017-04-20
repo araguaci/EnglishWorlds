@@ -5,10 +5,16 @@
 html,body,#app {
   height: 100%;
 }
-
+#app{
+	background:#ecf0f1; 
+	padding-top: 15px;
+}
 .container {
 	position: relative;
 	min-height: 100%;
+	background: #fff;
+	transform: translateY(-15px);
+	padding-top: 15px;
 }
 
 /** Nav bar**/
@@ -17,7 +23,6 @@ html,body,#app {
 	background-color: #2ecc71;
 	margin-right: -15px;
 	margin-left: -15px;
-	margin-bottom: 15px
 }
 .usr-nav i {
 	font-size: 33pt;
@@ -113,7 +118,9 @@ html,body,#app {
 	padding-top: 110px;
 	color: #95a5a6;
 }
-
+.usr-login{
+	
+}
 .usr-login-sec,.usr-register-sec {
 	margin-top: 50px;
 	height: 245px;

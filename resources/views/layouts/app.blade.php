@@ -24,14 +24,15 @@
     </script>
 </head>
 <body>
+ @include('layouts.nav')
     <div id="app">
-      @include('layouts.nav')
+     
       <div class="container">
         @yield('content')
       </div>
-       @include('layouts.footer')
+       
     </div>
-
+    @include('layouts.footer')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
