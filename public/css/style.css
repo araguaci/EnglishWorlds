@@ -15,12 +15,15 @@ html,body {
 .usr-nav {
 	height: 70px;
 	background-color: #2ecc71;
-	margin-right: 0;
-	margin-left: 0;
+	margin-right: -15px;
+	margin-left: -15px;
 	margin-bottom: 15px
 }
 .usr-nav i {
 	font-size: 33pt;
+	color: #fff;
+}
+.usr-nav i a {
 	color: #fff;
 }
 
