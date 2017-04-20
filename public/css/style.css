@@ -11,17 +11,90 @@ html,body {
 	min-height: 100%;
 }
 
+/** Nav bar**/
 .usr-nav {
 	height: 70px;
 	background-color: #2ecc71;
 	margin-right: 0;
 	margin-left: 0;
+	margin-bottom: 15px
 }
-
 .usr-nav i {
 	font-size: 33pt;
 	color: #fff;
 }
+
+
+.usr-nav .usr-nav_search{
+	margin-top: 23px;
+	height: 25px
+}
+.usr-nav_input{
+	background: #7AE4A7;
+	border: 0;
+	height: 25px;
+	padding-left: 5px;
+	color: #7F8C8D;
+	width: 100%;
+}
+.usr-nav_input:focus {
+    outline-width: 0;
+}
+
+
+.usr-nav .usr-nav_link {
+	color: #fff;
+	line-height: 70px
+}
+.usr-nav .usr-nav_link li {
+	display: inline;	
+	font-size: 24px;
+	padding: 0 5px 0 5px;
+	border-right: 1px solid #FFF;
+}
+.usr-nav .usr-nav_link li:last-child{
+	border-right: 0;
+}
+.usr-nav .usr-nav_link li a {
+	color: #fff;
+}
+.dropdown{
+	position: relative;
+    display: inline-block !important; 
+}
+.dropdown .dropdown_content{
+	display: none;
+    position: absolute;
+    background-color: #7AE4A7;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    list-style-type: none;
+    margin-left: -5px;
+}
+.dropdown .dropdown_content li {
+	display: list-item;
+	border:0;
+	line-height: 40px;
+}
+.dropdown:hover{
+	background: #7AE4A7;
+}
+.dropdown:hover .dropdown_content {
+    display: block;
+}
+.arrow{
+	border: solid #FFF;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 2px;
+}
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+/**  User welcome page**/
 
 .usr-wlcm {
 	height: 500px;

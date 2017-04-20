@@ -1,77 +1,32 @@
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
+<div class="container-fluid">
+      <div class="row usr-nav">
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/') }}">
+        <i class="col-2 offset-1"><a class="" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
-        </div>
-
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-          @if (Auth::check())
-            <ul class="nav navbar-nav">
+            </i>
+        @if (Auth::check())
+          <div class="col-3 usr-nav_search">
+              <form class="" role="search" action="{{ route('search.results') }}">
+                <div class="">
+                  <input type="text" name="query" class="usr-nav_input" placeholder="Find people" required>
+                </div>
+              </form>
+          </div>
+          <div class="col col offset-2">
+            <ul class="usr-nav_link">
               <li><a href="{{ url('/home') }}">Timeline</a></li>
-              <li><a href="{{ route('friends.index') }}">Friends</a></li>
+              <li class="dropdown">{{ Auth::user()->name }} <i class="arrow down"></i>
+                <ul class="dropdown_content">
+                  <li><a href="{{ route('friends.index') }}">Friends</a></li>
+                  <li><a href="{{ route('profile.index', ['username' => Auth::user()->name]) }}">Profile</a></li>
+                  <li><a href="{{ route('profile.edit') }}">Edit Profile</a></li>
+                  <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }} </form></li>
+                </ul>
+              </li>
+              
             </ul>
-            <form class="navbar-form navbar-left" role="search" action="{{ route('search.results') }}">
-              <div class="form-group">
-                <input type="text" name="query" class="form-control" placeholder="Find people" required>
-              </div>
-              <button type="submit" class="btn btn-default">Search</button>
-            </form>
+          </div>  
           @endif
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                &nbsp;
-            </ul>
-
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
-                @if (Auth::guest())
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
-                @else
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
-
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                    Logout
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                            <li>
-                                <a href="{{ route('profile.index', ['username' => Auth::user()->name]) }}">
-                                    Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('profile.edit') }}">
-                                    Edit Profile
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                @endif
-            </ul>
-        </div>
-    </div>
-</nav>
+      </div>
+    </div >
