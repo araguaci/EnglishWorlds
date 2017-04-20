@@ -2,7 +2,7 @@
 	font-family: 'Maven Pro', sans-serif;
 }
 
-html,body {
+html,body,#app {
   height: 100%;
 }
 
