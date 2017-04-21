@@ -3,9 +3,9 @@
 @section('content')
   <div class="row">
     <div class="col-lg-6">
-      <form role="form" action="{{ route('status.post') }}" method="post">
+      <form role="form" action="#" id="postStatus">
         <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
-          <textarea class="form-control" name="status" rows="2" placeholder="What's up {{ Auth::user()->getNameOrUsername() }}?" required></textarea>
+          <textarea class="form-control" rows="2" placeholder="What's up {{ Auth::user()->getNameOrUsername() }}?" required id="status"></textarea>
           @if ($errors->has('status'))
             <span class="help-block">{{ $errors->first('status') }}</span>
           @endif
@@ -18,10 +18,12 @@
   </div>
   <div class="row">
     <div class="col-lg-5">
+
       @if (!$statuses->count())
         <p>There's nothing in your timeline, yet.</p>
       @else
         @foreach($statuses as $status)
+        <div id="postRequestData"></div>
           <div class="media">
             <a href="{{ route('profile.index', ['username' => $status->user->name]) }}" class="pull-left">
               <img src="{{ $status->user->getAvatarUrl() }}" alt="{{ $status->user->getNameOrUsername() }}" class="media-object">
