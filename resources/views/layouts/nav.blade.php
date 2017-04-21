@@ -1,4 +1,5 @@
-<div class="container-fluid">
+<nav class="navbar">
+<div class="">
       <div class="row usr-nav">
 
         <i class="col-2 offset-1"><a class="" href="{{ url('/') }}">
@@ -13,7 +14,7 @@
                 </div>
               </form>
           </div>
-          <div class="col col offset-2">
+          <div class="col offset-2">
             <ul class="usr-nav_link">
               <li><a href="{{ url('/home') }}">Timeline</a></li>
               <li class="dropdown">{{ Auth::user()->name }} <i class="arrow down"></i>
@@ -24,9 +25,10 @@
                   <li><a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }} </form></li>
                 </ul>
               </li>
-              
+
             </ul>
-          </div>  
+          </div>
           @endif
       </div>
-    </div >
+</div >
+</nav>
