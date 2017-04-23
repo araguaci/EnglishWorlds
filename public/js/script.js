@@ -20,3 +20,12 @@ $(document).ready(function() {
       });
     });
 });
+
+
+
+// Script to auto resize TextArea
+$(document).ready(function(){
+
+   $('textarea').autogrow({vertical: true, horizontal: false});
+
+});

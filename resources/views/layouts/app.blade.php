@@ -38,5 +38,6 @@
 	<!-- Scripts -->
 	<script src="{{ asset('js/app.js') }}"></script>
 	<script src="{{ asset('js/script.js') }}"></script>
+	<script src="{{ asset('js/jquery.ns-autogrow.min.js') }}"></script>
 </body>
 </html>
