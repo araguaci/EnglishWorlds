@@ -1,22 +1,59 @@
 $.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
+	headers: {
+		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	}
 });
 
 $(document).ready(function() {
-    $('#postStatus').submit(function(e) {
+		$('#postStatus').submit(function(e) {
 
-      e.preventDefault();
-      var stsBody = $('#status').val();
-      var dataString = "status="+stsBody;
-      $.ajax({
-        type: "POST",
-        url: 'status',
-        data: dataString,
-        success: function(data){
-          $('#postRequestData').append(data);
-        }
-      });
-    });
-});
+			e.preventDefault();
+			var stsBody = $('#status').val();
+			var dataString = "status="+stsBody;
+			$.ajax({
+				type: "POST",
+				url: 'status',
+				data: dataString,
+				success: function(data){
+					$('#postRequestData').append(data);
+				}
+			});
+		});
+		var submitIcon = $('.searchbox-icon');
+						var inputBox = $('.searchbox-input');
+						var searchBox = $('.searchbox');
+						var isOpen = false;
+						submitIcon.click(function(){
+								if(isOpen == false){
+										searchBox.addClass('searchbox-open');
+										inputBox.focus();
+										isOpen = true;
+								} else {
+										searchBox.removeClass('searchbox-open');
+										inputBox.focusout();
+										isOpen = false;
+								}
+						});  
+						 submitIcon.mouseup(function(){
+										return false;
+								});
+						searchBox.mouseup(function(){
+										return false;
+								});
+						$(document).mouseup(function(){
+										if(isOpen == true){
+												$('.searchbox-icon').css('display','block');
+												submitIcon.click();
+										}
+								});
+				});
+						function buttonUp(){
+								var inputVal = $('.searchbox-input').val();
+								inputVal = $.trim(inputVal).length;
+								if( inputVal !== 0){
+										$('.searchbox-icon').css('display','none');
+								} else {
+										$('.searchbox-input').val('');
+										$('.searchbox-icon').css('display','block');
+								}
+};

@@ -9,6 +9,6 @@ class UsersTableSeeder extends Seeder {
 		 * @return void
 		 */
 		public function run() {
-			$users = factory(English\User::class, 1000)->create();
+			$users = factory(English\User::class, 50)->create();
 		}
 }
