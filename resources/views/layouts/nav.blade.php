@@ -38,6 +38,11 @@
 				</li>
 			</ul>
 		</div><!-- /.navbar-collapse -->
+		@else
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="{{ url('login') }}">Login</a></li>
+				<li><a href="{{ url('register') }}">Sign up</a></li>
+			</ul>
 		@endif
 	</div><!-- /.container-fluid -->
 </nav>
