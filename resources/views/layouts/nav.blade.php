@@ -9,11 +9,11 @@
 				<span class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="/">
-				<img class="pull-left" alt="Brand" src="{{ asset('img/brand.png') }}" width="35" height="35">
+				<img alt="Brand" class="pull-left" src="{{ asset('img/brand.png') }}" width="35" height="35">
 				{{ config('app.name', 'Laravel') }}
 			</a>
-			
 		</div>
+
 		@if(Auth::user())
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

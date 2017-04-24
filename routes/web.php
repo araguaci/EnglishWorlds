@@ -76,3 +76,7 @@ Route::get('status/{statusId}/like', [
 	'as' => 'status.like',
 	'middleware' => ['auth']
 ]);
+
+Route::get('bootstrap', function(){
+	return view('bootstrap');
+});
