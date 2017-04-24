@@ -54,6 +54,18 @@ return [
             'engine' => null,
         ],
 
+        'testing' => [
+            'driver' => 'mysql',
+            'host' => env('127.0.0.1'),
+            'database' => env('homested_test '),
+            'username' => env('homestead'),
+            'password' => env('secret'),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),
