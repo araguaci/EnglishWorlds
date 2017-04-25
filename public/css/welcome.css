@@ -1,15 +1,66 @@
-.usr-wlcm {
-	background-image: url("../img/bg.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	font-size: 60px;
-	text-align: center;
-	box-shadow: 0 10px 8px -8px gray;
+#header {
+  font-size: 40.5%;
+  font-family: arial, sans-serif;
 }
 
-.usr-wlcm p {
-	padding-top: 100px;
-	color: #95A5A6;
+#logo {
+  height: 100px;
+  width: 100px;
+}
+
+#websiteTitle {
+  font-size: 10em;
+  vertical-align: middle;
+  font-family: 'Pacifico', cursive;
+  padding-left: 15px;
+  color: #191970;
+}
+
+#websiteSlogan {
+  font-size: 5.4em;
+}
+
+/* Carousel Styling */
+.slide1 {
+  background-image: url("../img/bg.jpg");
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.slide2 {
+  background-image: url("../img/bg.jpg");
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.slide3 {
+  background-image: url("../img/bg.jpg");
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.slide4 {
+  background-image: url("../img/bg.jpg");
+  height: 500px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.carousel-caption h1 {
+  font-size: 5.4em;
+  font-family: 'Pacifico', cursive;
+  padding-bottom: .4em;
+}
+
+.carousel-caption p {
+  font-size: 2em;
 }
 
 .usr-login-sec,.usr-register-sec {
@@ -48,7 +99,6 @@
 	border: 1px solid #2ECC71;
 }
 
-
 .usr-btn:hover {
 	text-decoration: none;
 }
@@ -57,9 +107,5 @@
 @media screen and (max-width: 940px) {
 	.usr-login-sec,.usr-register-sec{
 		font-size: 25px;
-	}
-	.usr-wlcm{
-		font-size: 40px;
-		height: 350px;
 	}
 }

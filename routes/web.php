@@ -55,6 +55,7 @@ Route::post('friends/delete/{username}', [
 	'as' => 'friend.delete',
 	'middleware' => ['auth']
 ]);
+
 /**
  * Statuses
  */
@@ -76,7 +77,3 @@ Route::get('status/{statusId}/like', [
 	'as' => 'status.like',
 	'middleware' => ['auth']
 ]);
-
-Route::get('bootstrap', function(){
-	return view('bootstrap');
-});
