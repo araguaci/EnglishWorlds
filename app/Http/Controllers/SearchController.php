@@ -4,11 +4,10 @@ namespace English\Http\Controllers;
 
 use DB;
 use English\User;
-use Illuminate\Http\Request;
 
 class SearchController extends Controller {
-  public function getResults(Request $request) {
-    $query = $request->input('query');
+  public function getResults() {
+    $query = request('query');
 
     if (!$query) {
       return redirect()->route('home');

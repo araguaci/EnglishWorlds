@@ -1,4 +1,7 @@
 ## English DZ Social Network
+[![Build Status](https://travis-ci.org/CaddyDz/English.svg?branch=master)](https://travis-ci.org/CaddyDz/English)
+[![Laravel](https://img.shields.io/badge/Powered%20by-Laravel%20Framework-red.svg)](https://laravel.com/)
+[![Gitter](https://img.shields.io/gitter/room/EnglishDz/Lobby.svg?style=flat-square)](https://gitter.im/EnglishDz/Lobby)  
 This is the underlying source code of the English DZ Social Networking website.  
 The website addresses All active Algerians seeking to either learn or have fun and chat in English online.  
 

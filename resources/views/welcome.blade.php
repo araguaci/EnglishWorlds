@@ -23,7 +23,9 @@
         <div class="carousel-caption">
           <h1>English DZ</h1>
           <p>Algerian English speakers social network</p>
+          @if(!Auth::user())
           <p><a href="{{ url('/register') }}" class="btn btn-success btn-sm">Sign Up Now!</a></p>
+        @endif
         </div>
     </div>
     <div class="item">
@@ -53,7 +55,7 @@
   <a class="left carousel-control" href="#theCarousel" data-slide="prev">
   <span class="glyphicon glyphicon-chevron-left"></span></a>
 </div>
-
+@if (!Auth::user())
 <div class="row usr-login">
 	<div class="col-lg-3 col-sm-8 offset-lg-2 offset-sm-2 usr-login-sec">
 		<p>Existing user?</p>
@@ -64,5 +66,6 @@
 		<a class="usr-btn" href="{{ url('/register') }}">Register</a>
 	</div>
 </div>
+@endif
 
 @stop
