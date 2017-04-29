@@ -11,7 +11,7 @@ $(document).ready(function() {
 			var stsBody = $('#status').val();
 			var dataString = "status="+stsBody;
 			$.ajax({
-				type: "POST",sty
+				type: "POST",
 				url: 'status',
 				data: dataString,
 				success: function(data){
