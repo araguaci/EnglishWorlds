@@ -11,7 +11,7 @@ $(document).ready(function() {
 			var stsBody = $('#status').val();
 			var dataString = "status="+stsBody;
 			$.ajax({
-				type: "POST",
+				type: "POST",sty
 				url: 'status',
 				data: dataString,
 				success: function(data){
@@ -33,7 +33,7 @@ $(document).ready(function() {
 										inputBox.focusout();
 										isOpen = false;
 								}
-						});  
+						});
 						 submitIcon.mouseup(function(){
 										return false;
 								});
