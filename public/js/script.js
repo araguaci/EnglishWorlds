@@ -1,12 +1,13 @@
 $.ajaxSetup({
-  headers: {
-    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-  }
+	headers: {
+		'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+	}
 });
 
 $(document).ready(function() {
-    $('#postStatus').submit(function(e) {
-
+    // Script to auto resize TextArea
+    $('textarea').autogrow({vertical: true, horizontal: false});
+		$('#postStatus').submit(function(e) {
       e.preventDefault();
       var stsBody = $('#status').val();
       var dataString = "status="+stsBody;
@@ -15,17 +16,11 @@ $(document).ready(function() {
         url: 'status',
         data: dataString,
         success: function(data){
-          $('#postRequestData').append(data);
+          // Create a post on the fly using the requested data
+          $.get('status', function(data){
+            $('.col-lg-5').append(data);
+          });
         }
       });
     });
-});
-
-
-
-// Script to auto resize TextArea
-$(document).ready(function(){
-
-   $('textarea').autogrow({vertical: true, horizontal: false});
-
 });

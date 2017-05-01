@@ -8,6 +8,11 @@ use English\User;
 use English\Status;
 use Illuminate\Http\Request;
 
+  /**
+ 	 * @author Salim Djerbouh
+ 	 * @version 0.2
+	 */
+
 class StatusController extends Controller {
 
   public function postStatus(Request $request) {
@@ -24,8 +29,15 @@ class StatusController extends Controller {
       return $request->input('status');
 
     }
+  }
 
+  public function getStatus(Response $response) {
 
+    if (Auth::check()) {
+      
+      return view('status.status');
+    }
+    return view('home');
   }
 
   public function postReply(Request $request, $statusId) {
