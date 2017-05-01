@@ -6,25 +6,27 @@ use Closure;
 
 /**
  * @author Salim Djerbouh <tbitw31@gmail.com>
+ *
  * @version 0.2
  */
-
-class Ajaxify {
-
+class Ajaxify
+{
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     *
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null) {
-      // Get the original response
+    public function handle($request, Closure $next, $guard = null)
+    {
+        // Get the original response
       $response = $next($request);
 
-      if (! $this->shouldAjaxify($request, $response)) {
-          return $response;
-      }
+        if (!$this->shouldAjaxify($request, $response)) {
+            return $response;
+        }
 
       // A 20* response
       if ($response->isSuccessful()) {
@@ -39,16 +41,16 @@ class Ajaxify {
         //  we rather have a redirect like response
 
         $flashData = $this->getFlashData($request);
-        if (! count($flashData)) {
+        if (!count($flashData)) {
             return $response;
         }
         // Return all the flash data as JSON
         return response()->json($flashData, $response->getStatusCode());
+    }
 
-      }
-
-      protected function shouldAjaxify($request, $response) {
-          // If we already have a JSON response we don't need to do anything
+    protected function shouldAjaxify($request, $response)
+    {
+        // If we already have a JSON response we don't need to do anything
           if ($response instanceof JsonResponse) {
               return false;
           }
@@ -59,24 +61,26 @@ class Ajaxify {
           }
 
           // It's not a View response
-          if ($response->isSuccessful() && ! method_exists($response->getOriginalContent(), 'getData')) {
+          if ($response->isSuccessful() && !method_exists($response->getOriginalContent(), 'getData')) {
               return false;
           }
 
           // Now if it's an Ajax request or the clients wants a JSON response or we've
           // a query string param 'ajaxify' then we'll Ajaxify, else we won't.
           return $request->ajax() || $request->wantsJson() || $request->exists('ajaxify');
-      }
+    }
 
-      protected function getFlashData($request) {
-          // Get all session data and convert the array to a Collection object
+    protected function getFlashData($request)
+    {
+        // Get all session data and convert the array to a Collection object
           $sessionData = collect($request->session()->all());
           // Filter only flash data from session data
           $flashedKeys = $request->session()->get('flash.new');
-          $flashData = $sessionData->only($flashedKeys);
+        $flashData = $sessionData->only($flashedKeys);
 
           // Delete flash data, as we've already used them
           $request->session()->forget($flashedKeys);
-          return $flashData;
-      }
+
+        return $flashData;
+    }
 }
