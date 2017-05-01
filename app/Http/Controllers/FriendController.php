@@ -52,10 +52,10 @@ class FriendController extends Controller
             return redirect()->route('home')->with('info', 'That user could not be found');
         }
 
-    // Prevent adding the user itself as a friend via URL
-    if (Auth::user()->id === $user->id) {
-        return redirect()->route('home');
-    }
+        // Prevent adding the user itself as a friend via URL
+        if (Auth::user()->id === $user->id) {
+            return redirect()->route('home');
+        }
 
         if (!Auth::user()->hasFriendRequestReceived($user)) {
             return redirect()->route('home');

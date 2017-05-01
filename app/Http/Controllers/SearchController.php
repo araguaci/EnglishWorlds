@@ -14,8 +14,8 @@ class SearchController extends Controller
         if (!$query) {
             return redirect()->route('home');
         }
-    // Search for users using fuzzy matching
-    $users = User::where(DB::raw("CONCAT(firstName, ' ', lastName)"), 'LIKE', "%{$query}%")->orWhere('name', 'LIKE', "%{$query}%")->get();
+        // Search for users using fuzzy matching
+        $users = User::where(DB::raw("CONCAT(firstName, ' ', lastName)"), 'LIKE', "%{$query}%")->orWhere('name', 'LIKE', "%{$query}%")->get();
 
         return view('search.results')->with('users', $users);
     }
