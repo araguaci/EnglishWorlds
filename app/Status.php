@@ -15,7 +15,7 @@ class Status extends Model {
   public function user() {
     return $this->belongsTo('English\User', 'user_id');
   }
-  
+
   public function scopeNotReply($query) {
     return $query->whereNull('parent_id');
   }
@@ -23,6 +23,7 @@ class Status extends Model {
   public function replies() {
     return $this->hasMany('English\Status', 'parent_id');
   }
+  
   public function likes() {
     return $this->morphMany('English\Like', 'likeable');
   }

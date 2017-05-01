@@ -77,3 +77,8 @@ Route::get('status/{statusId}/like', [
 	'as' => 'status.like',
 	'middleware' => ['auth']
 ]);
+
+Route::get('status', [
+	'uses' => 'StatusController@getStatus',
+	'as' => 'status'
+]);

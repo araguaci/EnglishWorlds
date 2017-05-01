@@ -11,10 +11,10 @@
 		<title>{{ config('app.name', 'Laravel') }}</title>
 
 		<!-- Styles -->
+    @yield('styles')
 		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
-		<link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
 
 		<!-- Scripts -->
@@ -33,6 +33,7 @@
 		</div>
 		@include('layouts.footer')
 		<!-- Scripts -->
+    @yield('scripts')
 		<script src="{{ asset('js/app.js') }}"></script>
 		<script src="{{ asset('js/script.js') }}"></script>
 </body>

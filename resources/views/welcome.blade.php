@@ -68,4 +68,8 @@
 </div>
 @endif
 
-@stop
+@endsection
+
+@section('styles')
+  <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
+@endsection
