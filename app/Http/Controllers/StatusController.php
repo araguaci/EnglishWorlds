@@ -80,4 +80,11 @@ class StatusController extends Controller
 
         return redirect()->back();
     }
+
+    public function getDelete($statusId)
+    {
+      $status = Status::where('id', $statusId)->first();
+      $status->delete();
+      return redirect()->route('home')->with(['info', 'Post has been deleted']);
+    }
 }

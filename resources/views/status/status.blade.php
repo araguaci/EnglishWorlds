@@ -12,6 +12,9 @@
         <li><a href="{{ route('status.like', ['statusId' => $status->id]) }}">Like</a></li>
         @endif
       @endif
+      @if (Auth::user()->id == $status->user->id)
+        <li><a href="{{ route('status.delete', ['statusId' => $status->id ])}}">Delete</a></li>
+      @endif
       <li>{{ $status->likes->count() }} {{ str_plural('like', $status->likes->count()) }}</li>
     </ul>
     @foreach ($status->replies as $reply)
