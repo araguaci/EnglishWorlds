@@ -56,7 +56,7 @@ class StatusController extends Controller
         }
 
         $reply = Status::create([
-          'body' => $request->input("reply-{$statusId}")
+          'body' => $request->input("reply-{$statusId}"),
         ])->user()->associate(Auth::user());
         $status->replies()->save($reply);
 
