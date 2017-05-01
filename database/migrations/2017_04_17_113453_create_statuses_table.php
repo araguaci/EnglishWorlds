@@ -1,22 +1,24 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateStatusesTable extends Migration {
+class CreateStatusesTable extends Migration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up() {
-      Schema::create('statuses', function (Blueprint $table) {
-          $table->increments('id');
-          $table->integer('user_id')->nullable();
-          $table->integer('parent_id')->nullable();
-          $table->text('body');
-          $table->timestamps();
+    public function up()
+    {
+        Schema::create('statuses', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('user_id')->nullable();
+            $table->integer('parent_id')->nullable();
+            $table->text('body');
+            $table->timestamps();
         });
     }
 
@@ -25,7 +27,8 @@ class CreateStatusesTable extends Migration {
      *
      * @return void
      */
-    public function down() {
+    public function down()
+    {
         Schema::dropIfExists('statuses');
     }
 }

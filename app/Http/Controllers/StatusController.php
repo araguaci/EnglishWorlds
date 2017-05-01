@@ -3,80 +3,81 @@
 namespace English\Http\Controllers;
 
 use Auth;
-use Response;
-use English\User;
 use English\Status;
+use English\User;
 use Illuminate\Http\Request;
+use Response;
 
-  /**
- 	 * @author Salim Djerbouh
- 	 * @version 0.2
-	 */
-
-class StatusController extends Controller {
-
-  public function postStatus(Request $request) {
-
-    if ($request->ajax()) {
-      $this->validate($request, [
+/**
+ * @author Salim Djerbouh
+ *
+ * @version 0.2
+ */
+class StatusController extends Controller
+{
+    public function postStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $this->validate($request, [
         'status' => 'required|max:1000',
       ]);
 
-      Auth::user()->statuses()->create([
+            Auth::user()->statuses()->create([
         'body' => $request->input('status'),
       ]);
 
-      return $request->input('status');
-
+            return $request->input('status');
+        }
     }
-  }
 
-  public function getStatus(Response $response) {
+    public function getStatus(Response $response)
+    {
+        if (Auth::check()) {
+            return view('status.status');
+        }
 
-    if (Auth::check()) {
-      
-      return view('status.status');
+        return view('home');
     }
-    return view('home');
-  }
 
-  public function postReply(Request $request, $statusId) {
-
-    $this->validate($request, [
-      "reply-{$statusId}" =>  'required|max:1000', 'required' => 'The reply body is required.'
+    public function postReply(Request $request, $statusId)
+    {
+        $this->validate($request, [
+      "reply-{$statusId}" => 'required|max:1000', 'required' => 'The reply body is required.',
     ]);
 
-    $status = Status::notReply()->find($statusId);
+        $status = Status::notReply()->find($statusId);
 
-    if (!$status) {
-      return redirect()->route('home');
-    }
+        if (!$status) {
+            return redirect()->route('home');
+        }
 
-    if (Auth::user()->id == $status->user->id) {
-      return redirect()->route('home');
-    }
+        if (Auth::user()->id == $status->user->id) {
+            return redirect()->route('home');
+        }
 
-    $reply = Status::create([
+        $reply = Status::create([
       'body' => $request->input("reply-{$statusId}"),
     ])->user()->associate(Auth::user());
-    $status->replies()->save($reply);
-    return redirect()->back();
-  }
+        $status->replies()->save($reply);
 
-  public function getLike($statusId) {
-
-    $status = Status::find($statusId);
-
-    if (!$status) {
-      return redirect()->route('home');
+        return redirect()->back();
     }
 
-    if (Auth::user()->hasLikedStatus($status)) {
-      return redirect()->back();
-    }
+    public function getLike($statusId)
+    {
+        $status = Status::find($statusId);
 
-    $like = $status->likes()->create([]);
-    Auth::user()->likes()->save($like);
-    return redirect()->back();
-  }
+        if (!$status) {
+            return redirect()->route('home');
+        }
+
+        if (Auth::user()->hasLikedStatus($status)) {
+            return redirect()->back();
+        }
+
+        $like = $status->likes()->create([]);
+        Auth::user()->likes()->save($like);
+
+        return redirect()->back();
+    }
 }

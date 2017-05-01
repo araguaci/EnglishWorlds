@@ -6,10 +6,11 @@ use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 /**
  * @author Salim Djerbouh <tbitw31@gmail.com>
+ *
  * @version 0.2
  */
-
-class Kernel extends HttpKernel {
+class Kernel extends HttpKernel
+{
     /**
      * The application's global HTTP middleware stack.
      *
@@ -55,11 +56,11 @@ class Kernel extends HttpKernel {
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth'       => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \English\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'bindings'   => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can'        => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'      => \English\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle'   => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
 }
