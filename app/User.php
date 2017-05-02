@@ -2,8 +2,8 @@
 
 namespace English;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -14,18 +14,18 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
+    protected $fillable = array(
         'name', 'email', 'password', 'firstName', 'lastName', 'location',
-    ];
+    );
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
+    protected $hidden = array(
         'password', 'remember_token',
-    ];
+    );
 
     public function getName()
     {
@@ -104,9 +104,9 @@ class User extends Authenticatable
 
     public function acceptFriendRequest(User $user)
     {
-        $this->friendRequests()->where('id', $user->id)->first()->pivot->update([
+        $this->friendRequests()->where('id', $user->id)->first()->pivot->update(array(
         'accepted' => true,
-      ]);
+      ));
     }
 
     public function isFriendsWith(User $user)
