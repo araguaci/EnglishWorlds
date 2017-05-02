@@ -45,7 +45,7 @@
           <span class="help-block">{{ $errors->first("reply-{$statusId}") }}</span>
         @endif
       </div>
-      <input type="submit" value="Reply" class="btn btn-default btn-sm">
+      <input type="submit" value="Reply" class="btn btn-primary btn-sm">
       {{ csrf_field() }}
     </form>
   </div>
