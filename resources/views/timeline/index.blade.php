@@ -3,10 +3,10 @@
 @section('content')
   @include('status.post')
 	<div class="row">
-		<div class="col-lg-5">
+		<div class="col-lg-5" id="statusesBlock">
 
 			@if (!$statuses->count())
-				<p>There's nothing in your timeline, yet.</p>
+				<p id="nullStatuses">There's nothing in your timeline, yet.</p>
 			@else
 				@foreach($statuses as $status)
 					@include('status.status')

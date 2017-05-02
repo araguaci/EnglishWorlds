@@ -60,6 +60,7 @@ Route::post('friends/delete/{username}', array(
  * Statuses
  */
 
+// Post statuses
 Route::post('status', array(
     'uses' => 'StatusController@postStatus',
     'as' => 'status.post',

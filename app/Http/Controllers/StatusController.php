@@ -7,6 +7,7 @@ use English\Status;
 use English\User;
 use Illuminate\Http\Request;
 use Response;
+use Illuminate\Support\Facades\Input;
 
 /**
  * @author Salim Djerbouh
@@ -30,13 +31,15 @@ class StatusController extends Controller
         }
     }
 
-    public function getStatus(Response $response)
+    public function getStatus(Request $request)
     {
-        if (Auth::check()) {
-            return view('status.status');
-        }
+      if ($request->ajax()) {
 
-        return view('home');
+        $status = Status::notReply()->orderBy('created_at', 'desc')->first();
+        return view('status.status')->with([
+          'status' => $status
+        ])->render();
+      }
     }
 
     public function postReply(Request $request, $statusId)
