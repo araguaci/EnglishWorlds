@@ -1,22 +1,20 @@
 preset: laravel
 
-risky: false
+linting: true
 
 enabled:
-  - long_array_syntax
+  - strict
   - unalign_double_arrow
+  - phpdoc_order
+  - phpdoc_separation
 
 disabled:
   - short_array_syntax
 
 finder:
   exclude:
+    - "public"
+    - "resources"
     - "tests"
   name:
     - "*.php"
-  not-name:
-    - "*Stub.php"
-  not-path:
-    - "libraries"
-  depth:
-    - "< 3"
