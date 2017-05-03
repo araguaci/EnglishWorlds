@@ -24,7 +24,7 @@ class Ajaxify
         // Get the original response
       $response = $next($request);
 
-        if (!$this->shouldAjaxify($request, $response)) {
+        if (! $this->shouldAjaxify($request, $response)) {
             return $response;
         }
 
@@ -41,7 +41,7 @@ class Ajaxify
         //  we rather have a redirect like response
 
         $flashData = $this->getFlashData($request);
-        if (!count($flashData)) {
+        if (! count($flashData)) {
             return $response;
         }
         // Return all the flash data as JSON
@@ -61,7 +61,7 @@ class Ajaxify
           }
 
           // It's not a View response
-          if ($response->isSuccessful() && !method_exists($response->getOriginalContent(), 'getData')) {
+          if ($response->isSuccessful() && ! method_exists($response->getOriginalContent(), 'getData')) {
               return false;
           }
 
