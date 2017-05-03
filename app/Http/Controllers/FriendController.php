@@ -27,7 +27,7 @@ class FriendController extends Controller
     {
         $user = User::where('name', $username)->first();
 
-        if (!$user) {
+        if (! $user) {
             return redirect()->route('home')->with('info', 'That user could not be found');
         }
 
@@ -48,7 +48,7 @@ class FriendController extends Controller
     {
         $user = User::where('name', $username)->first();
 
-        if (!$user) {
+        if (! $user) {
             return redirect()->route('home')->with('info', 'That user could not be found');
         }
 
@@ -57,7 +57,7 @@ class FriendController extends Controller
             return redirect()->route('home');
         }
 
-        if (!Auth::user()->hasFriendRequestReceived($user)) {
+        if (! Auth::user()->hasFriendRequestReceived($user)) {
             return redirect()->route('home');
         }
 
@@ -70,7 +70,7 @@ class FriendController extends Controller
     {
         $user = User::where('username', $username)->first();
 
-        if (!Auth::user()->isFriendsWith($user)) {
+        if (! Auth::user()->isFriendsWith($user)) {
             return redirect()->back();
         }
 

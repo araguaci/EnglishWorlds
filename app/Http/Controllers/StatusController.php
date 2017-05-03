@@ -3,11 +3,9 @@
 namespace English\Http\Controllers;
 
 use Auth;
-use English\Status;
 use English\User;
+use English\Status;
 use Illuminate\Http\Request;
-use Response;
-use Illuminate\Support\Facades\Input;
 
 /**
  * @author Salim Djerbouh
@@ -33,13 +31,13 @@ class StatusController extends Controller
 
     public function getStatus(Request $request)
     {
-      if ($request->ajax()) {
+        if ($request->ajax()) {
+            $status = Status::notReply()->orderBy('created_at', 'desc')->first();
 
-        $status = Status::notReply()->orderBy('created_at', 'desc')->first();
-        return view('status.status')->with([
-          'status' => $status
+            return view('status.status')->with([
+          'status' => $status,
         ])->render();
-      }
+        }
     }
 
     public function postReply(Request $request, $statusId)
@@ -50,11 +48,11 @@ class StatusController extends Controller
 
         $status = Status::notReply()->find($statusId);
 
-        if (!$status) {
+        if (! $status) {
             return redirect()->route('home');
         }
 
-        if (Auth::user()->id == $status->user->id) {
+        if (Auth::user()->id === $status->user->id) {
             return redirect()->route('home');
         }
 
@@ -70,7 +68,7 @@ class StatusController extends Controller
     {
         $status = Status::find($statusId);
 
-        if (!$status) {
+        if (! $status) {
             return redirect()->route('home');
         }
 
@@ -87,10 +85,11 @@ class StatusController extends Controller
     public function getDelete($statusId)
     {
         $status = Status::where('id', $statusId)->first();
-        if (Auth::user() != $status->user) {
-          return redirect()->back();
+        if (Auth::user() !== $status->user) {
+            return redirect()->back();
         }
         $status->delete();
+
         return redirect()->route('home')->with(['info', 'Post has been deleted']);
     }
 }
