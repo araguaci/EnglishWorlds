@@ -15,8 +15,10 @@ class CreateLikeableTable extends Migration
     {
         Schema::create('likeable', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->nullable();
-            $table->integer('likeable_id');
+            $table->integer('user_id')->nullable()->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('likeable_id')->nullable()->unsigned();
+            $table->foreign('likeable_id')->references('id')->on('statuses')->onDelete('cascade');
             $table->string('likeable_type');
             $table->timestamps();
         });
