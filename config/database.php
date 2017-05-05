@@ -53,18 +53,12 @@ return array(
             'strict' => true,
             'engine' => null,
         ),
-
-        'testing' => array(
-            'driver' => 'mysql',
-            'host' => env('127.0.0.1'),
-            'database' => env('homested_test'),
-            'username' => env('homestead'),
-            'password' => env('secret'),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
+        
+        'sqlite_testing' => [
+            'driver' => 'sqlite',
+            'database' => env('DB_DATABASE', database_path('testing.sqlite')),
             'prefix' => '',
-            'strict' => true,
-        ),
+        ],
 
         'pgsql' => array(
             'driver' => 'pgsql',
