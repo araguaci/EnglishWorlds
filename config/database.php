@@ -57,7 +57,7 @@ return array(
         'testing' => array(
             'driver' => 'mysql',
             'host' => env('127.0.0.1'),
-            'database' => env('homested_test '),
+            'database' => env('homested_test'),
             'username' => env('homestead'),
             'password' => env('secret'),
             'charset' => 'utf8mb4',
