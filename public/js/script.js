@@ -28,10 +28,27 @@ $(document).ready(function() {
       success: function(data) {
         // Create a post on the fly using the requested data
         $.get('status', function(data) {
+          $('#status').val("");
           $('#nullStatuses').remove();
           $('#statusesBlock').append(data).hide().fadeIn(500);
         });
       }
+    });
+  });
+  $(".replyButton").click(function() {
+    var statusID = $(this).data('id');
+    $.ajax({
+        type: 'POST',
+        url: 'status/' + statusID + '/reply',
+        data: {
+            '_token': $('input[name=_token]').val(),
+            'statusID': statusID,
+            'replyBody': $('input[name=replyBody-' + statusID + ']').val()
+        },
+        success: function(data) {
+          $('#name').val('');
+          $('#repliesBlock' + statusID + '').append(data).fadeIn(500);
+        }
     });
   });
 });

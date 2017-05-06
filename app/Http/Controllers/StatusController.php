@@ -6,6 +6,7 @@ use Auth;
 use English\User;
 use English\Status;
 use Illuminate\Http\Request;
+use Response;
 
 /**
  * @author Salim Djerbouh
@@ -40,28 +41,26 @@ class StatusController extends Controller
         }
     }
 
-    public function postReply(Request $request, $statusId)
+    public function postReply(Request $request)
     {
-        $this->validate($request, [
-      "reply-{$statusId}" => 'required|max:1000', 'required' => 'The reply body is required.',
-    ]);
-
-        $status = Status::notReply()->find($statusId);
-
-        if (! $status) {
-            return redirect()->route('home');
-        }
-
-        if (Auth::user()->id === $status->user->id) {
-            return redirect()->route('home');
-        }
-
-        $reply = Status::create([
-          'body' => $request->input("reply-{$statusId}"),
-        ])->user()->associate(Auth::user());
-        $status->replies()->save($reply);
-
-        return redirect()->back();
+      $this->validate($request, [
+        "replyBody" => 'required|max:1000',
+        'required' => 'The reply body is required.'
+      ]);
+      // Check if the status being replied on exists
+      $status = Status::notReply()->find($request->statusID);
+      if (!$status) {
+        return Response::json(array('errors' => 'Status doesn\'t exists'));
+      }
+      $reply = Status::create([
+        'body' => $request->replyBody,
+      ])->user()->associate(Auth::user());
+      $status->replies()->save($reply);
+			// return response()->json($reply);
+      return view('status.comment')->with([
+        'reply' => $reply,
+        'status' => $status
+      ])->render();
     }
 
     public function getLike($statusId)

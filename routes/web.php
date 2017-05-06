@@ -69,7 +69,6 @@ Route::post('status', array(
 
 Route::post('status/{statusId}/reply', array(
     'uses' => 'StatusController@postReply',
-    'as' => 'status.reply',
     'middleware' => array('auth'),
 ));
 
@@ -88,4 +87,5 @@ Route::get('status/{statusId}/delete', array(
 Route::get('status', array(
     'uses' => 'StatusController@getStatus',
     'as' => 'status',
+    'middleware' => array('auth'),
 ));
