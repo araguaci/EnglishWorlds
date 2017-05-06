@@ -11,7 +11,7 @@ $finder = Symfony\Component\Finder\Finder::create()
     ->ignoreVCS(true);
 
 $fixers = [
-    '-psr0',
+    '-psr2',
     'align_double_arrow',
     'binary_operator_spaces',
     'blank_line_after_namespace',
