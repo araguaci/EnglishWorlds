@@ -45,7 +45,7 @@ class StatusController extends Controller
     {
         $this->validate($request, [
         'replyBody' => 'required|max:1000',
-        'required'  => 'The reply body is required.'
+        'required' => 'The reply body is required.',
       ]);
       // Check if the status being replied on exists
       $status = Status::notReply()->find($request->statusID);
@@ -58,8 +58,8 @@ class StatusController extends Controller
         $status->replies()->save($reply);
             // return response()->json($reply);
       return view('status.comment')->with([
-        'reply'  => $reply,
-        'status' => $status
+        'reply' => $reply,
+        'status' => $status,
       ])->render();
     }
 
@@ -67,7 +67,7 @@ class StatusController extends Controller
     {
         $status = Status::find($statusId);
 
-        if (! $status) {
+        if (!$status) {
             return redirect()->route('home');
         }
 

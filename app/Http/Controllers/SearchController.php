@@ -11,7 +11,7 @@ class SearchController extends Controller
     {
         $query = request('query');
 
-        if (! $query) {
+        if (!$query) {
             return redirect()->route('home');
         }
         // Search for users using fuzzy matching
