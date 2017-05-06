@@ -3,6 +3,7 @@ preset: psr2
 linting: true
 
 enabled:
+  - unalign_double_arrow
   - strict
   - phpdoc_order
   - phpdoc_separation
