@@ -7,9 +7,6 @@ enabled:
   - phpdoc_order
   - phpdoc_separation
 
-disabled:
-  - short_array_syntax
-
 finder:
   exclude:
     - "public"
