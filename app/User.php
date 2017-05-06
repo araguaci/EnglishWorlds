@@ -14,18 +14,18 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = array(
+    protected $fillable = [
         'name', 'email', 'password', 'firstName', 'lastName', 'location',
-    );
+    ];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = array(
+    protected $hidden = [
         'password', 'remember_token',
-    );
+    ];
 
     public function getName()
     {
@@ -104,9 +104,9 @@ class User extends Authenticatable
 
     public function acceptFriendRequest(User $user)
     {
-        $this->friendRequests()->where('id', $user->id)->first()->pivot->update(array(
+        $this->friendRequests()->where('id', $user->id)->first()->pivot->update([
         'accepted' => true,
-      ));
+      ]);
     }
 
     public function isFriendsWith(User $user)

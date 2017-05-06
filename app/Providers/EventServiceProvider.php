@@ -12,11 +12,11 @@ class EventServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $listen = array(
-        'English\Events\SomeEvent' => array(
+    protected $listen = [
+        'English\Events\SomeEvent' => [
             'English\Listeners\EventListener',
-        ),
-    );
+        ],
+    ];
 
     /**
      * Register any events for your application.

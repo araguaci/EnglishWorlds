@@ -31,18 +31,18 @@ class ProfileController extends Controller
   {
       // Validate input data
     $this->validate($request, [
-      'name' => 'required|alpha|max:50',
+      'name'      => 'required|alpha|max:50',
       'firstName' => 'min:3|max:10',
-      'lastName' => 'min:3|max:15',
-      'location' => 'min:4|max:30',
+      'lastName'  => 'min:3|max:15',
+      'location'  => 'min:4|max:30',
     ]);
 
       Auth::user()->update([
       // Update the data in DB
-      'name' => $request->input('name'),
+      'name'      => $request->input('name'),
       'firstName' => $request->input('firstName'),
-      'lastName' => $request->input('lastName'),
-      'location' => $request->input('location'),
+      'lastName'  => $request->input('lastName'),
+      'location'  => $request->input('location'),
     ]);
 
     // Redirect to the same page with a flashed message

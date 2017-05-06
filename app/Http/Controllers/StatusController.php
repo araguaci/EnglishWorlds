@@ -3,10 +3,10 @@
 namespace English\Http\Controllers;
 
 use Auth;
+use Response;
 use English\User;
 use English\Status;
 use Illuminate\Http\Request;
-use Response;
 
 /**
  * @author Salim Djerbouh
@@ -43,22 +43,22 @@ class StatusController extends Controller
 
     public function postReply(Request $request)
     {
-      $this->validate($request, [
-        "replyBody" => 'required|max:1000',
-        'required' => 'The reply body is required.'
+        $this->validate($request, [
+        'replyBody' => 'required|max:1000',
+        'required'  => 'The reply body is required.'
       ]);
       // Check if the status being replied on exists
       $status = Status::notReply()->find($request->statusID);
-      if (!$status) {
-        return Response::json(array('errors' => 'Status doesn\'t exists'));
-      }
-      $reply = Status::create([
+        if (!$status) {
+            return Response::json(['errors' => 'Status doesn\'t exists']);
+        }
+        $reply = Status::create([
         'body' => $request->replyBody,
       ])->user()->associate(Auth::user());
-      $status->replies()->save($reply);
-			// return response()->json($reply);
+        $status->replies()->save($reply);
+            // return response()->json($reply);
       return view('status.comment')->with([
-        'reply' => $reply,
+        'reply'  => $reply,
         'status' => $status
       ])->render();
     }

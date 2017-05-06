@@ -8,9 +8,9 @@ class Status extends Model
 {
     protected $table = 'statuses';
 
-    protected $fillable = array(
+    protected $fillable = [
     'body',
-  );
+  ];
 
     public function user()
     {
