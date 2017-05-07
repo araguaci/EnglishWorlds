@@ -9,3 +9,11 @@ Homestead.json
 Homestead.yaml
 .env
 .vscode
+/public/semantic/*
+!public/semantic/semantic.min.css
+!public/semantic/semantic.min.js
+/resources/assets/semantic/src/definitions
+/resources/assets/semantic/src/semantic.less
+/resources/assets/semantic/src/theme.less
+/resources/assets/semantic/src/themes
+/resources/assets/semantic/tasks
