@@ -20,92 +20,23 @@
   font-size: 5.4em;
 }
 
-/* Carousel Styling */
-.slide1 {
+.ui.raised.very.padded.text.container.segment {
+  height: 200px;
+  text-align: center;
   background-image: url("../img/bg.jpg");
-  height: 500px;
   background-repeat: no-repeat;
-  background-position: center;
   background-size: cover;
 }
 
-.slide2 {
-  background-image: url("../img/bg.jpg");
-  height: 500px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-.slide3 {
-  background-image: url("../img/bg.jpg");
-  height: 500px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-.slide4 {
-  background-image: url("../img/bg.jpg");
-  height: 500px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-.carousel-caption h1 {
-  font-size: 5.4em;
+.ui.raised.very.padded.text.container.segment h1 {
+  font-size: 3em;
   font-family: 'Pacifico', cursive;
-  padding-bottom: .4em;
+  padding-top: 0px;
+  text-align: center;
+  color: #95a5a6;
+  text-shadow: 1px 1px 2px black;
 }
 
-.carousel-caption p {
-  font-size: 2em;
-}
-
-.usr-login-sec,.usr-register-sec {
-	margin-top: 50px;
-	height: 245px;
-	border-width: 1px;
-	border-color: rgb(46, 204, 113);
-	border-style: solid;
-	border-radius: 10px;
-	background-image: url("../img/user.svg");
-	background-repeat: no-repeat;
-	background-position: 50% 10%;
-	font-size: 36px;
-	text-align: center;
-	margin-bottom: 30px;
-}
-
-.usr-login-sec p,.usr-register-sec p {
-	margin-top: 95px;
-	color: #2ECC71;
-}
-
-.usr-btn {
-	font-size: 20px;
-	border: 0px solid #000000;
-	width: 50%;
-	margin: 0 auto;
-	border-radius: 7px;
-	display: block;
-	background:#2ECC71;
-	color: #FFF;
-}
-
-.usr-btn:hover {
-	background:#FFF;
-	border: 1px solid #2ECC71;
-}
-
-.usr-btn:hover {
-	text-decoration: none;
-}
-
-/** Media query for Font resize **/
-@media screen and (max-width: 940px) {
-	.usr-login-sec,.usr-register-sec{
-		font-size: 25px;
-	}
+#registrationContainer {
+  margin-top: 30px;
 }

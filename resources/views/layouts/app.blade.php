@@ -25,18 +25,17 @@
 		</script>
 </head>
 <body>
-		<div id="app">
-			@include('layouts.nav')
-			<div class="ui container">
-				@yield('content')
-			</div>
-		</div>
-		{{-- @include('layouts.footer') --}}
-		<!-- Scripts -->
-    @yield('scripts')
-		<script src="{{ asset('js/jquery.min.js') }}"></script>
-		<script src="{{ asset('semantic/semantic.js')}}" charset="utf-8"></script>
-		<script src="{{ asset('js/script.js') }}"></script>
-    <script src="{{ asset('js/jquery.ns-autogrow.min.js') }}"></script>
+	<div class="ui padded container segment">
+		@include('layouts.nav')
+	</div>
+	@yield('content')
+	@yield('registration')
+	@include('layouts.footer')
+	<!-- Scripts -->
+  <script src="{{ asset('js/jquery.min.js') }}"></script>
+  <script src="{{ asset('semantic/semantic.js')}}" charset="utf-8"></script>
+	@yield('scripts')
+  <script src="{{ asset('js/script.js') }}"></script>
+  <script src="{{ asset('js/jquery.ns-autogrow.min.js') }}"></script>
 </body>
 </html>
