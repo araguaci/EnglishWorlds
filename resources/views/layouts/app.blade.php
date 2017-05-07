@@ -12,9 +12,9 @@
 
 		<!-- Styles -->
     @yield('styles')
-		<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+		<link rel="stylesheet" href="{{ asset('semantic/semantic.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
 
 		<!-- Scripts -->
@@ -27,14 +27,15 @@
 <body>
 		<div id="app">
 			@include('layouts.nav')
-			<div class="container">
+			<div class="ui container">
 				@yield('content')
 			</div>
 		</div>
-		@include('layouts.footer')
+		{{-- @include('layouts.footer') --}}
 		<!-- Scripts -->
     @yield('scripts')
-		<script src="{{ asset('js/app.js') }}"></script>
+		<script src="{{ asset('js/jquery.min.js') }}"></script>
+		<script src="{{ asset('semantic/semantic.js')}}" charset="utf-8"></script>
 		<script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/jquery.ns-autogrow.min.js') }}"></script>
 </body>

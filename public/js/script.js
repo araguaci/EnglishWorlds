@@ -5,6 +5,10 @@ $.ajaxSetup({
 });
 
 $(document).ready(function() {
+  $('#profileDropdown')
+    .dropdown({
+      on: 'hover'
+    });
   // Script to auto resize TextArea
   $('textarea').autogrow({
     vertical: true,
