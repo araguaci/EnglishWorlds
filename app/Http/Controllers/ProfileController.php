@@ -29,13 +29,20 @@ class ProfileController extends Controller
 
   public function postEdit(Request $request)
   {
+      $messages = [
+      'password_hash_check' => 'Old password incorrect',
+    ];
       // Validate input data
-    $this->validate($request, [
+      $hashed_password = Auth::user()->password;
+      $this->validate($request, [
+
       'name' => 'required|alpha|max:50',
       'firstName' => 'min:3|max:10',
       'lastName' => 'min:3|max:15',
       'location' => 'min:4|max:30',
-    ]);
+      'oldPassword' => "password_hash_check:$hashed_password|string|min:6",
+      'password' => 'required_with:oldPassword|confirmed|min:6',
+    ], $messages);
 
       Auth::user()->update([
       // Update the data in DB
@@ -43,6 +50,7 @@ class ProfileController extends Controller
       'firstName' => $request->input('firstName'),
       'lastName' => $request->input('lastName'),
       'location' => $request->input('location'),
+      'password' => bcrypt($request->input('password')),
     ]);
 
     // Redirect to the same page with a flashed message
