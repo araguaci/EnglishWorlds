@@ -10,6 +10,7 @@ class Status extends Model
 
     protected $fillable = [
     'body',
+    'image',
   ];
 
     public function user()
