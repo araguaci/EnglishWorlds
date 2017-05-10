@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace tests\Unit;
 
 use English\Status;
 use Tests\TestCase;
