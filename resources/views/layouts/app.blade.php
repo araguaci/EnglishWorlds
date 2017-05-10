@@ -8,7 +8,7 @@
 		<!-- CSRF Token -->
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
-		<title>{{ config('app.name', 'Laravel') }}</title>
+		<title>{{ config('app.name') }}</title>
 
 		<!-- Styles -->
     @yield('styles')
@@ -30,12 +30,12 @@
 	</div>
 	@yield('content')
 	@yield('registration')
-	@include('layouts.footer')
 	<!-- Scripts -->
   <script src="{{ asset('js/jquery.min.js') }}"></script>
   <script src="{{ asset('semantic/semantic.js')}}" charset="utf-8"></script>
 	@yield('scripts')
   <script src="{{ asset('js/script.js') }}"></script>
+	<script src="{{ asset('js/navbar.js') }}"></script>
   <script src="{{ asset('js/jquery.ns-autogrow.min.js') }}"></script>
 </body>
 </html>

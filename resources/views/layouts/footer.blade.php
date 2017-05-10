@@ -43,3 +43,7 @@
       </div>
     </div>
   </div>
+  @section('styles')
+    <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
+  	<link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+  @endsection
