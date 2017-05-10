@@ -8,11 +8,9 @@ use Illuminate\Http\Request;
 
 class FriendController extends Controller
 {
-    /**
+  /*
    * Show lists of friends and friend requests.
-   *
    * @param none
-   *
    * @return object: view populated with authenticated user's friends and friend requests
    */
   public function getIndex()
