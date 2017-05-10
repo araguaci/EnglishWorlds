@@ -17,7 +17,8 @@ class CreateStatusesTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('parent_id')->nullable()->unsigned();
             $table->foreign('parent_id')->references('id')->on('statuses')->onDelete('cascade');
-            $table->text('body');
+            $table->text('body')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
