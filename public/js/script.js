@@ -33,6 +33,7 @@ $(document).ready(function() {
         // Create a post on the fly using the requested data
         $.get('status', function(data) {
           $('#status').val("");
+          $('#statusPostBtn').attr('disabled', true);
           $('#nullStatuses').remove();
           $('#statusesBlock').append(data).hide().fadeIn(500);
         });
