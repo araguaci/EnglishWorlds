@@ -9,7 +9,7 @@
 			<div class="column">
 				<form class="ui form segment error" action="{{ route('profile.edit')}}" method="post" role="form" enctype="multipart/form-data">
 							<div class="field{{ $errors->has('name') ? ' has-error' : '' }}">
-								<label for="name" class="control-label">
+								<label for="name">
 									Username
 								</label>
 								<input type="text" name="name" value="{{ Request::old('name') ?: Auth::user()->name }}" id="name">
@@ -18,7 +18,7 @@
 								@endif
 							</div>
 							<div class="field{{ $errors->has('firstName') ? ' has-error' : '' }}">
-								<label for="firstName" class="control-label">
+								<label for="firstName">
 									First name
 								</label>
 								<input type="text" name="firstName" value="{{ Request::old('firstName') ?: Auth::user()->firstName }}" id="firstName">
@@ -27,7 +27,7 @@
 								@endif
 							</div>
 							<div class="field{{ $errors->has('lastName') ? ' has-error' : '' }}">
-								<label for="lastName" class="control-label">
+								<label for="lastName">
 									Last name
 								</label>
 								<input type="text" name="lastName" value="{{ Request::old('lastName') ?: Auth::user()->lastName }}" id="lastName">
@@ -36,7 +36,7 @@
 								@endif
 							</div>
 							<div class="field{{ $errors->has('location') ? ' has-error' : '' }}">
-								<label for="location" class="control-label">
+								<label for="location">
 									Location
 								</label>
 								<input type="text" name="location" value="{{ Request::old('location') ?: Auth::user()->location }}" id="location">

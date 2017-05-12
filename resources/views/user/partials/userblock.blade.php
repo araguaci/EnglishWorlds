@@ -1,17 +1,26 @@
-<div class="media">
-  <a class="pull-left" href="{{ route('profile.index', ['username' => $user->name]) }}">
-    <img class="media-object" src="{{ $user->getAvatarUrl() }}" alt="{{ $user->getNameOrUsername() }}">
-  </a>
-  <div class="media-body">
-    <h4 class="media-heading"><a href="{{ route('profile.index', ['username' => $user->name]) }}">{{ $user->getNameOrUsername() }}</a></h4>
-    @if ($user->firstName)
-      {{ $user->firstName }}
-    @endif
-    @if ($user->lastName)
-      {{ $user->lastName }}
-    @endif
-    @if ($user->location)
-      <p>{{ $user->location }}</p>
-    @endif
-  </div>
+<div class="ui card">
+	<div class="image">
+		<img src="/img/avatars/{{ Auth::user()->avatar }}" alt="{{ $user->getNameOrUsername() }}">
+	</div>
+	<div class="content">
+		<a class="header">
+			@if ($user->firstName)
+				{{ $user->firstName }}
+			@endif
+		</a>
+		<div class="meta">
+			<span class="date">
+				Joined {{ $user->created_at->diffForHumans() }}
+			</span>
+		</div>
+		<div class="description">
+			{{ $user->firstName }} is living in {{ $user->location }}.
+		</div>
+	</div>
+	<div class="extra content">
+		<a>
+			<i class="user icon"></i>
+			{{ $user->friends()->count() }} friends
+		</a>
+	</div>
 </div>

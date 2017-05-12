@@ -1,26 +1,41 @@
 <div class="media">
-  <a href="{{ route('profile.index', ['username' => $status->user->name]) }}" class="pull-left">
-    <img src="{{ $status->user->getAvatarUrl() }}" alt="{{ $status->user->getNameOrUsername() }}" class="media-object">
+  <a class="ui big image label" href="{{ route('profile.index', ['username' => $status->user->name]) }}">
+    <img src="{{ $status->user->getAvatarUrl() }}" alt="{{ $status->user->getNameOrUsername() }}">
+    {{ $status->user->getNameOrUsername() }}
   </a>
   <div class="media-body">
-    <h4 class="media-heading"><a href="{{ route('profile.index', ['username' => $status->user->name]) }}">{{ $status->user->getNameOrUsername() }}</a></h4>
-    <p>{{ $status->body }}</p>
+    <h1>{{ $status->body }}</h1>
     <ul class="list-inline">
       <li>{{ $status->created_at->diffForHumans() }}</li>
       @if (!Auth::user()->hasLikedStatus($status))
         @if ($status->user->id !== Auth::user()->id)
-        <li><a href="{{ route('status.like', ['statusId' => $status->id]) }}">Like</a></li>
+          <div class="ui labeled button" tabindex="0">
+            <div class="ui red button">
+              <a class="heart icon" href="{{ route('status.like', ['statusId' => $status->id]) }}">Like</a>
+            </div>
+            <a class="ui basic red left pointing label">
+              {{ $status->likes->count() }} {{ str_plural('like', $status->likes->count()) }}
+            </a>
+          </div>
         @endif
+        <div class="ui disabled labeled button" tabindex="0">
+          <div class="ui tiny red button">
+            <i class="heart icon"><a href="{{ route('status.like', ['statusId' => $status->id]) }}"></a></i> Like
+          </div>
+          <a class="ui tiny basic red left pointing label">
+            {{ $status->likes->count() }} {{ str_plural('like', $status->likes->count()) }}
+          </a>
+        </div>
       @endif
       @if (Auth::user()->id == $status->user->id)
         <li><a href="{{ route('status.delete', ['statusId' => $status->id ])}}">Delete</a></li>
         <li><a href="#" data-statusid="{{ $status->id }}"></a></li>
       @endif
-      <li>{{ $status->likes->count() }} {{ str_plural('like', $status->likes->count()) }}</li>
     </ul>
-    <div id="repliesBlock{{ $status->id }}">
+    <div class="ui comments" id="repliesBlock{{ $status->id }}">
+      <h3 class="ui dividing header">Comments</h3>
       @foreach ($status->replies as $reply)
-        @include('status.comment');
+        @include('status.comment')
       @endforeach
     </div>
     @include('status.reply')
@@ -38,7 +53,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="ui primary button">Save changes</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

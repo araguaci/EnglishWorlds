@@ -1,10 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-  @include('status.post')
-	<div class="row">
-		<div class="col-lg-5" id="statusesBlock">
-
+	<div class="ui container">
+	@include('status.post')
+		<div class="" id="statusesBlock">
 			@if (!$statuses->count())
 				<p id="nullStatuses">There's nothing in your timeline, yet.</p>
 			@else
@@ -16,3 +15,12 @@
 		</div>
 	</div>
 @stop
+
+@section('styles')
+	<link rel="stylesheet" href="{{ asset('css/timeline.css')}} ">
+  <link rel="stylesheet" href="{{ asset('css/prosemirror.css')}} ">
+@endsection
+
+@section('scripts')
+	{{-- <script src="{{ asset('js/main_bundle.js') }}"></script> --}}
+@endsection

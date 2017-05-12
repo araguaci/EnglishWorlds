@@ -1,18 +1,22 @@
-<div class="media">
-  <a href="{{ route('profile.index', ['username' => $reply->user->name]) }}" class="pull-left">
-    <img src="{{ $reply->user->getAvatarUrl() }}" alt="{{ $reply->user->getNameOrUsername() }}" class="media-object">
+<div class="comment">
+  <a class="avatar">
+    <img src="{{ $reply->user->getAvatarUrl() }}" alt="{{ $reply->user->getNameOrUsername() }}">
   </a>
-  <div class="media-body">
-    <h5 class="media-heading"><a href="{{ route('profile.index', ['username' => $reply->user->name]) }}">{{ $reply->user->getNameOrUsername() }}</a></h5>
-    <p>{{ $reply->body }}</p>
-    <ul class="list-inline">
-      <li>{{ $reply->created_at->diffForHumans() }}</li>
-      @if (!Auth::user()->hasLikedStatus($reply))
-        @if ($status->user->id !== Auth::user()->id)
-          <li><a href="{{ route('status.like', ['statusId' => $reply->id]) }}">Like</a></li>
-        @endif
+  <div class="content">
+    <a class="author" href="{{ route('profile.index', ['username' => $reply->user->name]) }}">{{ $reply->user->getNameOrUsername() }}</a>
+  </div>
+  <div class="metadata">
+    <span class="date">{{ $reply->created_at->diffForHumans() }}</span>
+  </div>
+  <div class="text">
+    {{ $reply->body }}
+  </div>
+  <div class="actions">
+    <a class="reply" href="#">Reply</a>
+    @if (!Auth::user()->hasLikedStatus($reply))
+      @if ($status->user->id !== Auth::user()->id)
+        <li><a href="{{ route('status.like', ['statusId' => $reply->id]) }}">Like</a></li>
       @endif
-      <li>{{ $reply->likes->count() }} {{ str_plural('like', $reply->likes->count()) }}</li>
-    </ul>
+    @endif
   </div>
 </div>
