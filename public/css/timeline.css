@@ -1,49 +1,68 @@
-textarea {
-  resize: none;
+textarea#status {
+	width: 600px;
+	height: 120px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+	background-color: white;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
 }
 
 .usr-likes{
-  list-style-type: none;
-  padding: 0;
-  text-align: center;
+	list-style-type: none;
+	padding: 0;
+	text-align: center;
 }
 .usr-likes img {
-  width: 20px;
+	width: 20px;
 }
 
 .media-body p{
-   min-height: 45px;
-   border-bottom: 1px solid #989898;
+	 min-height: 45px;
+	 border-bottom: 1px solid #989898;
 }
 .media.comment p {border: 0;}
 .media.comment {
-  border-bottom: 1px solid #989898;
+	border-bottom: 1px solid #989898;
 }
 
 .media.comment .media-object{
-  width: 40px
+	width: 40px
 }
 .media.comment .usr-likes{
-  margin: 0;
+	margin: 0;
 }
 .media.comment .usr-likes img {
-  width: 15px
+	width: 15px
 }
 .media.comment  .media-body p{
-  min-height: 0;
-  margin-bottom: 5px;
+	min-height: 0;
+	margin-bottom: 5px;
 }
 .media .comment:last-child{
-  margin-bottom: 15px
+	margin-bottom: 15px
 }
 
 .statu-replay .form-control{
-  height: 25px;
-  padding: 2px 2px;
-  overflow:hidden;
+	height: 25px;
+	padding: 2px 2px;
+	overflow:hidden;
 }
 
 .media.post{
-  border-bottom: 1px solid #2ecc71;
-  padding-bottom: 15px;
+	border-bottom: 1px solid #2ecc71;
+	padding-bottom: 15px;
+}
+
+.ProseMirror {
+  background: silver;
 }
