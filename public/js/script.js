@@ -40,7 +40,8 @@ $(document).ready(function() {
       }
     });
   });
-  $(".replyButton").click(function() {
+  
+  $("body").on("click",".replyButton",function() {
     var statusID = $(this).data('id');
     $.ajax({
         type: 'POST',
