@@ -52,8 +52,8 @@ $(document).ready(function() {
             'replyBody': $('input[name=replyBody-' + statusID + ']').val()
         },
         success: function(data) {
-          $('#name').val('');
-          $('#repliesBlock' + statusID + '').append(data).fadeIn(500);
+          $('#repliesBlock' + statusID).append(data).fadeIn(500);
+          $('input[name=replyBody-' + statusID + ']').val('');
         }
     });
   });
