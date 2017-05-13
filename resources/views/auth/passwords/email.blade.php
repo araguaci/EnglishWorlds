@@ -1,46 +1,27 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Reset Password</div>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+@section('app-content')
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('password.email') }}">
-                        {{ csrf_field() }}
+<div class="ui fluid container">
+    <div class="ui three column grid">
+        <div class="column centered">
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+            <h1>Forgot Password</h1>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+            <form class="ui form" method="POST" action="/password/email">
+                {!! csrf_field() !!}
+                <div class="field">
+                    <label>Email</label>
+                    <input type="email" name="email" placeholder="Email Address" value="{{ old('email') }}">
                 </div>
-            </div>
+                <div class="field raw-margin-top-24">
+                    <a class="ui button violet left" href="/login">Wait I remember!</a>
+                    <button class="ui primary button right floated" type="submit" class="button">Send Password Reset Link</button>
+                </div>
+            </form>
+
         </div>
     </div>
 </div>
-@endsection
+
+@stop

@@ -8,6 +8,8 @@ class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
     public function up()
     {
@@ -16,10 +18,6 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('firstName')->nullable();
-            $table->string('lastName')->nullable();
-            $table->string('location')->nullable();
-            $table->string('avatar')->nullable()->default('avatar.png');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -27,6 +25,8 @@ class CreateUsersTable extends Migration
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
     public function down()
     {

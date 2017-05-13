@@ -4,11 +4,6 @@ namespace English\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
-/**
- * @author Salim Djerbouh <tbitw31@gmail.com>
- *
- * @version 0.2
- */
 class Kernel extends HttpKernel
 {
     /**
@@ -32,7 +27,6 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \English\Http\Middleware\Ajaxify::class,
             \English\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
@@ -62,5 +56,9 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \English\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'admin' => \English\Http\Middleware\Admin::class,
+        'permissions' => \English\Http\Middleware\Permissions::class,
+        'roles' => \English\Http\Middleware\Roles::class,
+        'active' => \English\Http\Middleware\Active::class,
     ];
 }

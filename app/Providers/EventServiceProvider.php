@@ -13,16 +13,23 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'English\Events\SomeEvent' => [
+        'English\Events\Event' => [
             'English\Listeners\EventListener',
+        ],
+        'English\Events\UserRegisteredEmail' => [
+          'English\Listeners\UserRegisteredEmailListener',
         ],
     ];
 
     /**
      * Register any events for your application.
+     *
+     * @return void
      */
     public function boot()
     {
         parent::boot();
+
+        //
     }
 }

@@ -25,9 +25,8 @@
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="CACHE_DRIVER" value="array"/>
-        <env name="APP_KEY" value="base64:stNErLCOWnU/IoiAAwpQoiuHOk378rVmi89E48VpX+I="/>
-        <env name="DB_CONNECTION" value="sqlite_testing"/>
-        <env name="DB_DATABASE" value=":memory:"/>
+        <env name="DB_CONNECTION" value="testing"/>
+        <env name="MAIL_DRIVER" value="log"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
     </php>

@@ -2,9 +2,11 @@
 
 namespace English\Http\Controllers\Auth;
 
-use English\User;
+use DB;
+use Validator;
+use English\Services\UserService;
+use English\Models\User;
 use English\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
@@ -23,25 +25,27 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
+     * Where to redirect users after login / registration.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'dashboard';
 
     /**
      * Create a new controller instance.
+     *
+     * @return void
      */
-    public function __construct()
+    public function __construct(UserService $userService)
     {
         $this->middleware('guest');
+        $this->service = $userService;
     }
 
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param array $data
-     *
+     * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -56,16 +60,19 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param array $data
-     *
+     * @param  array  $data
      * @return User
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+        return DB::transaction(function() use ($data) {
+            $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password'])
+            ]);
+
+            return $this->service->create($user, $data['password']);
+        });
     }
 }

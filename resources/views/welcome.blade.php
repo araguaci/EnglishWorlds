@@ -1,71 +1,95 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="{{ config('app.locale') }}">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
-	<div class="ui grid">
-				<div class="row">
-						<div class="column padding-reset">
-								<div class="ui huge message page grid">
-									<div id="header" class="ui huge header">
-										<img src="{{ asset('img/brand.png') }}" id="logo" alt="English DZ Logo">
-										<span id="websiteTitle">{{ config('app.name') }}</span>
-										<p id="websiteSlogan">Learn English in Algeria, the fun way</p>
-									</div>
-								</div>
-						</div>
-				</div>
-		</div>
-		<div class="ui raised very padded text container segment">
-			<h1>Algerian English speakers social network</h1>
-		</div>
-@endsection
+        <title>Laravel</title>
 
-@section('registration')
-	@if (!Auth::user())
-		<div class="ui container" id="registrationContainer">
-			<div class="ui two column centered grid">
-				<div class="ui special link cards">
-						<div class="card">
-							<div class="blurring dimmable image">
-								<div class="ui dimmer">
-									<div class="content">
-										<div class="center">
-											<a class="ui inverted button" href="{{ url('/login') }}">Login</a>
-										</div>
-									</div>
-								</div>
-								<img src="{{ asset('img/user.svg') }}">
-							</div>
-							<div class="content">
-								<a class="header">New user?</a>
-							</div>
-						</div>
-						<div class="card">
-							<div class="blurring dimmable image">
-								<div class="ui dimmer">
-									<div class="content">
-										<div class="center">
-											<a class="ui inverted button" href="{{ url('/register') }}">Register</a>
-										</div>
-									</div>
-								</div>
-								<img src="{{ asset('img/user.svg') }}">
-							</div>
-							<div class="content">
-								<a class="header">Existing user?</a>
-							</div>
-						</div>
-					</div>
-				</div>
-		</div>
-	@endif
-	@include('layouts.footer')
-@endsection
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
-@section('styles')
-	<link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/footer.css') }}" rel="stylesheet">
-@endsection
+        <!-- Styles -->
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Raleway', sans-serif;
+                font-weight: 100;
+                height: 100vh;
+                margin: 0;
+            }
 
-@section('scripts')
-	<script src="{{ asset('js/welcome.js') }}" charset="utf-8"></script>
-@endsection
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @if (Auth::check())
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ url('/login') }}">Login</a>
+                        <a href="{{ url('/register') }}">Register</a>
+                    @endif
+                </div>
+            @endif
+
+            <div class="content">
+                <div class="title m-b-md">
+                    Laravel
+                </div>
+
+                <div class="links">
+                    <a href="https://laravel.com/docs">Documentation</a>
+                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="https://laravel-news.com">News</a>
+                    <a href="https://forge.laravel.com">Forge</a>
+                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
