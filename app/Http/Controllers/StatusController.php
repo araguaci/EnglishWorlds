@@ -17,6 +17,7 @@ class StatusController extends Controller
 {
     public function postStatus(Request $request)
     {
+        print_r($request->all());
         if ($request->ajax()) {
             $this->validate($request, [
         'status' => 'required|max:1000',

@@ -18,9 +18,4 @@
 
 @section('styles')
 	<link rel="stylesheet" href="{{ asset('css/timeline.css')}} ">
-  <link rel="stylesheet" href="{{ asset('css/prosemirror.css')}} ">
-@endsection
-
-@section('scripts')
-	{{-- <script src="{{ asset('js/main_bundle.js') }}"></script> --}}
 @endsection

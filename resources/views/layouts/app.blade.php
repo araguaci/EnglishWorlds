@@ -12,7 +12,6 @@
 
 		<!-- Styles -->
     @yield('styles')
-		<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 		<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
 		<link rel="stylesheet" href="{{ asset('semantic/semantic.min.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
@@ -35,7 +34,6 @@
   <script src="{{ asset('semantic/semantic.min.js')}}" charset="utf-8"></script>
 	@yield('scripts')
   <script src="{{ asset('js/script.js') }}"></script>
-	<script src="{{ asset('js/navbar.js') }}"></script>
   <script src="{{ asset('js/jquery.ns-autogrow.min.js') }}"></script>
 </body>
 </html>
