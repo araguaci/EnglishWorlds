@@ -9,6 +9,7 @@ Homestead.json
 Homestead.yaml
 .env
 .vscode
+.phpintel
 /public/semantic/*
 !public/semantic/semantic.min.css
 !public/semantic/semantic.min.js
