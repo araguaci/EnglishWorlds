@@ -36,7 +36,7 @@ class ProfileController extends Controller
             'password_hash_check' => 'Old password incorrect',
         ];
             // Validate input data
-            $hashed_password = Auth::user()->password;
+        $hashed_password = Auth::user()->password;
         $this->validate($request, [
             'name' => 'required|alpha|max:50',
             'firstName' => 'min:3|max:10',
@@ -44,7 +44,7 @@ class ProfileController extends Controller
             'location' => 'min:4|max:30',
             'oldPassword' => "password_hash_check:$hashed_password|string|min:6",
             'password' => 'required_with:oldPassword|confirmed|min:6',
-      'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ], $messages);
         Auth::user()->update([
             // Update the data in DB
