@@ -13,10 +13,10 @@
         <div class="three wide column">
           <h4 class="ui inverted header">Group 2</h4>
           <div class="ui inverted link list">
-            <a href="#" class="item">Link One</a>
-            <a href="#" class="item">Link Two</a>
-            <a href="#" class="item">Link Three</a>
-            <a href="#" class="item">Link Four</a>
+            <a href="#" class="item">Link 1</a>
+            <a href="#" class="item">Link 2</a>
+            <a href="#" class="item">Link 3</a>
+            <a href="#" class="item">Link 4</a>
           </div>
         </div>
         <div class="three wide column">
