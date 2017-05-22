@@ -42,33 +42,11 @@ Generate application key
 $ php artisan key:generate
 ```
 
-Install FrontEnd dependencies
+Install FrontEnd dependencies requires [Gulp](http://gulpjs.com/)
 
 ``` shell
+$ sudo npm install -g gulp
 $ npm install
-```
-
-Sematic UI setup
-``` shell
-1- Set-up Semantic UI? > Express (Set components and output folder)
-2- Where should we put Semantic UI inside your project? > resources/assets/semantic
-3- What components should we include in the package? > Hit enter (return)
-4- Should we set permissions on outputted files? > Yes
-5- What octal file permission should outputted files receive? > 744
-6- Do you use a RTL (Right-To-Left) language? > No
-7- Where should we output Semantic UI? > ../../../public/semantic
-```
-
-Building assets requires [Gulp](http://gulpjs.com/)
-
-``` shell
-sudo npm install -g gulp
-```
-
-Build the assets
-
-``` shell
-gulp build
 ```
 
 **Finally run the application**
