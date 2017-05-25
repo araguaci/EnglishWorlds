@@ -12,6 +12,5 @@ finder:
   exclude:
     - "public"
     - "resources"
-    - "tests"
   name:
     - "*.php"
