@@ -36,7 +36,7 @@
 								<img src="{{ asset('img/user.svg') }}">
 							</div>
 							<div class="content">
-								<a class="header">New user?</a>
+								<a class="header">Existing user?</a>
 							</div>
 						</div>
 						<div class="card">
@@ -51,7 +51,7 @@
 								<img src="{{ asset('img/user.svg') }}">
 							</div>
 							<div class="content">
-								<a class="header">Existing user?</a>
+								<a class="header">New user?</a>
 							</div>
 						</div>
 					</div>

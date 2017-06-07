@@ -18,38 +18,46 @@ The following are required to function properly.
 
 ## Installation
 
-Clone the project (replace **Name** with a name of your choice)
+### Clone the project (replace **Name** with a name of your choice)
 
 ``` shell
 $ git clone --depth 1 git@github.com:CaddyDz/English Name
 ```
 
-Install the project dependencies using [Composer](https://getcomposer.org/)
+### Install the project dependencies using [Composer](https://getcomposer.org/)
 
 ``` shell
 $ cd Name && composer install
 ```
 
-Create environment variables (change values according to your environment)
+### Create environment variables (change values according to your environment)
 
 ``` shell
 $ cp .env.example .env
 ```
 
-Generate application key
+### Generate application key
 
 ``` shell
 $ php artisan key:generate
 ```
 
-Install FrontEnd dependencies requires [Gulp](http://gulpjs.com/)
+### Install FrontEnd dependencies requires [Gulp](http://gulpjs.com/)
 
 ``` shell
 $ sudo npm install -g gulp
 $ npm install
 ```
 
-**Finally run the application**
+### Set up the database
+
+**Create a MySQL Database named english**
+
+``` shell
+php artisan migrate --seed
+```
+
+### Finally run the application
 
 ``` shell
 php artisan serve
