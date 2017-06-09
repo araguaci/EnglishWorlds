@@ -18,3 +18,4 @@ Homestead.yaml
 /resources/assets/semantic/src/theme.less
 /resources/assets/semantic/src/themes
 /resources/assets/semantic/tasks
+.DS_Store
