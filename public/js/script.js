@@ -35,12 +35,12 @@ $(document).ready(function() {
           $('#status').val("");
           $('#statusPostBtn').attr('disabled', true);
           $('#nullStatuses').remove();
-          $('#statusesBlock').append(data).hide().fadeIn(500);
+          $('#statusesBlock').prepend(data).fadeIn(500);
         });
       }
     });
   });
-  
+
   $("body").on("click",".replyButton",function() {
     var statusID = $(this).data('id');
     $.ajax({
