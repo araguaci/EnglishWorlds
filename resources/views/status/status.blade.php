@@ -6,25 +6,29 @@
   <div class="media-body">
     <h1>{{ $status->body }}</h1>
       {{ $status->created_at->diffForHumans() }}
+      {{-- if the currently authenticated user has not liked the status --}}
       @if (!Auth::user()->hasLikedStatus($status))
+        {{-- if the owner of the status is not the authenticated user --}}
         @if ($status->user->id !== Auth::user()->id)
           <div class="ui labeled button" tabindex="0">
-            <div class="ui red button">
-              <a class="heart icon" href="{{ route('status.like', ['statusId' => $status->id]) }}">Like</a>
+            <div class="ui tiny red button">
+              <i class="heart icon" href="{{ route('status.like', ['statusId' => $status->id]) }}"></i>Like
             </div>
             <a class="ui basic red left pointing label">
               {{ $status->likes->count() }} {{ str_plural('like', $status->likes->count()) }}
             </a>
           </div>
         @endif
-        <div class="ui disabled labeled button" tabindex="0">
-          <div class="ui tiny red button">
-            <i class="heart icon"><a href="{{ route('status.like', ['statusId' => $status->id]) }}"></a></i> Like
+        @if ($status->user->id === Auth::user()->id)
+          <div class="ui disabled labeled button" tabindex="0">
+            <div class="ui tiny red button">
+              <i class="heart icon"></i> Like
+            </div>
+            <a class="ui tiny basic red left pointing label">
+              {{ $status->likes->count() }} {{ str_plural('like', $status->likes->count()) }}
+            </a>
           </div>
-          <a class="ui tiny basic red left pointing label">
-            {{ $status->likes->count() }} {{ str_plural('like', $status->likes->count()) }}
-          </a>
-        </div>
+        @endif
       @endif
       @if (Auth::user()->id == $status->user->id)
         <a href="{{ route('status.delete', ['statusId' => $status->id ])}}">Delete</a>
