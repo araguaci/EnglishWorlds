@@ -9,18 +9,18 @@
               {{ csrf_field() }}
               <div class="field{{ $errors->has('name') ? ' has-error' : '' }}">
                 <label for="name">Username</label>
-                <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus>
+                <input id="name" type="text" name="name" value="{{ old('name') }}"  autofocus required>
                 @if ($errors->has('name'))
-                    <span class="help-block">
+                    <span>
                         <strong>{{ $errors->first('name') }}</strong>
                     </span>
                 @endif
               </div>
               <div class="field{{ $errors->has('email') ? ' has-error' : '' }}">
                   <label for="email">E-Mail Address</label>
-                  <input id="email" type="email" name="email" value="{{ old('email') }}" required>
+                  <input id="email" type="text" name="email" value="{{ old('email') }}" required>
                   @if ($errors->has('email'))
-                      <span class="help-block">
+                      <span>
                           <strong>{{ $errors->first('email') }}</strong>
                       </span>
                   @endif
@@ -28,9 +28,8 @@
               <div class="field{{ $errors->has('password') ? ' has-error' : '' }}">
                   <label for="password">Password</label>
                   <input id="password" type="password" name="password" required>
-
                   @if ($errors->has('password'))
-                      <span class="help-block">
+                      <span>
                           <strong>{{ $errors->first('password') }}</strong>
                       </span>
                   @endif
@@ -44,9 +43,14 @@
                     Register
                 </button>
               </div>
+              <div class="ui error message"></div>
           </form>
         </div>
     </div>
 </div>
-@endsection
 @include('layouts.footer')
+@endsection
+
+@section('scripts')
+  <script src="{{ asset('js/register.js') }}" charset="utf-8"></script>
+@endsection

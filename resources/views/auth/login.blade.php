@@ -10,10 +10,10 @@
 
     	<div class="field{{ $errors->has('email') ? ' has-error' : '' }}">
     		<label for="email">E-Mail Address</label>
-    			<input id="email" type="email" name="email" value="{{ old('email') }}" autofocus autocomplete="off">
+    			<input id="email" type="email" name="email" value="{{ old('email') }}" autofocus autocomplete="off" required>
 
     			@if ($errors->has('email'))
-    				<span class="help-block">
+    				<span>
     					<strong>{{ $errors->first('email') }}</strong>
     				</span>
     			@endif
@@ -21,10 +21,10 @@
 
     	<div class="field{{ $errors->has('password') ? ' has-error' : '' }}">
     		<label for="password">Password</label>
-    			<input id="password" type="password" name="password" autocomplete="off">
+    			<input id="password" type="password" name="password" autocomplete="off" required>
 
     			@if ($errors->has('password'))
-    				<span class="help-block">
+    				<span>
     					<strong>{{ $errors->first('password') }}</strong>
     				</span>
     			@endif
