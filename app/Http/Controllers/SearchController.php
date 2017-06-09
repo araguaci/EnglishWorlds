@@ -12,7 +12,7 @@ class SearchController extends Controller
         $query = request('query');
 
         if (!$query) {
-            return redirect()->route('home');
+            return redirect()->route('/');
         }
         // Search for users using fuzzy matching
         $users = User::where(DB::raw("CONCAT(firstName, ' ', lastName)"), 'LIKE', "%{$query}%")->orWhere('name', 'LIKE', "%{$query}%")->get();

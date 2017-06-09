@@ -69,7 +69,7 @@ class StatusController extends Controller
         $status = Status::find($statusId);
 
         if (!$status) {
-            return redirect()->route('home');
+            return redirect()->route('/');
         }
 
         if (Auth::user()->hasLikedStatus($status)) {
@@ -90,6 +90,6 @@ class StatusController extends Controller
         }
         $status->delete();
 
-        return redirect()->route('home')->with(['info', 'Post has been deleted']);
+        return redirect()->route('/')->with(['info', 'Post has been deleted']);
     }
 }

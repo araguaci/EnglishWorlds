@@ -26,7 +26,7 @@ class FriendController extends Controller
         $user = User::where('name', $username)->first();
 
         if (!$user) {
-            return redirect()->route('home')->with('info', 'That user could not be found');
+            return redirect()->route('/')->with('info', 'That user could not be found');
         }
 
         if (Auth::user()->hadFriendRequestPending($user) || $user->hadFriendRequestPending(Auth::user())) {
@@ -47,16 +47,16 @@ class FriendController extends Controller
         $user = User::where('name', $username)->first();
 
         if (!$user) {
-            return redirect()->route('home')->with('info', 'That user could not be found');
+            return redirect()->route('/')->with('info', 'That user could not be found');
         }
 
         // Prevent adding the user itself as a friend via URL
         if (Auth::user()->id === $user->id) {
-            return redirect()->route('home');
+            return redirect()->route('/');
         }
 
         if (!Auth::user()->hasFriendRequestReceived($user)) {
-            return redirect()->route('home');
+            return redirect()->route('/');
         }
 
         Auth::user()->acceptFriendRequest($user);
