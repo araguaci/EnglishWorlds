@@ -10,7 +10,7 @@
 
     	<div class="field{{ $errors->has('email') ? ' has-error' : '' }}">
     		<label for="email">E-Mail Address</label>
-    			<input id="email" type="email" name="email" value="{{ old('email') }}" required autofocus autocomplete="off">
+    			<input id="email" type="email" name="email" value="{{ old('email') }}" autofocus autocomplete="off">
 
     			@if ($errors->has('email'))
     				<span class="help-block">
@@ -21,7 +21,7 @@
 
     	<div class="field{{ $errors->has('password') ? ' has-error' : '' }}">
     		<label for="password">Password</label>
-    			<input id="password" type="password" name="password" required autocomplete="off">
+    			<input id="password" type="password" name="password" autocomplete="off">
 
     			@if ($errors->has('password'))
     				<span class="help-block">
@@ -40,9 +40,14 @@
     	<a class="btn btn-link" href="{{ route('password.request') }}">
     		Forgot Your Password?
     	</a>
+      <div class="ui error message"></div>
     </form>
   </div>
   </div>
 </div>
 @include('layouts.footer')
+@endsection
+
+@section('scripts')
+  <script src="{{ asset('js/login.js') }}" charset="utf-8"></script>
 @endsection
