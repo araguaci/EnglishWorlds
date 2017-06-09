@@ -18,6 +18,15 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'name', 'email', 'password'
+    ];
+
     public function getName()
     {
         if ($this->name) {
