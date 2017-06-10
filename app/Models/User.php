@@ -66,6 +66,31 @@ class User extends Authenticatable
     {
         return $this->friendsOfMine()->wherePivot('accepted', false)->get();
     }
+
+    public function statuses()
+    {
+        return $this->hasMany('English\Models\Status', 'user_id');
+    }
+
+    public function isFriendsWith(User $user)
+    {
+        return (bool) $this->friends()->where('id', $user->id)->count();
+    }
+
+    public function friendRequestPending()
+    {
+        return $this->friendOf()->wherePivot('accepted', false)->get();
+    }
+
+    public function hadFriendRequestPending(User $user)
+    {
+        return (bool) $this->friendRequestPending()->where('id', $user->id)->count();
+    }
+
+    public function hasFriendRequestReceived(User $user)
+    {
+        return (bool) $this->friendRequests()->where('id', $user->id)->count();
+    }
     /**
      * User UserMeta
      *
