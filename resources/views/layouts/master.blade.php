@@ -30,7 +30,7 @@
         <div class="ui padded container segment">
             @include("layouts.navigation")
         </div>
-        
+
         <div class="app-wrapper">
             @yield("app-content")
             @include('partials.message')
@@ -40,12 +40,7 @@
             @include('partials.errors')
         </div>
 
-        <div class="footer">
-            @if (Session::get('original_user'))
-                <a class="mini ui button violet right floated" href="/users/switch-back">Return to your Login</a>
-            @endif
-            <p>&copy; {!! date('Y'); !!} <a href="">{{ config('app.name') }}</a></p>
-        </div>
+        @include('layouts.footer')
 
         <script type="text/javascript">
             var _token = '{!! Session::token() !!}';
