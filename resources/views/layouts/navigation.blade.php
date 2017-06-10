@@ -22,9 +22,14 @@
 				<div class="menu">
 					<a href="{{ route('friends.index') }}" class="item">Friends</a>
 					<a href="{{ route('profile.index', ['username' => Auth::user()->name]) }}" class="item">Profile</a>
-					<a href="{{ route('profile.edit') }}" class="item">Edit Profile</a>
+					<a href="{{ route('settings') }}" class="item">Edit Profile</a>
 					<div class="divider"></div>
-					<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="item">Logout</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }} </form>
+					<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="item">
+						Logout
+					</a>
+					<form id="logout-form" action="{{ route('logout') }}" method="GET" style="display: none;">
+						{{ csrf_field() }}
+					</form>
 				</div>
 			</div>
 		@elseif (!Auth::user())
