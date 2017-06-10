@@ -48,22 +48,22 @@ class User extends Authenticatable
 
     public function statuses()
     {
-        return $this->hasMany('English\Status', 'user_id');
+        return $this->hasMany(Status::class, 'user_id');
     }
 
     public function likes()
     {
-        return $this->hasMany('English\Like', 'user_id');
+        return $this->hasMany(Like::class, 'user_id');
     }
 
     public function friendsOfMine()
     {
-        return $this->belongsToMany('English\User', 'friends', 'user_id', 'friend_id');
+        return $this->belongsToMany(User::class, 'friends', 'user_id', 'friend_id');
     }
 
     public function friendOf()
     {
-        return $this->belongsToMany('English\User', 'friends', 'friend_id', 'user_id');
+        return $this->belongsToMany(User::class, 'friends', 'friend_id', 'user_id');
     }
 
     public function friends()

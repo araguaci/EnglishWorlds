@@ -5,7 +5,10 @@
 [![StyleCI](https://styleci.io/repos/69740118/shield?branch=master)](https://styleci.io/repos/69740118)  
 
 This is the underlying source code of the English DZ Social Networking website.  
-The website addresses All active Algerians seeking to either learn or have fun and chat in English online.  
+The website addresses All active Algerians seeking to either learn or have fun and chat in English online.
+
+** You can check live changes [here](http://englishdz.herokuapp.com/) **
+PS: Heroku is not using a [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) so the app may feel slower  
 ## System Requirements
 
 The following are required to function properly.
