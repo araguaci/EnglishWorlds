@@ -61,6 +61,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('English\Models\User', 'friends', 'friend_id', 'user_id');
     }
+
+    public function friendRequests()
+    {
+        return $this->friendsOfMine()->wherePivot('accepted', false)->get();
+    }
     /**
      * User UserMeta
      *

@@ -27,9 +27,10 @@
         @yield('stylesheets')
     </head>
     <body>
-
-        @include("layouts.navigation")
-
+        <div class="ui padded container segment">
+            @include("layouts.navigation")
+        </div>
+        
         <div class="app-wrapper">
             @yield("app-content")
             @include('partials.message')
