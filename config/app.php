@@ -2,8 +2,8 @@
 
 return [
     'name' => 'English DZ',
-    'env' => env('APP_ENV', 'production'),
-    'debug' => env('APP_DEBUG', false),
+    'env' => env('APP_ENV', 'local'),
+    'debug' => env('APP_DEBUG', true),
     'url' => env('APP_URL', 'http://localhost'),
     'timezone' => 'UTC',
     'locale' => 'en',
@@ -49,7 +49,7 @@ return [
          */
         English\Providers\AppServiceProvider::class,
         English\Providers\AuthServiceProvider::class,
-        // English\Providers\BroadcastServiceProvider::class,
+        English\Providers\BroadcastServiceProvider::class,
         English\Providers\EventServiceProvider::class,
         English\Providers\RouteServiceProvider::class,
         Spatie\Tail\TailServiceProvider::class,
