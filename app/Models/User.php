@@ -34,6 +34,33 @@ class User extends Authenticatable
      */
     protected $hidden = ['password', 'remember_token'];
 
+
+    public function getName()
+    {
+        if ($this->name) {
+            return "{$this->name}";
+        }
+    }
+
+    public function getNameOrUsername()
+    {
+        return $this->getName() ?: $this->name;
+    }
+
+    public function friends()
+    {
+        return $this->friendsOfMine()->wherePivot('accepted', true)->get()->merge($this->friendOf()->wherePivot('accepted', true)->get());
+    }
+
+    public function friendsOfMine()
+    {
+        return $this->belongsToMany('English\Models\User', 'friends', 'user_id', 'friend_id');
+    }
+
+    public function friendOf()
+    {
+        return $this->belongsToMany('English\Models\User', 'friends', 'friend_id', 'user_id');
+    }
     /**
      * User UserMeta
      *

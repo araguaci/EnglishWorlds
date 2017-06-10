@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('content')
+@section('app-content')
   <h3>Your search for "{{ Request::input('query') }}"</h3>
 
   @if (!$users->count())

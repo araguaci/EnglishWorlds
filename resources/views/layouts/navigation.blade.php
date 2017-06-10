@@ -15,7 +15,7 @@
 	@endif
 	<div class="right menu">
 		@if(Auth::user())
-			<a href="{{ url('home') }}" class="active item">Timeline</a>
+			<a href="{{ url('/') }}" class="active item">Timeline</a>
 			<div class="ui dropdown item" id="profileDropdown">
 				{{ Auth::user()->name }}
 				<i class="dropdown icon"></i>
