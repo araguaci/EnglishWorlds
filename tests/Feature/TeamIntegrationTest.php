@@ -18,19 +18,19 @@ class TeamIntegrationTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        $this->user = factory(App\Models\User::class)->create([
+        $this->user = factory(English\Models\User::class)->create([
             'id' => rand(1000, 9999)
         ]);
-        $this->role = factory(App\Models\Role::class)->create([
+        $this->role = factory(English\Models\Role::class)->create([
             'name' => 'admin'
         ]);
 
-        $this->team = factory(App\Models\Team::class)->make([
+        $this->team = factory(English\Models\Team::class)->make([
             'id' => 1,
             'user_id' => $this->user->id,
             'name' => 'Awesomeness'
         ]);
-        $this->teamEdited = factory(App\Models\Team::class)->make([
+        $this->teamEdited = factory(English\Models\Team::class)->make([
             'id' => 1,
             'user_id' => $this->user->id,
             'name' => 'Hackers'
@@ -56,7 +56,7 @@ class TeamIntegrationTest extends TestCase
 
     public function testStore()
     {
-        $admin = factory(App\Models\User::class)->create([ 'id' => rand(1000, 9999) ]);
+        $admin = factory(English\Models\User::class)->create([ 'id' => rand(1000, 9999) ]);
         $response = $this->actingAs($admin)->call('POST', 'teams', $this->team->toArray());
 
         $this->assertEquals(302, $response->getStatusCode());
@@ -65,7 +65,7 @@ class TeamIntegrationTest extends TestCase
 
     public function testEdit()
     {
-        $admin = factory(App\Models\User::class)->create([ 'id' => rand(1000, 9999) ]);
+        $admin = factory(English\Models\User::class)->create([ 'id' => rand(1000, 9999) ]);
         $admin->roles()->attach($this->role);
         $this->actingAs($admin)->call('POST', 'teams', $this->team->toArray());
 
@@ -76,7 +76,7 @@ class TeamIntegrationTest extends TestCase
 
     public function testUpdate()
     {
-        $admin = factory(App\Models\User::class)->create([ 'id' => rand(1000, 9999) ]);
+        $admin = factory(English\Models\User::class)->create([ 'id' => rand(1000, 9999) ]);
         $admin->roles()->attach($this->role);
         $this->actingAs($admin)->call('POST', 'teams', $this->team->toArray());
 
@@ -89,8 +89,8 @@ class TeamIntegrationTest extends TestCase
 
     public function testDelete()
     {
-        $admin = factory(App\Models\User::class)->create([ 'id' => rand(1000, 9999) ]);
-        $team = factory(App\Models\Team::class)->create([
+        $admin = factory(English\Models\User::class)->create([ 'id' => rand(1000, 9999) ]);
+        $team = factory(English\Models\Team::class)->create([
             'user_id' => $admin->id,
             'name' => 'Awesomeness'
         ]);

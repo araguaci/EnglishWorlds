@@ -4,17 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| This file is where you may define all of the routes that are handled
-| by your application. Just tell Laravel the URIs it should respond
-| to using a given Closure or controller and enjoy the fresh air.
-|
-*/
-
-/*
-|--------------------------------------------------------------------------
 | Welcome Page
 |--------------------------------------------------------------------------
 */
@@ -76,6 +65,15 @@ Route::group(['middleware' => ['auth', 'active']], function () {
         Route::post('settings', 'SettingsController@update');
         Route::get('password', 'PasswordController@password');
         Route::post('password', 'PasswordController@update');
+        Route::get('user/{username}', [
+          'uses' => 'ProfileController@getProfile',
+          'as' => 'profile.index',
+        ]);
+        Route::get('profile/edit', [
+          'uses' => 'ProfileController@getEdit',
+          'as' => 'profile.edit'
+        ]);
+
     });
 
     /*
@@ -85,6 +83,47 @@ Route::group(['middleware' => ['auth', 'active']], function () {
     */
 
     Route::get('/dashboard', 'PagesController@dashboard');
+
+    /*
+    |--------------------------------------------------------------------------
+    | Search
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('search', [
+      'uses' => 'SearchController@getResults',
+      'as' => 'search.results',
+    ]);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Friends
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('friends', [
+    'uses' => 'FriendController@getIndex',
+    'as' => 'friends.index',
+    'middleware' => ['auth'],
+    ]);
+
+    Route::get('friends/add/{username}', [
+        'uses' => 'FriendController@getAdd',
+        'as' => 'friend.add',
+        'middleware' => ['auth'],
+    ]);
+
+    Route::get('friends/accept/{username}', [
+        'uses' => 'FriendController@getAccept',
+        'as' => 'friend.accept',
+        'middleware' => ['auth'],
+    ]);
+
+    Route::post('friends/delete/{username}', [
+        'uses' => 'FriendController@postDelete',
+        'as' => 'friend.delete',
+        'middleware' => ['auth'],
+    ]);
 
     /*
     |--------------------------------------------------------------------------

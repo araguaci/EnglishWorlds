@@ -63,7 +63,7 @@ class RoleServiceTest extends TestCase
     public function testCreate()
     {
         $response = $this->service->create($this->originalArray);
-        $this->assertEquals(get_class($response), 'App\Models\Role');
+        $this->assertEquals(get_class($response), 'English\Models\Role');
         $this->assertEquals(1, $response->id);
     }
 
