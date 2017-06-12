@@ -21,7 +21,9 @@ The following are required to function properly.
 
 ## Installation
 
-### Clone the project (replace **Name** with a name of your choice)
+Automated installation coming soon
+
+**Clone the project (replace **Name** with a name of your choice)**
 
 ``` shell
 $ git clone --depth 1 git@github.com:CaddyDz/English Name
