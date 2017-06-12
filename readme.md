@@ -14,9 +14,8 @@ PS: Heroku is not using a [CDN](https://en.wikipedia.org/wiki/Content_delivery_n
 The following are required to function properly.
 
 *	[PHP 5.6+](http://php.net/manual/en/install.php)
-*   [Laravel 5.4+](https://laravel.com/docs/5.4#installation)
-*   [NodeJS 5.0+](https://nodejs.org/en/)
-*   [MySQL 5.6+](https://dev.mysql.com/doc/refman/5.7/en/installing.html)
+* [Laravel 5.4+](https://laravel.com/docs/5.4#installation)
+* [MySQL 5.6+](https://dev.mysql.com/doc/refman/5.7/en/installing.html)
 *	[Composer](https://getcomposer.org/doc/00-intro.md)
 
 ## Installation
@@ -45,13 +44,6 @@ $ cp .env.example .env
 
 ``` shell
 $ php artisan key:generate
-```
-
-### Install FrontEnd dependencies requires [Gulp](http://gulpjs.com/)
-
-``` shell
-$ sudo npm install -g gulp
-$ npm install
 ```
 
 ### Set up the database
