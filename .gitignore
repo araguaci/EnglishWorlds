@@ -10,12 +10,13 @@ Homestead.yaml
 .env
 .vscode
 .phpintel
-/public/semantic/*
+public/semantic/components
+public/semantic/semantic.css
+public/semantic/semantic.js
 !public/semantic/semantic.min.css
 !public/semantic/semantic.min.js
 /resources/assets/semantic/src/definitions
 /resources/assets/semantic/src/semantic.less
 /resources/assets/semantic/src/theme.less
-/resources/assets/semantic/src/themes
 /resources/assets/semantic/tasks
 .DS_Store
