@@ -28,7 +28,7 @@ class ChatController extends Controller
         ->where('sender_id', $request->correspondent)
         ->where('seen', 0)
         ->get();
-        foreach ($data as $key ) {
+        foreach ($data as $key) {
             $messages[] = $key->message;
         }
         English\Chat::where('reciever_id', Auth::user()->id)
