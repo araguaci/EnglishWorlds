@@ -84,3 +84,12 @@ Route::middleware(['auth'])->group(function() {
         'as' => 'status'
     ]);
 });
+/*
+ * Chat
+ */
+ Route::group(['prefix' => 'chat'], function() {
+     Route::get('send', 'ChatController@send');
+     Route::get('update', 'ChatController@update');
+     Route::get('{corespendent}', 'ChatController@show');
+
+ });
