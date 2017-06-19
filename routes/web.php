@@ -25,7 +25,7 @@ Route::get('userimage/{filename}', [
 ]);
 
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth'])->group(function () {
     Route::get('profile/edit', [
         'uses' => 'ProfileController@getEdit',
         'as' => 'profile.edit',
@@ -59,7 +59,7 @@ Route::middleware(['auth'])->group(function() {
  */
 
 // Post statuses
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth'])->group(function () {
     Route::post('status', [
         'uses' => 'StatusController@postStatus',
         'as' => 'status.post'
@@ -87,7 +87,7 @@ Route::middleware(['auth'])->group(function() {
 /*
  * Chat
  */
- Route::group(['prefix' => 'chat'], function() {
+ Route::group(['prefix' => 'chat'], function () {
      Route::get('send', 'ChatController@send');
      Route::get('update', 'ChatController@update');
      Route::get('{corespendent}', 'ChatController@show');
