@@ -91,5 +91,4 @@ Route::middleware(['auth'])->group(function () {
      Route::get('send', 'ChatController@send');
      Route::get('update', 'ChatController@update');
      Route::get('{corespendent}', 'ChatController@show');
-
  });
