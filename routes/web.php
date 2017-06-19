@@ -17,76 +17,78 @@ Route::get('user/{username}', [
     'as' => 'profile.index',
 ]);
 
-Route::get('profile/edit', [
-    'uses' => 'ProfileController@getEdit',
-    'as' => 'profile.edit',
-    'middleware' => ['auth'],
-]);
 
-Route::post('profile/edit', [
-    'uses' => 'ProfileController@postEdit',
-    'middleware' => ['auth'],
-]);
 
 Route::get('userimage/{filename}', [
     'uses' => 'ProfileController@getUserImage',
     'as' => 'account.image',
 ]);
 
-Route::get('friends', [
-    'uses' => 'FriendController@getIndex',
-    'as' => 'friends.index',
-    'middleware' => ['auth'],
-]);
 
-Route::get('friends/add/{username}', [
-    'uses' => 'FriendController@getAdd',
-    'as' => 'friend.add',
-    'middleware' => ['auth'],
-]);
+Route::middleware(['auth'])->group(function () {
+    Route::get('profile/edit', [
+        'uses' => 'ProfileController@getEdit',
+        'as' => 'profile.edit',
+    ]);
 
-Route::get('friends/accept/{username}', [
-    'uses' => 'FriendController@getAccept',
-    'as' => 'friend.accept',
-    'middleware' => ['auth'],
-]);
+    Route::post('profile/edit', [
+        'uses' => 'ProfileController@postEdit',
+    ]);
+    Route::get('friends', [
+        'uses' => 'FriendController@getIndex',
+        'as' => 'friends.index',
+    ]);
 
-Route::post('friends/delete/{username}', [
-    'uses' => 'FriendController@postDelete',
-    'as' => 'friend.delete',
-    'middleware' => ['auth'],
-]);
+    Route::get('friends/add/{username}', [
+        'uses' => 'FriendController@getAdd',
+        'as' => 'friend.add',
+    ]);
 
+    Route::get('friends/accept/{username}', [
+        'uses' => 'FriendController@getAccept',
+        'as' => 'friend.accept',
+    ]);
+
+    Route::post('friends/delete/{username}', [
+        'uses' => 'FriendController@postDelete',
+        'as' => 'friend.delete',
+    ]);
+});
 /*
  * Statuses
  */
 
 // Post statuses
-Route::post('status', [
-    'uses' => 'StatusController@postStatus',
-    'as' => 'status.post',
-    'middleware' => ['auth'],
-]);
+Route::middleware(['auth'])->group(function () {
+    Route::post('status', [
+        'uses' => 'StatusController@postStatus',
+        'as' => 'status.post'
+    ]);
 
-Route::post('status/{statusId}/reply', [
-    'uses' => 'StatusController@postReply',
-    'middleware' => ['auth'],
-]);
+    Route::post('status/{statusId}/reply', [
+        'uses' => 'StatusController@postReply'
+    ]);
 
-Route::get('status/{statusId}/like', [
-    'uses' => 'StatusController@getLike',
-    'as' => 'status.like',
-    'middleware' => ['auth'],
-]);
+    Route::get('status/{statusId}/like', [
+        'uses' => 'StatusController@getLike',
+        'as' => 'status.like'
+    ]);
 
-Route::get('status/{statusId}/delete', [
-    'uses' => 'StatusController@getDelete',
-    'as' => 'status.delete',
-    'middleware' => ['auth'],
-]);
+    Route::get('status/{statusId}/delete', [
+        'uses' => 'StatusController@getDelete',
+        'as' => 'status.delete'
+    ]);
 
-Route::get('status', [
-    'uses' => 'StatusController@getStatus',
-    'as' => 'status',
-    'middleware' => ['auth'],
-]);
+    Route::get('status', [
+        'uses' => 'StatusController@getStatus',
+        'as' => 'status'
+    ]);
+});
+/*
+ * Chat
+ */
+ Route::group(['prefix' => 'chat'], function () {
+     Route::get('send', 'ChatController@send');
+     Route::get('update', 'ChatController@update');
+     Route::get('{corespendent}', 'ChatController@show');
+ });
