@@ -4,13 +4,13 @@ namespace English\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use English;
+use English\Chat;
 
 class ChatController extends Controller
 {
     public function send(Request $request)
     {
-        $chat = new English\Chat();
+        $chat = new Chat();
         $chat->id = uniqid();
         $chat->sender_id = Auth::user()->id;
         $chat->reciever_id = $request->correspondent;
@@ -24,14 +24,14 @@ class ChatController extends Controller
     public function update(Request $request)
     {
         $messages = array();
-        $data = English\Chat::where('reciever_id', Auth::user()->id)
+        $data = Chat::where('reciever_id', Auth::user()->id)
         ->where('sender_id', $request->correspondent)
         ->where('seen', 0)
         ->get();
         foreach ($data as $key) {
             $messages[] = $key->message;
         }
-        English\Chat::where('reciever_id', Auth::user()->id)
+        Chat::where('reciever_id', Auth::user()->id)
         ->where('sender_id', $request->correspondent)
         ->where('seen', 0)
         ->update(['seen' => 1]);
@@ -40,7 +40,7 @@ class ChatController extends Controller
 
     public function show($correspondent)
     {
-        $data = English\Chat::where('sender_id', Auth::user()->id)->where('reciever_id', $correspondent)
+        $data = Chat::where('sender_id', Auth::user()->id)->where('reciever_id', $correspondent)
         ->orwhere('sender_id', $correspondent)->where('reciever_id', Auth::user()->id)
         ->orderBy('created_at', 'asc')
         ->get();
