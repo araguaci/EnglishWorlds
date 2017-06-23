@@ -40,8 +40,9 @@ $(document).ready(function() {
       }
     });
   });
-
-  $("body").on("click",".replyButton",function() {
+  // This is being triggered by button click, should be by form submission
+  $(".reply").submit(function(e){
+    e.preventDefault();
     var statusID = $(this).data('id');
     $.ajax({
         type: 'POST',

@@ -44,24 +44,28 @@ class StatusController extends Controller
 
     public function postReply(Request $request)
     {
-        $this->validate($request, [
-        'replyBody' => 'required|max:1000',
-        'required' => 'The reply body is required.',
-      ]);
-      // Check if the status being replied on exists
-      $status = Status::notReply()->find($request->statusID);
-        if (!$status) {
-            return Response::json(['errors' => 'Status doesn\'t exists']);
-        }
-        $reply = Status::create([
-        'body' => $request->replyBody,
-      ])->user()->associate(Auth::user());
-        $status->replies()->save($reply);
-            // return response()->json($reply);
-      return view('status.comment')->with([
-        'reply' => $reply,
-        'status' => $status,
-      ])->render();
+      // FIXME: $status is returned null even though statusID is passed in
+      // $request object doesn't include statusID
+      if ($request->ajax()) {
+        $status = Status::notReply()->find($request->statusID);
+          $this->validate($request, [
+          'replyBody' => 'required|max:1000',
+          'required' => 'The reply body is required.',
+        ]);
+        // Check if the status being replied on exists
+        $status = Status::notReply()->find($request->statusID);
+          if (!$status) {
+              return Response::json(['errors' => 'Status doesn\'t exists']);
+          }
+          $reply = Status::create([
+          'body' => $request->replyBody,
+        ])->user()->associate(Auth::user());
+          $status->replies()->save($reply);
+        return view('status.comment')->with([
+          'reply' => $reply,
+          'status' => $status,
+        ])->render();
+      }
     }
 
     public function getLike($statusId)
