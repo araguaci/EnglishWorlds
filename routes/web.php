@@ -17,20 +17,16 @@ Route::get('user/{username}', [
     'as' => 'profile.index',
 ]);
 
-
-
 Route::get('userimage/{filename}', [
     'uses' => 'ProfileController@getUserImage',
     'as' => 'account.image',
 ]);
-
 
 Route::middleware(['auth'])->group(function () {
     Route::get('profile/edit', [
         'uses' => 'ProfileController@getEdit',
         'as' => 'profile.edit',
     ]);
-
     Route::post('profile/edit', [
         'uses' => 'ProfileController@postEdit',
     ]);
@@ -38,17 +34,14 @@ Route::middleware(['auth'])->group(function () {
         'uses' => 'FriendController@getIndex',
         'as' => 'friends.index',
     ]);
-
     Route::get('friends/add/{username}', [
         'uses' => 'FriendController@getAdd',
         'as' => 'friend.add',
     ]);
-
     Route::get('friends/accept/{username}', [
         'uses' => 'FriendController@getAccept',
         'as' => 'friend.accept',
     ]);
-
     Route::post('friends/delete/{username}', [
         'uses' => 'FriendController@postDelete',
         'as' => 'friend.delete',
