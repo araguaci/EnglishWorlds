@@ -44,10 +44,10 @@ class StatusController extends Controller
 
     public function postReply(Request $request)
     {
-      // FIXME: $status is returned null even though statusID is passed in
+        // FIXME: $status is returned null even though statusID is passed in
       // $request object doesn't include statusID
       if ($request->ajax()) {
-        $status = Status::notReply()->find($request->statusID);
+          $status = Status::notReply()->find($request->statusID);
           $this->validate($request, [
           'replyBody' => 'required|max:1000',
           'required' => 'The reply body is required.',
@@ -61,7 +61,7 @@ class StatusController extends Controller
           'body' => $request->replyBody,
         ])->user()->associate(Auth::user());
           $status->replies()->save($reply);
-        return view('status.comment')->with([
+          return view('status.comment')->with([
           'reply' => $reply,
           'status' => $status,
         ])->render();
