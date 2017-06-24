@@ -6,6 +6,7 @@ use Auth;
 use Image;
 use English\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
@@ -20,7 +21,12 @@ class ProfileController extends Controller
         }
         $statuses = $user->statuses()->notReply()->get();
 
-        return view('profile.index')->with('user', $user)->with('statuses', $statuses)->with('authUserIsFriend', Auth::user()->isFriendsWith($user));
+        // Return view with profile owner and his statuses and friends
+        if (Auth::check()) {
+          return view('profile.index')->with('user', $user)->with('statuses', $statuses)->with('authUserIsFriend', Auth::user()->isFriendsWith($user));
+        } else {
+          return view('profile.public')->with('user', $user)->with('statuses', $statuses);
+        }
     }
 
     public function getEdit()

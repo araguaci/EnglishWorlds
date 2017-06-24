@@ -1,6 +1,6 @@
 <div class="ui card">
 	<a class="image" href="{{ route('profile.index', ['username' => $user->name]) }}">
-		<img src="/img/avatars/{{ Auth::user()->avatar }}" alt="{{ $user->getNameOrUsername() }}">
+		<img src="/img/avatars/{{ $user->avatar }}" alt="{{ $user->getNameOrUsername() }}">
 	</a>
 	<div class="content">
 		<a class="header" href="{{ route('profile.index', ['username' => $user->name]) }}">

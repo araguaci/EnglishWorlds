@@ -4,6 +4,7 @@
   <div class="ui container">
     @include('user.partials.userblock')
     <hr>
+    {{-- If there are no statuses --}}
     @if (!$statuses->count())
       <p>{{ $user->getNameOrUsername() }} hasn't posted anything yet.</p>
     @else
@@ -17,12 +18,9 @@
               <p>{{ $status->body }}</p>
               <ul>
                 <li>{{ $status->created_at->diffForHumans() }}</li>
-                @if ($status->user->id !== Auth::user()->id)
-                  <li><a href="{{ route('status.like', ['statusId' => $status->id]) }}">Like</a></li>
-                @endif
                 <li>{{ $status->likes->count() }} {{ str_plural('like', $status->likes->count()) }}</li>
               </ul>
-
+              {{-- Show status replies --}}
               @foreach ($status->replies as $reply)
                   <a href="{{ route('profile.index', ['username' => $reply->user->username]) }}">
                     <img src="/img/avatars/{{ $reply->user->avatar }}" alt="{{ $reply->user->getNameOrUsername() }}" height="30" width="30">
@@ -31,46 +29,15 @@
                     <p>{{ $reply->body }}</p>
                     <ul>
                       <li>{{ $reply->created_at->diffForHumans() }}</li>
-                      @if ($reply->user->id !== Auth::user()->id)
-                        <li><a href="{{ route('status.like', ['statusId' => $reply->id]) }}">Like</a></li>
-                      @endif
                       <li>{{ $reply->likes->count() }} {{ str_plural('like', $reply->likes->count()) }}</li>
                     </ul>
               @endforeach
-
-              @if ($authUserIsFriend || Auth::user()->id === $status->user->id)
-                <form role="form" class="ui form" action="#" method="post">
-                  <div class="field{{ $errors->has("reply-{statusId}") ? ' has-error' : '' }}">
-                    <textarea name="reply-{{ $status->id }}" rows="2" placeholder="Reply to this status"></textarea>
-                    @if ($errors->has("reply-{$status->id}"))
-                      <span class="help-block">{{ $errors->first("reply-{$statusId}") }}</span>
-                    @endif
-                  </div>
-                  <input type="submit" value="Reply" class="ui small primary button">
-                  <input type="hidden" name="_token" value="{{ Session::token() }}">
-                </form>
-              @endif
         @endforeach
       </div>
       </div>
     @endif
   <div>
-    @if (Auth::user()->hadFriendRequestPending($user))
-      <p>Waiting for {{ $user->getNameOrUsername() }} to accept your request.</p>
-    @elseif (Auth::user()->hasFriendRequestReceived($user))
-      <a href="{{ route('friend.accept', ['username' => $user->name]) }}" class="ui primary button">Accept friend request</a>
-    @elseif (Auth::user()->isFriendsWith($user))
-      <p>You and {{ $user->getNameOrUsername() }} are friends.</p>
-      <form class="" action="{{ route('friend.delete', ['username' => $user->username]) }}" method="post">
-        <input type="submit" name="" value="Delete friend" class="ui red button">
-        {{ csrf_field() }}
-      </form>
-    @elseif (Auth::user()->id != $user->id)
-      <button class="ui basic button">
-        <i class="icon user"></i>
-        <a href="{{ route('friend.add', ['username' => $user->name]) }}">Add as friend</a>
-      </button>
-    @endif
+    {{-- If user has friends --}}
     <h4>{{ $user->getNameOrUsername() }}'s friends</h4>
     @if (!$user->friends()->count())
       <p>{{ $user->getNameOrUsername() }} has no friends.</p>
