@@ -7,6 +7,7 @@ use Response;
 use English\User;
 use English\Status;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redis;
 
 /**
  * @author Salim Djerbouh
@@ -35,17 +36,16 @@ class StatusController extends Controller
     {
         if ($request->ajax()) {
             $status = Status::notReply()->orderBy('created_at', 'desc')->first();
-
             return view('status.status')->with([
           'status' => $status,
         ])->render();
-        }
+      } else {
+        return redirect('login');
+      }
     }
 
     public function postReply(Request $request)
     {
-        // FIXME: $status is returned null even though statusID is passed in
-      // $request object doesn't include statusID
       if ($request->ajax()) {
           $status = Status::notReply()->find($request->statusID);
           $this->validate($request, [
@@ -55,7 +55,7 @@ class StatusController extends Controller
         // Check if the status being replied on exists
         $status = Status::notReply()->find($request->statusID);
           if (!$status) {
-              return Response::json(['errors' => 'Status doesn\'t exists']);
+              return Response::json(['errors' => 'Status doesn\'t exist']);
           }
           $reply = Status::create([
           'body' => $request->replyBody,

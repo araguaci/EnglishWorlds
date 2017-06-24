@@ -46,43 +46,45 @@ Route::middleware(['auth'])->group(function () {
         'uses' => 'FriendController@postDelete',
         'as' => 'friend.delete',
     ]);
-});
-/*
- * Statuses
- */
+    /*
+     * Statuses
+     */
 
-// Post statuses
-Route::middleware(['auth'])->group(function () {
+    // Post statuses
     Route::post('status', [
         'uses' => 'StatusController@postStatus',
         'as' => 'status.post'
     ]);
-
-    Route::post('status/{statusId}/reply', [
-        'uses' => 'StatusController@postReply',
-        'as' => 'status.comment'
-    ]);
-
-    Route::get('status/{statusId}/like', [
-        'uses' => 'StatusController@getLike',
-        'as' => 'status.like'
-    ]);
-
-    Route::get('status/{statusId}/delete', [
-        'uses' => 'StatusController@getDelete',
-        'as' => 'status.delete'
-    ]);
-
+    // Get statuses
     Route::get('status', [
         'uses' => 'StatusController@getStatus',
         'as' => 'status'
     ]);
+    // Comment on statuses
+    Route::post('status/{statusId}/reply', [
+        'uses' => 'StatusController@postReply',
+        'as' => 'status.comment'
+    ])->where('statusId', '[0-9]+');
+
+    Route::get('status/{statusId}/reply', function(){
+      return redirect('login');
+    });
+    // Like a status
+    Route::get('status/{statusId}/like', [
+        'uses' => 'StatusController@getLike',
+        'as' => 'status.like'
+    ])->where('statusId', '[0-9]+');
+    // Delete a status
+    Route::get('status/{statusId}/delete', [
+        'uses' => 'StatusController@getDelete',
+        'as' => 'status.delete'
+    ])->where('statusId', '[0-9]+');
+    /*
+     * Chat
+     */
+     Route::group(['prefix' => 'chat'], function () {
+         Route::get('send', 'ChatController@send');
+         Route::get('update', 'ChatController@update');
+         Route::get('{correspondent}', 'ChatController@show');
+     });
 });
-/*
- * Chat
- */
- Route::group(['prefix' => 'chat'], function () {
-     Route::get('send', 'ChatController@send');
-     Route::get('update', 'ChatController@update');
-     Route::get('{correspondent}', 'ChatController@show');
- });
