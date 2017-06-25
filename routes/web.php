@@ -46,8 +46,8 @@ Route::middleware(['auth'])->group(function () {
         'uses' => 'FriendController@postDelete',
         'as' => 'friend.delete',
     ]);
-    Route::get('friends/delete/{username}', function(){
-      return back();
+    Route::get('friends/delete/{username}', function () {
+        return back();
     });
     /*
      * Statuses
@@ -69,8 +69,8 @@ Route::middleware(['auth'])->group(function () {
         'as' => 'status.comment'
     ])->where('statusId', '[0-9]+');
 
-    Route::get('status/{statusId}/reply', function(){
-      return redirect('login');
+    Route::get('status/{statusId}/reply', function () {
+        return redirect('login');
     });
     // Like a status
     Route::get('status/{statusId}/like', [
