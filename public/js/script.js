@@ -58,4 +58,18 @@ $(document).ready(function() {
         }
     });
   });
+  $("body").on("click", ".deleteStatus", function(e){
+    e.preventDefault();
+    var statusId = $(this).data('id');
+    $.ajax({
+        type: 'GET',
+        url: 'status/' + statusId + '/delete',
+        data: {
+            'statusId': statusId
+        },
+        success: function(data) {
+          $('#' + statusId).remove('div');
+        }
+    });
+  });
 });

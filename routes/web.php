@@ -17,7 +17,7 @@ Route::get('user/{username}', [
     'as' => 'profile.index',
 ]);
 
-Route::get('userimage/{filename}', [
+Route::get('userimage/{username}', [
     'uses' => 'ProfileController@getUserImage',
     'as' => 'account.image',
 ]);
@@ -46,6 +46,9 @@ Route::middleware(['auth'])->group(function () {
         'uses' => 'FriendController@postDelete',
         'as' => 'friend.delete',
     ]);
+    Route::get('friends/delete/{username}', function(){
+      return back();
+    });
     /*
      * Statuses
      */

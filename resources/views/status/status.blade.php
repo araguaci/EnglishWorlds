@@ -1,4 +1,4 @@
-<div class="media">
+<div class="media" id="{{ $status->id }}">
   <a class="ui big image label" href="{{ route('profile.index', ['username' => $status->user->name]) }}">
     <img src="{{ $status->user->getAvatarUrl() }}" alt="{{ $status->user->getNameOrUsername() }}">
     {{ $status->user->getNameOrUsername() }}
@@ -31,8 +31,7 @@
         @endif
       @endif
       @if (Auth::user()->id == $status->user->id)
-        <a href="{{ route('status.delete', ['statusId' => $status->id ])}}">Delete</a>
-        <a href="#" data-statusid="{{ $status->id }}"></a>
+        <a class="deleteStatus" data-id="{{ $status->id }}" href="#">Delete</a>
       @endif
     <div class="ui comments" id="repliesBlock{{ $status->id }}">
       <h3 class="ui dividing header">Comments</h3>

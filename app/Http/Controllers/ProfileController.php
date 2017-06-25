@@ -71,4 +71,18 @@ class ProfileController extends Controller
         // Redirect to the same page with a flashed message
         return redirect()->route('profile.edit')->with('info', 'Your profile has been updated.');
     }
+    /**
+     * Get profile image of user
+     * @param Username
+     * @var string
+     * @return string (path to the avatar in public/img/avatars)
+     */
+    public function getUserImage($username)
+    {
+      $user = User::where('name', $username)->first();
+      if (!$user) {
+          abort(404);
+      }
+      return $user->avatar;
+    }
 }

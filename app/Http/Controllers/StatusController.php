@@ -88,12 +88,15 @@ class StatusController extends Controller
 
     public function getDelete($statusId)
     {
-        $status = Status::where('id', $statusId)->first();
-        if (Auth::user()->name !== $status->user->name) {
-            return redirect()->back();
+        if (request()->ajax()) {
+          $status = Status::where('id', $statusId)->first();
+          if (Auth::user()->name !== $status->user->name) {
+              return redirect()->back();
+          }
+          $status->delete();
+          dd('yes');
         }
-        $status->delete();
-
-        return redirect()->route('/')->with(['info', 'Post has been deleted']);
+        // return redirect()->route('home')->with(['info', 'Post has been deleted']);
+        dd('no');
     }
 }
