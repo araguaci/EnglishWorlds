@@ -39,33 +39,33 @@ class StatusController extends Controller
             return view('status.status')->with([
           'status' => $status,
         ])->render();
-      } else {
-        return redirect('login');
-      }
+        } else {
+            return redirect('login');
+        }
     }
 
     public function postReply(Request $request)
     {
-      if ($request->ajax()) {
-          $status = Status::notReply()->find($request->statusID);
-          $this->validate($request, [
+        if ($request->ajax()) {
+            $status = Status::notReply()->find($request->statusID);
+            $this->validate($request, [
           'replyBody' => 'required|max:1000',
           'required' => 'The reply body is required.',
         ]);
         // Check if the status being replied on exists
         $status = Status::notReply()->find($request->statusID);
-          if (!$status) {
-              return Response::json(['errors' => 'Status doesn\'t exist']);
-          }
-          $reply = Status::create([
+            if (!$status) {
+                return Response::json(['errors' => 'Status doesn\'t exist']);
+            }
+            $reply = Status::create([
           'body' => $request->replyBody,
         ])->user()->associate(Auth::user());
-          $status->replies()->save($reply);
-          return view('status.comment')->with([
+            $status->replies()->save($reply);
+            return view('status.comment')->with([
           'reply' => $reply,
           'status' => $status,
         ])->render();
-      }
+        }
     }
 
     public function getLike($statusId)
@@ -89,12 +89,12 @@ class StatusController extends Controller
     public function getDelete($statusId)
     {
         if (request()->ajax()) {
-          $status = Status::where('id', $statusId)->first();
-          if (Auth::user()->name !== $status->user->name) {
-              return redirect()->back();
-          }
-          $status->delete();
-          dd('yes');
+            $status = Status::where('id', $statusId)->first();
+            if (Auth::user()->name !== $status->user->name) {
+                return redirect()->back();
+            }
+            $status->delete();
+            dd('yes');
         }
         // return redirect()->route('home')->with(['info', 'Post has been deleted']);
         dd('no');

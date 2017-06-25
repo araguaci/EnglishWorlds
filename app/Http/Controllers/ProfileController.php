@@ -23,9 +23,9 @@ class ProfileController extends Controller
 
         // Return view with profile owner and his statuses and friends
         if (Auth::check()) {
-          return view('profile.index')->with('user', $user)->with('statuses', $statuses)->with('authUserIsFriend', Auth::user()->isFriendsWith($user));
+            return view('profile.index')->with('user', $user)->with('statuses', $statuses)->with('authUserIsFriend', Auth::user()->isFriendsWith($user));
         } else {
-          return view('profile.public')->with('user', $user)->with('statuses', $statuses);
+            return view('profile.public')->with('user', $user)->with('statuses', $statuses);
         }
     }
 
@@ -73,16 +73,19 @@ class ProfileController extends Controller
     }
     /**
      * Get profile image of user
+     *
      * @param Username
+     *
      * @var string
+     *
      * @return string (path to the avatar in public/img/avatars)
      */
     public function getUserImage($username)
     {
-      $user = User::where('name', $username)->first();
-      if (!$user) {
-          abort(404);
-      }
-      return $user->avatar;
+        $user = User::where('name', $username)->first();
+        if (!$user) {
+            abort(404);
+        }
+        return $user->avatar;
     }
 }
