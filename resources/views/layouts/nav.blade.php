@@ -1,6 +1,6 @@
 <div class="ui pointing fixed menu" id="topNavbar">
 	<a class="item" id="navbarBrand" href="/">
-		<img alt="{{ config('app.name') }}" src="{{ asset('img/brand.png') }}" width="35" height="35">
+		<img alt="{{ config('app.name') }}" src="{{ asset('img/brand_35x35.png') }}">
 		{{ config('app.name') }}
 	</a>
 	@if(Auth::user())

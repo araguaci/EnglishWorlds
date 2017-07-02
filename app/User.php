@@ -39,13 +39,6 @@ class User extends Authenticatable
         return $this->getName() ?: $this->name;
     }
 
-    public function getAvatarUrl()
-    {
-        $hash = md5($this->email);
-
-        return 'https://s.gravatar.com/avatar/'.$hash.'?s=80';
-    }
-
     public function statuses()
     {
         return $this->hasMany(Status::class, 'user_id');

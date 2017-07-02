@@ -6,7 +6,7 @@
 						<div class="column padding-reset">
 								<div class="ui huge message page grid">
 									<div id="header" class="ui huge header">
-										<img src="{{ asset('img/brand.png') }}" id="logo" alt="English DZ Logo">
+										<img src="{{ asset('img/brand_100x100.png') }}" id="logo" alt="English DZ Logo">
 										<span id="websiteTitle">{{ config('app.name') }}</span>
 										<p id="websiteSlogan">Learn English in Algeria, the fun way</p>
 									</div>

@@ -5,9 +5,17 @@
 		<div class="column">
 			<h1 class="ui header centered">Update your profile</h1>
 		</div>
+	    <div class="alert alert-danger">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
 		<div class="four column centered row">
 			<div class="column">
-				<form class="ui form segment error" action="{{ route('profile.edit')}}" method="post" role="form" enctype="multipart/form-data">
+				<form class="ui form segment error" action="{{ route('profile.edit')}}" method="POST" role="form" enctype="multipart/form-data">
+					{{ csrf_field() }}
 							<div class="field{{ $errors->has('name') ? ' has-error' : '' }}">
 								<label for="name">
 									Username
@@ -75,7 +83,7 @@
 							<input type="file" id="avatar" name="avatar" style="display:none">
 						<img class="ui medium circular image" src="/img/avatars/{{ Auth::user()->avatar }}">
 						<button type="submit" class="ui primary button">Update</button>
-					{{ csrf_field() }}
+
 				</form>
 		</div>
 	</div>

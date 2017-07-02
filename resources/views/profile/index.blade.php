@@ -11,7 +11,7 @@
         @foreach($statuses as $status)
           <div class="event">
             <a href="{{ route('profile.index', ['username' => $status->user->username]) }}">
-              <img src="/img/avatars/{{ $status->user->avatar }}" alt="{{ $status->user->getNameOrUsername() }}" height="30" width="30">
+              <img src="/img/avatars/30x30/{{ $status->user->avatar }}" alt="{{ $status->user->getNameOrUsername() }}">
             </a>
               <h4><a href="{{ route('profile.index', ['username' => $status->user->username]) }}">{{ $status->user->getNameOrUsername() }}</a></h4>
               <p>{{ $status->body }}</p>
@@ -25,7 +25,7 @@
 
               @foreach ($status->replies as $reply)
                   <a href="{{ route('profile.index', ['username' => $reply->user->username]) }}">
-                    <img src="/img/avatars/{{ $reply->user->avatar }}" alt="{{ $reply->user->getNameOrUsername() }}" height="30" width="30">
+                    <img src="/img/avatars/30x30/{{ $reply->user->avatar }}" alt="{{ $reply->user->getNameOrUsername() }}">
                   </a>
                     <h5><a href="{{ route('profile.index', ['username' => $reply->user->username]) }}">{{ $reply->user->getNameOrUsername() }}</a></h5>
                     <p>{{ $reply->body }}</p>

@@ -14,10 +14,10 @@ class CreateChatsTable extends Migration
     public function up()
     {
         Schema::create('chat', function (Blueprint $table) {
-            $table->string('id');
-            $table->string('sender_id');
-            $table->string('reciever_id');
-            $table->string('message');
+            $table->integer('id');
+            $table->integer('sender_id');
+            $table->integer('reciever_id');
+            $table->text('message');
             $table->boolean('seen');
             $table->timestamps();
         });
