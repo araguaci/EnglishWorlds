@@ -10,7 +10,6 @@
 				@foreach($statuses as $status)
 					@include('status.status')
 				@endforeach
-				{!! $statuses->render() !!}
 			@endif
 		</div>
 	</div>
