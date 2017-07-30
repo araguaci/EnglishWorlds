@@ -3,7 +3,7 @@
 		<img alt="{{ config('app.name') }}" src="{{ asset('img/brand_35x35.png') }}">
 		{{ config('app.name') }}
 	</a>
-	@if(Auth::user())
+	@if(Auth::check())
 			<div class="item" id="topNavSearchBar">
 				<form class="ui transparent icon input" action="{{ route('search.results') }}">
 					<div class="ui transparent icon input">
@@ -14,7 +14,7 @@
 			</div>
 	@endif
 	<div class="right menu">
-		@if(Auth::user())
+		@if(Auth::check())
 			<a href="{{ url('home') }}" class="active item">Timeline</a>
 			<div class="ui dropdown item" id="profileDropdown">
 				{{ Auth::user()->name }}
@@ -27,7 +27,7 @@
 					<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="item">Logout</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }} </form>
 				</div>
 			</div>
-		@elseif (!Auth::user())
+		@elseif (!Auth::check())
 			<a href="{{ url('login') }}" class="ui item">Login</a>
 			<a href="{{ url('register') }}" class="ui item">Sign up</a>
 		@endif

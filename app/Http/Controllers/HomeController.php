@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $statuses = Status::notReply()->latest()->paginate(10);
+            $statuses = Status::notReply()->latest()->paginate(5);
 
             return view('timeline.index', compact('statuses'));
         }

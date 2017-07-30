@@ -111,4 +111,9 @@ class User extends Authenticatable
     {
         return (bool) $status->likes()->where('user_id', $this->id)->count();
     }
+
+    public function avatar()
+    {
+        return "/img/avatars/" . $this->avatar;
+    }
 }
