@@ -1,16 +1,5 @@
 <div class="ui raised segment">
   <form role="form" action="#" id="postStatus" enctype="multipart/form-data" class="ui form error">
-    <div class="ui icon buttons">
-    	<button class="ui button"><i class="align left icon"></i></button>
-    	<button class="ui button"><i class="align center icon"></i></button>
-    	<button class="ui button"><i class="align right icon"></i></button>
-    	<button class="ui button"><i class="align justify icon"></i></button>
-    </div>
-    <div class="ui icon buttons">
-    	<button class="ui button"><i class="bold icon"></i></button>
-    	<button class="ui button"><i class="underline icon"></i></button>
-    	<button class="ui button"><i class="text width icon"></i></button>
-    </div>
     <label for="image" class="ui icon button">
       <i class="image icon"></i>
     Open File
