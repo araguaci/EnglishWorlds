@@ -1,8 +1,8 @@
 <?php
 
 use Tests\TestCase;
-use App\Services\TeamService;
-use App\Services\UserService;
+use English\Services\TeamService;
+use English\Services\UserService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class TeamServiceTest extends TestCase

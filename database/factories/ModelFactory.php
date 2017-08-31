@@ -1,59 +1,47 @@
-<?php
 
 /*
 |--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| Here you may define all of your model factories. Model factories give
-| you a convenient way to create models for testing and seeding your
-| database. Just tell the factory how a default model should look.
-|
-*/
-
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(English\Models\User::class, function (Faker\Generator $faker) {
-    static $password;
-
-    return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
-    ];
-});
-
-/*
-|--------------------------------------------------------------------------
-| UserMeta Factory
+| Notification Factory
 |--------------------------------------------------------------------------
 */
 
-$factory->define(English\Models\UserMeta::class, function (Faker\Generator $faker) {
+$factory->define(English\Models\Notification::class, function (Faker\Generator $faker) {
     return [
+        'id' => 1,
         'user_id' => 1,
-        'phone' => $faker->phoneNumber,
-        'marketing' => 1,
-        'terms_and_cond' => 1,
-    ];
-});
-
-$factory->define(English\Models\Role::class, function (Faker\Generator $faker) {
-    return [
-        'name' => 'member',
-        'label' => 'Member',
+        'flag' => 'info',
+        'uuid' => 'lksjdflaskhdf',
+        'title' => 'Testing',
+        'details' => 'Your car has been impounded!',
+        'is_read' => 0,
     ];
 });
 
 /*
 |--------------------------------------------------------------------------
-| Team Factory
+| Feature Factory
 |--------------------------------------------------------------------------
 */
 
-$factory->define(English\Models\Team::class, function (Faker\Generator $faker) {
+$factory->define(English\Models\Feature::class, function (Faker\Generator $faker) {
     return [
+        'id' => 1,
+        'key' => 'user-signup',
+        'is_active' => false,
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Activity Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(English\Models\Activity::class, function (Faker\Generator $faker) {
+    return [
+        'id' => 1,
         'user_id' => 1,
-        'name' => $faker->name
+        'description' => 'Standard User Activity',
+        'request' => [],
     ];
 });

@@ -1,7 +1,7 @@
 <?php
 
 use Tests\TestCase;
-use App\Services\UserService;
+use English\Services\UserService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UserServiceTest extends TestCase
