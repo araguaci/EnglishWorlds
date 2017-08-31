@@ -60,7 +60,7 @@ class Kernel extends HttpKernel
         'jwt.auth' => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
         'jwt.refresh' => \Tymon\JWTAuth\Middleware\RefreshToken::class,
         'admin' => \English\Http\Middleware\Admin::class,
-        'activity' => \App\Http\Middleware\Activity::class,
+        'activity' => \English\Http\Middleware\Activity::class,
         'permissions' => \English\Http\Middleware\Permissions::class,
         'roles' => \English\Http\Middleware\Roles::class,
         // 'active' => \English\Http\Middleware\Active::class,

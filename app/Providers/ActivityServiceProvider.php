@@ -22,10 +22,10 @@ class ActivityServiceProvider extends ServiceProvider
     {
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
 
-        $loader->alias('Activity', \App\Facades\Activity::class);
+        $loader->alias('Activity', \English\Facades\Activity::class);
 
         $this->app->singleton('ActivityService', function ($app) {
-            return app(\App\Services\ActivityService::class);
+            return app(\English\Services\ActivityService::class);
         });
     }
 }

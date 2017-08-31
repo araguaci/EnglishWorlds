@@ -28,10 +28,10 @@ class FeatureServiceProvider extends ServiceProvider
     {
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
 
-        $loader->alias('Features', \App\Facades\Features::class);
+        $loader->alias('Features', \English\Facades\Features::class);
 
         $this->app->singleton('FeatureService', function ($app) {
-            return app(\App\Services\FeatureService::class);
+            return app(\English\Services\FeatureService::class);
         });
     }
 }

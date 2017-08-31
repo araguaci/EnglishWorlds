@@ -4,7 +4,7 @@ namespace English\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use App\Facades\Activity as Action;
+use English\Facades\Activity as Action;
 
 class Activity
 {
