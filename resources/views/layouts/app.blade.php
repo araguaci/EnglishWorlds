@@ -30,7 +30,12 @@
 	@yield('content')
 	@yield('registration')
 	<!-- Scripts -->
-  <script src="{{ asset('js/jquery.min.js') }}"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
+	<script>
+	if (typeof jQuery == 'undefined') {
+	    document.write(unescape("%3Cscript src='/js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+	}
+	</script>
   <script src="{{ asset('semantic/semantic.min.js')}}" charset="utf-8"></script>
 	@yield('scripts')
   <script src="{{ asset('js/script.js') }}"></script>
