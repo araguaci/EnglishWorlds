@@ -13,13 +13,13 @@ class FriendController extends Controller
    * @param none
    * @return object: view populated with authenticated user's friends and friend requests
    */
-  public function getIndex()
-  {
-      $friends = Auth::user()->friends();
-      $requests = Auth::user()->friendRequests();
+    public function getIndex()
+    {
+        $friends = Auth::user()->friends();
+        $requests = Auth::user()->friendRequests();
 
-      return view('friends.index')->with('friends', $friends)->with('requests', $requests);
-  }
+        return view('friends.index')->with('friends', $friends)->with('requests', $requests);
+    }
 
     public function getAdd($username)
     {
