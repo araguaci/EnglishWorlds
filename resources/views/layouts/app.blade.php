@@ -5,6 +5,11 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PXB3L2"
+                      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
 		<!-- CSRF Token -->
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
