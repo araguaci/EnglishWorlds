@@ -41,7 +41,7 @@ class ProfileController extends Controller
         $messages = [
             'password_hash_check' => 'Old password incorrect',
         ];
-            // Validate input data
+        // Validate input data
         $hashed_password = Auth::user()->password;
         // FIXME: Validation not working
         /*

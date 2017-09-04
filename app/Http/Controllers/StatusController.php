@@ -52,8 +52,8 @@ class StatusController extends Controller
           'replyBody' => 'required|max:1000',
           'required' => 'The reply body is required.',
         ]);
-        // Check if the status being replied on exists
-        $status = Status::notReply()->find($request->statusID);
+            // Check if the status being replied on exists
+            $status = Status::notReply()->find($request->statusID);
             if (!$status) {
                 return Response::json(['errors' => 'Status doesn\'t exist']);
             }

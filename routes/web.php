@@ -85,9 +85,9 @@ Route::middleware(['auth'])->group(function () {
     /*
      * Chat
      */
-     Route::group(['prefix' => 'chat'], function () {
-         Route::get('send', 'ChatController@send');
-         Route::get('update', 'ChatController@update');
-         Route::get('{correspondent}', 'ChatController@show');
-     });
+    Route::group(['prefix' => 'chat'], function () {
+        Route::get('send', 'ChatController@send');
+        Route::get('update', 'ChatController@update');
+        Route::get('{correspondent}', 'ChatController@show');
+    });
 });
