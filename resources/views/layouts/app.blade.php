@@ -17,8 +17,8 @@
 
 		<!-- Styles -->
     @yield('styles')
-		<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
-		<link rel="stylesheet" href="{{ asset('semantic/semantic.min.css')}}">
+		<link href="{{ secure_asset('css/navbar.css') }}" rel="stylesheet">
+		<link rel="stylesheet" href="{{ secure_asset('semantic/semantic.min.css')}}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
 
 		<!-- Scripts -->
@@ -41,9 +41,9 @@
 	    document.write(unescape("%3Cscript src='/js/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
 	}
 	</script>
-  <script src="{{ asset('semantic/semantic.min.js')}}" charset="utf-8"></script>
+  <script src="{{ secure_asset('semantic/semantic.min.js')}}" charset="utf-8"></script>
 	@yield('scripts')
-  <script src="{{ asset('js/script.js') }}"></script>
-  <script src="{{ asset('js/jquery.ns-autogrow.min.js') }}"></script>
+  <script src="{{ secure_asset('js/script.js') }}"></script>
+  <script src="{{ secure_asset('js/jquery.ns-autogrow.min.js') }}"></script>
 </body>
 </html>

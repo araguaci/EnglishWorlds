@@ -1,6 +1,6 @@
 <div class="ui pointing fixed menu" id="topNavbar">
 	<a class="item" id="navbarBrand" href="/">
-		<img alt="{{ config('app.name') }}" src="{{ asset('img/brand_35x35.png') }}">
+		<img alt="{{ config('app.name') }}" src="{{ secure_asset('img/brand_35x35.png') }}">
 		{{ config('app.name') }}
 	</a>
 	@if(Auth::check())
@@ -15,7 +15,7 @@
 	@endif
 	<div class="right menu">
 		@if(Auth::check())
-			<a href="{{ url('home') }}" class="active item">Timeline</a>
+			<a href="{{ secure_url('home') }}" class="active item">Timeline</a>
 			<div class="ui dropdown item" id="profileDropdown">
 				{{ Auth::user()->name }}
 				<i class="dropdown icon"></i>
@@ -28,8 +28,8 @@
 				</div>
 			</div>
 		@elseif (!Auth::check())
-			<a href="{{ url('login') }}" class="ui item">Login</a>
-			<a href="{{ url('register') }}" class="ui item">Sign up</a>
+			<a href="{{ secure_url('login') }}" class="ui item">Login</a>
+			<a href="{{ secure_url('register') }}" class="ui item">Sign up</a>
 		@endif
 	</div>
 </div>

@@ -52,5 +52,5 @@
 @endsection
 
 @section('scripts')
-  <script src="{{ asset('js/register.js') }}" charset="utf-8"></script>
+  <script src="{{ secure_asset('js/register.js') }}" charset="utf-8"></script>
 @endsection

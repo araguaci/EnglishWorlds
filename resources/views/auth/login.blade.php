@@ -49,5 +49,5 @@
 @endsection
 
 @section('scripts')
-  <script src="{{ asset('js/login.js') }}" charset="utf-8"></script>
+  <script src="{{ secure_asset('js/login.js') }}" charset="utf-8"></script>
 @endsection

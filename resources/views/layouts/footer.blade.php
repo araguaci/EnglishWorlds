@@ -34,7 +34,7 @@
         </div>
       </div>
       <div class="ui inverted section divider"></div>
-      <img src="{{ asset('img/brand_35x35.png')}}" class="ui centered mini image">
+      <img src="{{ secure_asset('img/brand_35x35.png')}}" class="ui centered mini image">
       <div class="ui horizontal inverted small divided link list">
         <a class="item" href="#">Site Map</a>
         <a class="item" href="#">Contact Us</a>
@@ -44,6 +44,6 @@
     </div>
   </div>
   @section('styles')
-    <link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
-  	<link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/welcome.css') }}" rel="stylesheet">
+  	<link href="{{ secure_asset('css/footer.css') }}" rel="stylesheet">
   @endsection

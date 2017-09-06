@@ -1,6 +1,6 @@
 <div class="media" id="{{ $status->id }}">
   <a class="ui big image label" href="{{ route('profile.index', ['username' => $status->user->name]) }}">
-    <img src="{{ asset('img/avatars/39x39/'.$status->user->avatar.'') }}" alt="{{ $status->user->getNameOrUsername() }}">
+    <img src="{{ secure_asset('img/avatars/39x39/'.$status->user->avatar.'') }}" alt="{{ $status->user->getNameOrUsername() }}">
     {{ $status->user->getNameOrUsername() }}
   </a>
   <div class="media-body">

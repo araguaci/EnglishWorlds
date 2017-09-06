@@ -1,6 +1,6 @@
 <div class="comment">
   <a class="avatar">
-    <img src="{{ asset('img/avatars/35x35/'.$reply->user->avatar.'') }}" alt="{{ $reply->user->getNameOrUsername() }}">
+    <img src="{{ secure_asset('img/avatars/35x35/'.$reply->user->avatar.'') }}" alt="{{ $reply->user->getNameOrUsername() }}">
   </a>
   <div class="content">
     <a class="author" href="{{ route('profile.index', ['username' => $reply->user->name]) }}">{{ $reply->user->getNameOrUsername() }}</a>

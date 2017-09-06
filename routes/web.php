@@ -1,28 +1,26 @@
 <?php
-
+Route::group(array('middleware' => 'forceSSL'), function() {
 Auth::routes();
 
 Route::get('/', [
     'uses' => 'HomeController@index',
     'as' => 'home',
 ]);
-
-Route::get('search', [
-    'uses' => 'SearchController@getResults',
-    'as' => 'search.results',
-]);
-
-Route::get('user/{username}', [
-    'uses' => 'ProfileController@getProfile',
-    'as' => 'profile.index',
-]);
-
-Route::get('userimage/{username}', [
-    'uses' => 'ProfileController@getUserImage',
-    'as' => 'account.image',
-]);
-
 Route::middleware(['auth'])->group(function () {
+    Route::get('search', [
+        'uses' => 'SearchController@getResults',
+        'as' => 'search.results',
+    ]);
+
+    Route::get('user/{username}', [
+        'uses' => 'ProfileController@getProfile',
+        'as' => 'profile.index',
+    ]);
+
+    Route::get('userimage/{username}', [
+        'uses' => 'ProfileController@getUserImage',
+        'as' => 'account.image',
+    ]);
     Route::get('profile/edit', [
         'uses' => 'ProfileController@getEdit',
         'as' => 'profile.edit',
@@ -90,4 +88,5 @@ Route::middleware(['auth'])->group(function () {
         Route::get('update', 'ChatController@update');
         Route::get('{correspondent}', 'ChatController@show');
     });
+});
 });

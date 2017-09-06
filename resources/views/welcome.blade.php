@@ -6,7 +6,7 @@
 						<div class="column padding-reset">
 								<div class="ui huge message page grid">
 									<div id="header" class="ui huge header">
-										<img src="{{ asset('img/brand_100x100.png') }}" id="logo" alt="English DZ Logo">
+										<img src="{{ secure_asset('img/brand_100x100.png') }}" id="logo" alt="English DZ Logo">
 										<span id="websiteTitle">{{ config('app.name') }}</span>
 										<p id="websiteSlogan">Learn English in Algeria, the fun way</p>
 									</div>
@@ -29,11 +29,11 @@
 								<div class="ui dimmer">
 									<div class="content">
 										<div class="center">
-											<a class="ui inverted button" href="{{ url('/login') }}">Login</a>
+											<a class="ui inverted button" href="{{ secure_url('/login') }}">Login</a>
 										</div>
 									</div>
 								</div>
-								<img src="{{ asset('img/user.svg') }}">
+								<img src="{{ secure_asset('img/user.svg') }}">
 							</div>
 							<div class="content">
 								<a class="header">Existing user?</a>
@@ -44,11 +44,11 @@
 								<div class="ui dimmer">
 									<div class="content">
 										<div class="center">
-											<a class="ui inverted button" href="{{ url('/register') }}">Register</a>
+											<a class="ui inverted button" href="{{ secure_url('/register') }}">Register</a>
 										</div>
 									</div>
 								</div>
-								<img src="{{ asset('img/user.svg') }}">
+								<img src="{{ secure_asset('img/user.svg') }}">
 							</div>
 							<div class="content">
 								<a class="header">New user?</a>
@@ -62,10 +62,10 @@
 @endsection
 
 @section('styles')
-	<link href="{{ asset('css/welcome.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+	<link href="{{ secure_asset('css/welcome.css') }}" rel="stylesheet">
+	<link href="{{ secure_asset('css/footer.css') }}" rel="stylesheet">
 @endsection
 
 @section('scripts')
-	<script src="{{ asset('js/welcome.js') }}" charset="utf-8"></script>
+	<script src="{{ secure_asset('js/welcome.js') }}" charset="utf-8"></script>
 @endsection

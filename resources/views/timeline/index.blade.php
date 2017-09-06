@@ -16,5 +16,5 @@
 @stop
 
 @section('styles')
-	<link rel="stylesheet" href="{{ asset('css/timeline.css')}} ">
+	<link rel="stylesheet" href="{{ secure_asset('css/timeline.css')}} ">
 @endsection
