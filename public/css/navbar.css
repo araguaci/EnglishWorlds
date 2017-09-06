@@ -1,0 +1,23 @@
+#topNavbar {
+  color: #eaeaea;
+}
+
+#navbarBrand {
+  color: #ffffff;
+}
+
+#navbarBrand:hover, #navbarBrand:focus {
+  color: #eaeaea;
+}
+
+#topNavSearchBar input[type=text]::placeholder, #topNavSearchBar input[type=text] {
+  color: white;
+}
+
+#topNavbar > .right.menu a {
+  color: white !important;
+}
+
+#profileDropdown {
+  color: #eaeaea;
+}

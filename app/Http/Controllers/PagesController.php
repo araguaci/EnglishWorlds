@@ -15,7 +15,11 @@ class PagesController extends Controller
      */
     public function home()
     {
+      if (!\Auth::check()) {
         return view('welcome');
+      } else {
+        return view('index');
+      }
     }
 
     /**

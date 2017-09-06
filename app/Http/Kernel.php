@@ -63,6 +63,6 @@ class Kernel extends HttpKernel
         'activity' => \English\Http\Middleware\Activity::class,
         'permissions' => \English\Http\Middleware\Permissions::class,
         'roles' => \English\Http\Middleware\Roles::class,
-        // 'active' => \English\Http\Middleware\Active::class,
+        'active' => \English\Http\Middleware\Active::class,
     ];
 }

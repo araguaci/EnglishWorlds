@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('app-content')
+@section('content')
 
     <div class="sidebar">
         <div class="raw-margin-bottom-90">

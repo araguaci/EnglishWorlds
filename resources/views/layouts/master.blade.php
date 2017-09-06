@@ -5,17 +5,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
 
-        <title>App</title>
+        <title>{{ config('app.name') }}</title>
 
-        <link rel="icon" type="image/ico" href="">
-
-        <!-- Font Awesome -->
-        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/ico" href="favicon.ico">
 
         <!-- Local -->
         <link rel="stylesheet" type="text/css" href="/css/raw.min.css">
-        <link rel="stylesheet" type="text/css" href="/css/semantic.min.css">
-        <link rel="stylesheet" type="text/css" href="/css/app.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+        <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,7 +28,7 @@
         @include("layouts.navigation")
 
         <div class="app-wrapper">
-            @yield("app-content")
+            @yield("content")
             @include('partials.message')
         </div>
 
@@ -52,9 +49,7 @@
         </script>
         @yield("pre-javascript")
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-        <script src="{{ asset('js/semantic.min.js') }}"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-        <script src="/js/app.js"></script>
-        @yield("javascript")
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+        @yield("scripts")
     </body>
 </html>

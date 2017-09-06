@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('app-content')
+@section('content')
 
 <div class="ui fluid container">
     <div class="ui three column grid">
