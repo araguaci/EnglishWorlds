@@ -1,40 +1,65 @@
-@extends('layouts.master')
-
-@section('content')
-
-<div class="ui fluid container">
-    <div class="ui three column grid">
-        <div class="column centered">
-
-            <h1>Register</h1>
-
-            <form class="ui form" method="POST" action="/register">
-                {!! csrf_field() !!}
-
-                <div class="field">
-                    <label>Name</label>
-                    <input type="text" name="name" placeholder="Name" value="{{ old('name') }}">
-                </div>
-                <div class="field">
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder="Email Address" value="{{ old('email') }}">
-                </div>
-                <div class="field">
-                    <label>Password</label>
-                    <input type="password"  placeholder="Password" name="password">
-                </div>
-                <div class="field">
-                    <label>Confirm Password</label>
-                    <input type="password"  placeholder="Confirm Password" name="password_confirmation">
-                </div>
-                <div class="field">
-                    <a class="ui violet button left" href="/login">Login</a>
-                    <button class="ui primary button right floated" type="submit">Register</button>
-                </div>
-            </form>
-
+<div class="ui inverted raised very padded container segment">
+  <div class="ui centered container">
+    <form class="ui inverted big form" method="POST" id="signup" action="/register">
+      <h2 class="ui inverted centered header">Sign up Now</h2>
+          {{ csrf_field() }}
+          <div class="field">
+              <label>Username</label>
+              <input type="text" placeholder="Username" name="username">
+              @if($errors->has('username'))
+               <div class="ui tiny negative message">
+                   <i class="warning circular icon"></i>
+                   {{ $errors->first('username') }}
+               </div>
+              @endif
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Example@example.com" class="ui input">
+            @if($errors->has('email'))
+             <div class="ui tiny negative message">
+               <i class="warning circular icon"></i>
+               {{ $errors->first('email') }}
+             </div>
+            @endif
+          </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Password" class="ui input">
+            @if($errors->has('password'))
+             <div class="ui tiny negative message">
+               <i class="warning circular icon"></i>
+               {{ $errors->first('password') }}
+             </div>
+            @endif
+          </div>
+          <div class="field">
+            <label>Password Confirmation</label>
+            <input type="password" name="password_confirmation" placeholder="Password Confirmation" class="ui input">
+            @if($errors->has('password_confirmation'))
+             <div class="ui tiny negative message">
+               <i class="warning circular icon"></i>
+               {{ $errors->first('password_confirmation') }}
+             </div>
+            @endif
+          </div>
         </div>
-    </div>
+        <div class="inline field">
+            <div class="ui slider checkbox">
+                <input type="checkbox" name="terms_and_conditions">
+                <label>I agree to <a href="{{ url('/terms') }}">the Terms and Conditions</a></label>
+                @if($errors->has('terms_and_conditions'))
+                 <div class="ui tiny negative message">
+                   <i class="warning circular icon"></i>
+                   {{ $errors->first('terms_and_conditions') }}
+                 </div>
+                @endif
+            </div>
+        </div>
+        <div>
+          <input type="submit" class="ui inverted fluid basic button" value="Sign up">
+        </div>
+    </form>
 </div>
-
-@stop
+</div>

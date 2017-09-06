@@ -1,4 +1,4 @@
-@extends('dashboard', ['pageTitle' => 'Features &raquo; Create'])
+@extends('dashboard.main', ['pageTitle' => 'Features &raquo; Create'])
 
 @section('content')
 

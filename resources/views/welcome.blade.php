@@ -113,7 +113,7 @@
         </div>
         <div class="ui hidden divider"></div>
         <div id="register">
-          @include('partials.register')
+          @include('auth.register')
         </div>
       </div>
     </div>

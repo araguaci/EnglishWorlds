@@ -1,4 +1,4 @@
-@extends('dashboard', ['pageTitle' => 'Notifications &raquo; Edit'])
+@extends('dashboard.main', ['pageTitle' => 'Notifications &raquo; Edit'])
 
 @section('content')
 

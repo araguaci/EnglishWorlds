@@ -39,7 +39,6 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 | Registration & Activation
 |--------------------------------------------------------------------------
 */
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
 Route::get('activate/token/{token}', 'Auth\ActivateController@activate');

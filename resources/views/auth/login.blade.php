@@ -32,11 +32,10 @@
             </form>
 
             <div class="floated left raw-margin-top-24">
-                <a class="ui button green fluid" href="/register">Register</a>
+                <a class="ui button green fluid" href="/#register">Register</a>
             </div>
         </div>
     </div>
 </div>
 
 @stop
-
