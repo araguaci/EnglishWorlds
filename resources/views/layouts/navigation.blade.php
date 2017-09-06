@@ -28,7 +28,7 @@
 			</div>
 		@elseif (!Auth::check())
 			<a href="{{ url('login') }}" class="ui item">Login</a>
-			<a href="{{ url('/') }}" class="ui item">Sign up</a>
+			<a href="{{ url('/#register') }}" class="ui item">Sign up</a>
 		@endif
 	</div>
 </div>

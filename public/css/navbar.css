@@ -14,10 +14,18 @@
   color: white;
 }
 
+#topNavSearchBar input[type=text]::selection {
+  color: white;
+}
+
 #topNavbar > .right.menu a {
   color: white !important;
 }
 
 #profileDropdown {
-  color: #eaeaea;
+  color: #fff;
+}
+
+.ui.menu .dropdown.item .menu {
+  background-color: #000 !important;
 }

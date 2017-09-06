@@ -2,14 +2,12 @@
 
 @section('content')
 
-    <div class="sidebar">
-        <div class="raw-margin-bottom-90">
-            @include('dashboard.panel')
-        </div>
-    </div>
+  <div class="main">
+      @yield('content')
+  </div>
 
-    <div class="main">
-        @yield('content')
-    </div>
+@endsection
 
-@stop
+@section('scripts')
+  <script src="{{ asset('js/script.js') }}" charset="utf-8"></script>
+@endsection

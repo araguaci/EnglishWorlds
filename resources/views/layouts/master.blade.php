@@ -50,6 +50,7 @@
         @yield("pre-javascript")
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ns-autogrow/1.1.6/jquery.ns-autogrow.min.js" charset="utf-8"></script>
         @yield("scripts")
     </body>
 </html>

@@ -26,7 +26,7 @@ Route::get('/', 'PagesController@home');
 */
 Route::view('login', 'auth.login')->name('login')->middleware('guest');
 Route::post('login', 'Auth\LoginController@login');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Password Reset Routes...
 Route::view('password/reset', 'auth.passwords.email')->name('password.request');
