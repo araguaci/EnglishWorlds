@@ -65,4 +65,9 @@ class UserController extends Controller
 
         return response()->json(['error' => 'Could not update user']);
     }
+
+    public function show($username)
+    {
+      return view('user.index');
+    }
 }

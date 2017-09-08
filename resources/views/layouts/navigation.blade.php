@@ -1,4 +1,4 @@
-<div class="ui inverted pointing fixed menu" id="topNavbar">
+<div class="ui inverted pointing menu" id="topNavbar">
 	<a class="item" id="navbarBrand" href="/">
 		<img alt="{{ config('app.name') }}" src="{{ asset('img/brand_35x35.png') }}">
 		{{ config('app.name') }}

@@ -18,7 +18,8 @@ class PagesController extends Controller
       if (!\Auth::check()) {
         return view('welcome');
       } else {
-        return view('index');
+        $statuses = \English\Models\Status::get();
+        return view('index', compact('statuses'));
       }
     }
 

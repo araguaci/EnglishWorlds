@@ -23,5 +23,11 @@ Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
             Route::get('profile', 'UserController@getProfile');
             Route::post('profile', 'UserController@postProfile');
         });
+        /*
+        |--------------------------------------------------------------------------
+        | Status API Routes
+        |--------------------------------------------------------------------------
+        */
+        Route::resource('v1/statuses', 'StatusesController', ['as' => 'api']);
     });
 });

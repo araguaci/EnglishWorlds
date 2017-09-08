@@ -97,6 +97,29 @@ Route::group(['middleware' => ['auth', 'active']], function () {
 
     /*
     |--------------------------------------------------------------------------
+    | Status Routes
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('statuses', 'StatusesController');
+    Route::post('statuses/search', [
+        'as' => 'statuses.search',
+        'uses' => 'StatusesController@search'
+    ]);
+    Route::get('status/{statusId}/react', [
+        'uses' => 'StatusesController@react',
+        'as' => 'status.like'
+    ])->where('statusId', '[0-9]+');
+    /*
+    |--------------------------------------------------------------------------
+    | Users
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('users', 'UserController');
+    Route::post('users/search', 'UserController@search');
+    Route::get('users/search', 'UserController@index');
+    /*
+    |--------------------------------------------------------------------------
     | Admin
     |--------------------------------------------------------------------------
     */
@@ -110,9 +133,6 @@ Route::group(['middleware' => ['auth', 'active']], function () {
         | Users
         |--------------------------------------------------------------------------
         */
-        Route::resource('users', 'UserController', ['except' => ['create', 'show']]);
-        Route::post('users/search', 'UserController@search');
-        Route::get('users/search', 'UserController@index');
         Route::get('users/invite', 'UserController@getInvite');
         Route::get('users/switch/{id}', 'UserController@switchToUser');
         Route::post('users/invite', 'UserController@postInvite');

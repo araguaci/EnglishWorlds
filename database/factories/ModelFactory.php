@@ -46,3 +46,20 @@ $factory->define(English\Models\Activity::class, function (Faker\Generator $fake
         'request' => [],
     ];
 });
+
+/*
+|--------------------------------------------------------------------------
+| Status Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(English\Models\Status::class, function (Faker\Generator $faker) {
+    return [
+        'id' => '1',
+		'user_id' => '1',
+		'body' => 'vero dolorem atque ratione',
+		'image' => 'non',
+		'created_at' => '2017-09-06 01:16:45',
+		'updated_at' => '2017-09-06 01:16:45',
+    ];
+});

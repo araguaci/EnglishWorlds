@@ -3,6 +3,7 @@
 namespace English\Models;
 
 use English\Models\Role;
+use English\Models\Status;
 use English\Models\Team;
 use English\Models\UserMeta;
 use English\Notifications\ResetPassword;
@@ -140,5 +141,15 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
+    }
+
+    public function statuses()
+    {
+      return $this->hasMany(Status::class, 'user_id');
+    }
+
+    public function reactedToStatus(Status $status)
+    {
+        return (bool) $status->likes()->where('user_id', $this->id)->count();
     }
 }

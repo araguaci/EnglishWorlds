@@ -4,8 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{ config('app.name') }}</title>
+
 
         <link rel="icon" type="image/ico" href="favicon.ico">
 
@@ -34,13 +35,6 @@
 
         <div class="fluid container">
             @include('partials.errors')
-        </div>
-
-        <div class="footer">
-            @if (Session::get('original_user'))
-                <a class="mini ui button violet right floated" href="/users/switch-back">Return to your Login</a>
-            @endif
-            <p>&copy; {!! date('Y'); !!} <a href="">You</a></p>
         </div>
 
         <script type="text/javascript">

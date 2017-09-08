@@ -24,14 +24,14 @@ $(document).ready(function() {
   $('#postStatus').submit(function(e) {
     e.preventDefault();
     var stsBody = $('#status').val();
-    var dataString = "status=" + stsBody;
+    var dataString = "body=" + stsBody;
     $.ajax({
-      type: "POST",
-      url: 'status',
+      type: "post",
+      url: 'statuses',
       data: dataString,
       success: function(data) {
         // Create a post on the fly using the requested data
-        $.get('status', function(data) {
+        $.get('statuses/' + data, function(data) {
           $('#status').val("");
           $('#statusPostBtn').attr('disabled', true);
           $('#nullStatuses').remove();
