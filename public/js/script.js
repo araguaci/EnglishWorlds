@@ -60,15 +60,15 @@ $(document).ready(function() {
   });
   $("body").on("click", ".deleteStatus", function(e){
     e.preventDefault();
-    var statusId = $(this).data('id');
+    var status_id = $(this).data('id');
     $.ajax({
-        type: 'GET',
-        url: 'status/' + statusId + '/delete',
+        type: 'get',
+        url: 'statuses/' + status_id,
         data: {
-            'statusId': statusId
+            'status_id': status_id
         },
         success: function(data) {
-          $('#' + statusId).remove('div');
+          $('#' + status_id).remove('div');
         }
     });
   });

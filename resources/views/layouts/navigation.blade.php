@@ -5,7 +5,7 @@
 	</a>
 	@if(Auth::check())
 			<div class="item" id="topNavSearchBar">
-				<form class="ui transparent icon input" action="/">
+				<form class="ui transparent icon input" action="{{ route('search.results') }}">
 					<div class="ui transparent icon input">
 						<input placeholder="Search..." type="text" name="query">
 						<i class="search link icon"></i>

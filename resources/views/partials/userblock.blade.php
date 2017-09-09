@@ -3,9 +3,11 @@
 		<img src="/img/avatars/{{ $user->meta->avatar }}" alt="{{ $user->name }}">
 	</a>
 	<div class="content">
-		<a class="header" href="{{ route('users.index', ['username' => $user->name]) }}">
+		<a class="header" href="{{ route('users.show', ['username' => $user->name]) }}">
 			@if ($user->meta->first_name)
 				{{ $user->meta->first_name }}
+			@else
+				{{ $user->name }}
 			@endif
 		</a>
 		<div class="meta">
@@ -14,7 +16,11 @@
 			</span>
 		</div>
 		<div class="description">
-			{{ $user->meta->first_name }} is living in {{ $user->meta->location }}.
+			@if ($user->meta->location)
+				{{ $user->meta->first_name }} is living in {{ $user->meta->location }}.
+			@else
+				No location specified
+			@endif
 		</div>
 	</div>
 	<div class="extra content">

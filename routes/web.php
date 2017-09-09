@@ -118,6 +118,11 @@ Route::group(['middleware' => ['auth', 'active']], function () {
     Route::resource('users', 'UserController');
     Route::post('users/search', 'UserController@search');
     Route::get('users/search', 'UserController@index');
+
+    Route::get('search', [
+       'uses' => 'SearchController@getResults',
+       'as' => 'search.results',
+    ]);
     /*
     |--------------------------------------------------------------------------
     | Admin
