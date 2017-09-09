@@ -110,6 +110,10 @@ Route::group(['middleware' => ['auth', 'active']], function () {
         'uses' => 'StatusesController@react',
         'as' => 'status.like'
     ])->where('statusId', '[0-9]+');
+    Route::post('status/{status_id}/comment', [
+        'uses' => 'StatusesController@postComment',
+        'as' => 'status.comment'
+    ])->where('status_id', '[0-9]+');
     /*
     |--------------------------------------------------------------------------
     | Users

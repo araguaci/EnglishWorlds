@@ -31,9 +31,9 @@
     <div class="ui comments" id="repliesBlock{{ $status->id }}">
       <h3 class="ui inverted dividing header">Comments</h3>
       @foreach ($status->comments as $comment)
-        @include('statuses.comment')
+        @include('comments.show', ['comment' => $comment])
       @endforeach
     </div>
-    @include('statuses.reply')
+    @include('comments.create')
   </div>
 </div>

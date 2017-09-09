@@ -42,19 +42,20 @@ $(document).ready(function() {
   });
   // This is being triggered by button click, should be by form submission
   $(".reply").submit(function(e){
+    console.log("hhahaha");
     e.preventDefault();
-    var statusID = $(this).data('id');
+    var status_id = $(this).data('id');
     $.ajax({
         type: 'POST',
-        url: 'status/' + statusID + '/reply',
+        url: 'status/' + status_id + '/comment',
         data: {
             '_token': $('input[name=_token]').val(),
-            'statusID': statusID,
-            'replyBody': $('input[name=replyBody-' + statusID + ']').val()
+            'status_id': status_id,
+            'replyBody': $('input[name=replyBody-' + status_id + ']').val()
         },
         success: function(data) {
-          $('#repliesBlock' + statusID).append(data).fadeIn(500);
-          $('input[name=replyBody-' + statusID + ']').val('');
+          $('#repliesBlock' + status_id).append(data).fadeIn(500);
+          $('input[name=replyBody-' + status_id + ']').val('');
         }
     });
   });

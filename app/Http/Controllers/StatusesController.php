@@ -5,6 +5,8 @@ namespace English\Http\Controllers;
 use Illuminate\Http\Request;
 use English\Http\Controllers\Controller;
 use English\Services\StatusService;
+use English\Models\Status;
+use English\Models\Comment;
 use English\Http\Requests\StatusCreateRequest;
 use English\Http\Requests\StatusUpdateRequest;
 
@@ -104,11 +106,9 @@ class StatusesController extends Controller
     public function update(StatusUpdateRequest $request, $id)
     {
         $result = $this->service->update($id, $request->except('_token'));
-
         if ($result) {
             return back()->with('message', 'Successfully updated');
         }
-
         return back()->with('message', 'Failed to update');
     }
 
@@ -121,11 +121,9 @@ class StatusesController extends Controller
     public function destroy($id)
     {
         $result = $this->service->destroy($id);
-
         if ($result) {
             return redirect(route('statuses.index'))->with('message', 'Successfully deleted');
         }
-
         return redirect(route('statuses.index'))->with('message', 'Failed to delete');
     }
 
@@ -141,5 +139,27 @@ class StatusesController extends Controller
         $like = $status->likes()->create([]);
         Auth::user()->likes()->save($like);
         return redirect()->back();
+    }
+
+    public function postComment(Request $request)
+    {
+        if ($request->ajax()) {
+            $status = Status::find($request->status_id);
+            $this->validate($request, [
+              'replyBody' => 'required|max:1000',
+            ]);
+            // Check if the status being replied to exists
+            $status = Status::find($request->status_id);
+            if (!$status) {
+                return Response::json(['errors' => 'Status doesn\'t exist']);
+            }
+            $reply = $status->comments()->create([
+              'body' => $request->replyBody,
+            ])->user()->associate(\Auth::user());
+            return view('comments.show')->with([
+              'comment' => $reply,
+              'status' => $status,
+            ])->render();
+        }
     }
 }
