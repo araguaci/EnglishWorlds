@@ -7,9 +7,12 @@ use Illuminate\Support\Facades\Facade;
 class Activity extends Facade
 {
     /**
-     * Create the Facade
+     * Create the Facade.
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'ActivityService'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'ActivityService';
+    }
 }

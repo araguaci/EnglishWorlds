@@ -4,7 +4,6 @@ namespace English\Http\Requests;
 
 use Auth;
 use Illuminate\Foundation\Http\FormRequest;
-use English\Models\Notification;
 
 class NotificationUpdateRequest extends FormRequest
 {

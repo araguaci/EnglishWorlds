@@ -2,11 +2,11 @@
 
 namespace English\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use English\Http\Controllers\Controller;
-use English\Services\FeatureService;
 use English\Http\Requests\FeatureCreateRequest;
 use English\Http\Requests\FeatureUpdateRequest;
+use English\Services\FeatureService;
+use Illuminate\Http\Request;
 
 class FeatureController extends Controller
 {
@@ -23,6 +23,7 @@ class FeatureController extends Controller
     public function index(Request $request)
     {
         $features = $this->service->paginated();
+
         return view('admin.features.index')->with('features', $features);
     }
 
@@ -34,6 +35,7 @@ class FeatureController extends Controller
     public function search(Request $request)
     {
         $features = $this->service->search($request->search, null);
+
         return view('admin.features.index')->with('features', $features);
     }
 
@@ -50,7 +52,8 @@ class FeatureController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\FeatureCreateRequest  $request
+     * @param \Illuminate\Http\FeatureCreateRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(FeatureCreateRequest $request)
@@ -69,20 +72,23 @@ class FeatureController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $feature = $this->service->find($id);
+
         return view('admin.features.edit')->with('feature', $feature);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\FeatureUpdateRequest  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\FeatureUpdateRequest $request
+     * @param int                                   $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(FeatureUpdateRequest $request, $id)
@@ -99,7 +105,8 @@ class FeatureController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

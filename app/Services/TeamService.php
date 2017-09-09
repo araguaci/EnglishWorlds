@@ -3,22 +3,23 @@
 namespace English\Services;
 
 use DB;
-use Illuminate\Support\Str;
-use English\Services\UserService;
-use English\Models\User;
 use English\Models\Team;
+use English\Models\User;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Str;
 
 class TeamService
 {
     /**
-     * Team Model
+     * Team Model.
+     *
      * @var Team
      */
     public $model;
 
     /**
-     * UserService
+     * UserService.
+     *
      * @var UserService
      */
     protected $userService;
@@ -32,7 +33,8 @@ class TeamService
     }
 
     /**
-     * All teams
+     * All teams.
+     *
      * @return \Illuminate\Support\Collection|null|static|Team
      */
     public function all($userId)
@@ -41,7 +43,8 @@ class TeamService
     }
 
     /**
-     * All teams paginated
+     * All teams paginated.
+     *
      * @return \Illuminate\Support\Collection|null|static|Team
      */
     public function paginated($userId)
@@ -50,9 +53,11 @@ class TeamService
     }
 
     /**
-     * Search the teams
-     * @param integer $userId
+     * Search the teams.
+     *
+     * @param int    $userId
      * @param string $input
+     *
      * @return \Illuminate\Support\Collection|null|static|Team
      */
     public function search($userId, $input)
@@ -64,15 +69,17 @@ class TeamService
 
         foreach ($columns as $attribute) {
             $query->orWhere($attribute, 'LIKE', '%'.$input.'%')->where('user_id', $userId);
-        };
+        }
 
         return $query->paginate(env('PAGINATE', 25));
     }
 
     /**
-     * Create a team
-     * @param integer $userId
+     * Create a team.
+     *
+     * @param int   $userId
      * @param array $input
+     *
      * @return \Illuminate\Support\Collection|null|static|Team
      */
     public function create($userId, $input)
@@ -82,18 +89,21 @@ class TeamService
                 $input['user_id'] = $userId;
                 $team = $this->model->create($input);
                 $this->userService->joinTeam($team->id, $userId);
+
                 return $team;
             });
 
             return $team;
         } catch (Exception $e) {
-            throw new Exception("Failed to create team", 1);
+            throw new Exception('Failed to create team', 1);
         }
     }
 
     /**
-     * Find a team
-     * @param integer $id
+     * Find a team.
+     *
+     * @param int $id
+     *
      * @return \Illuminate\Support\Collection|null|static|Team
      */
     public function find($id)
@@ -102,8 +112,10 @@ class TeamService
     }
 
     /**
-     * Find a team by name
+     * Find a team by name.
+     *
      * @param string $name
+     *
      * @return \Illuminate\Support\Collection|null|static|Team
      */
     public function findByName($name)
@@ -112,9 +124,11 @@ class TeamService
     }
 
     /**
-     * Update a team
-     * @param integer $id
+     * Update a team.
+     *
+     * @param int   $id
      * @param array $input
+     *
      * @return Team
      */
     public function update($id, $input)
@@ -126,10 +140,12 @@ class TeamService
     }
 
     /**
-     * Delete a team
+     * Delete a team.
+     *
      * @param User $user
-     * @param integer $id
-     * @return boolean
+     * @param int  $id
+     *
+     * @return bool
      */
     public function destroy($user, $id)
     {
@@ -138,6 +154,7 @@ class TeamService
             foreach ($team->members as $member) {
                 $this->userService->leaveTeam($id, $member->id);
             }
+
             return $this->model->find($id)->delete();
         }
 
@@ -145,11 +162,13 @@ class TeamService
     }
 
     /**
-     * Invite a team member
-     * @param User $admin
-     * @param integer $id
+     * Invite a team member.
+     *
+     * @param User   $admin
+     * @param int    $id
      * @param string $email
-     * @return boolean
+     *
+     * @return bool
      */
     public function invite($admin, $id, $email)
     {
@@ -157,12 +176,12 @@ class TeamService
             if ($admin->isTeamAdmin($id)) {
                 $user = $this->userService->findByEmail($email);
 
-                if (! $user) {
+                if (!$user) {
                     $password = Str::random(10);
 
                     $user = User::create([
-                        'name' => $email,
-                        'email' => $email,
+                        'name'     => $email,
+                        'email'    => $email,
                         'password' => bcrypt($password),
                     ]);
 
@@ -180,16 +199,18 @@ class TeamService
 
             return false;
         } catch (Exception $e) {
-            throw new Exception("Failed to invite member", 1);
+            throw new Exception('Failed to invite member', 1);
         }
     }
 
     /**
-     * Remove a team member
+     * Remove a team member.
+     *
      * @param User $admin
-     * @param integer $id
-     * @param integer $userId
-     * @return boolean
+     * @param int  $id
+     * @param int  $userId
+     *
+     * @return bool
      */
     public function remove($admin, $id, $userId)
     {
@@ -199,13 +220,14 @@ class TeamService
 
                 if ($admin->isTeamAdmin($id)) {
                     $this->userService->leaveTeam($id, $user->id);
+
                     return true;
                 }
             }
 
             return false;
         } catch (Exception $e) {
-            throw new Exception("Failed to remove member", 1);
+            throw new Exception('Failed to remove member', 1);
         }
     }
 }

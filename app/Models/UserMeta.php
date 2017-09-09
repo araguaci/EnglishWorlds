@@ -2,7 +2,6 @@
 
 namespace English\Models;
 
-use English\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class UserMeta extends Model
@@ -29,7 +28,7 @@ class UserMeta extends Model
     ];
 
     /**
-     * User
+     * User.
      *
      * @return Relationship
      */
@@ -37,5 +36,4 @@ class UserMeta extends Model
     {
         return User::where('id', $this->user_id)->first();
     }
-
 }

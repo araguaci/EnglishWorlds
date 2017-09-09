@@ -3,8 +3,8 @@
 namespace English\Http\Requests;
 
 use Auth;
-use Illuminate\Foundation\Http\FormRequest;
 use English\Models\Notification;
+use Illuminate\Foundation\Http\FormRequest;
 
 class NotificationCreateRequest extends FormRequest
 {

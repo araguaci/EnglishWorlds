@@ -2,18 +2,16 @@
 
 namespace English\Http\Controllers\Auth;
 
-use DB;
-use URL;
 use Auth;
 use Config;
-use Socialite;
-use English\Services\UserService;
-use English\Models\User;
+use DB;
 use English\Http\Controllers\Controller;
+use English\Models\User;
+use English\Services\UserService;
+use Socialite;
 
 class SocialiteAuthController extends Controller
 {
-
     protected $service;
 
     public function __construct(UserService $userService)
@@ -42,11 +40,11 @@ class SocialiteAuthController extends Controller
         $localUser = $this->service->findByEmail($user->getEmail());
 
         // If we cannot find user by email locally
-        if (! $localUser) {
+        if (!$localUser) {
             $data = [
-                'name' => $user->getName(),
-                'email' => $user->getEmail(),
-                'password' => md5(rand(222222, 999999))
+                'name'     => $user->getName(),
+                'email'    => $user->getEmail(),
+                'password' => md5(rand(222222, 999999)),
             ];
 
             $localUser = $this->createUser($data);
@@ -60,18 +58,18 @@ class SocialiteAuthController extends Controller
     }
 
     /**
-     * Create a user
+     * Create a user.
      *
-     * @param  array $data
+     * @param array $data
      *
      * @return User
      */
     public function createUser($data)
     {
-        return DB::transaction(function() use ($data) {
+        return DB::transaction(function () use ($data) {
             $user = User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
+                'name'     => $data['name'],
+                'email'    => $data['email'],
                 'password' => bcrypt($data['password']),
             ]);
 

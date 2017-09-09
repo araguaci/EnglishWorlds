@@ -2,13 +2,12 @@
 
 namespace English\Http\Controllers;
 
-use Illuminate\Http\Request;
-use English\Http\Controllers\Controller;
-use English\Services\StatusService;
-use English\Models\Status;
-use English\Models\Comment;
 use English\Http\Requests\StatusCreateRequest;
 use English\Http\Requests\StatusUpdateRequest;
+use English\Models\Comment;
+use English\Models\Status;
+use English\Services\StatusService;
+use Illuminate\Http\Request;
 
 class StatusesController extends Controller
 {
@@ -25,6 +24,7 @@ class StatusesController extends Controller
     public function index(Request $request)
     {
         $statuses = $this->service->paginated();
+
         return view('statuses.index')->with('statuses', $statuses);
     }
 
@@ -36,6 +36,7 @@ class StatusesController extends Controller
     public function search(Request $request)
     {
         $statuses = $this->service->search($request->search);
+
         return view('statuses.index')->with('statuses', $statuses);
     }
 
@@ -52,55 +53,61 @@ class StatusesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\StatusCreateRequest  $request
+     * @param \Illuminate\Http\StatusCreateRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(StatusCreateRequest $request)
     {
-      if ($request->ajax()) {
-        $this->validate($request, [
-          'body' => 'required|max:1000',
+        if ($request->ajax()) {
+            $this->validate($request, [
+          'body'  => 'required|max:1000',
           'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        $id = \Auth::user()->statuses()->create($request->only('body', 'image'))->id;
-        if ($id) {
-          // return the ID of the created status
-          return $id;
+            $id = \Auth::user()->statuses()->create($request->only('body', 'image'))->id;
+            if ($id) {
+                // return the ID of the created status
+                return $id;
+            }
         }
-      }
     }
 
     /**
      * Display the status.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-      if (request()->ajax()) {
-        $status = $this->service->find($id);
-        return view('statuses.show', compact('status'))->render();
-      }
+        if (request()->ajax()) {
+            $status = $this->service->find($id);
+
+            return view('statuses.show', compact('status'))->render();
+        }
     }
 
     /**
      * Show the form for editing the status.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $status = $this->service->find($id);
+
         return view('statuses.edit')->with('status', $status);
     }
 
     /**
      * Update the statuses in storage.
      *
-     * @param  \Illuminate\Http\StatusUpdateRequest  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\StatusUpdateRequest $request
+     * @param int                                  $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(StatusUpdateRequest $request, $id)
@@ -109,13 +116,15 @@ class StatusesController extends Controller
         if ($result) {
             return back()->with('message', 'Successfully updated');
         }
+
         return back()->with('message', 'Failed to update');
     }
 
     /**
      * Remove the statuses from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -124,6 +133,7 @@ class StatusesController extends Controller
         if ($result) {
             return redirect(route('statuses.index'))->with('message', 'Successfully deleted');
         }
+
         return redirect(route('statuses.index'))->with('message', 'Failed to delete');
     }
 
@@ -138,6 +148,7 @@ class StatusesController extends Controller
         }
         $like = $status->likes()->create([]);
         Auth::user()->likes()->save($like);
+
         return redirect()->back();
     }
 
@@ -154,12 +165,13 @@ class StatusesController extends Controller
                 return Response::json(['errors' => 'Status doesn\'t exist']);
             }
             $comment = $status->comments()->create([
-              'body' => $request->replyBody,
+              'body'    => $request->replyBody,
               'user_id' => \Auth::user()->id,
             ]);
+
             return view('comments.show')->with([
               'comment' => $comment,
-              'status' => $status,
+              'status'  => $status,
             ])->render();
         }
     }

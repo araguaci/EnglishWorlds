@@ -2,10 +2,10 @@
 
 namespace English\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use English\Http\Controllers\Controller;
-use English\Services\StatusService;
 use English\Http\Requests\StatusRequest;
+use English\Services\StatusService;
+use Illuminate\Http\Request;
 
 class StatusesController extends Controller
 {
@@ -22,6 +22,7 @@ class StatusesController extends Controller
     public function index(Request $request)
     {
         $statuses = $this->service->paginated();
+
         return response()->json($statuses);
     }
 
@@ -33,13 +34,15 @@ class StatusesController extends Controller
     public function search(Request $request)
     {
         $statuses = $this->service->search($request->search);
+
         return response()->json($statuses);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\StatusRequest  $request
+     * @param \Illuminate\Http\StatusRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(StatusRequest $request)
@@ -56,20 +59,23 @@ class StatusesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $status = $this->service->find($id);
+
         return response()->json($status);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\StatusRequest  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\StatusRequest $request
+     * @param int                            $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(StatusRequest $request, $id)
@@ -86,7 +92,8 @@ class StatusesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

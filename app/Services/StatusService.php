@@ -8,32 +8,32 @@ use Illuminate\Support\Facades\Schema;
 class StatusService
 {
     /**
-     * Service Model
+     * Service Model.
      *
      * @var Model
      */
     public $model;
 
     /**
-     * Pagination
+     * Pagination.
      *
-     * @var integer
+     * @var int
      */
     public $pagination;
 
     /**
-     * Service Constructor
+     * Service Constructor.
      *
      * @param Status $status
      */
     public function __construct(Status $status)
     {
-        $this->model        = $status;
-        $this->pagination   = env('PAGINATION', 25);
+        $this->model = $status;
+        $this->pagination = env('PAGINATION', 25);
     }
 
     /**
-     * All Model Items
+     * All Model Items.
      *
      * @return array
      */
@@ -43,7 +43,7 @@ class StatusService
     }
 
     /**
-     * Paginated items
+     * Paginated items.
      *
      * @return LengthAwarePaginator
      */
@@ -53,9 +53,10 @@ class StatusService
     }
 
     /**
-     * Search the model
+     * Search the model.
      *
-     * @param  mixed $payload
+     * @param mixed $payload
+     *
      * @return LengthAwarePaginator
      */
     public function search($payload)
@@ -67,17 +68,18 @@ class StatusService
 
         foreach ($columns as $attribute) {
             $query->orWhere($attribute, 'LIKE', '%'.$payload.'%');
-        };
+        }
 
         return $query->paginate($this->pagination)->appends([
-            'search' => $payload
+            'search' => $payload,
         ]);
     }
 
     /**
-     * Create the model item
+     * Create the model item.
      *
-     * @param  array $payload
+     * @param array $payload
+     *
      * @return Model
      */
     public function create($payload)
@@ -86,9 +88,10 @@ class StatusService
     }
 
     /**
-     * Find Model by ID
+     * Find Model by ID.
      *
-     * @param  integer $id
+     * @param int $id
+     *
      * @return Model
      */
     public function find($id)
@@ -97,10 +100,11 @@ class StatusService
     }
 
     /**
-     * Model update
+     * Model update.
      *
-     * @param  integer $id
-     * @param  array $payload
+     * @param int   $id
+     * @param array $payload
+     *
      * @return Model
      */
     public function update($id, $payload)
@@ -109,9 +113,10 @@ class StatusService
     }
 
     /**
-     * Destroy the model
+     * Destroy the model.
      *
-     * @param  integer $id
+     * @param int $id
+     *
      * @return bool
      */
     public function destroy($id)

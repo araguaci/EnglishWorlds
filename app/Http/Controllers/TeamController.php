@@ -3,13 +3,12 @@
 namespace English\Http\Controllers;
 
 use Auth;
+use English\Http\Requests\TeamCreateRequest;
+use English\Http\Requests\TeamUpdateRequest;
+use English\Http\Requests\UserInviteRequest;
+use English\Services\TeamService;
 use Gate;
 use Illuminate\Http\Request;
-use English\Services\TeamService;
-use English\Http\Requests\TeamCreateRequest;
-use English\Http\Controllers\Controller;
-use English\Http\Requests\UserInviteRequest;
-use English\Http\Requests\TeamUpdateRequest;
 
 class TeamController extends Controller
 {
@@ -26,6 +25,7 @@ class TeamController extends Controller
     public function index(Request $request)
     {
         $teams = $this->service->paginated($request->user()->id);
+
         return view('team.index')->with('teams', $teams);
     }
 
@@ -37,6 +37,7 @@ class TeamController extends Controller
     public function search(Request $request)
     {
         $teams = $this->service->search($request->user()->id, $request->search);
+
         return view('team.index')->with('teams', $teams);
     }
 
@@ -53,7 +54,8 @@ class TeamController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\TeamCreateRequest  $request
+     * @param \Illuminate\Http\TeamCreateRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(TeamCreateRequest $request)
@@ -70,7 +72,8 @@ class TeamController extends Controller
     /**
      * Display the specified team.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function showByName($name)
@@ -87,20 +90,23 @@ class TeamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $team = $this->service->find($id);
+
         return view('team.edit')->with('team', $team);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(TeamUpdateRequest $request, $id)
@@ -117,7 +123,8 @@ class TeamController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -132,9 +139,10 @@ class TeamController extends Controller
     }
 
     /**
-     * Invite a team member
+     * Invite a team member.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function inviteMember(UserInviteRequest $request, $id)
@@ -149,9 +157,10 @@ class TeamController extends Controller
     }
 
     /**
-     * Remove a team member
+     * Remove a team member.
      *
-     * @param  int  $userId
+     * @param int $userId
+     *
      * @return \Illuminate\Http\Response
      */
     public function removeMember($id, $userId)

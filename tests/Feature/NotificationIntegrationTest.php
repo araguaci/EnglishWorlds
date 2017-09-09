@@ -1,8 +1,8 @@
 <?php
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\TestCase;
 
 class NotificationIntegrationTest extends TestCase
 {
@@ -14,20 +14,20 @@ class NotificationIntegrationTest extends TestCase
         parent::setUp();
 
         $this->notification = factory(English\Models\Notification::class)->make([
-            'id' => 1,
+            'id'      => 1,
             'user_id' => 1,
-            'flag' => 'info',
-            'uuid' => 'lksjdflaskhdf',
-            'title' => 'Testing',
+            'flag'    => 'info',
+            'uuid'    => 'lksjdflaskhdf',
+            'title'   => 'Testing',
             'details' => 'Your car has been impounded!',
             'is_read' => 0,
         ]);
         $this->notificationEdited = factory(English\Models\Notification::class)->make([
-            'id' => 1,
+            'id'      => 1,
             'user_id' => 1,
-            'flag' => 'info',
-            'uuid' => 'lksjdflaskhdf',
-            'title' => 'Testing',
+            'flag'    => 'info',
+            'uuid'    => 'lksjdflaskhdf',
+            'title'   => 'Testing',
             'details' => 'Your car has been impounded!',
             'is_read' => 1,
         ]);

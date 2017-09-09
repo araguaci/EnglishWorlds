@@ -2,13 +2,10 @@
 
 namespace English\Http\Controllers\Api;
 
-use Auth;
-use English\Http\Requests;
-use Illuminate\Http\Request;
-use English\Services\UserService;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use English\Http\Controllers\Controller;
-use English\Http\Requests\UpdateUserRequest;
+use English\Services\UserService;
+use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class UserController extends Controller
 {
@@ -18,14 +15,14 @@ class UserController extends Controller
     }
 
     /**
-     * Get the user
+     * Get the user.
      *
      * @return \Illuminate\Http\Response
      */
     public function getAuthenticatedUser()
     {
         try {
-            if (! $user = JWTAuth::parseToken()->authenticate()) {
+            if (!$user = JWTAuth::parseToken()->authenticate()) {
                 return response()->json(['user_not_found'], 404);
             }
         } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
@@ -40,19 +37,22 @@ class UserController extends Controller
     }
 
     /**
-     * Get user profile
+     * Get user profile.
+     *
      * @return JSON
      */
     public function getProfile()
     {
         $user = $this->getAuthenticatedUser();
+
         return response()->json(compact('user'));
     }
 
     /**
-     * Update the user
+     * Update the user.
      *
-     * @param  UpdateAccountRequest $request
+     * @param UpdateAccountRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function postProfile(Request $request)
@@ -68,6 +68,6 @@ class UserController extends Controller
 
     public function show($username)
     {
-      return view('user.index');
+        return view('user.index');
     }
 }
