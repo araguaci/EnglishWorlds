@@ -12,7 +12,7 @@ before_script:
   - composer install --no-interaction
   - php artisan key:generate
   - touch ./database/testing.sqlite
-  - php artisan migrate --database=sqlite_testing --no-interaction
+  - php artisan migrate --database=testing --no-interaction
 
 script:
   - vendor/bin/phpunit
