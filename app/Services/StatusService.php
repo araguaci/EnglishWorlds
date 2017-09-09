@@ -116,6 +116,6 @@ class StatusService
      */
     public function destroy($id)
     {
-        return $this->model->destroy($id);
+        return \English\Models\Status::destroy($id);
     }
 }
