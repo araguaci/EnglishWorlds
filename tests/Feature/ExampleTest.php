@@ -1,6 +1,6 @@
 <?php
 
-namespace tests\Feature;
+namespace Tests\Feature;
 
 use Tests\TestCase;
 
@@ -13,7 +13,8 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('https://');
+        $response = $this->get('/');
+
         $response->assertStatus(200);
     }
 }

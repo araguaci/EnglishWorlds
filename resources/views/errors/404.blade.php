@@ -1,14 +1,47 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AHH</title>
 
-@section('content')
-  <div class="ui container">
-    <div class="ui centered segment">
-      <div class="ui error message">
-        <div class="header">
-            Oops ! looks like you had a wrong turn.
+        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+
+        <style>
+            html, body {
+                height: 100%;
+            }
+
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                color: #B0BEC5;
+                display: table;
+                font-weight: 100;
+                font-family: 'Lato';
+            }
+
+            .container {
+                text-align: center;
+                display: table-cell;
+                vertical-align: middle;
+            }
+
+            .content {
+                text-align: center;
+                display: inline-block;
+            }
+
+            .title {
+                font-size: 72px;
+                margin-bottom: 40px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                <div class="title">Where am I?</div>
+            </div>
         </div>
-        <a href="{{ route('home') }}">Go Home!</a>
-      </div>
-    </div>
-  </div>
-@stop
+    </body>
+</html>

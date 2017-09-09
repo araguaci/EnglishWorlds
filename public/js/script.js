@@ -24,14 +24,14 @@ $(document).ready(function() {
   $('#postStatus').submit(function(e) {
     e.preventDefault();
     var stsBody = $('#status').val();
-    var dataString = "status=" + stsBody;
+    var dataString = "body=" + stsBody;
     $.ajax({
-      type: "POST",
-      url: 'status',
+      type: "post",
+      url: 'statuses',
       data: dataString,
       success: function(data) {
         // Create a post on the fly using the requested data
-        $.get('status', function(data) {
+        $.get('statuses/' + data, function(data) {
           $('#status').val("");
           $('#statusPostBtn').attr('disabled', true);
           $('#nullStatuses').remove();
@@ -42,33 +42,34 @@ $(document).ready(function() {
   });
   // This is being triggered by button click, should be by form submission
   $(".reply").submit(function(e){
+    console.log("hhahaha");
     e.preventDefault();
-    var statusID = $(this).data('id');
+    var status_id = $(this).data('id');
     $.ajax({
         type: 'POST',
-        url: 'status/' + statusID + '/reply',
+        url: 'status/' + status_id + '/comment',
         data: {
             '_token': $('input[name=_token]').val(),
-            'statusID': statusID,
-            'replyBody': $('input[name=replyBody-' + statusID + ']').val()
+            'status_id': status_id,
+            'replyBody': $('input[name=replyBody-' + status_id + ']').val()
         },
         success: function(data) {
-          $('#repliesBlock' + statusID).append(data).fadeIn(500);
-          $('input[name=replyBody-' + statusID + ']').val('');
+          $('#repliesBlock' + status_id).append(data).fadeIn(500);
+          $('input[name=replyBody-' + status_id + ']').val('');
         }
     });
   });
   $("body").on("click", ".deleteStatus", function(e){
     e.preventDefault();
-    var statusId = $(this).data('id');
+    var status_id = $(this).data('id');
     $.ajax({
-        type: 'GET',
-        url: 'status/' + statusId + '/delete',
+        type: 'get',
+        url: 'statuses/' + status_id,
         data: {
-            'statusId': statusId
+            'status_id': status_id
         },
         success: function(data) {
-          $('#' + statusId).remove('div');
+          $('#' + status_id).remove('div');
         }
     });
   });

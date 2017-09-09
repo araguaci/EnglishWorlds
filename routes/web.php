@@ -1,92 +1,162 @@
 <?php
-Route::group(array('middleware' => 'forceSSL'), function () {
-    Auth::routes();
 
-    Route::get('/', [
-    'uses' => 'HomeController@index',
-    'as' => 'home',
-]);
-    Route::middleware(['auth'])->group(function () {
-        Route::get('search', [
-        'uses' => 'SearchController@getResults',
-        'as' => 'search.results',
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a given Closure or controller and enjoy the fresh air.
+|
+*/
+
+/*
+|--------------------------------------------------------------------------
+| Welcome Page
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/', 'PagesController@home');
+
+/*
+|--------------------------------------------------------------------------
+| Login/ Logout/ Password
+|--------------------------------------------------------------------------
+*/
+Route::view('login', 'auth.login')->name('login')->middleware('guest');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Password Reset Routes...
+Route::view('password/reset', 'auth.passwords.email')->name('password.request');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+/*
+|--------------------------------------------------------------------------
+| Registration & Activation
+|--------------------------------------------------------------------------
+*/
+Route::post('register', 'Auth\RegisterController@register');
+
+Route::get('activate/token/{token}', 'Auth\ActivateController@activate');
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('activate', 'Auth\ActivateController@showActivate');
+    Route::get('activate/send-token', 'Auth\ActivateController@sendToken');
+});
+
+/*
+|--------------------------------------------------------------------------
+| Authenticated Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => ['auth', 'active']], function () {
+
+    /*
+    |--------------------------------------------------------------------------
+    | General
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/users/switch-back', 'Admin\UserController@switchUserBack');
+
+    /*
+    |--------------------------------------------------------------------------
+    | User
+    |--------------------------------------------------------------------------
+    */
+
+    Route::group(['prefix' => 'user', 'namespace' => 'User'], function () {
+        Route::get('settings', 'SettingsController@settings');
+        Route::post('settings', 'SettingsController@update');
+        Route::get('password', 'PasswordController@password');
+        Route::post('password', 'PasswordController@update');
+    });
+
+    /*
+    |--------------------------------------------------------------------------
+    | Dashboard
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/dashboard', 'PagesController@dashboard');
+
+    /*
+    |--------------------------------------------------------------------------
+    | Team Routes
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('team/{name}', 'TeamController@showByName');
+    Route::resource('teams', 'TeamController', ['except' => ['show']]);
+    Route::post('teams/search', 'TeamController@search');
+    Route::post('teams/{id}/invite', 'TeamController@inviteMember');
+    Route::get('teams/{id}/remove/{userId}', 'TeamController@removeMember');
+
+    /*
+    |--------------------------------------------------------------------------
+    | Status Routes
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('statuses', 'StatusesController');
+    Route::post('statuses/search', [
+        'as'   => 'statuses.search',
+        'uses' => 'StatusesController@search',
+    ]);
+    Route::get('status/{statusId}/react', [
+        'uses' => 'StatusesController@react',
+        'as'   => 'status.like',
+    ])->where('statusId', '[0-9]+');
+    Route::post('status/{status_id}/comment', [
+        'uses' => 'StatusesController@postComment',
+        'as'   => 'status.comment',
+    ])->where('status_id', '[0-9]+');
+    /*
+    |--------------------------------------------------------------------------
+    | Users
+    |--------------------------------------------------------------------------
+    */
+    Route::resource('users', 'UserController');
+    Route::post('users/search', 'UserController@search');
+    Route::get('users/search', 'UserController@index');
+    Route::get('settings', 'UserController@edit')->name('settings');
+    Route::post('settings', [
+        'uses' => 'UserController@update',
+        'as'   => 'settings',
     ]);
 
-        Route::get('user/{username}', [
-        'uses' => 'ProfileController@getProfile',
-        'as' => 'profile.index',
+    Route::get('search', [
+       'uses' => 'SearchController@getResults',
+       'as'   => 'search.results',
     ]);
+    /*
+    |--------------------------------------------------------------------------
+    | Admin
+    |--------------------------------------------------------------------------
+    */
 
-        Route::get('userimage/{username}', [
-        'uses' => 'ProfileController@getUserImage',
-        'as' => 'account.image',
-    ]);
-        Route::get('profile/edit', [
-        'uses' => 'ProfileController@getEdit',
-        'as' => 'profile.edit',
-    ]);
-        Route::post('profile/edit', [
-        'uses' => 'ProfileController@postEdit',
-    ]);
-        Route::get('friends', [
-        'uses' => 'FriendController@getIndex',
-        'as' => 'friends.index',
-    ]);
-        Route::get('friends/add/{username}', [
-        'uses' => 'FriendController@getAdd',
-        'as' => 'friend.add',
-    ]);
-        Route::get('friends/accept/{username}', [
-        'uses' => 'FriendController@getAccept',
-        'as' => 'friend.accept',
-    ]);
-        Route::post('friends/delete/{username}', [
-        'uses' => 'FriendController@postDelete',
-        'as' => 'friend.delete',
-    ]);
-        Route::get('friends/delete/{username}', function () {
-            return back();
-        });
+    Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
+        Route::get('dashboard', 'DashboardController@index');
+
         /*
-         * Statuses
-         */
+        |--------------------------------------------------------------------------
+        | Users
+        |--------------------------------------------------------------------------
+        */
+        Route::get('users/invite', 'UserController@getInvite');
+        Route::get('users/switch/{id}', 'UserController@switchToUser');
+        Route::post('users/invite', 'UserController@postInvite');
 
-        // Post statuses
-        Route::post('status', [
-        'uses' => 'StatusController@postStatus',
-        'as' => 'status.post'
-    ]);
-        // Get statuses
-        Route::get('status', [
-        'uses' => 'StatusController@getStatus',
-        'as' => 'status'
-    ]);
-        // Comment on statuses
-        Route::post('status/{statusId}/reply', [
-        'uses' => 'StatusController@postReply',
-        'as' => 'status.comment'
-    ])->where('statusId', '[0-9]+');
-
-        Route::get('status/{statusId}/reply', function () {
-            return redirect('login');
-        });
-        // Like a status
-        Route::get('status/{statusId}/like', [
-        'uses' => 'StatusController@getLike',
-        'as' => 'status.like'
-    ])->where('statusId', '[0-9]+');
-        // Delete a status
-        Route::get('status/{statusId}/delete', [
-        'uses' => 'StatusController@getDelete',
-        'as' => 'status.delete'
-    ])->where('statusId', '[0-9]+');
         /*
-         * Chat
-         */
-        Route::group(['prefix' => 'chat'], function () {
-            Route::get('send', 'ChatController@send');
-            Route::get('update', 'ChatController@update');
-            Route::get('{correspondent}', 'ChatController@show');
-        });
+        |--------------------------------------------------------------------------
+        | Roles
+        |--------------------------------------------------------------------------
+        */
+        Route::resource('roles', 'RoleController', ['except' => ['show']]);
+        Route::post('roles/search', 'RoleController@search');
+        Route::get('roles/search', 'RoleController@index');
     });
 });

@@ -4,11 +4,6 @@ namespace English\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
-/**
- * @author Salim Djerbouh <tbitw31@gmail.com>
- *
- * @version 0.2
- */
 class Kernel extends HttpKernel
 {
     /**
@@ -23,8 +18,7 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         \English\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \Illuminate\Session\Middleware\StartSession::class,
-        \Illuminate\View\Middleware\ShareErrorsFromSession::class,
+        \English\Http\Middleware\TrustProxies::class,
     ];
 
     /**
@@ -34,11 +28,10 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \English\Http\Middleware\Ajaxify::class,
             \English\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
-            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+            \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \English\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -58,12 +51,18 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
-        'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \English\Http\Middleware\RedirectIfAuthenticated::class,
-        'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'forceSSL' => \English\Http\Middleware\ForceSSL::class,
+        'auth'        => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.basic'  => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'    => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'can'         => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'       => \English\Http\Middleware\RedirectIfAuthenticated::class,
+        'throttle'    => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'jwt.auth'    => \Tymon\JWTAuth\Middleware\GetUserFromToken::class,
+        'jwt.refresh' => \Tymon\JWTAuth\Middleware\RefreshToken::class,
+        'admin'       => \English\Http\Middleware\Admin::class,
+        'activity'    => \English\Http\Middleware\Activity::class,
+        'permissions' => \English\Http\Middleware\Permissions::class,
+        'roles'       => \English\Http\Middleware\Roles::class,
+        'active'      => \English\Http\Middleware\Active::class,
     ];
 }
