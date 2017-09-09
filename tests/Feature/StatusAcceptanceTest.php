@@ -15,21 +15,19 @@ class StatusAcceptanceTest extends TestCase
 
         $this->Status = factory(English\Models\Status::class)->make([
             'id' => '1',
-		'user_id' => '1',
-		'body' => 'sed a consequatur libero',
-		'image' => 'eos',
-		'created_at' => '2017-09-06 01:16:45',
-		'updated_at' => '2017-09-06 01:16:45',
-
+        		'user_id' => '1',
+        		'body' => 'sed a consequatur libero',
+        		'image' => 'eos',
+        		'created_at' => '2017-09-06 01:16:45',
+        		'updated_at' => '2017-09-06 01:16:45',
         ]);
         $this->StatusEdited = factory(English\Models\Status::class)->make([
             'id' => '1',
-		'user_id' => '1',
-		'body' => 'sed a consequatur libero',
-		'image' => 'eos',
-		'created_at' => '2017-09-06 01:16:45',
-		'updated_at' => '2017-09-06 01:16:45',
-
+        		'user_id' => '1',
+        		'body' => 'sed a consequatur libero',
+        		'image' => 'eos',
+        		'created_at' => '2017-09-06 01:16:45',
+        		'updated_at' => '2017-09-06 01:16:45',
         ]);
         $user = factory(English\Models\User::class)->make();
         $this->actor = $this->actingAs($user);
@@ -47,13 +45,11 @@ class StatusAcceptanceTest extends TestCase
         $response = $this->actor->call('GET', 'statuses/create');
         $this->assertEquals(200, $response->getStatusCode());
     }
-
+    // Test if statuses can be posted
     public function testStore()
     {
         $response = $this->actor->call('POST', 'statuses', $this->Status->toArray());
-
-        $this->assertEquals(302, $response->getStatusCode());
-        $this->assertRedirectedTo('statuses/'.$this->Status->id.'/edit');
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     public function testEdit()
@@ -74,14 +70,12 @@ class StatusAcceptanceTest extends TestCase
         $this->assertDatabaseHas('statuses', $this->StatusEdited->toArray());
         $this->assertRedirectedTo('/');
     }
-
+    // test if statuses can be deleted
     public function testDelete()
     {
         $this->actor->call('POST', 'statuses', $this->Status->toArray());
-
         $response = $this->call('DELETE', 'statuses/'.$this->Status->id);
-        $this->assertEquals(302, $response->getStatusCode());
-        $this->assertRedirectedTo('statuses');
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
 }
