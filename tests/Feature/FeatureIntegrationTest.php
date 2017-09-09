@@ -12,7 +12,6 @@ class FeatureIntegrationTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-
         $this->feature = factory(English\Models\Feature::class)->make([
             'id' => 1,
             'key' => 'signup'
@@ -21,11 +20,9 @@ class FeatureIntegrationTest extends TestCase
             'id' => 1,
             'key' => 'register',
         ]);
-
         $role = factory(English\Models\Role::class)->create();
         $user = factory(English\Models\User::class)->create();
         $user->roles()->attach($role);
-
         $this->actor = $this->actingAs($user);
     }
 
