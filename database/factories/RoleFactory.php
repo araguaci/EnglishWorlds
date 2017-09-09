@@ -8,7 +8,7 @@
 
 $factory->define(English\Models\Role::class, function (Faker\Generator $faker) {
     return [
-        'name' => 'member',
+        'name'  => 'member',
         'label' => 'Member',
     ];
 });

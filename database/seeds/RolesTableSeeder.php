@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use English\Models\Role;
+use Illuminate\Database\Seeder;
 
 class RolesTableSeeder extends Seeder
 {
@@ -12,13 +12,13 @@ class RolesTableSeeder extends Seeder
      */
     public function run()
     {
-        if (! Role::where('name', 'member')->first()) {
+        if (!Role::where('name', 'member')->first()) {
             Role::create([
-                'name' => 'member',
+                'name'  => 'member',
                 'label' => 'Member',
             ]);
             Role::create([
-                'name' => 'admin',
+                'name'  => 'admin',
                 'label' => 'Admin',
             ]);
         }

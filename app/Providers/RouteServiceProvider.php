@@ -2,8 +2,8 @@
 
 namespace English\Providers;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -53,12 +53,12 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
              ->namespace($this->namespace)
-             ->group(function() {
-              require base_path('routes/web.php');
-              require base_path('routes/api.php');
-              require base_path('routes/socialite.php');
-              require base_path('routes/notification.php');
-              require base_path('routes/features.php');
+             ->group(function () {
+                 require base_path('routes/web.php');
+                 require base_path('routes/api.php');
+                 require base_path('routes/socialite.php');
+                 require base_path('routes/notification.php');
+                 require base_path('routes/features.php');
              });
     }
 

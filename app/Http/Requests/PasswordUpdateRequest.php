@@ -3,8 +3,8 @@
 namespace English\Http\Requests;
 
 use Auth;
-use Illuminate\Foundation\Http\FormRequest;
 use English\Models\User;
+use Illuminate\Foundation\Http\FormRequest;
 
 class PasswordUpdateRequest extends FormRequest
 {
@@ -26,8 +26,8 @@ class PasswordUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'old_password' => 'required',
-            'new_password' => 'required|confirmed',
+            'old_password'              => 'required',
+            'new_password'              => 'required|confirmed',
             'new_password_confirmation' => 'required',
         ];
     }

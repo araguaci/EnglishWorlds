@@ -1,8 +1,8 @@
 <?php
 
-use Tests\TestCase;
 use English\Services\RoleService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class RoleServiceTest extends TestCase
 {
@@ -18,21 +18,21 @@ class RoleServiceTest extends TestCase
         parent::setUp();
         $this->service = $this->app->make(RoleService::class);
         $this->originalArray = [
-            'id' => 1,
-            'name' => 'coders',
-            'label' => 'Coders',
+            'id'          => 1,
+            'name'        => 'coders',
+            'label'       => 'Coders',
             'permissions' => ['super' => 'on'],
         ];
         $this->modifiedArray = [
-            'id' => 1,
-            'name' => 'hackers',
-            'label' => 'Hackers',
+            'id'          => 1,
+            'name'        => 'hackers',
+            'label'       => 'Hackers',
             'permissions' => [],
         ];
         $this->editedArray = [
-            'id' => 1,
-            'name' => 'hackers',
-            'label' => 'Hackers',
+            'id'          => 1,
+            'name'        => 'hackers',
+            'label'       => 'Hackers',
             'permissions' => '',
         ];
         $this->searchTerm = 'who';

@@ -1,8 +1,8 @@
 <?php
 
-use Tests\TestCase;
 use English\Services\UserService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class UserServiceTest extends TestCase
 {
@@ -49,11 +49,11 @@ class UserServiceTest extends TestCase
 
         $response = $this->service->update($user->id, [
             'email' => $user->email,
-            'name' => 'jim',
-            'role' => 'member',
-            'meta' => [
-                'phone' => '666',
-                'marketing' => 1,
+            'name'  => 'jim',
+            'role'  => 'member',
+            'meta'  => [
+                'phone'          => '666',
+                'marketing'      => 1,
                 'terms_and_cond' => 1,
             ],
         ]);

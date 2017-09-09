@@ -1,8 +1,8 @@
 <?php
 
-use Tests\TestCase;
 use English\Services\NotificationService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class NotificationServiceTest extends TestCase
 {
@@ -18,17 +18,17 @@ class NotificationServiceTest extends TestCase
         $this->service = $this->app->make(NotificationService::class);
         $this->originalArray = [
             'user_id' => 1,
-            'flag' => 'info',
-            'uuid' => 'lksjdflaskhdf',
-            'title' => 'Testing',
+            'flag'    => 'info',
+            'uuid'    => 'lksjdflaskhdf',
+            'title'   => 'Testing',
             'details' => 'Your car has been impounded!',
             'is_read' => 0,
         ];
         $this->editedArray = [
             'user_id' => 1,
-            'flag' => 'info',
-            'uuid' => 'lksjdflaskhdf',
-            'title' => 'Testing',
+            'flag'    => 'info',
+            'uuid'    => 'lksjdflaskhdf',
+            'title'   => 'Testing',
             'details' => 'Your car has been impounded!',
             'is_read' => 1,
         ];

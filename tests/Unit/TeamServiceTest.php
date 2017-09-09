@@ -1,9 +1,9 @@
 <?php
 
-use Tests\TestCase;
 use English\Services\TeamService;
 use English\Services\UserService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class TeamServiceTest extends TestCase
 {
@@ -22,11 +22,11 @@ class TeamServiceTest extends TestCase
 
         $this->originalArray = [
             'user_id' => 1,
-            'name' => 'Awesomeness',
+            'name'    => 'Awesomeness',
         ];
         $this->editedArray = [
             'user_id' => 1,
-            'name' => 'Hackers',
+            'name'    => 'Hackers',
         ];
         $this->searchTerm = 'who';
     }

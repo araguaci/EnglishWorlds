@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model
 {
-    public $table = "notifications";
+    public $table = 'notifications';
 
-    public $primaryKey = "id";
+    public $primaryKey = 'id';
 
     public $timestamps = true;
 
@@ -22,10 +22,9 @@ class Notification extends Model
     ];
 
     public static $rules = [
-        'title' => 'required',
+        'title'   => 'required',
         'details' => 'required',
-        'flag' => 'required',
+        'flag'    => 'required',
         'user_id' => 'required',
     ];
-
 }

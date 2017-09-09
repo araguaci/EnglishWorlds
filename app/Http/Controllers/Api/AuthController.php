@@ -3,12 +3,11 @@
 namespace English\Http\Controllers\Api;
 
 use DB;
-use Validator;
-use Illuminate\Http\Request;
-use English\Services\UserService;
-use English\Models\User;
-use Tymon\JWTAuth\Facades\JWTAuth;
 use English\Http\Controllers\Controller;
+use English\Models\User;
+use English\Services\UserService;
+use Illuminate\Http\Request;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthController extends Controller
 {
@@ -23,9 +22,10 @@ class AuthController extends Controller
     }
 
     /**
-     * Login a user
+     * Login a user.
      *
-     * @param  Request $request
+     * @param Request $request
+     *
      * @return JSON
      */
     public function login(Request $request)
@@ -33,7 +33,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         try {
-            if (! $token = JWTAuth::attempt($credentials)) {
+            if (!$token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'invalid_credentials'], 401);
             }
         } catch (JWTException $e) {
@@ -44,30 +44,32 @@ class AuthController extends Controller
     }
 
     /**
-     * Refresh the token
+     * Refresh the token.
      *
      * @return JSON
      */
     public function refresh()
     {
         $newToken = JWTAuth::parseToken()->refresh();
+
         return response()->json(compact('newToken'));
     }
 
     /**
-     * Register a User
+     * Register a User.
      *
-     * @param  Request $request
+     * @param Request $request
+     *
      * @return JSON
      */
     public function register(Request $request)
     {
         $data = $request->only('email', 'password');
 
-        return DB::transaction(function() use ($data) {
+        return DB::transaction(function () use ($data) {
             $user = User::create([
-                'name' => $data['email'],
-                'email' => $data['email'],
+                'name'     => $data['email'],
+                'email'    => $data['email'],
                 'password' => bcrypt($data['password']),
             ]);
 

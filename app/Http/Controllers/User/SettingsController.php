@@ -2,11 +2,10 @@
 
 namespace English\Http\Controllers\User;
 
-use English\Http\Requests;
-use Illuminate\Http\Request;
-use English\Services\UserService;
 use English\Http\Controllers\Controller;
 use English\Http\Requests\UserUpdateRequest;
+use English\Services\UserService;
+use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
@@ -16,7 +15,7 @@ class SettingsController extends Controller
     }
 
     /**
-     * View current user's settings
+     * View current user's settings.
      *
      * @return \Illuminate\Http\Response
      */
@@ -33,9 +32,10 @@ class SettingsController extends Controller
     }
 
     /**
-     * Update the user
+     * Update the user.
      *
-     * @param  UpdateAccountRequest $request
+     * @param UpdateAccountRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UserUpdateRequest $request)

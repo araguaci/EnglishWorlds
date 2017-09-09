@@ -2,10 +2,9 @@
 
 namespace English\Services;
 
+use Crypto;
 use English\Models\Notification;
 use English\Notifications\GeneralNotification;
-use English\Services\UserService;
-use Crypto;
 use Illuminate\Support\Facades\Schema;
 
 class NotificationService
@@ -19,9 +18,9 @@ class NotificationService
     }
 
     /**
-     * All notifications
+     * All notifications.
      *
-     * @return  Collection
+     * @return Collection
      */
     public function all()
     {
@@ -29,9 +28,9 @@ class NotificationService
     }
 
     /**
-     * Paginated notifications
+     * Paginated notifications.
      *
-     * @return  PaginatedCollection
+     * @return PaginatedCollection
      */
     public function paginated()
     {
@@ -39,10 +38,11 @@ class NotificationService
     }
 
     /**
-     * User based paginated notifications
+     * User based paginated notifications.
      *
-     * @param  integer $id
-     * @return  PaginatedCollection
+     * @param int $id
+     *
+     * @return PaginatedCollection
      */
     public function userBasedPaginated($id)
     {
@@ -50,10 +50,11 @@ class NotificationService
     }
 
     /**
-     * User based notifications
+     * User based notifications.
      *
-     * @param  integer $id
-     * @return  Collection
+     * @param int $id
+     *
+     * @return Collection
      */
     public function userBased($id)
     {
@@ -61,11 +62,12 @@ class NotificationService
     }
 
     /**
-     * Search notifications
+     * Search notifications.
      *
-     * @param  string $input
-     * @param  integer $id
-     * @return  Collection
+     * @param string $input
+     * @param int    $id
+     *
+     * @return Collection
      */
     public function search($input, $id)
     {
@@ -80,26 +82,27 @@ class NotificationService
             } else {
                 $query->orWhere($attribute, 'LIKE', '%'.$input.'%')->where('user_id', $id);
             }
-        };
+        }
 
         return $query->paginate(env('PAGINATE', 25));
     }
 
     /**
-     * Create a notificaton
+     * Create a notificaton.
      *
-     * @param  integer $userId
-     * @param  string $flag
-     * @param  string $title
-     * @param  string $details
-     * @return  void
+     * @param int    $userId
+     * @param string $flag
+     * @param string $title
+     * @param string $details
+     *
+     * @return void
      */
     public function notify($userId, $flag, $title, $details)
     {
         $input = [
             'user_id' => $userId,
-            'flag' => $flag,
-            'title' => $title,
+            'flag'    => $flag,
+            'title'   => $title,
             'details' => $details,
         ];
 
@@ -107,10 +110,11 @@ class NotificationService
     }
 
     /**
-     * Create a notification
+     * Create a notification.
      *
-     * @param  array $input
-     * @return  boolean|exception
+     * @param array $input
+     *
+     * @return bool|exception
      */
     public function create($input)
     {
@@ -125,7 +129,7 @@ class NotificationService
                 }
 
                 $user->notify(new GeneralNotification([
-                    'title' => $input['title'],
+                    'title'   => $input['title'],
                     'details' => $input['details'],
                 ]));
 
@@ -136,21 +140,22 @@ class NotificationService
 
             $user = $this->userService->find($input['user_id']);
             $user->notify(new GeneralNotification([
-                'title' => $input['title'],
+                'title'   => $input['title'],
                 'details' => $input['details'],
             ]));
 
             return $this->model->create($input);
         } catch (Exception $e) {
-            throw new Exception("Could not send notifications please try agian.", 1);
+            throw new Exception('Could not send notifications please try agian.', 1);
         }
     }
 
     /**
-     * Get a user
+     * Get a user.
      *
-     * @param  integer $id
-     * @return  User
+     * @param int $id
+     *
+     * @return User
      */
     public function getUser($id)
     {
@@ -158,10 +163,11 @@ class NotificationService
     }
 
     /**
-     * Find a notification
+     * Find a notification.
      *
-     * @param  integer $id
-     * @return  Notification
+     * @param int $id
+     *
+     * @return Notification
      */
     public function find($id)
     {
@@ -169,10 +175,11 @@ class NotificationService
     }
 
     /**
-     * Find a notification by UUID
+     * Find a notification by UUID.
      *
-     * @param  string $uuid
-     * @return  Notification
+     * @param string $uuid
+     *
+     * @return Notification
      */
     public function findByUuid($uuid)
     {
@@ -180,11 +187,12 @@ class NotificationService
     }
 
     /**
-     * Update a notification
+     * Update a notification.
      *
-     * @param  integer $id
-     * @param  array $input
-     * @return  Notification
+     * @param int   $id
+     * @param array $input
+     *
+     * @return Notification
      */
     public function update($id, $input)
     {
@@ -193,7 +201,7 @@ class NotificationService
 
         $user = $this->userService->find($notification->user_id);
         $user->notify(new GeneralNotification([
-            'title' => $input['title'],
+            'title'   => $input['title'],
             'details' => $input['details'],
         ]));
 
@@ -201,22 +209,25 @@ class NotificationService
     }
 
     /**
-     * Mark notification as read
+     * Mark notification as read.
      *
-     * @param  integer $id
-     * @return  boolean
+     * @param int $id
+     *
+     * @return bool
      */
     public function markAsRead($id)
     {
         $input['is_read'] = true;
+
         return $this->model->find($id)->update($input);
     }
 
     /**
-     * Destroy a Notification
+     * Destroy a Notification.
      *
-     * @param  integer $id
-     * @return  boolean
+     * @param int $id
+     *
+     * @return bool
      */
     public function destroy($id)
     {
@@ -224,9 +235,9 @@ class NotificationService
     }
 
     /**
-     * Users as Select options array
+     * Users as Select options array.
      *
-     * @return  Array
+     * @return array
      */
     public function usersAsOptions()
     {
@@ -238,5 +249,4 @@ class NotificationService
 
         return $users;
     }
-
 }

@@ -3,9 +3,7 @@
 namespace English\Http\Requests;
 
 use Auth;
-use Route;
 use Illuminate\Foundation\Http\FormRequest;
-use English\Models\Team;
 
 class TeamUpdateRequest extends FormRequest
 {
@@ -34,7 +32,7 @@ class TeamUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required'
+            'name' => 'required',
         ];
     }
 }

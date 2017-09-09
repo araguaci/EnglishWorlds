@@ -103,16 +103,16 @@ Route::group(['middleware' => ['auth', 'active']], function () {
 
     Route::resource('statuses', 'StatusesController');
     Route::post('statuses/search', [
-        'as' => 'statuses.search',
-        'uses' => 'StatusesController@search'
+        'as'   => 'statuses.search',
+        'uses' => 'StatusesController@search',
     ]);
     Route::get('status/{statusId}/react', [
         'uses' => 'StatusesController@react',
-        'as' => 'status.like'
+        'as'   => 'status.like',
     ])->where('statusId', '[0-9]+');
     Route::post('status/{status_id}/comment', [
         'uses' => 'StatusesController@postComment',
-        'as' => 'status.comment'
+        'as'   => 'status.comment',
     ])->where('status_id', '[0-9]+');
     /*
     |--------------------------------------------------------------------------
@@ -125,12 +125,12 @@ Route::group(['middleware' => ['auth', 'active']], function () {
     Route::get('settings', 'UserController@edit')->name('settings');
     Route::post('settings', [
         'uses' => 'UserController@update',
-        'as' => 'settings'
+        'as'   => 'settings',
     ]);
 
     Route::get('search', [
        'uses' => 'SearchController@getResults',
-       'as' => 'search.results',
+       'as'   => 'search.results',
     ]);
     /*
     |--------------------------------------------------------------------------
@@ -139,7 +139,6 @@ Route::group(['middleware' => ['auth', 'active']], function () {
     */
 
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
-
         Route::get('dashboard', 'DashboardController@index');
 
         /*

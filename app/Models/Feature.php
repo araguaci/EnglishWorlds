@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Feature extends Model
 {
-    public $table = "features";
+    public $table = 'features';
 
-    public $primaryKey = "id";
+    public $primaryKey = 'id';
 
     public $timestamps = false;
 

@@ -16,6 +16,7 @@ class SearchController extends Controller
         }
         $users = User::where('name', 'LIKE', "%{$query}%")->get();
         $merged = $users->merge(UserMeta::where(DB::raw("CONCAT(first_name, ' ', last_name)"), 'LIKE', "%{$query}%")->get());
+
         return view('search.results')->with('users', $merged);
     }
 }
