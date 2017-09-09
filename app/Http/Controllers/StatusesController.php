@@ -153,11 +153,12 @@ class StatusesController extends Controller
             if (!$status) {
                 return Response::json(['errors' => 'Status doesn\'t exist']);
             }
-            $reply = $status->comments()->create([
+            $comment = $status->comments()->create([
               'body' => $request->replyBody,
-            ])->user()->associate(\Auth::user());
+              'user_id' => \Auth::user()->id,
+            ]);
             return view('comments.show')->with([
-              'comment' => $reply,
+              'comment' => $comment,
               'status' => $status,
             ])->render();
         }
