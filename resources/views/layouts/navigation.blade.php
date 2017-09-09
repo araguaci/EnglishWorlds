@@ -15,13 +15,13 @@
 	@endif
 	<div class="right menu">
 		@if(Auth::check())
-			<a href="{{ url('home') }}" class="active item">Timeline</a>
+			<a href="{{ url('/') }}" class="active item">Timeline</a>
 			<div class="ui dropdown item" id="profileDropdown">
 				{{ Auth::user()->name }}
 				<i class="dropdown icon"></i>
 				<div class="menu">
-					<a href="" class="item">Profile</a>
-					<a href="" class="item">Edit Profile</a>
+					<a href="{{ route('users.show', ['username' => Auth::user()->name]) }}" class="item">Profile</a>
+					<a href="{{ route('settings') }}" class="item">Edit Profile</a>
 					<div class="divider"></div>
 					<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="item">Logout</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }} </form>
 				</div>
@@ -35,4 +35,8 @@
 
 @section('stylesheets')
 	<link rel="stylesheet" href="{{ asset('css/nav.css') }}">
+@endsection
+
+@section('scripts')
+  <script src="{{ asset('js/script.js') }}" charset="utf-8"></script>
 @endsection

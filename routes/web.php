@@ -118,6 +118,11 @@ Route::group(['middleware' => ['auth', 'active']], function () {
     Route::resource('users', 'UserController');
     Route::post('users/search', 'UserController@search');
     Route::get('users/search', 'UserController@index');
+    Route::get('settings', 'UserController@edit')->name('settings');
+    Route::post('settings', [
+        'uses' => 'ProfileController@postEdit',
+        'as' => 'settings'
+    ]);
 
     Route::get('search', [
        'uses' => 'SearchController@getResults',

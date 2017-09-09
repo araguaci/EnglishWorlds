@@ -29,3 +29,7 @@
 .ui.menu .dropdown.item .menu {
   background-color: #000 !important;
 }
+
+#topNavbar > .right.menu a:hover {
+  border-color: #fff !important;
+}
