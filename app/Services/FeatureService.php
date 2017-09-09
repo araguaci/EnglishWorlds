@@ -13,9 +13,9 @@ class FeatureService
     }
 
     /**
-     * All features
+     * All features.
      *
-     * @return  Collection
+     * @return Collection
      */
     public function getByKey($key)
     {
@@ -23,9 +23,9 @@ class FeatureService
     }
 
     /**
-     * All features
+     * All features.
      *
-     * @return  Collection
+     * @return Collection
      */
     public function isActive($key)
     {
@@ -37,9 +37,9 @@ class FeatureService
     }
 
     /**
-     * Paginated features
+     * Paginated features.
      *
-     * @return  PaginatedCollection
+     * @return PaginatedCollection
      */
     public function paginated()
     {
@@ -47,11 +47,12 @@ class FeatureService
     }
 
     /**
-     * Search features
+     * Search features.
      *
-     * @param  string $input
-     * @param  integer $id
-     * @return  Collection
+     * @param string $input
+     * @param int    $id
+     *
+     * @return Collection
      */
     public function search($input, $id)
     {
@@ -66,16 +67,17 @@ class FeatureService
             } else {
                 $query->orWhere($attribute, 'LIKE', '%'.$input.'%')->where('user_id', $id);
             }
-        };
+        }
 
         return $query->paginate(env('PAGINATE', 25));
     }
 
     /**
-     * Create a notification
+     * Create a notification.
      *
-     * @param  array $input
-     * @return  boolean|exception
+     * @param array $input
+     *
+     * @return bool|exception
      */
     public function create($payload)
     {
@@ -88,15 +90,16 @@ class FeatureService
 
             return $this->model->create($payload);
         } catch (Exception $e) {
-            throw new Exception("Could save your feature, please try agian.", 1);
+            throw new Exception('Could save your feature, please try agian.', 1);
         }
     }
 
     /**
-     * Find a notification
+     * Find a notification.
      *
-     * @param  integer $id
-     * @return  Feature
+     * @param int $id
+     *
+     * @return Feature
      */
     public function find($id)
     {
@@ -104,11 +107,12 @@ class FeatureService
     }
 
     /**
-     * Update a notification
+     * Update a notification.
      *
-     * @param  integer $id
-     * @param  array $payload
-     * @return  Feature
+     * @param int   $id
+     * @param array $payload
+     *
+     * @return Feature
      */
     public function update($id, $payload)
     {
@@ -126,10 +130,11 @@ class FeatureService
     }
 
     /**
-     * Destroy a Feature
+     * Destroy a Feature.
      *
-     * @param  integer $id
-     * @return  boolean
+     * @param int $id
+     *
+     * @return bool
      */
     public function destroy($id)
     {

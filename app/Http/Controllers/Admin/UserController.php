@@ -2,11 +2,10 @@
 
 namespace English\Http\Controllers\Admin;
 
-use English\Http\Requests;
-use Illuminate\Http\Request;
-use English\Services\UserService;
 use English\Http\Controllers\Controller;
 use English\Http\Requests\UserInviteRequest;
+use English\Services\UserService;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -23,6 +22,7 @@ class UserController extends Controller
     public function index()
     {
         $users = $this->service->all();
+
         return view('admin.users.index')->with('users', $users);
     }
 
@@ -33,11 +33,12 @@ class UserController extends Controller
      */
     public function search(Request $request)
     {
-        if (! $request->search) {
+        if (!$request->search) {
             return redirect('admin/users');
         }
 
         $users = $this->service->search($request->search);
+
         return view('admin.users.index')->with('users', $users);
     }
 
@@ -68,7 +69,7 @@ class UserController extends Controller
     }
 
     /**
-     * Switch to a different User profile
+     * Switch to a different User profile.
      *
      * @return \Illuminate\Http\Response
      */
@@ -82,7 +83,7 @@ class UserController extends Controller
     }
 
     /**
-     * Switch back to your original user
+     * Switch back to your original user.
      *
      * @return \Illuminate\Http\Response
      */
@@ -98,20 +99,23 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $user = $this->service->find($id);
+
         return view('admin.users.edit')->with('user', $user);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -128,7 +132,8 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

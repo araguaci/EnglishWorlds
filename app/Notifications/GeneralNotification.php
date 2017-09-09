@@ -2,13 +2,13 @@
 
 namespace English\Notifications;
 
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class GeneralNotification extends Notification
 {
     /**
-     * General notification info
+     * General notification info.
      *
      * @var string
      */
@@ -17,7 +17,8 @@ class GeneralNotification extends Notification
     /**
      * Create a notification instance.
      *
-     * @param  string  $token
+     * @param string $token
+     *
      * @return void
      */
     public function __construct($info)
@@ -28,25 +29,27 @@ class GeneralNotification extends Notification
     /**
      * Get the notification's channels.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
+     *
      * @return array|string
      */
     public function via($notifiable)
     {
         return [
-            'mail'
+            'mail',
         ];
     }
 
     /**
      * Build the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
+     *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->line('Hey '.$notifiable->name)
             ->line('We have a notfiication for you.')
             ->line($this->info['title'])

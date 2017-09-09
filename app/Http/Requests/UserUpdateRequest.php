@@ -3,8 +3,8 @@
 namespace English\Http\Requests;
 
 use Auth;
-use Illuminate\Foundation\Http\FormRequest;
 use English\Models\User;
+use Illuminate\Foundation\Http\FormRequest;
 
 class UserUpdateRequest extends FormRequest
 {
@@ -27,7 +27,7 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'email' => 'required',
-            'name' => 'required',
+            'name'  => 'required',
         ];
     }
 }

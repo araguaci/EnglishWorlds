@@ -2,14 +2,13 @@
 
 namespace English\Models;
 
-use English\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-    public $table = "teams";
+    public $table = 'teams';
 
-    public $primaryKey = "id";
+    public $primaryKey = 'id';
 
     public $timestamps = true;
 
@@ -19,7 +18,7 @@ class Team extends Model
     ];
 
     public static $rules = [
-        'name' => 'required|unique:teams'
+        'name' => 'required|unique:teams',
     ];
 
     public function members()

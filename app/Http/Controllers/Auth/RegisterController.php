@@ -3,11 +3,11 @@
 namespace English\Http\Controllers\Auth;
 
 use DB;
-use Validator;
-use English\Services\UserService;
-use English\Models\User;
 use English\Http\Controllers\Controller;
+use English\Models\User;
+use English\Services\UserService;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Validator;
 
 class RegisterController extends Controller
 {
@@ -45,18 +45,20 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
-      if (!isset($data['terms_and_conditions'])) {
-          $data['terms_and_conditions'] = false;
+        if (!isset($data['terms_and_conditions'])) {
+            $data['terms_and_conditions'] = false;
         }
+
         return Validator::make($data, [
-            'username' => 'bail|required|max:50|min:3|unique:users,name',
-            'email' => 'bail|required|email|max:255|unique:users',
-            'password' => 'bail|required|min:6|max:255|confirmed',
+            'username'             => 'bail|required|max:50|min:3|unique:users,name',
+            'email'                => 'bail|required|email|max:255|unique:users',
+            'password'             => 'bail|required|min:6|max:255|confirmed',
             'terms_and_conditions' => 'accepted',
         ]);
     }
@@ -64,16 +66,17 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
+     *
      * @return User
      */
     protected function create(array $data)
     {
-        return DB::transaction(function() use ($data) {
+        return DB::transaction(function () use ($data) {
             $user = User::create([
-                'name' => $data['username'],
-                'email' => $data['email'],
-                'password' => bcrypt($data['password'])
+                'name'     => $data['username'],
+                'email'    => $data['email'],
+                'password' => bcrypt($data['password']),
             ]);
 
             return $this->service->create($user, $data['password']);

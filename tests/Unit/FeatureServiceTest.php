@@ -1,8 +1,8 @@
 <?php
 
-use Tests\TestCase;
 use English\Services\FeatureService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class FeatureServiceTest extends TestCase
 {
@@ -17,11 +17,11 @@ class FeatureServiceTest extends TestCase
 
         $this->service = $this->app->make(FeatureService::class);
         $this->originalArray = [
-            'id' => 1,
+            'id'  => 1,
             'key' => 'signup',
         ];
         $this->editedArray = [
-            'id' => 1,
+            'id'  => 1,
             'key' => 'registration',
         ];
         $this->searchTerm = '';

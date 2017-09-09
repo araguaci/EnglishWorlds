@@ -2,13 +2,9 @@
 
 namespace English\Models;
 
-use English\Models\Role;
-use English\Models\Status;
-use English\Models\Team;
-use English\Models\UserMeta;
 use English\Notifications\ResetPassword;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -36,7 +32,7 @@ class User extends Authenticatable
     protected $hidden = ['password', 'remember_token'];
 
     /**
-     * User UserMeta
+     * User UserMeta.
      *
      * @return Relationship
      */
@@ -46,7 +42,7 @@ class User extends Authenticatable
     }
 
     /**
-     * User Roles
+     * User Roles.
      *
      * @return Relationship
      */
@@ -56,22 +52,25 @@ class User extends Authenticatable
     }
 
     /**
-     * Check if user has role
+     * Check if user has role.
      *
-     * @param  string  $role
-     * @return boolean
+     * @param string $role
+     *
+     * @return bool
      */
     public function hasRole($role)
     {
         $roles = array_column($this->roles->toArray(), 'name');
+
         return array_search($role, $roles) > -1;
     }
 
     /**
-     * Check if user has permission
+     * Check if user has permission.
      *
-     * @param  string  $permission
-     * @return boolean
+     * @param string $permission
+     *
+     * @return bool
      */
     public function hasPermission($permission)
     {
@@ -85,7 +84,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Teams
+     * Teams.
      *
      * @return Relationship
      */
@@ -95,20 +94,21 @@ class User extends Authenticatable
     }
 
     /**
-     * Team member
+     * Team member.
      *
-     * @return boolean
+     * @return bool
      */
     public function isTeamMember($id)
     {
         $teams = array_column($this->teams->toArray(), 'id');
+
         return array_search($id, $teams) > -1;
     }
 
     /**
-     * Team admin
+     * Team admin.
      *
-     * @return boolean
+     * @return bool
      */
     public function isTeamAdmin($id)
     {
@@ -122,9 +122,10 @@ class User extends Authenticatable
     }
 
     /**
-     * Find by Email
+     * Find by Email.
      *
-     * @param  string $email
+     * @param string $email
+     *
      * @return User
      */
     public function findByEmail($email)
@@ -135,7 +136,8 @@ class User extends Authenticatable
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param string $token
+     *
      * @return void
      */
     public function sendPasswordResetNotification($token)
@@ -145,7 +147,7 @@ class User extends Authenticatable
 
     public function statuses()
     {
-      return $this->hasMany(Status::class, 'user_id');
+        return $this->hasMany(Status::class, 'user_id');
     }
 
     public function reactedToStatus(Status $status)

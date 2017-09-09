@@ -2,14 +2,13 @@
 
 namespace English\Http\Controllers\User;
 
-use Hash;
 use Auth;
-use English\Http\Requests;
-use Illuminate\Http\Request;
-use English\Services\UserService;
 use English\Http\Controllers\Controller;
 use English\Http\Requests\PasswordUpdateRequest;
+use English\Services\UserService;
+use Hash;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
 
 class PasswordController extends Controller
 {
@@ -23,7 +22,7 @@ class PasswordController extends Controller
     }
 
     /**
-     * User wants to change their password
+     * User wants to change their password.
      *
      * @return \Illuminate\Http\Response
      */
@@ -40,9 +39,10 @@ class PasswordController extends Controller
     }
 
     /**
-     * Change the user's password and return
+     * Change the user's password and return.
      *
-     * @param  PasswordUpdateRequest $request
+     * @param PasswordUpdateRequest $request
+     *
      * @return Response
      */
     public function update(PasswordUpdateRequest $request)
@@ -51,6 +51,7 @@ class PasswordController extends Controller
 
         if (Hash::check($request->old_password, Auth::user()->password)) {
             $this->resetPassword(Auth::user(), $password);
+
             return redirect('user/settings')
                 ->with('message', 'Password updated successfully');
         }

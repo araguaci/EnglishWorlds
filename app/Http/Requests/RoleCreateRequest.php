@@ -3,8 +3,8 @@
 namespace English\Http\Requests;
 
 use Auth;
-use Illuminate\Foundation\Http\FormRequest;
 use English\Models\Role;
+use Illuminate\Foundation\Http\FormRequest;
 
 class RoleCreateRequest extends FormRequest
 {

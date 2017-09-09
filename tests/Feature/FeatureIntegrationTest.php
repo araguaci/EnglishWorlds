@@ -1,8 +1,8 @@
 <?php
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\TestCase;
 
 class FeatureIntegrationTest extends TestCase
 {
@@ -13,11 +13,11 @@ class FeatureIntegrationTest extends TestCase
     {
         parent::setUp();
         $this->feature = factory(English\Models\Feature::class)->make([
-            'id' => 1,
-            'key' => 'signup'
+            'id'  => 1,
+            'key' => 'signup',
         ]);
         $this->featureEdited = factory(English\Models\Feature::class)->make([
-            'id' => 1,
+            'id'  => 1,
             'key' => 'register',
         ]);
         $role = factory(English\Models\Role::class)->create();
@@ -65,7 +65,7 @@ class FeatureIntegrationTest extends TestCase
 
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertDatabaseHas('features', [
-            'id' => 1,
+            'id'  => 1,
             'key' => 'register',
         ]);
         $response->assertRedirect('/');

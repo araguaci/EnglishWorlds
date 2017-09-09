@@ -1,8 +1,8 @@
 <?php
 
-use Tests\TestCase;
 use English\Services\StatusService;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Tests\TestCase;
 
 class StatusServiceTest extends TestCase
 {
@@ -13,20 +13,20 @@ class StatusServiceTest extends TestCase
         parent::setUp();
         $this->service = $this->app->make(StatusService::class);
         $this->originalArray = [
-            'id' => '1',
-        		'user_id' => '1',
-        		'body' => 'est quaerat suscipit vel',
-        		'image' => 'ut',
-        		'created_at' => '2017-09-06 01:16:45',
-        		'updated_at' => '2017-09-06 01:16:45',
+            'id'             => '1',
+                'user_id'    => '1',
+                'body'       => 'est quaerat suscipit vel',
+                'image'      => 'ut',
+                'created_at' => '2017-09-06 01:16:45',
+                'updated_at' => '2017-09-06 01:16:45',
         ];
         $this->editedArray = [
-            'id' => '1',
-        		'user_id' => '1',
-        		'body' => 'est quaerat suscipit vel',
-        		'image' => 'ut',
-        		'created_at' => '2017-09-06 01:16:45',
-        		'updated_at' => '2017-09-06 01:16:45',
+            'id'             => '1',
+                'user_id'    => '1',
+                'body'       => 'est quaerat suscipit vel',
+                'image'      => 'ut',
+                'created_at' => '2017-09-06 01:16:45',
+                'updated_at' => '2017-09-06 01:16:45',
         ];
         $this->searchTerm = '';
     }
@@ -82,6 +82,6 @@ class StatusServiceTest extends TestCase
         // create the item
         $item = $this->service->create($this->originalArray);
         $response = $this->service->destroy($item->id);
-        $this->assertTrue((bool)$response);
+        $this->assertTrue((bool) $response);
     }
 }

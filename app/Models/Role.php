@@ -2,7 +2,6 @@
 
 namespace English\Models;
 
-use English\Models\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
@@ -17,28 +16,28 @@ class Role extends Model
     protected $table = 'roles';
 
     /**
-     * Fillable fields
+     * Fillable fields.
      *
      * @var array
      */
     protected $fillable = [
         'name',
         'label',
-        'permissions'
+        'permissions',
     ];
 
     /**
-     * Rules
+     * Rules.
      *
      * @var array
      */
     public static $rules = [
-        'name' => 'required|unique:roles',
-        'label' => 'required'
+        'name'  => 'required|unique:roles',
+        'label' => 'required',
     ];
 
     /**
-     * A Roles users
+     * A Roles users.
      *
      * @return Relationship
      */
@@ -48,13 +47,14 @@ class Role extends Model
     }
 
     /**
-     * Find a role by name
+     * Find a role by name.
      *
-     * @param  string $name
+     * @param string $name
+     *
      * @return Role
      */
     public static function findByName($name)
     {
-        return Role::where('name', $name)->firstOrFail();
+        return self::where('name', $name)->firstOrFail();
     }
 }

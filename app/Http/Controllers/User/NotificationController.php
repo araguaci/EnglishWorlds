@@ -3,10 +3,9 @@
 namespace English\Http\Controllers\User;
 
 use Auth;
-use Illuminate\Http\Request;
 use English\Http\Controllers\Controller;
 use English\Services\NotificationService;
-use English\Http\Requests\NotificationRequest;
+use Illuminate\Http\Request;
 
 class NotificationController extends Controller
 {
@@ -23,6 +22,7 @@ class NotificationController extends Controller
     public function index(Request $request)
     {
         $notifications = $this->service->userBasedPaginated(Auth::id());
+
         return view('notifications.index')->with('notifications', $notifications);
     }
 
@@ -34,13 +34,15 @@ class NotificationController extends Controller
     public function search(Request $request)
     {
         $notifications = $this->service->search($request->search, Auth::id());
+
         return view('notifications.index')->with('notifications', $notifications);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function read($uuid)
@@ -54,7 +56,8 @@ class NotificationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function delete($id)

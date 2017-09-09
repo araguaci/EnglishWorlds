@@ -3,7 +3,6 @@
 namespace English\Services;
 
 use English\Models\Activity;
-use Illuminate\Support\Facades\Schema;
 
 class ActivityService
 {
@@ -13,9 +12,9 @@ class ActivityService
     }
 
     /**
-     * All activities
+     * All activities.
      *
-     * @return  Collection
+     * @return Collection
      */
     public function getByUser($userId, $paginate = null)
     {
@@ -29,23 +28,24 @@ class ActivityService
     }
 
     /**
-     * Create an activity record
+     * Create an activity record.
      *
-     * @param  string $description
-     * @return  Activity
+     * @param string $description
+     *
+     * @return Activity
      */
     public function log($description = '')
     {
         $payload = [
-            'user_id' => auth()->id(),
+            'user_id'     => auth()->id(),
             'description' => $description,
-            'request' => json_encode([
-                'url' => request()->url(),
-                'method' => request()->method(),
-                'query' => request()->fullUrl(),
-                'secure' => request()->secure(),
+            'request'     => json_encode([
+                'url'       => request()->url(),
+                'method'    => request()->method(),
+                'query'     => request()->fullUrl(),
+                'secure'    => request()->secure(),
                 'client_ip' => request()->ip(),
-                'payload' => request()->all(),
+                'payload'   => request()->all(),
             ]),
         ];
 

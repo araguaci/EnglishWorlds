@@ -17,7 +17,7 @@ class FeatureServiceProvider extends ServiceProvider
         });
 
         Blade::directive('endfeature', function ($expression) {
-            return "<?php endif; ?>";
+            return '<?php endif; ?>';
         });
     }
 

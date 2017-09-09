@@ -1,8 +1,8 @@
 <?php
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Tests\TestCase;
 
 class TeamIntegrationTest extends TestCase
 {
@@ -19,21 +19,21 @@ class TeamIntegrationTest extends TestCase
     {
         parent::setUp();
         $this->user = factory(English\Models\User::class)->create([
-            'id' => rand(1000, 9999)
+            'id' => rand(1000, 9999),
         ]);
         $this->role = factory(English\Models\Role::class)->create([
-            'name' => 'admin'
+            'name' => 'admin',
         ]);
 
         $this->team = factory(English\Models\Team::class)->make([
-            'id' => 1,
+            'id'      => 1,
             'user_id' => $this->user->id,
-            'name' => 'Awesomeness'
+            'name'    => 'Awesomeness',
         ]);
         $this->teamEdited = factory(English\Models\Team::class)->make([
-            'id' => 1,
+            'id'      => 1,
             'user_id' => $this->user->id,
-            'name' => 'Hackers'
+            'name'    => 'Hackers',
         ]);
 
         $this->user->roles()->attach($this->role);
@@ -58,7 +58,7 @@ class TeamIntegrationTest extends TestCase
 
     public function testStore()
     {
-        $admin = factory(English\Models\User::class)->create([ 'id' => rand(1000, 9999) ]);
+        $admin = factory(English\Models\User::class)->create(['id' => rand(1000, 9999)]);
         $response = $this->actingAs($admin)->call('POST', 'teams', $this->team->toArray());
         $this->assertEquals(302, $response->getStatusCode());
         $response->assertRedirect('teams/'.$this->team->id.'/edit');
@@ -66,7 +66,7 @@ class TeamIntegrationTest extends TestCase
 
     public function testEdit()
     {
-        $admin = factory(English\Models\User::class)->create([ 'id' => rand(1000, 9999) ]);
+        $admin = factory(English\Models\User::class)->create(['id' => rand(1000, 9999)]);
         $admin->roles()->attach($this->role);
         $this->actingAs($admin)->call('POST', 'teams', $this->team->toArray());
         $response = $this->actingAs($admin)->call('GET', '/teams/'.$this->team->id.'/edit');
@@ -77,7 +77,7 @@ class TeamIntegrationTest extends TestCase
 
     public function testUpdate()
     {
-        $admin = factory(English\Models\User::class)->create([ 'id' => rand(1000, 9999) ]);
+        $admin = factory(English\Models\User::class)->create(['id' => rand(1000, 9999)]);
         $admin->roles()->attach($this->role);
         $this->actingAs($admin)->call('POST', 'teams', $this->team->toArray());
         $response = $this->actingAs($admin)->call('PATCH', '/teams/1', $this->teamEdited->toArray());
@@ -88,10 +88,10 @@ class TeamIntegrationTest extends TestCase
 
     public function testDelete()
     {
-        $admin = factory(English\Models\User::class)->create([ 'id' => rand(1000, 9999) ]);
+        $admin = factory(English\Models\User::class)->create(['id' => rand(1000, 9999)]);
         $team = factory(English\Models\Team::class)->create([
             'user_id' => $admin->id,
-            'name' => 'Awesomeness'
+            'name'    => 'Awesomeness',
         ]);
         $admin->roles()->attach($this->role);
         $admin->teams()->attach($team);

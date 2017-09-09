@@ -2,8 +2,8 @@
 
 namespace English\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 use English\Models\Status;
+use Illuminate\Foundation\Http\FormRequest;
 
 class StatusCreateRequest extends FormRequest
 {

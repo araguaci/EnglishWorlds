@@ -2,14 +2,12 @@
 
 namespace English\Http\Controllers\Admin;
 
-use English\Http\Requests;
-use Illuminate\Http\Request;
 use English\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
     /**
-     * Dashboard
+     * Dashboard.
      *
      * @return \Illuminate\Http\Response
      */
