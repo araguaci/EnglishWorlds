@@ -78,7 +78,7 @@
 							</div>
 							<label for="avatar" class="ui icon button">
 								<i class="file icon"></i>
-							Open File
+							  Choose Avatar
 							</label>
 							<input type="file" id="avatar" name="avatar" style="display:none">
 						<img class="ui medium circular image" src="/img/avatars/{{ Auth::user()->meta->avatar }}">

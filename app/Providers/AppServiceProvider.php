@@ -2,6 +2,7 @@
 
 namespace English\Providers;
 
+use Image;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+      \Validator::extend('password_hash_check', function ($attributes, $value, $parameters, $validator) {
+          return Hash::check($value, $parameters[0]);
+      });
     }
 
     /**

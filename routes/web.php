@@ -120,7 +120,7 @@ Route::group(['middleware' => ['auth', 'active']], function () {
     Route::get('users/search', 'UserController@index');
     Route::get('settings', 'UserController@edit')->name('settings');
     Route::post('settings', [
-        'uses' => 'ProfileController@postEdit',
+        'uses' => 'UserController@update',
         'as' => 'settings'
     ]);
 
