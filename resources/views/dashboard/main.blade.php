@@ -1,7 +1,7 @@
 @extends('index')
 
 @section('content')
-
-    <h1>Dashboard</h1>
-
+    <div class="ui container">
+      <h1>dashboard</h1>
+    </div>
 @endsection
