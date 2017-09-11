@@ -36,7 +36,3 @@
 @section('stylesheets')
 	<link rel="stylesheet" href="{{ asset('css/nav.css') }}">
 @endsection
-
-@section('scripts')
-  <script src="{{ asset('js/script.js') }}" charset="utf-8"></script>
-@endsection

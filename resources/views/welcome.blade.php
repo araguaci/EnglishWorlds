@@ -11,7 +11,7 @@
   <title>{{ config('app.name') }}</title>
   <meta name="description" content="English DZ is a social network for Algerian English speakers" />
   <meta name="keywords" content="english, dz, algeria, learn, social" />
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/semantic.min.css">
   <link rel="stylesheet" type="text/css" href="css/home.css">
   <script>
     (function(i, s, o, g, r, a, m) {
@@ -119,11 +119,11 @@
     </div>
     @include('layouts.footer')
   </div>
-  <script src="https://unpkg.com/vue@2.2.4/dist/vue.js" charset="utf-8"></script>
-  <script src="https://unpkg.com/vue-scrollto"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" charset="utf-8"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
-  <script src="js/main.js" charset="utf-8"></script>
+  <script src="/js/vue.js" charset="utf-8"></script>
+  <script src="/js/vue-scrollto.js"></script>
+  <script src="/js/jquery.min.js" charset="utf-8"></script>
+  <script src="/js/semantic.min.js"></script>
+  <script src="/js/app.js" charset="utf-8"></script>
   <script src="js/home.js"></script>
 </body>
 
