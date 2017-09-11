@@ -33,7 +33,9 @@
             var _token = '{!! Session::token() !!}';
             var _url = '{!! url("/") !!}';
         </script>
+        <script src="/js/vue.js" charset="utf-8"></script>
         <script src="/js/jquery.min.js" charset="utf-8"></script>
+        <script src="/js/jquery.ns-autogrow.min.js" charset="utf-8"></script>
         <script src="/js/semantic.min.js" charset="utf-8"></script>
         <script src="/js/app.js" charset="utf-8"></script>
         <script src="/js/script.js" charset="utf-8"></script>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-  <div class="ui inverted container">
+  <div class="ui container" id="root">
     @include('statuses.create')
     @if (isset($statuses))
       <div id="statusesBlock">

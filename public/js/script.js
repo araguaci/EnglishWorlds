@@ -1,3 +1,20 @@
+new Vue({
+  el: '#root',
+  data: {
+    is_enabled : true,
+    status: '',
+  },
+  methods: {
+    enable() {
+      if (this.status.length <= 0) {
+        this.is_enabled = true;
+        return;
+      }
+      this.is_enabled = false;
+    }
+  }
+});
+
 $.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -13,13 +30,6 @@ $(document).ready(function() {
   $('textarea').autogrow({
     vertical: true,
     horizontal: false
-  });
-  $('#statusPostBtn').attr('disabled', true);
-  $('#status').keyup(function() {
-    if ($(this).val().length !== 0)
-      $('#statusPostBtn').attr('disabled', false);
-    else
-      $('#statusPostBtn').attr('disabled', true);
   });
   $('#postStatus').submit(function(e) {
     e.preventDefault();
