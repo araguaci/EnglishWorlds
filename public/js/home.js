@@ -1,3 +1,6 @@
+new Vue({
+  el: '#root'
+});
 window.semantic = {
   handler: {}
 };

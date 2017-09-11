@@ -1,6 +1,3 @@
-new Vue({
-  el: '#root'
-});
 $(function(){
     $('.alert').delay(7000).fadeOut();
     $('.alert .fa-close').on('click', function() {
