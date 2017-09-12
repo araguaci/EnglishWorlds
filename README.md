@@ -1,4 +1,11 @@
 # English DZ Social Network
+# *Please note that the current code is undergoing a **major** overhaul!*  
+&#x26A0;&nbsp; please note:
+```
+The application is currently in pre-alpha.
+This means it is currently under active development and still contains known bugs.
+As such, all unit tests are failing at the moment
+```
 [![Build Status](https://travis-ci.org/CaddyDz/English.svg?branch=master)](https://travis-ci.org/CaddyDz/English)
 [![Laravel](https://img.shields.io/badge/Powered%20by-Laravel%20Framework-red.svg)](https://laravel.com/)
 [![Gitter](https://img.shields.io/gitter/room/EnglishDz/Lobby.svg?style=flat-square)](https://gitter.im/EnglishDz/Lobby)
@@ -62,9 +69,21 @@ php artisan serve
 
 Hit ``http://127.0.0.1:8000`` using your favorite browser
 
-## Contributing
+## Support the project
+You can support the project in many ways.
+- Make pull requests
+- Comment on issues
+ - Example help with [#2 Name suggestions](https://github.com/CaddyDz/English/issues/2)
+- Donate
+ - [Domain name](https://www.godaddy.com/domains/searchresults.aspx?checkAvail=1&tmskey=&domainToCheck=englishdz.com)
+ - [Heroku hobby plan](https://www.heroku.com/pricing)
 
-Feel free to contribute through pull requests or by submitting ideas, feature requests or open issues.  
+# Developers
+### Main
+- [Salim "Caddy" Djerbouh](https://github.com/CaddyDz/)
+
+### Contributors
+- [Ismail "5nai3r" Stunt](https://github.com/5nai3r)
 
 ### License
 
