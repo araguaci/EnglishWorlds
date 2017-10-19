@@ -12,6 +12,8 @@
         <link rel="stylesheet" type="text/css" href="/css/semantic.min.css">
         <link rel="stylesheet" href="/css/navbar.css">
         <link rel="stylesheet" href="/css/toastr.min.css">
+        <script src="/js/jquery.min.js" charset="utf-8"></script>
+        <script src="/js/toastr.min.js" charset="utf-8"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -34,7 +36,6 @@
             var _url = '{!! url("/") !!}';
         </script>
         <script src="/js/vue.js" charset="utf-8"></script>
-        <script src="/js/jquery.min.js" charset="utf-8"></script>
         <script src="/js/jquery.ns-autogrow.min.js" charset="utf-8"></script>
         <script src="/js/semantic.min.js" charset="utf-8"></script>
         <script src="/js/app.js" charset="utf-8"></script>
