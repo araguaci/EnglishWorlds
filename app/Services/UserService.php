@@ -171,11 +171,12 @@ class UserService
                     event(new UserRegisteredEmail($user, $password));
                     $this->setAndSendUserActivationToken($user);
                 } else {
-                  $user->meta()->update([
+                    $user->meta()->update([
                       'is_active' => 1,
                   ]);
                 }
             });
+
             return $user;
         } catch (Exception $e) {
             throw new Exception('We were unable to generate your profile, please try again later.', 1);
