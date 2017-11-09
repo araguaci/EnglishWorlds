@@ -91,9 +91,9 @@
           </div>
         </div>
       </div>
-      <div class="zoomed masthead segment" id="root">
+      <div class="zoomed masthead segment" id="app-wrapper">
         <div class="ui container">
-          <div class="introduction" id="root">
+          <div class="introduction">
             <a class="ui black version label" href="https://github.com/CaddyDz/English/releases/tag/0.1.1">
               0.1.1 Beta
             </a>
