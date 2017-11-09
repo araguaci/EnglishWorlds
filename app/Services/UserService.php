@@ -166,16 +166,16 @@ class UserService
                 $this->userMeta->firstOrCreate([
                     'user_id' => $user->id,
                 ]);
-
                 $this->assignRole($role, $user->id);
-
                 if ($sendEmail) {
                     event(new UserRegisteredEmail($user, $password));
+                    $this->setAndSendUserActivationToken($user);
+                } else {
+                  $user->meta()->update([
+                      'is_active' => 1,
+                  ]);
                 }
             });
-
-            $this->setAndSendUserActivationToken($user);
-
             return $user;
         } catch (Exception $e) {
             throw new Exception('We were unable to generate your profile, please try again later.', 1);
@@ -322,11 +322,9 @@ class UserService
     public function setAndSendUserActivationToken($user)
     {
         $token = md5(str_random(40));
-
         $user->meta()->update([
             'activation_token' => $token,
         ]);
-
         $user->notify(new ActivateUserEmail($token));
     }
 

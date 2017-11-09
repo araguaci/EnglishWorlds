@@ -14,15 +14,20 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $service = app(UserService::class);
-
-        if (!User::where('name', 'admin')->first()) {
-            $user = User::create([
+        // Check if users already exists
+        if (!User::where('name', 'admin')->first() && !User::where('name', 'caddy')->first()) {
+            $admin = User::create([
                 'name'     => 'Admin',
                 'email'    => 'admin@example.com',
                 'password' => bcrypt('admin'),
             ]);
-
-            $service->create($user, 'admin', 'admin', false);
+            $caddy = User::create([
+              'name' => 'Caddy',
+              'email' => 'caddy@english.dz',
+              'password' => bcrypt('password'),
+            ]);
+            $service->create($admin, 'admin', 'admin', false);
+            $service->create($caddy, 'password', 'member', false);
         }
     }
 }

@@ -10,8 +10,8 @@
                 {!! csrf_field() !!}
 
                 <div class="field">
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder="Email Address" value="{{ old('email') }}">
+                    <label>Email or username</label>
+                    <input type="text" name="login" placeholder="Email or username" value="{{ old('email') }}">
                 </div>
 
                 <div class="field">
