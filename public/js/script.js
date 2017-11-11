@@ -1,5 +1,5 @@
 new Vue({
-  el: '#root',
+  el: '#app-wrapper',
   data: {
     is_enabled : true,
     status: '',
