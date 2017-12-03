@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+  {{ config('app.name') }}
+@endsection
+
 @section('content')
   <div class="ui container" id="root">
     @include('statuses.create')
