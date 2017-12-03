@@ -41,8 +41,7 @@ semantic.home.ready = function() {
               .find('.menu').addClass('inverted').find('.additional.item').transition('hide');
           });
         }
-      })
-    ;
+      });
   }
 };
 // attach ready event

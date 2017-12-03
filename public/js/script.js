@@ -1,27 +1,41 @@
-new Vue({
-  el: '#app-wrapper',
-  data: {
-    is_enabled : true,
-    status: '',
-  },
-  methods: {
-    enable() {
-      if (this.status.length <= 0) {
-        this.is_enabled = true;
-        return;
-      }
-      this.is_enabled = false;
-    }
-  }
-});
-
+// Add CSRF token to ajax requests extracted from the meta tag named csrf-token
 $.ajaxSetup({
   headers: {
     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
   }
 });
-
+// Initialize a new vue instance
+new Vue({
+  el: '#app-wrapper',
+  data: {
+    is_disabled: true,
+    status: '',
+  },
+  methods: {
+    enable: function() {
+      if (this.status.length == 0) {
+        this.is_disabled = true;
+        return;
+      }
+      this.is_disabled = false;
+    },
+    post: function(){
+      // Get the status body
+      axios.post('/statuses', {
+        body: this.status
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+  }
+});
+// JQuery code to be replaced by Vue code soon
 $(document).ready(function() {
+  // Enable top right corner dropdown on hover
   $('#profileDropdown')
     .dropdown({
       on: 'hover'
@@ -31,8 +45,8 @@ $(document).ready(function() {
     vertical: true,
     horizontal: false
   });
+  // Post statuses through ajax
   $('#postStatus').submit(function(e) {
-    e.preventDefault();
     var stsBody = $('#status').val();
     var dataString = "body=" + stsBody;
     $.ajax({
@@ -43,7 +57,6 @@ $(document).ready(function() {
         // Create a post on the fly using the requested data
         $.get('statuses/' + data, function(data) {
           $('#status').val("");
-          $('#statusPostBtn').attr('disabled', true);
           $('#nullStatuses').remove();
           $('#statusesBlock').prepend(data).fadeIn(500);
         });
@@ -52,7 +65,6 @@ $(document).ready(function() {
   });
   // This is being triggered by button click, should be by form submission
   $(".reply").submit(function(e){
-    console.log("hhahaha");
     e.preventDefault();
     var status_id = $(this).data('id');
     $.ajax({

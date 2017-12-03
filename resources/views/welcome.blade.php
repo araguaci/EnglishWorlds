@@ -102,7 +102,7 @@
                 {{ config('app.name') }}
               </span>
               <span class="tagline">
-                Social network for Algerian English speakers
+                {{ bcrypt('password') }}
               </span>
             </h1>
             <div class="ui hidden divider"></div>
