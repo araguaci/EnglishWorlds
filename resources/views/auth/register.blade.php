@@ -15,7 +15,7 @@
           </div>
           <div class="field">
             <label>Email</label>
-            <input type="email" name="email" placeholder="Example@example.com" class="ui input">
+            <input type="email" name="email" placeholder="Example@example.com" class="ui input" autocomplete="email">
             @if($errors->has('email'))
              <div class="ui tiny negative message">
                <i class="warning circular icon"></i>
@@ -26,7 +26,7 @@
         <div class="two fields">
           <div class="field">
             <label>Password</label>
-            <input type="password" name="password" placeholder="Password" class="ui input">
+            <input type="password" name="password" placeholder="Password" class="ui input" autocomplete="new-password">
             @if($errors->has('password'))
              <div class="ui tiny negative message">
                <i class="warning circular icon"></i>
@@ -36,7 +36,7 @@
           </div>
           <div class="field">
             <label>Password Confirmation</label>
-            <input type="password" name="password_confirmation" placeholder="Password Confirmation" class="ui input">
+            <input type="password" name="password_confirmation" placeholder="Password Confirmation" class="ui input" autocomplete="new-password">
             @if($errors->has('password_confirmation'))
              <div class="ui tiny negative message">
                <i class="warning circular icon"></i>

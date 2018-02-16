@@ -24,7 +24,7 @@
             a.async = 1;
             a.src = g;
             m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'http://www.google-analytics.com/analytics.js', 'ga');
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-44039803-2', 'auto');
         ga('send', 'pageview');
     </script>
@@ -38,7 +38,7 @@
       </a>
             <div class="right menu">
                 <div class="vertically fitted borderless item">
-                    <iframe class="github" src="http://ghbtns.com/github-btn.html?user=caddydz&amp;repo=english&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+                    <iframe class="github" src="https://ghbtns.com/github-btn.html?user=caddydz&amp;repo=english&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
                 </div>
             </div>
         </div>
@@ -82,7 +82,7 @@
                                         })
                                     }(document, "script", "twitter-wjs"));
                                 </script>
-                                <iframe class="github" src="http://ghbtns.com/github-btn.html?user=caddydz&amp;repo=english&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+                                <iframe class="github" src="https://ghbtns.com/github-btn.html?user=caddydz&amp;repo=english&amp;type=watch&amp;count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
                             </div>
                             <a class="view-ui item" href="{{ url('/login') }}">
                 <i class="sign in icon"></i> Login
