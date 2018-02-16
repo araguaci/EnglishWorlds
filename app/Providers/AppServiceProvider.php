@@ -13,6 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        \URL::forceScheme('https');
         \Validator::extend('password_hash_check', function ($attributes, $value, $parameters, $validator) {
             return Hash::check($value, $parameters[0]);
         });
