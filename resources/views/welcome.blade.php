@@ -11,7 +11,7 @@
     <title>{{ config('app.name') }}</title>
     <meta name="description" content="English DZ is a social network for Algerian English speakers" />
     <meta name="keywords" content="english, dz, algeria, learn, social" />
-    <link rel="stylesheet" type="text/css" href="/css/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.css" integrity="sha256-FpjP45Pz019159CFCReBCsZtVeCvGawN2Om1w+SIi0A=" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="css/home.css">
     <script>
         (function(i, s, o, g, r, a, m) {
@@ -119,10 +119,10 @@
         </div>
         @include('layouts.footer')
     </div>
-    <script src="/js/vue.js" charset="utf-8"></script>
-    <script src="/js/vue-scrollto.js"></script>
-    <script src="/js/jquery.min.js" charset="utf-8"></script>
-    <script src="/js/semantic.min.js"></script>
+    <script src="https://unpkg.com/vue@2.5.13/dist/vue.js" charset="utf-8"></script>
+    <script src="https://unpkg.com/vue-scrollto"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.14/semantic.min.js" integrity="sha256-M9jjNz+jr/lTI+xVx2lpn3g6810YEPpSk8lReqH+qWE=" crossorigin="anonymous"></script>
     <script src="js/home.js"></script>
 </body>
 
