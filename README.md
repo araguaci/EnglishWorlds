@@ -41,26 +41,6 @@ $ git clone --depth 1 https://github.com/CaddyDz/English Name
 $ cd Name && composer install
 ```
 
-### Create environment variables (change values according to your environment)
-
-``` shell
-$ cp .env.example .env
-```
-
-### Generate application key
-
-``` shell
-$ php artisan key:generate
-```
-
-### Set up the database
-
-**Create a MySQL Database named english**
-
-``` shell
-php artisan migrate --seed
-```
-
 ### Finally run the application
 
 ``` shell
