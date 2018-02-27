@@ -1,9 +1,5 @@
 <?php
 
-// Force routes to HTTPS in production
-if (env('APP_ENV') === 'production') {
-    \URL::forceScheme('https');
-}
 /*
 |--------------------------------------------------------------------------
 | Welcome Page
@@ -14,17 +10,19 @@ Route::get('/', 'PagesController@home');
 
 /*
 |--------------------------------------------------------------------------
-| Terms & Conditions/ Privacy Routes
+| Terms & Conditions / Privacy Routes
 |--------------------------------------------------------------------------
 */
-Route::view('/terms', 'partials.terms');
-Route::view('/privacy', 'partials.privacy');
+
+Route::view('terms', 'partials.terms');
+Route::view('privacy', 'partials.privacy');
 
 /*
 |--------------------------------------------------------------------------
 | Login/ Logout/ Password
 |--------------------------------------------------------------------------
 */
+
 Route::view('login', 'auth.login')->name('login')->middleware('guest');
 Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
@@ -40,8 +38,8 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 | Registration & Activation
 |--------------------------------------------------------------------------
 */
-Route::post('register', 'Auth\RegisterController@register');
 
+Route::post('register', 'Auth\RegisterController@register');
 Route::get('activate/token/{token}', 'Auth\ActivateController@activate');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('activate', 'Auth\ActivateController@showActivate');
@@ -50,9 +48,10 @@ Route::group(['middleware' => ['auth']], function () {
 
 /*
 |--------------------------------------------------------------------------
-| Authenticated Routes
+| Authenticated & Activated Routes
 |--------------------------------------------------------------------------
 */
+
 Route::group(['middleware' => ['auth', 'active']], function () {
 
     /*
@@ -60,8 +59,8 @@ Route::group(['middleware' => ['auth', 'active']], function () {
     | General
     |--------------------------------------------------------------------------
     */
-
-    Route::get('/users/switch-back', 'Admin\UserController@switchUserBack');
+    // TODO: Check this route
+    Route::get('users/switch-back', 'Admin\UserController@switchUserBack');
 
     /*
     |--------------------------------------------------------------------------
@@ -147,6 +146,7 @@ Route::group(['middleware' => ['auth', 'active']], function () {
         | Users
         |--------------------------------------------------------------------------
         */
+
         Route::get('users/invite', 'UserController@getInvite');
         Route::get('users/switch/{id}', 'UserController@switchToUser');
         Route::post('users/invite', 'UserController@postInvite');

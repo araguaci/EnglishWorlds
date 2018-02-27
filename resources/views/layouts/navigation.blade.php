@@ -26,7 +26,7 @@
 					<a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" class="item">Logout</a><form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }} </form>
 				</div>
 			</div>
-		@elseif (!Auth::check())
+		@else
 			<a href="{{ url('login') }}" class="ui item">Login</a>
 			<a href="{{ url('/#register') }}" class="ui item">Sign up</a>
 		@endif

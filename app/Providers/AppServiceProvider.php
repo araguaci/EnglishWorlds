@@ -13,9 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Force routes to HTTPS in production
         if (env('APP_ENV') === 'production') {
             \URL::forceScheme('https');
         }
+        // Extend the functionality of the default validation to include old password hash check
         \Validator::extend('password_hash_check', function ($attributes, $value, $parameters, $validator) {
             return Hash::check($value, $parameters[0]);
         });
