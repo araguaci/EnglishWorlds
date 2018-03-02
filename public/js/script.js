@@ -25,10 +25,12 @@ new Vue({
         body: this.status
       })
       .then(function (response) {
-        console.log(response);
+        // Update the statuses stream
+        console.log(this.status);
+        this.status = response;
       })
       .catch(function (error) {
-        console.log(error);
+        console.log("Couldn't post status because of an error: ", error);
       });
     }
   }
