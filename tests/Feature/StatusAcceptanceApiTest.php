@@ -35,33 +35,29 @@ class StatusAcceptanceApiTest extends TestCase
     public function testIndex()
     {
         $response = $this->actor->call('GET', 'api/v1/statuses');
-        // $this->assertEquals(200, $response->getStatusCode());
-        $this->assertTrue(true);
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     public function testStore()
     {
         $response = $this->actor->call('POST', 'api/v1/statuses', $this->Status->toArray());
-        // $this->assertEquals(200, $response->getStatusCode());
-        // $this->seeJson(['id' => 1]);
-        $this->assertTrue(true);
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->seeJson(['id' => 1]);
     }
 
     public function testUpdate()
     {
         $this->actor->call('POST', 'api/v1/statuses', $this->Status->toArray());
         $response = $this->actor->call('PATCH', 'api/v1/statuses/1', $this->StatusEdited->toArray());
-        // $this->assertEquals(200, $response->getStatusCode());
-        // $this->assertDatabaseHas('statuses', $this->StatusEdited->toArray());
-        $this->assertTrue(true);
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertDatabaseHas('statuses', $this->StatusEdited->toArray());
     }
 
     public function testDelete()
     {
         $this->actor->call('POST', 'api/v1/statuses', $this->Status->toArray());
         $response = $this->call('DELETE', 'api/v1/statuses/'.$this->Status->id);
-        // $this->assertEquals(200, $response->getStatusCode());
-        // $this->seeJson(['success' => 'status was deleted']);
-        $this->assertTrue(true);
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->seeJson(['success' => 'status was deleted']);
     }
 }

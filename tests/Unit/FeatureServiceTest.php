@@ -14,7 +14,6 @@ class FeatureServiceTest extends TestCase
         $role = factory(English\Models\Role::class)->create();
         $user = factory(English\Models\User::class)->create();
         $this->app->make(English\Services\UserService::class)->create($user, 'password');
-
         $this->service = $this->app->make(FeatureService::class);
         $this->originalArray = [
             'id'  => 1,

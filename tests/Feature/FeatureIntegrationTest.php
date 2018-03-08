@@ -29,16 +29,14 @@ class FeatureIntegrationTest extends TestCase
     public function testIndex()
     {
         $response = $this->actor->call('GET', 'admin/features');
-        // $this->assertEquals(200, $response->getStatusCode());
-        // $response->assertViewHas('features');
-        $this->assertTrue(true);
+        $this->assertEquals(200, $response->getStatusCode());
+        $response->assertViewHas('features');
     }
 
     public function testCreate()
     {
         $response = $this->actor->call('GET', 'admin/features/create');
-        // $this->assertEquals(200, $response->getStatusCode());
-        $this->assertTrue(true);
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     public function testStore()
@@ -53,9 +51,8 @@ class FeatureIntegrationTest extends TestCase
     {
         $this->actor->call('POST', 'admin/features', $this->feature->toArray());
         $response = $this->actor->call('GET', 'admin/features/'.$this->feature->id.'/edit');
-        // $this->assertEquals(200, $response->getStatusCode());
-        // $response->assertViewHas('feature');
-        $this->assertTrue(true);
+        $this->assertEquals(200, $response->getStatusCode());
+        $response->assertViewHas('feature');
     }
 
     public function testUpdate()

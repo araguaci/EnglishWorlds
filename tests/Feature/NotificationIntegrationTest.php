@@ -42,16 +42,14 @@ class NotificationIntegrationTest extends TestCase
     public function testIndex()
     {
         $response = $this->actor->call('GET', 'admin/notifications');
-        // $this->assertEquals(200, $response->getStatusCode());
-        // $response->assertViewHas('notifications');
-        $this->assertTrue(true);
+        $this->assertEquals(200, $response->getStatusCode());
+        $response->assertViewHas('notifications');
     }
 
     public function testCreate()
     {
         $response = $this->actor->call('GET', 'admin/notifications/create');
-        // $this->assertEquals(200, $response->getStatusCode());
-        $this->assertTrue(true);
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     public function testStore()
@@ -65,9 +63,8 @@ class NotificationIntegrationTest extends TestCase
     {
         $this->actor->call('POST', 'admin/notifications', $this->notification->toArray());
         $response = $this->actor->call('GET', 'admin/notifications/'.$this->notification->id.'/edit');
-        // $this->assertEquals(200, $response->getStatusCode());
-        // $response->assertViewHas('notification');
-        $this->assertTrue(true);
+        $this->assertEquals(200, $response->getStatusCode());
+        $response->assertViewHas('notification');
     }
 
     public function testUpdate()
