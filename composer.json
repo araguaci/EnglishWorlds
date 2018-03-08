@@ -15,6 +15,7 @@
         "yab/laracogs": "^2.3.4"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.1",
         "filp/whoops": "~2.1",
         "fzaninotto/faker": "~1.7",
         "mockery/mockery": "1.0",
@@ -51,6 +52,7 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "php -r \"(file_exists('.env.example')) ? copy('.env.example', '.env') : '';\"",
+            "@php artisan key:generate",
             "@php artisan package:discover"
         ]
     },
