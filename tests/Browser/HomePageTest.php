@@ -13,6 +13,8 @@ class HomePageTest extends DuskTestCase
      *
      * @return void
      */
+
+    /** @test */
     public function the_app_name_is_visible_on_home_page()
     {
         $this->browse(function (Browser $browser) {

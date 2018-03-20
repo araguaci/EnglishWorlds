@@ -3,7 +3,7 @@
 namespace Tests\Browser;
 
 use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
+use Laravel\Dusk\Chrome;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class CommentTest extends DuskTestCase
@@ -22,22 +22,25 @@ class CommentTest extends DuskTestCase
     /** @test */
     function an_authenticated_user_may_engage_in_a_status()
     {
-        // Set the currently logged in user for the application.
-        $this->login($user = factory('English\User')->create());
-        $status = factory('English\Status')->create();
-        $comment = factory('English\Comment')->create();
+        $user = factory('English\User')->create();
 
-        $this->post($status->path() . '/comment', $comment->toArray());
-        $this->get($status->path())
-          ->assertSee($comment->body);
+        $status = factory('English\Status')->create([
+          'user_id' => $user->id
+        ]);
 
-        // Open a browser
-        $this->browse(function (Browser $browser) use($user, $status, $comment) {
-            // Navigate to a status
-            $browser->visit($status->path())
-                    ->press('Login')
-                    ->assertPathIs('/home')
-                    ->assertSee('Laravel');
+        $comment = factory('English\Comment')->create([
+            'status_id' => $status->id,
+            'user_id' => $user->id
+          ]);
+
+        $this->browse(function ($browser) use($user, $status, $comment) {
+
+             $browser->loginAs($user)
+                      ->visit('/1')
+                      ->type('body', $comment->body)
+                      ->press('Comment')
+                      ->assertPathIs($status->path())
+                      ->assertSee($comment->body);
         });
     }
 }

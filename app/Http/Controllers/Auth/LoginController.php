@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -36,4 +36,41 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+
+    public function username()
+    {
+        return 'login';
+    }
+
+    /**
+     * Handle a login request to the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+
+     /**
+      * Get the needed authorization credentials from the request.
+      *
+      * @param  \Illuminate\Http\Request  $request
+      * @return array
+      */
+     protected function credentials()
+     {
+         $login = request()->get('login');
+         $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+         return [
+             $field => $login,
+             'password' => request()->get('password'),
+         ];
+     }
 }

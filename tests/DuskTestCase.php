@@ -40,13 +40,4 @@ abstract class DuskTestCase extends BaseTestCase
             )
         );
     }
-
-    /**
-     * Set the currently logged in user for the application.
-     * @return
-     */
-    protected function login($user)
-    {
-        $this->be($user);
-    }
 }

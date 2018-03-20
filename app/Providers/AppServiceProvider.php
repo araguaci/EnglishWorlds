@@ -2,6 +2,7 @@
 
 namespace English\Providers;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Aliasing Components subdirectory
+        // See https://laravel.com/docs/5.6/blade#components-and-slots
+        Blade::component('components.segment', 'segment');
     }
 
     /**
