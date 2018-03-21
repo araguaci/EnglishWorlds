@@ -17,15 +17,17 @@
     @endforeach
   @endsegment
   @segment(['class' => ''])
-  <form class="ui reply form" method="post" action="{{ url($status->id . '/comment') }}">
-    @csrf
-    <div class="field">
-      <input type="text" name="body" id="comment" placeholder="{{ __('Write a comment') }}">
-    </div>
-    <button class="ui primary submit labeled icon button">
-      <i class="icon edit"></i> {{ __('Comment') }}
-    </button>
-  </form>
+    @auth
+    <form class="ui reply form" method="post" action="{{ url($status->id . '/comment') }}">
+      @csrf
+      <div class="field">
+        <input type="text" name="body" id="comment" placeholder="{{ __('Write a comment') }}">
+      </div>
+      <button class="ui primary submit labeled icon button">
+        <i class="icon edit"></i> {{ __('Comment') }}
+      </button>
+    </form>
+    @endauth
   @endsegment
 </div>
 @endsection
