@@ -18,14 +18,11 @@
   @endsegment
   @segment(['class' => ''])
     @auth
-    <form class="ui reply form" method="post" action="{{ url($status->id . '/comment') }}">
+    <form class="ui reply form" method="post" action="{{ route('post_comment', ['status' => $status->id]) }}">
       @csrf
       <div class="field">
-        <input type="text" name="body" id="comment" placeholder="{{ __('Write a comment') }}">
+        <input type="text" name="body" id="comment" placeholder="{{ __('Write a comment') }}" onsubmit="submit">
       </div>
-      <button class="ui primary submit labeled icon button">
-        <i class="icon edit"></i> {{ __('Comment') }}
-      </button>
     </form>
     @endauth
   @endsegment
