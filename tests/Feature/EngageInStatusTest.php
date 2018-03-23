@@ -14,7 +14,7 @@ class EngageInStatusTest extends TestCase
 
         $this->status = factory('English\Status')->create();
 
-        $this->comment = factory('English\Comment')->make();
+        $this->comment = factory('English\Comment')->raw();
     }
     /**
      * Given we have an authenticated user
@@ -31,10 +31,10 @@ class EngageInStatusTest extends TestCase
         // Set the currently logged in user for the application.
         $this->login($user = factory('English\User')->create());
 
-        $this->post($this->status->path() . '/comment', $this->comment->toArray());
+        $this->post($this->status->path() . '/comment', $this->comment);
 
         $this->get($this->status->path())
-          ->assertSee($this->comment->body);
+          ->assertSee($this->comment['body']);
     }
 
     /**
