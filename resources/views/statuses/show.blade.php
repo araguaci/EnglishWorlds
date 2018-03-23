@@ -24,6 +24,12 @@
         <input type="text" name="body" id="comment" placeholder="{{ __('Write a comment') }}" onsubmit="submit">
       </div>
     </form>
+    @else
+      <div class="ui center aligned container">
+        <div class="ui compact floating message">
+          <p>{{ __('Please') }} <a href="{{ route('login') }}">{{ __('Login') }}</a> to comment.</p>
+        </div>
+      </div>
     @endauth
   @endsegment
 </div>
