@@ -48,15 +48,6 @@ class LoginController extends Controller
         return 'login';
     }
 
-    /**
-     * Handle a login request to the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-
      /**
       * Get the needed authorization credentials from the request.
       *
