@@ -6,15 +6,6 @@ use Tests\TestCase;
 
 class CreateStatusesTest extends TestCase
 {
-    protected $status;
-
-    function setUp()
-    {
-        parent::setUp();
-
-        $this->status = factory('English\Status')->raw();
-    }
-
     /**
      * Test non authenticated users
      * can not post statuses
@@ -28,7 +19,7 @@ class CreateStatusesTest extends TestCase
      {
          $this->withoutExceptionHandling();
          $this->expectException('Illuminate\Auth\AuthenticationException');
-         $this->post('/', $this->status);
+         $this->post('/', []);
      }
 
     /**
@@ -45,11 +36,13 @@ class CreateStatusesTest extends TestCase
     /** @test */
     function users_can_create_statuses()
     {
+        $status = factory('English\Status')->raw();
+
         $this->login(factory('English\User')->create());
 
-        $this->post('/', $this->status);
+        $this->post('/', $status);
 
         $this->get('/')
-             ->assertSee($this->status['body']);
+             ->assertSee($status['body']);
     }
 }
