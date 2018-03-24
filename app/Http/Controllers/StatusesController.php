@@ -8,10 +8,25 @@ use Illuminate\Http\Request;
 class StatusesController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * StatusesController constructor.
+     * Restrict access to write methods
+     * for authenticated users only.
+     * @param none
+     * @return English\Http\Middleware\RedirectIfAuthenticated
+     * @throws Illuminate\Auth\AuthenticationException
+     */
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only('store', 'update', 'destroy');
+    }
+
+    /**
+     * Display a listing of the statuses.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $statuses = Status::latest()->get();
@@ -36,7 +51,11 @@ class StatusesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $status = Status::create([
+          'user_id' => auth()->id(),
+          'body' => $request->body
+        ]);
+        return redirect($status->path());
     }
 
     /**
