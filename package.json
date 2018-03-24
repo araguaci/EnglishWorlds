@@ -17,6 +17,8 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "lato-webfont": "^2.15.1",
+        "raleway-webfont": "^3.0.1",
         "semantic-ui": "^2.3.0"
     }
 }
