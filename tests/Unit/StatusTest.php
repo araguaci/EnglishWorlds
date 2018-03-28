@@ -6,14 +6,12 @@ use Tests\TestCase;
 
 class StatusTest extends TestCase
 {
-    protected $status;
-
     function setUp()
     {
         // Create a status globally
         parent::setUp();
 
-        $this->status = factory('English\Status')->create();
+        $this->status = create('English\Status');
     }
 
     /**

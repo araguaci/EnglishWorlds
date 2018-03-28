@@ -6,16 +6,15 @@ use Tests\TestCase;
 
 class EngageInStatusTest extends TestCase
 {
-    protected $status, $comment;
-
     function setUp()
     {
         parent::setUp();
 
-        $this->status = factory('English\Status')->create();
+        $this->status = create('English\Status');
 
-        $this->comment = factory('English\Comment')->raw();
+        $this->comment = create('English\Comment', [], 'raw');
     }
+
     /**
      * Given we have an authenticated user
      * And an existing status
@@ -29,7 +28,7 @@ class EngageInStatusTest extends TestCase
     function an_authenticated_user_may_engage_in_a_status()
     {
         // Set the currently logged in user for the application.
-        $this->login($user = factory('English\User')->create());
+        $this->login();
 
         $this->post($this->status->path() . '/comment', $this->comment);
 
@@ -43,11 +42,12 @@ class EngageInStatusTest extends TestCase
      *
      * @return Exception Illuminate\Auth\AuthenticationException
      */
+
     /** @test */
     public function unauthenticated_users_shall_not_comment()
     {
         $this->withoutExceptionHandling();
         $this->expectException('Illuminate\Auth\AuthenticationException');
-        $this->post('/1/comment', []);
+        $this->post($this->status->path() . '/comment', []);
     }
 }

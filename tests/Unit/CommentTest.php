@@ -9,8 +9,6 @@ class CommentTest extends TestCase
     /** @test */
     function a_comment_has_an_owner()
     {
-        $comment = factory('English\Comment')->create();
-
-        $this->assertInstanceOf('English\User', $comment->owner);
+        $this->assertInstanceOf('English\User', create('English\Comment')->owner);
     }
 }

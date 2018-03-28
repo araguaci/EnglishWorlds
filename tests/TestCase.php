@@ -16,8 +16,10 @@ abstract class TestCase extends BaseTestCase
      * @return English\User authenticated
      */
 
-    protected function login($user)
+    protected function login($user = null)
     {
+        $user = $user ?: create('English\User');
         $this->be($user);
+        return $this;
     }
 }

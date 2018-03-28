@@ -36,9 +36,9 @@ class CreateStatusesTest extends TestCase
     /** @test */
     function users_can_create_statuses()
     {
-        $status = factory('English\Status')->raw();
+        $status = create('English\Status', [], 'raw');
 
-        $this->login(factory('English\User')->create());
+        $this->login();
 
         $this->post('/', $status);
 

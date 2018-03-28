@@ -19,9 +19,7 @@ class LoginTest extends DuskTestCase
     /** @test */
     public function a_user_can_login()
     {
-        $user = factory('English\User')->create([
-          'email' => 'salim@english.dz'
-        ]);
+        $user = create('English\User', ['email' => 'salim@english.dz']);
 
         $this->browse(function (Browser $browser) use ($user) {
             $browser->maximize();
