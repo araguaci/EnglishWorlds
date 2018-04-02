@@ -2,15 +2,15 @@
 
 @section('content')
 <div class="ui container segments">
-  <div class="ui segment">
+  @segment(['class' => ''])
     <p>{{ __('Statuses') }}</p>
-  </div>
-  <div class="ui segment">
+  @endsegment
+  @segment(['class' => ''])
     @foreach ($statuses as $status)
       <a href="{{ $status->path() }}">{{ __('Read more') }}</a>
       <p>{{ $status->body }}</p>
       <hr>
     @endforeach
-  </div>
+  @endsegment
 </div>
 @endsection
