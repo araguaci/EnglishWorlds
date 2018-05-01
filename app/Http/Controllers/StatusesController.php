@@ -53,6 +53,7 @@ class StatusesController extends Controller
     {
         $status = Status::create([
           'user_id' => auth()->id(),
+          'tag_id' => $request->tag_id,
           'body' => $request->body
         ]);
         return redirect($status->path());

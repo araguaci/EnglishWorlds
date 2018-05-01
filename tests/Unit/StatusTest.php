@@ -33,7 +33,7 @@ class StatusTest extends TestCase
     }
 
     /** @test */
-    function it_can_add_a_comment()
+    function it_can_has_a_comment()
     {
       $this->status->addComment([
         'body' => 'Foobar',
@@ -41,5 +41,12 @@ class StatusTest extends TestCase
       ]);
 
       $this->assertCount(1, $this->status->comments);
+    }
+
+    /** @test */
+    function it_belongs_to_a_tag()
+    {
+      $status = create('English\Status');
+      $this->assertInstanceOf('English\Tag', $status->tag);
     }
 }
