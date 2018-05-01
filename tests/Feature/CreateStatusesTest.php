@@ -22,6 +22,12 @@ class CreateStatusesTest extends TestCase
          $this->post('/', []);
      }
 
+     /** @test */
+     function guests_shall_not_see_create_status_section()
+     {
+       $this->get('/')->assertDontSee('Write status');
+     }
+
     /**
      * Test users can post statuses
      * Given we have an authenticated user
@@ -37,11 +43,8 @@ class CreateStatusesTest extends TestCase
     function users_can_create_statuses()
     {
         $status = create('English\Status', [], 'raw');
-
         $this->login();
-
         $this->post('/', $status);
-
         $this->get('/')
              ->assertSee($status['body']);
     }

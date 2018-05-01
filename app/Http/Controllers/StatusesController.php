@@ -18,7 +18,7 @@ class StatusesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->only('store', 'update', 'destroy');
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
     /**
