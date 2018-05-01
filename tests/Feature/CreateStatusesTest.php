@@ -17,15 +17,10 @@ class CreateStatusesTest extends TestCase
      /** @test */
      function guests_shall_not_create_statuses()
      {
+         $this->get('/')->assertDontSee('Write status');
          $this->withoutExceptionHandling();
          $this->expectException('Illuminate\Auth\AuthenticationException');
          $this->post('/', []);
-     }
-
-     /** @test */
-     function guests_shall_not_see_create_status_section()
-     {
-       $this->get('/')->assertDontSee('Write status');
      }
 
     /**
