@@ -36,6 +36,15 @@ class EngageInStatusTest extends TestCase
           ->assertSee($this->comment['body']);
     }
 
+    /** @test */
+    function a_comment_required_a_body()
+    {
+        $this->login();
+        $comment = create('English\Comment', ['body' => null], 'raw');
+        $this->post($this->status->path() . '/comment', $comment)
+             ->assertSessionHasErrors('body');
+    }
+
     /**
      * This test is supposed to fail inversely
      * Expecting an unauthenticated exception.

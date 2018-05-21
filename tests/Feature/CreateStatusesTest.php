@@ -37,10 +37,36 @@ class CreateStatusesTest extends TestCase
     /** @test */
     function users_can_create_statuses()
     {
-        $status = create('English\Status', [], 'raw');
         $this->login();
-        $this->post('/', $status);
-        $this->get('/')
+        $status = create('English\Status', [], 'raw');
+        $response = $this->post('/', $status);
+        $this->get($response->headers->get('Location'))
              ->assertSee($status['body']);
+    }
+
+    /** @test */
+    function a_status_requires_a_body()
+    {
+        $this->publishStatus(['body' => null])
+             ->assertSessionHasErrors('body');
+    }
+
+    /** @test */
+    function a_status_requires_a_tag()
+    {
+        factory('English\Tag', 2)->create();
+
+        $this->publishStatus(['tag_id' => null])
+             ->assertSessionHasErrors('tag_id');
+
+        $this->publishStatus(['tag_id' => 999])
+             ->assertSessionHasErrors('tag_id');
+    }
+
+    public function publishStatus($overrides = [])
+    {
+        $this->login();
+        $status = create('English\Status', $overrides, 'raw');
+        return $this->post('/', $status);
     }
 }

@@ -51,6 +51,11 @@ class StatusesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+          'body' => 'required',
+          'tag_id' => 'required|exists:tags,id'
+        ]);
+
         $status = Status::create([
           'user_id' => auth()->id(),
           'tag_id' => $request->tag_id,
