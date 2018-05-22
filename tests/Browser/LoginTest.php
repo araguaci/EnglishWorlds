@@ -2,16 +2,16 @@
 
 namespace Tests\Browser;
 
-use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Laravel\Dusk\Browser;
+use Tests\DuskTestCase;
 
 class LoginTest extends DuskTestCase
 {
     use DatabaseMigrations;
 
     /**
-     * Test that a user can login to the application
+     * Test that a user can login to the application.
      *
      * @return assertion
      */

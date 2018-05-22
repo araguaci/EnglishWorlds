@@ -11,11 +11,13 @@ class StatusesController extends Controller
      * StatusesController constructor.
      * Restrict access to write methods
      * for authenticated users only.
+     *
      * @param none
-     * @return English\Http\Middleware\RedirectIfAuthenticated
+     *
      * @throws Illuminate\Auth\AuthenticationException
+     *
+     * @return English\Http\Middleware\RedirectIfAuthenticated
      */
-
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
@@ -26,10 +28,10 @@ class StatusesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
         $statuses = Status::latest()->get();
+
         return view('statuses.index', compact('statuses'));
     }
 
@@ -46,28 +48,31 @@ class StatusesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $this->validate($request, [
-          'body' => 'required',
-          'tag_id' => 'required|exists:tags,id'
+          'body'   => 'required',
+          'tag_id' => 'required|exists:tags,id',
         ]);
 
         $status = Status::create([
           'user_id' => auth()->id(),
-          'tag_id' => $request->tag_id,
-          'body' => $request->body
+          'tag_id'  => $request->tag_id,
+          'body'    => $request->body,
         ]);
+
         return redirect($status->path());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \English\Status  $status
+     * @param \English\Status $status
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Status $status)
@@ -78,7 +83,8 @@ class StatusesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \English\Status  $status
+     * @param \English\Status $status
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Status $status)
@@ -89,8 +95,9 @@ class StatusesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \English\Status  $status
+     * @param \Illuminate\Http\Request $request
+     * @param \English\Status          $status
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Status $status)
@@ -101,7 +108,8 @@ class StatusesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \English\Status  $status
+     * @param \English\Status $status
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Status $status)

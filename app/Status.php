@@ -10,7 +10,7 @@ class Status extends Model
 
     public function path()
     {
-        return '/' . $this->id;
+        return '/'.$this->id;
     }
 
     public function comments()
@@ -35,6 +35,6 @@ class Status extends Model
 
     public function tag()
     {
-      return $this->belongsTo(Tag::class);
+        return $this->belongsTo(Tag::class);
     }
 }
