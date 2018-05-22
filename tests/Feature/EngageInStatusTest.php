@@ -6,7 +6,7 @@ use Tests\TestCase;
 
 class EngageInStatusTest extends TestCase
 {
-    function setUp()
+    public function setUp()
     {
         parent::setUp();
 
@@ -25,23 +25,23 @@ class EngageInStatusTest extends TestCase
      */
 
     /** @test */
-    function an_authenticated_user_may_engage_in_a_status()
+    public function an_authenticated_user_may_engage_in_a_status()
     {
         // Set the currently logged in user for the application.
         $this->login();
 
-        $this->post($this->status->path() . '/comment', $this->comment);
+        $this->post($this->status->path().'/comment', $this->comment);
 
         $this->get($this->status->path())
           ->assertSee($this->comment['body']);
     }
 
     /** @test */
-    function a_comment_required_a_body()
+    public function a_comment_required_a_body()
     {
         $this->login();
         $comment = create('English\Comment', ['body' => null], 'raw');
-        $this->post($this->status->path() . '/comment', $comment)
+        $this->post($this->status->path().'/comment', $comment)
              ->assertSessionHasErrors('body');
     }
 
@@ -57,6 +57,6 @@ class EngageInStatusTest extends TestCase
     {
         $this->withoutExceptionHandling();
         $this->expectException('Illuminate\Auth\AuthenticationException');
-        $this->post($this->status->path() . '/comment', []);
+        $this->post($this->status->path().'/comment', []);
     }
 }

@@ -6,7 +6,7 @@ use Tests\TestCase;
 
 class StatusTest extends TestCase
 {
-    function setUp()
+    public function setUp()
     {
         // Create a status globally
         parent::setUp();
@@ -21,32 +21,32 @@ class StatusTest extends TestCase
      */
 
     /** @test */
-    function a_status_has_comments()
+    public function a_status_has_comments()
     {
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->status->comments);
     }
 
     /** @test */
-    function it_has_an_owner()
+    public function it_has_an_owner()
     {
         $this->assertInstanceOf('English\User', $this->status->owner);
     }
 
     /** @test */
-    function it_can_has_a_comment()
+    public function it_can_has_a_comment()
     {
-      $this->status->addComment([
-        'body' => 'Foobar',
-        'user_id' => 1
+        $this->status->addComment([
+        'body'    => 'Foobar',
+        'user_id' => 1,
       ]);
 
-      $this->assertCount(1, $this->status->comments);
+        $this->assertCount(1, $this->status->comments);
     }
 
     /** @test */
-    function it_belongs_to_a_tag()
+    public function it_belongs_to_a_tag()
     {
-      $status = create('English\Status');
-      $this->assertInstanceOf('English\Tag', $status->tag);
+        $status = create('English\Status');
+        $this->assertInstanceOf('English\Tag', $status->tag);
     }
 }

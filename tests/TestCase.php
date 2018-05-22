@@ -12,14 +12,16 @@ abstract class TestCase extends BaseTestCase
 
     /**
      * Set the currently logged in user for the application.
+     *
      * @param Illuminate\Contracts\Auth\Authenticatable
+     *
      * @return English\User authenticated
      */
-
     protected function login($user = null)
     {
         $user = $user ?: create('English\User');
         $this->be($user);
+
         return $this;
     }
 }

@@ -2,5 +2,5 @@
 
 function create($model, $properties = [], $method = 'create')
 {
-  return factory($model)->$method($properties);
+    return factory($model)->$method($properties);
 }

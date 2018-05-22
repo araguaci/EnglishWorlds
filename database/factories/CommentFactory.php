@@ -10,6 +10,6 @@ $factory->define(English\Comment::class, function (Faker $faker) {
       'user_id' => function () {
           return factory('English\User')->create()->id;
       },
-      'body' => $faker->paragraph
+      'body' => $faker->paragraph,
     ];
 });

@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
     {
         $statuses = factory('English\Status', 50)->create();
         $statuses->each(function ($status) {
-          factory('English\Comment', 10)->create([
-            'status_id' => $status->id
+            factory('English\Comment', 10)->create([
+            'status_id' => $status->id,
           ]);
         });
     }
