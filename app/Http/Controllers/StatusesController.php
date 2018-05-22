@@ -26,16 +26,19 @@ class StatusesController extends Controller
 
     /**
      * Display a listing of the statuses.
+     *
      * @param Tag $tag
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Tag $tag)
     {
         if ($tag->exists) {
-          $statuses = $tag->statuses()->latest()->get();
+            $statuses = $tag->statuses()->latest()->get();
         } else {
-          $statuses = Status::latest()->get();
+            $statuses = Status::latest()->get();
         }
+
         return view('statuses.index', compact('statuses'));
     }
 
