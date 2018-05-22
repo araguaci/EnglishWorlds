@@ -2,9 +2,18 @@
   <div class="ui secondary menu">
     <!-- Left Side Of Navbar -->
     <a href="{{ url('/') }}" class="header item">
-      <img class="logo" src="images/logo.png">&nbsp;
+      <img class="logo" src="/images/logo.png">&nbsp;
       {{ config('app.name') }}
     </a>
+    <div class="ui search selection dropdown header item">
+      <i class="dropdown icon"></i>
+      <div class="default text">Select Tag</div>
+      <div class="menu">
+        @foreach ($tags as $tag)
+          <a class="item" href="/tags/{{ $tag->slug }}">{{ $tag->name }}</a>
+        @endforeach
+      </div>
+    </div>
     <!-- Right Side Of Navbar -->
     <div class="right menu">
       <!-- Authentication Links -->

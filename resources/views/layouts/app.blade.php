@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -24,7 +24,7 @@
     <![endif]-->
 </head>
 <body>
-    @include('layouts.navbar')
+    @render(\English\ViewComponents\NavbarComponent::class)
     <div id="app">
       @yield('content')
     </div><!-- End of app -->

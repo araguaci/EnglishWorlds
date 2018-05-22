@@ -26,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        Blade::directive('render', function ($component) {
+            return "<?php echo (app($component))->toHtml(); ?>";
+        });
     }
 }

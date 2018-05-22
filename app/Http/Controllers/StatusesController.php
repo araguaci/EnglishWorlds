@@ -3,6 +3,7 @@
 namespace English\Http\Controllers;
 
 use English\Status;
+use English\Tag;
 use Illuminate\Http\Request;
 
 class StatusesController extends Controller
@@ -25,13 +26,16 @@ class StatusesController extends Controller
 
     /**
      * Display a listing of the statuses.
-     *
+     * @param Tag $tag
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Tag $tag)
     {
-        $statuses = Status::latest()->get();
-
+        if ($tag->exists) {
+          $statuses = $tag->statuses()->latest()->get();
+        } else {
+          $statuses = Status::latest()->get();
+        }
         return view('statuses.index', compact('statuses'));
     }
 

@@ -45,4 +45,16 @@ class ReadStatusesTest extends TestCase
         $this->get($this->status->path())
           ->assertSee($comment->body);
     }
+
+    /** @test */
+    function a_user_can_filter_statuses_according_to_a_tag()
+    {
+        $tag = create('English\Tag');
+        $statusInTag = create('English\Status', ['tag_id' => $tag->id]);
+        $statusNotInTag = create('English\Status');
+
+        $this->get('/tags/' . $tag->slug)
+             ->assertSee($statusInTag->body)
+             ->assertDontSee($statusNotInTag->body);
+    }
 }
