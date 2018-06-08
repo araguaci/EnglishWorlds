@@ -7,9 +7,6 @@ $factory->define(English\Status::class, function (Faker $faker) {
       'user_id' => function () {
           return factory('English\User')->create()->id;
       },
-      'tag_id' => function () {
-          return factory('English\Tag')->create()->id;
-      },
-      'body' => $faker->paragraph,
+      'body' => $faker->paragraph
     ];
 });

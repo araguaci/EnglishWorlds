@@ -13,7 +13,8 @@ class TagTest extends TestCase
     public function a_tag_consist_of_statuses()
     {
         $tag = create('English\Tag');
-        $status = create('English\Status', ['tag_id' => $tag->id]);
+        $status = create('English\Status');
+        $status->tags()->attach($tag);
         $this->assertTrue($tag->statuses->contains($status));
     }
 }

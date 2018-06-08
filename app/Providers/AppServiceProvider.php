@@ -2,7 +2,7 @@
 
 namespace English\Providers;
 
-use Illuminate\Support\Facades\Blade;
+use English\Tag;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,7 +16,10 @@ class AppServiceProvider extends ServiceProvider
     {
         // Aliasing Components subdirectory
         // See https://laravel.com/docs/5.6/blade#components-and-slots
-        Blade::component('components.segment', 'segment');
+        \Blade::component('components.segment', 'segment');
+        \View::composer('*', function($view) {
+          $view->with('tags', Tag::all());
+        });
     }
 
     /**
@@ -26,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        Blade::directive('render', function ($component) {
+        \Blade::directive('render', function ($component) {
             return "<?php echo (app($component))->toHtml(); ?>";
         });
     }

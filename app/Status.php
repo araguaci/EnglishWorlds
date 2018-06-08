@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Status extends Model
 {
-    protected $fillable = ['body', 'user_id', 'tag_id'];
+    protected $fillable = ['body', 'user_id'];
 
     public function path()
     {
@@ -33,8 +33,8 @@ class Status extends Model
         $this->comments()->create($comment);
     }
 
-    public function tag()
+    public function tags()
     {
-        return $this->belongsTo(Tag::class);
+        return $this->belongsToMany(Tag::class);
     }
 }

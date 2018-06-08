@@ -50,11 +50,25 @@ class ReadStatusesTest extends TestCase
     public function a_user_can_filter_statuses_according_to_a_tag()
     {
         $tag = create('English\Tag');
-        $statusInTag = create('English\Status', ['tag_id' => $tag->id]);
+        $statusInTag = create('English\Status');
+        $statusInTag->tags()->attach($tag);
         $statusNotInTag = create('English\Status');
-
         $this->get('/tags/'.$tag->slug)
              ->assertSee($statusInTag->body)
              ->assertDontSee($statusNotInTag->body);
+    }
+
+    /** @test */
+    function a_user_can_filter_statuses_according_to_a_user()
+    {
+        $this->login(create('English\User', ['username' => 'JohnDoe']));
+
+        $statusByJhon = create('English\Status', ['user_id' => auth()->id()]);
+
+        $statusNotByJohn = create('English\Status');
+
+        $this->get('?by=JohnDoe')
+             ->assertSee($statusByJhon->body)
+             ->assertDontSee($statusNotByJohn->body);
     }
 }

@@ -44,9 +44,10 @@ class StatusTest extends TestCase
     }
 
     /** @test */
-    public function it_belongs_to_a_tag()
+    public function it_has_a_tag()
     {
         $status = create('English\Status');
-        $this->assertInstanceOf('English\Tag', $status->tag);
+        $status->tags()->attach(create('English\Tag'));
+        $this->assertInstanceOf('English\Tag', $status->tags()->first());
     }
 }

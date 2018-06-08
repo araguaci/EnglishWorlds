@@ -13,6 +13,6 @@ class Tag extends Model
 
     public function statuses()
     {
-        return $this->hasMany(Status::class);
+        return $this->belongsToMany(Status::class);
     }
 }

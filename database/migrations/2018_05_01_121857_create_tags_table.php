@@ -19,6 +19,13 @@ class CreateTagsTable extends Migration
             $table->string('slug', 50);
             $table->timestamps();
         });
+
+        Schema::create('status_tag', function (Blueprint $table) {
+            $table->integer('status_id');
+            $table->integer('tag_id');
+            $table->primary(['status_id', 'tag_id']);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -28,6 +35,7 @@ class CreateTagsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('status_tag');
         Schema::dropIfExists('tags');
     }
 }

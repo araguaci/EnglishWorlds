@@ -62,11 +62,11 @@ class CreateStatusesTest extends TestCase
     {
         factory('English\Tag', 2)->create();
 
-        $this->publishStatus(['tag_id' => null])
-             ->assertSessionHasErrors('tag_id');
+        $this->publishStatus(['tags[]' => []])
+             ->assertSessionHasErrors('tags');
 
-        $this->publishStatus(['tag_id' => 999])
-             ->assertSessionHasErrors('tag_id');
+        $this->publishStatus(['tags[]' => [999]])
+             ->assertSessionHasErrors('tags');
     }
 
     public function publishStatus($overrides = [])

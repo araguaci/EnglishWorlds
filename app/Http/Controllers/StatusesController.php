@@ -34,10 +34,18 @@ class StatusesController extends Controller
     public function index(Tag $tag)
     {
         if ($tag->exists) {
-            $statuses = $tag->statuses()->latest()->get();
+            $statuses = $tag->statuses()->latest();
         } else {
-            $statuses = Status::latest()->get();
+            $statuses = Status::latest();
         }
+
+        if ($username = request('by')) {
+          $user = \English\User::where('username', $username)->firstOrFail();
+
+          $statuses->where('user_id', $user->id);
+        }
+
+        $statuses = $statuses->get();
 
         return view('statuses.index', compact('statuses'));
     }
@@ -63,14 +71,18 @@ class StatusesController extends Controller
     {
         $this->validate($request, [
           'body'   => 'required',
-          'tag_id' => 'required|exists:tags,id',
+          'tags' => 'required',
+          'tags.*' => 'exists:tags,id|distinct|between:1,5',
         ]);
 
         $status = Status::create([
           'user_id' => auth()->id(),
-          'tag_id'  => $request->tag_id,
           'body'    => $request->body,
         ]);
+
+        foreach ($request->tags as $tag) {
+           $status->tags()->attach($tag);
+        }
 
         return redirect($status->path());
     }

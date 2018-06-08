@@ -22,4 +22,11 @@ const app = new Vue({
 
 $(document).ready(function() {
   $('.ui.dropdown').dropdown();
+  $('#post-status-form').form({
+    fields: {
+      body     : 'empty',
+      tag      : 'empty'
+    },
+    on: 'blur'
+  });
 });

@@ -31,6 +31,7 @@
           </div>
           <i class="dropdown icon"></i>
           <div class="menu">
+            <a class="item" href="/?by={{auth()->user()->username}}">My Posts</a>
             <a class="item" href="{{ route('logout') }}"
                onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
