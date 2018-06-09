@@ -71,8 +71,12 @@ class StatusesController extends Controller
     {
         $this->validate($request, [
           'body'   => 'required',
-          'tags'   => 'required',
-          'tags.*' => 'exists:tags,id|distinct|between:1,5',
+          'tags'   => 'required|between:1,5',
+          'tags.*' => 'exists:tags,id|distinct',
+        ], [
+          'tags.between' => 'You can only choose up to 5 tags',
+          'tags.required' => 'You must pick at least 1 tag',
+          'body.required' => 'Can\'t post an empty status'
         ]);
 
         $status = Status::create([

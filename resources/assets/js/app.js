@@ -22,11 +22,36 @@ const app = new Vue({
 
 $(document).ready(function() {
   $('.ui.dropdown').dropdown();
+  $('.ui.search.dropdown').dropdown({maxSelections: 5});
   $('#post-status-form').form({
+    on: 'blur',
     fields: {
-      body     : 'empty',
-      tag      : 'empty'
-    },
-    on: 'blur'
+      body: {
+        identifier: 'body',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'Can\'t post an empty status'
+          }
+        ]
+      },
+      tags: {
+        identifier: 'tags',
+        rules: [
+          {
+            type: 'empty',
+            prompt: 'You must pick at least 1 tag'
+          },
+          {
+            type: 'minCount[1]',
+            prompt: 'You must pick at least 1 tag'
+          },
+          {
+            type: 'maxCount[5]',
+            prompt: 'You can only choose up to 5 tags'
+          }
+        ]
+      }
+    }
   });
 });

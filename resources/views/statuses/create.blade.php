@@ -6,7 +6,7 @@
       <div class="ui action input {{ $errors->has('body') ? 'error' : ''}}">
         <input type="text" name="body" value="{{ old('body') }}" onsubmit="this.form.submit()" id="status">
         <div class="inline field {{ $errors->has('tags') ? 'error' : ''}}">
-          <select name="tags[]" multiple="" class="ui search dropdown">
+          <select name="tags[]" multiple="" class="ui search dropdown" id="tags">
             <option value="">Select Tag(s)</option>
             @foreach ($tags as $tag)
               <option value="{{ $tag->id }}">{{ $tag->name }}</option>
@@ -16,7 +16,7 @@
       </div>
     </div>
     @if ($errors->any())
-      <div class="ui error message">
+      <div class="ui error compact message">
         <div class="header">Could not post status</div>
         @foreach ($errors->all() as $error)
           <p>{{ $error }}</p>
