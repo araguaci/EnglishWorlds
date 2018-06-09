@@ -17,8 +17,8 @@ class AppServiceProvider extends ServiceProvider
         // Aliasing Components subdirectory
         // See https://laravel.com/docs/5.6/blade#components-and-slots
         \Blade::component('components.segment', 'segment');
-        \View::composer('*', function($view) {
-          $view->with('tags', Tag::all());
+        \View::composer('*', function ($view) {
+            $view->with('tags', Tag::all());
         });
     }
 

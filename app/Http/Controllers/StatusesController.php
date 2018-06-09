@@ -40,9 +40,9 @@ class StatusesController extends Controller
         }
 
         if ($username = request('by')) {
-          $user = \English\User::where('username', $username)->firstOrFail();
+            $user = \English\User::where('username', $username)->firstOrFail();
 
-          $statuses->where('user_id', $user->id);
+            $statuses->where('user_id', $user->id);
         }
 
         $statuses = $statuses->get();
@@ -71,7 +71,7 @@ class StatusesController extends Controller
     {
         $this->validate($request, [
           'body'   => 'required',
-          'tags' => 'required',
+          'tags'   => 'required',
           'tags.*' => 'exists:tags,id|distinct|between:1,5',
         ]);
 
@@ -81,7 +81,7 @@ class StatusesController extends Controller
         ]);
 
         foreach ($request->tags as $tag) {
-           $status->tags()->attach($tag);
+            $status->tags()->attach($tag);
         }
 
         return redirect($status->path());

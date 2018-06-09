@@ -59,7 +59,7 @@ class ReadStatusesTest extends TestCase
     }
 
     /** @test */
-    function a_user_can_filter_statuses_according_to_a_user()
+    public function a_user_can_filter_statuses_according_to_a_user()
     {
         $this->login(create('English\User', ['username' => 'JohnDoe']));
 
