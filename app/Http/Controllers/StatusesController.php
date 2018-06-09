@@ -74,9 +74,9 @@ class StatusesController extends Controller
           'tags'   => 'required|between:1,5',
           'tags.*' => 'exists:tags,id|distinct',
         ], [
-          'tags.between' => 'You can only choose up to 5 tags',
+          'tags.between'  => 'You can only choose up to 5 tags',
           'tags.required' => 'You must pick at least 1 tag',
-          'body.required' => 'Can\'t post an empty status'
+          'body.required' => 'Can\'t post an empty status',
         ]);
 
         $status = Status::create([
