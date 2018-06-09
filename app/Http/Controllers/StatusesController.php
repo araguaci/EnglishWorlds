@@ -28,7 +28,7 @@ class StatusesController extends Controller
     /**
      * Display a listing of the statuses.
      *
-     * @param Tag $tag
+     * @param Tag           $tag
      * @param StatusFilters $filters
      *
      * @return \Illuminate\Http\Response
@@ -84,8 +84,9 @@ class StatusesController extends Controller
     }
 
     /**
-     * @param Tag $tag
+     * @param Tag           $tag
      * @param StatusFilters $filters
+     *
      * @return mixed
      */
     protected function getStatuses(Tag $tag, StatusFilters $filters)
@@ -97,6 +98,7 @@ class StatusesController extends Controller
         }
 
         $statuses = $statuses->get();
+
         return $statuses;
     }
 }
