@@ -2,6 +2,7 @@
 
 namespace English\Http\Controllers;
 
+use English\Filters\StatusFilters;
 use English\Status;
 use English\Tag;
 use Illuminate\Http\Request;
@@ -28,40 +29,19 @@ class StatusesController extends Controller
      * Display a listing of the statuses.
      *
      * @param Tag $tag
+     * @param StatusFilters $filters
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Tag $tag)
+    public function index(Tag $tag, StatusFilters $filters)
     {
-        if ($tag->exists) {
-            $statuses = $tag->statuses()->latest();
-        } else {
-            $statuses = Status::latest();
-        }
-
-        if ($username = request('by')) {
-            $user = \English\User::where('username', $username)->firstOrFail();
-
-            $statuses->where('user_id', $user->id);
-        }
-
-        $statuses = $statuses->get();
+        $statuses = $this->getStatuses($tag, $filters);
 
         return view('statuses.index', compact('statuses'));
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * Store a newly created status in storage.
      *
      * @param \Illuminate\Http\Request $request
      *
@@ -92,7 +72,7 @@ class StatusesController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified status.
      *
      * @param \English\Status $status
      *
@@ -104,39 +84,19 @@ class StatusesController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \English\Status $status
-     *
-     * @return \Illuminate\Http\Response
+     * @param Tag $tag
+     * @param StatusFilters $filters
+     * @return mixed
      */
-    public function edit(Status $status)
+    protected function getStatuses(Tag $tag, StatusFilters $filters)
     {
-        //
-    }
+        $statuses = Status::latest()->filter($filters);
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \English\Status          $status
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Status $status)
-    {
-        //
-    }
+        if ($tag->exists) {
+            $statuses = $tag->statuses();
+        }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \English\Status $status
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Status $status)
-    {
-        //
+        $statuses = $statuses->get();
+        return $statuses;
     }
 }
