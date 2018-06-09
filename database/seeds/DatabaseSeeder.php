@@ -18,9 +18,9 @@ class DatabaseSeeder extends Seeder
             factory('English\Comment', 10)->create([
             'status_id' => $status->id,
           ]);
-          $status->tags()->attach(rand(1,4));
-          $status->tags()->attach(rand(5,8));
-          $status->tags()->attach(rand(9,12));
+            $status->tags()->attach(rand(1, 4));
+            $status->tags()->attach(rand(5, 8));
+            $status->tags()->attach(rand(9, 12));
         });
     }
 }
