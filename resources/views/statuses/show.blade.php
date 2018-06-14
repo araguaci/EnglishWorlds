@@ -21,7 +21,7 @@
     <form class="ui reply form" method="post" action="{{ route('post_comment', ['status' => $status->id]) }}">
       @csrf
       <div class="field">
-        <input type="text" name="body" id="comment" placeholder="{{ __('Write a comment') }}" onsubmit="submit">
+        <input type="text" autocomplete="off" name="body" id="comment" placeholder="{{ __('Write a comment') }}" onsubmit="submit">
       </div>
     </form>
     @else

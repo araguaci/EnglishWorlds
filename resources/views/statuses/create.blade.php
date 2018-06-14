@@ -4,7 +4,7 @@
     <div class="inline field {{ $errors->has('body') ? 'error' : ''}}">
       <label for="status">Write status</label>
       <div class="ui action input {{ $errors->has('body') ? 'error' : ''}}">
-        <input type="text" name="body" value="{{ old('body') }}" onsubmit="this.form.submit()" id="status">
+        <input type="text" autocomplete="off" name="body" value="{{ old('body') }}" onsubmit="this.form.submit()" id="status">
         <div class="inline field {{ $errors->has('tags') ? 'error' : ''}}">
           <select name="tags[]" multiple="" class="ui search dropdown" id="tags">
             <option value="">Select Tag(s)</option>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="ui container segments">
+<div class="ui raised very padded text container segments">
   @segment(['class' => ''])
     <p>{{ __('Statuses') }}</p>
   @endsegment
