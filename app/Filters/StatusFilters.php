@@ -8,7 +8,7 @@ class StatusFilters extends Filters
 {
     /**
      * Registered filters to operate upon.
-     * 
+     *
      * @var array
      */
     protected $filters = ['by'];
