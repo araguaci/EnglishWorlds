@@ -6,6 +6,11 @@ use English\User;
 
 class StatusFilters extends Filters
 {
+    /**
+     * Registered filters to operate upon.
+     * 
+     * @var array
+     */
     protected $filters = ['by'];
 
     /**
@@ -13,7 +18,7 @@ class StatusFilters extends Filters
      *
      * @param string $username
      *
-     * @return mixed
+     * @return Builder
      */
     protected function by($username)
     {

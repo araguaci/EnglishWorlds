@@ -2,10 +2,10 @@
 
 namespace English\Http\Controllers;
 
-use English\Filters\StatusFilters;
-use English\Status;
 use English\Tag;
+use English\Status;
 use Illuminate\Http\Request;
+use English\Filters\StatusFilters;
 
 class StatusesController extends Controller
 {
@@ -28,7 +28,7 @@ class StatusesController extends Controller
     /**
      * Display a listing of the statuses.
      *
-     * @param Tag           $tag
+     * @param      Tag      $tag
      * @param StatusFilters $filters
      *
      * @return \Illuminate\Http\Response
@@ -84,7 +84,7 @@ class StatusesController extends Controller
     }
 
     /**
-     * @param Tag           $tag
+     * @param      Tag      $tag
      * @param StatusFilters $filters
      *
      * @return mixed
@@ -96,9 +96,7 @@ class StatusesController extends Controller
         if ($tag->exists) {
             $statuses = $tag->statuses();
         }
-
-        $statuses = $statuses->get();
-
-        return $statuses;
+        
+        return $statuses->get();
     }
 }

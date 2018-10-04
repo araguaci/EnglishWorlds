@@ -2,11 +2,11 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
 
 Route::get('/', 'StatusesController@index');
 Route::get('tags/{tag}', 'StatusesController@index');
 Route::post('/', 'StatusesController@store')->name('statuses');
-Route::get('/{status}', 'StatusesController@show');
+Route::get('{status}', 'StatusesController@show');
 
-Route::post('/{status}/comment', 'CommentsController@store')->name('post_comment');
+Route::post('{status}/comment', 'CommentsController@store')->name('post_comment');
