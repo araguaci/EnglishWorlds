@@ -2,11 +2,12 @@
 
 namespace English\Http\Controllers\Auth;
 
+use DB;
 use English\Http\Controllers\Controller;
-use English\User;
+use English\Models\User;
+use English\Services\UserService;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
+use Validator;
 
 class RegisterController extends Controller
 {
@@ -24,7 +25,7 @@ class RegisterController extends Controller
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
+     * Where to redirect users after login / registration.
      *
      * @var string
      */
@@ -35,9 +36,10 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(UserService $userService)
     {
         $this->middleware('guest');
+        $this->service = $userService;
     }
 
     /**
@@ -49,10 +51,15 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        if (!isset($data['terms_and_conditions'])) {
+            $data['terms_and_conditions'] = false;
+        }
+
         return Validator::make($data, [
-            'username' => 'required|string|max:255',
-            'email'    => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'username'             => 'bail|required|max:50|min:3|unique:users,name',
+            'email'                => 'bail|required|email|max:255|unique:users',
+            'password'             => 'bail|required|min:6|max:255|confirmed',
+            'terms_and_conditions' => 'accepted',
         ]);
     }
 
@@ -61,14 +68,18 @@ class RegisterController extends Controller
      *
      * @param array $data
      *
-     * @return \English\User
+     * @return User
      */
     protected function create(array $data)
     {
-        return User::create([
-            'username' => $data['username'],
-            'email'    => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        return DB::transaction(function () use ($data) {
+            $user = User::create([
+                'name'     => $data['username'],
+                'email'    => $data['email'],
+                'password' => bcrypt($data['password']),
+            ]);
+
+            return $this->service->create($user, $data['password']);
+        });
     }
 }

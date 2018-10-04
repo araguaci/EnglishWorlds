@@ -20,8 +20,8 @@ PS: Heroku is not using a [CDN](https://en.wikipedia.org/wiki/Content_delivery_n
 
 The following are required to function properly.
 
-*	[PHP 7.0+](http://php.net/manual/en/install.php)
-* [Laravel 5.5+](https://laravel.com/docs/5.5#installation)
+*	[PHP 7.1.3+](http://php.net/manual/en/install.php)
+* [Laravel 5.6+](https://laravel.com/docs/5.5#installation)
 * [MySQL 5.7+](https://dev.mysql.com/doc/refman/5.7/en/installing.html)
 *	[Composer](https://getcomposer.org/doc/00-intro.md)
 

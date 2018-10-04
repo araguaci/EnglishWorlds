@@ -1,5 +1,21 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| Heroku database connection
+|--------------------------------------------------------------------------
+|
+| Here I'm parsing the database URL provided in Heroku's config variables.
+| Imploding the string into an array and assigning indexes of it
+| to its respective variable names.
+*/
+
+$url = parse_url(env('DATABASE_URL'));
+$host = $url['host'];
+$username = $url['user'];
+$password = $url['pass'];
+$database = substr($url['path'], 1);
+
 return [
 
     /*
@@ -54,13 +70,19 @@ return [
             'engine'      => null,
         ],
 
+        'testing' => [
+            'driver'   => 'sqlite',
+            'database' => ':memory:',
+            'prefix'   => '',
+        ],
+
         'pgsql' => [
             'driver'   => 'pgsql',
-            'host'     => env('DB_HOST', '127.0.0.1'),
+            'host'     => $host,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
             'port'     => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',

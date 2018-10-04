@@ -1,57 +1,41 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('title', 'Login')
 
 @section('content')
 
 <div class="ui fluid container">
-    <div class="ui two column grid">
+    <div class="ui three column grid">
         <div class="column centered">
-          <div class="ui segments">
-            <div class="ui secondary segment">
-              <p>{{ __('Login') }}</p>
+            <h1>Login</h1>
+            <form class="ui form" method="POST" action="/login">
+                {!! csrf_field() !!}
+
+                <div class="field">
+                    <label>Email or username</label>
+                    <input type="text" name="login" placeholder="Email or username" value="{{ old('email') }}">
+                </div>
+
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Password" id="password">
+                </div>
+
+                <div class="field">
+                    <label>
+                        Remember Me <input type="checkbox" name="remember">
+                    </label>
+                </div>
+
+                <div class="field">
+                    <a class="ui violet button left" href="/password/reset">Forgot Password</a>
+                    <button class="ui primary button right floated" type="submit">Login</button>
+                </div>
+            </form>
+
+            <div class="floated left raw-margin-top-24">
+                <a class="ui button green fluid" href="/#register">Register</a>
             </div>
-            <div class="ui segment">
-              <form class="ui form" method="POST" action="{{ route('login') }}">
-                  @csrf
-
-                  <div class="field {{ $errors->has('login') ? 'error' : ''}}">
-                      <label for="login">{{ __('Email or username') }}</label>
-                      <input id="login" type="text" name="login" placeholder="{{ __('Email or username') }}" value="{{ old('login') }}" required autofocus />
-                  </div>
-
-                  @if ($errors->has('login'))
-                    <div class="ui error message">
-                      <div class="header">{{ __('Invalid login') }}</div>
-                      <p>{{ $errors->first('login') }}</p>
-                    </div>
-                  @endif
-
-                  <div class="field {{ $errors->has('password') ? 'error' : ''}}">
-                      <label>{{ __('Password') }}</label>
-                      <input type="password" name="password" placeholder="{{ __('Password') }}" id="password" required>
-                  </div>
-
-                  @if ($errors->has('password'))
-                    <div class="ui error message">
-                      <div class="header">{{ __('Incorrect Password') }}</div>
-                      <p>{{ $errors->first('password') }}</p>
-                    </div>
-                  @endif
-
-                  <div class="field">
-                    <div class="ui checkbox">
-
-                      <input type="checkbox" tabindex="0" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                      <label>{{ __('Remember Me') }}</label>
-                    </div>
-                  </div>
-
-                  <div class="field">
-                      <a class="ui button left" href="{{ route('password.request') }}">{{ __('Forgot Password') }}</a>
-                      <button class="ui primary button right floated" type="submit">{{ __('Login') }}</button>
-                  </div>
-              </form>
-            </div>
-          </div>
         </div>
     </div>
 </div>

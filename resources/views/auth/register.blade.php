@@ -1,74 +1,65 @@
-@extends('layouts.app')
-
-@section('content')
-
-<div class="ui fluid container">
-    <div class="ui two column grid">
-        <div class="column centered">
-          <div class="ui segments">
-            <div class="ui secondary segment">
-              <p>{{ __('Register') }}</p>
-            </div>
-            <div class="ui segment">
-              <form class="ui form" method="POST" action="{{ route('register') }}">
-                  @csrf
-
-                  <div class="field {{ $errors->has('username') ? 'error' : ''}}">
-                      <label for="username">{{ __('Username') }}</label>
-                      <input id="username" type="text" name="username" placeholder="{{ __('Username') }}" value="{{ old('username') }}" required autofocus>
-                  </div>
-
-                  @if ($errors->has('username'))
-                    <div class="ui error message">
-                      <div class="header">{{ __('Invalid Username') }}</div>
-                      <p>{{ $errors->first('username') }}</p>
-                    </div>
-                  @endif
-
-                  <div class="field {{ $errors->has('email') ? 'error' : ''}}">
-                      <label for="email">{{ __('Email') }}</label>
-                      <input type="email" name="email" placeholder="{{ __('Email') }}" id="email" required value="{{ old('email') }}">
-                  </div>
-
-                  @if ($errors->has('email'))
-                    <div class="ui error message">
-                      <div class="header">{{ __('Invalid E-mail') }}</div>
-                      <p>{{ $errors->first('email') }}</p>
-                    </div>
-                  @endif
-
-                  <div class="field {{ $errors->has('password') ? 'error' : ''}}">
-                      <label for="password">{{ __('Password') }}</label>
-                      <input type="password" name="password" placeholder="{{ __('Password') }}" id="password" required>
-                  </div>
-
-                  @if ($errors->has('password'))
-                    <div class="ui error message">
-                      <div class="header">{{ __('Invalid Password') }}</div>
-                      <p>{{ $errors->first('password') }}</p>
-                    </div>
-                  @endif
-
-                  <div class="field {{ $errors->has('password_confirmation') ? 'error' : ''}}">
-                      <label for="password_confirmation">{{ __('Confirm Password') }}</label>
-                      <input type="password" name="password_confirmation" placeholder="{{ __('Confirm Password') }}" id="password_confirmation" required>
-                  </div>
-
-                  @if ($errors->has('password_confirmation'))
-                    <div class="ui error message">
-                      <div class="header">{{ __('Incorrect Password') }}</div>
-                      <p>{{ $errors->first('password_confirmation') }}</p>
-                    </div>
-                  @endif
-
-                  <div class="field">
-                      <button class="ui primary button" type="submit">{{ __('Register') }}</button>
-                  </div>
-              </form>
-            </div>
+<div class="ui inverted raised very padded container segment">
+  <div class="ui centered container">
+    <form class="ui inverted big form" method="POST" id="signup" action="/register">
+      <h2 class="ui inverted centered header">Sign up Now</h2>
+          {{ csrf_field() }}
+          <div class="field">
+              <label>Username</label>
+              <input type="text" placeholder="Username" name="username">
+              @if($errors->has('username'))
+               <div class="ui tiny negative message">
+                   <i class="warning circular icon"></i>
+                   {{ $errors->first('username') }}
+               </div>
+              @endif
+          </div>
+          <div class="field">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="Example@example.com" class="ui input" autocomplete="email">
+            @if($errors->has('email'))
+             <div class="ui tiny negative message">
+               <i class="warning circular icon"></i>
+               {{ $errors->first('email') }}
+             </div>
+            @endif
+          </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="Password" class="ui input" autocomplete="new-password">
+            @if($errors->has('password'))
+             <div class="ui tiny negative message">
+               <i class="warning circular icon"></i>
+               {{ $errors->first('password') }}
+             </div>
+            @endif
+          </div>
+          <div class="field">
+            <label>Password Confirmation</label>
+            <input type="password" name="password_confirmation" placeholder="Password Confirmation" class="ui input" autocomplete="new-password">
+            @if($errors->has('password_confirmation'))
+             <div class="ui tiny negative message">
+               <i class="warning circular icon"></i>
+               {{ $errors->first('password_confirmation') }}
+             </div>
+            @endif
           </div>
         </div>
-    </div>
+        <div class="inline field">
+            <div class="ui slider checkbox">
+                <input type="checkbox" name="terms_and_conditions">
+                <label>I agree to <a href="{{ url('/terms') }}">the Terms and Conditions</a></label>
+                @if($errors->has('terms_and_conditions'))
+                 <div class="ui tiny negative message">
+                   <i class="warning circular icon"></i>
+                   {{ $errors->first('terms_and_conditions') }}
+                 </div>
+                @endif
+            </div>
+        </div>
+        <div>
+          <input type="submit" class="ui inverted fluid basic button" value="Sign up">
+        </div>
+    </form>
 </div>
-
-@endsection
+</div>

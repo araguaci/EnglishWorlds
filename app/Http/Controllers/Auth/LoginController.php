@@ -4,24 +4,13 @@ namespace English\Http\Controllers\Auth;
 
 use English\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
-
     /**
-     * Where to redirect users after login.
+     * Where to redirect users after login / registration.
      *
      * @var string
      */
@@ -34,34 +23,39 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest', ['except' => 'logout']);
     }
 
     /**
-     * Get the login username to be used by the controller.
+     * Check user's role and redirect user based on their role.
      *
-     * @return string
+     * @return
      */
-    public function username()
+    public function authenticated()
     {
-        return 'login';
+        return redirect('/');
     }
 
-    /**
-     * Get the needed authorization credentials from the request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     *
-     * @return array
-     */
-    protected function credentials()
+    public function login(Request $request)
     {
-        $login = request()->get('login');
-        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        $this->validate($request, [
+        'login'    => 'required',
+        'password' => 'required',
+    ]);
+        $login_type = filter_var($request->input('login'), FILTER_VALIDATE_EMAIL)
+        ? 'email'
+        : 'name';
+        $request->merge([
+        $login_type => $request->input('login'),
+    ]);
+        if (\Auth::attempt($request->only($login_type, 'password'))) {
+            return redirect()->intended($this->redirectPath());
+        }
 
-        return [
-             $field     => $login,
-             'password' => request()->get('password'),
-         ];
+        return redirect()->back()
+        ->withInput()
+        ->withErrors([
+            'login' => 'These credentials do not match our records.',
+        ]);
     }
 }

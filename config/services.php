@@ -35,4 +35,10 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'github' => [
+        'client_id'     => 'id code',
+        'client_secret' => 'secret code',
+        'redirect'      => 'http://your-domain/auth/github/callback',
+        'scopes'        => ['user:email'],
+    ],
 ];

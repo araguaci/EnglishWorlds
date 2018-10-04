@@ -14,7 +14,7 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'English\Events\Event' => [
-            'English\Listeners\EventListener',
+            'English\Listeners\UserRegisteredEmailListener',
         ],
     ];
 

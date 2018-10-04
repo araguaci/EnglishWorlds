@@ -2,7 +2,6 @@
 
 namespace English\Providers;
 
-use English\Tag;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,11 +13,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Aliasing Components subdirectory
-        // See https://laravel.com/docs/5.6/blade#components-and-slots
-        \Blade::component('components.segment', 'segment');
-        \View::composer('*', function ($view) {
-            $view->with('tags', Tag::all());
+        // Force routes to HTTPS in production
+        if (env('APP_ENV') === 'production') {
+            \URL::forceScheme('https');
+        }
+        // Extend the functionality of the default validation to include old password hash check
+        \Validator::extend('password_hash_check', function ($attributes, $value, $parameters, $validator) {
+            return Hash::check($value, $parameters[0]);
         });
     }
 
@@ -29,8 +30,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        \Blade::directive('render', function ($component) {
-            return "<?php echo (app($component))->toHtml(); ?>";
+        $loader = \Illuminate\Foundation\AliasLoader::getInstance();
+        $loader->alias('Notifications', \English\Facades\Notifications::class);
+        $this->app->singleton('NotificationService', function ($app) {
+            return app(\English\Services\NotificationService::class);
         });
     }
 }

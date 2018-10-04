@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'English DZ'),
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -110,6 +110,23 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Logging Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the log settings for your application. Out of
+    | the box, Laravel uses the Monolog PHP logging library. This gives
+    | you a variety of powerful log handlers / formatters to utilize.
+    |
+    | Available Settings: "single", "daily", "syslog", "errorlog"
+    |
+    */
+
+    'log' => env('APP_LOG', 'single'),
+
+    'log_level' => env('APP_LOG_LEVEL', 'debug'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
@@ -150,15 +167,18 @@ return [
         /*
          * Package Service Providers...
          */
-        Laravel\Dusk\DuskServiceProvider::class,
-        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         /*
          * Application Service Providers...
          */
+        English\Providers\ActivityServiceProvider::class,
         English\Providers\AppServiceProvider::class,
         English\Providers\AuthServiceProvider::class,
-        // English\Providers\BroadcastServiceProvider::class,
+        English\Providers\BroadcastServiceProvider::class,
         English\Providers\EventServiceProvider::class,
+        English\Providers\FeatureServiceProvider::class,
         English\Providers\RouteServiceProvider::class,
 
     ],
@@ -192,6 +212,9 @@ return [
         'File'         => Illuminate\Support\Facades\File::class,
         'Gate'         => Illuminate\Support\Facades\Gate::class,
         'Hash'         => Illuminate\Support\Facades\Hash::class,
+        'Image'        => Intervention\Image\Facades\Image::class,
+        'JWTAuth'      => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory'   => Tymon\JWTAuth\Facades\JWTFactory::class,
         'Lang'         => Illuminate\Support\Facades\Lang::class,
         'Log'          => Illuminate\Support\Facades\Log::class,
         'Mail'         => Illuminate\Support\Facades\Mail::class,
@@ -204,8 +227,8 @@ return [
         'Response'     => Illuminate\Support\Facades\Response::class,
         'Route'        => Illuminate\Support\Facades\Route::class,
         'Schema'       => Illuminate\Support\Facades\Schema::class,
-        'Sentry'       => Sentry\SentryLaravel\SentryFacade::class,
         'Session'      => Illuminate\Support\Facades\Session::class,
+        'Socialite'    => Laravel\Socialite\Facades\Socialite::class,
         'Storage'      => Illuminate\Support\Facades\Storage::class,
         'URL'          => Illuminate\Support\Facades\URL::class,
         'Validator'    => Illuminate\Support\Facades\Validator::class,

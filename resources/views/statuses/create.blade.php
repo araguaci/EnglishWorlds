@@ -1,27 +1,18 @@
-<div class="ui centered segment">
-  <form id="post-status-form" class="ui form {{ $errors->any() ? 'error' : ''}}" action="{{ route('statuses') }}" method="post">
-    @csrf
-    <div class="inline field {{ $errors->has('body') ? 'error' : ''}}">
-      <label for="status">Write status</label>
-      <div class="ui action input {{ $errors->has('body') ? 'error' : ''}}">
-        <input type="text" autocomplete="off" name="body" value="{{ old('body') }}" onsubmit="this.form.submit()" id="status">
-        <div class="inline field {{ $errors->has('tags') ? 'error' : ''}}">
-          <select name="tags[]" multiple="" class="ui search dropdown" id="tags">
-            <option value="">Select Tag(s)</option>
-            @foreach ($tags as $tag)
-              <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-            @endforeach
-          </select>
-        </div>
-      </div>
-    </div>
-    @if ($errors->any())
-      <div class="ui error compact message">
-        <div class="header">Could not post status</div>
-        @foreach ($errors->all() as $error)
-          <p>{{ $error }}</p>
-        @endforeach
-      </div>
-    @endif
+<div class="ui inverted raised segment">
+  <form role="form" enctype="multipart/form-data" class="ui inverted form error" @submit.prevent="post">
+    <label for="image" class="ui icon button">
+      <i class="image icon"></i>
+      Add Image
+    </label>
+    <input type="file" id="image" name="image[]" accept='image/*' style="display:none" multiple>
+    <hr>
+    	<div class="field{{ $errors->has('status') ? ' has-error' : '' }}">
+    		<textarea placeholder="What's up {{ Auth::user()->name }}?" name="body" required id="status" rows="2" cols="40" v-model="status" @keyup="enable">
+        </textarea>
+    	</div>
+  		@if ($errors->has('status'))
+  			<span class="help-block">{{ $errors->first('status') }}</span>
+  		@endif
+      <button type="submit" class="ui primary button" :disabled="is_disabled">Update status</button>
   </form>
 </div>
