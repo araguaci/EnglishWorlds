@@ -1,8 +1,8 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "name": "CaddyDz/EnglishWorlds",
+    "description": "Social network for non native English speakers",
+    "keywords": ["social", "english"],
+    "license": "GPL",
     "type": "project",
     "require": {
         "php": "^7.1.3",
