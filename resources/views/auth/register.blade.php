@@ -5,7 +5,7 @@
           {{ csrf_field() }}
           <div class="field">
               <label>Username</label>
-              <input type="text" placeholder="Username" name="username">
+              <input type="text" placeholder="Username" name="username" value="{{ old('username') }}">
               @if($errors->has('username'))
                <div class="ui tiny negative message">
                    <i class="warning circular icon"></i>
@@ -15,7 +15,7 @@
           </div>
           <div class="field">
             <label>Email</label>
-            <input type="email" name="email" placeholder="Example@example.com" class="ui input" autocomplete="email">
+            <input type="email" name="email" placeholder="Example@example.com" class="ui input" autocomplete="email" value="{{ old('email') }}">
             @if($errors->has('email'))
              <div class="ui tiny negative message">
                <i class="warning circular icon"></i>
