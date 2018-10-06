@@ -19,10 +19,10 @@
       <!-- Authentication Links -->
       @guest
         <a href="{{ route('login') }}" class="header item">
-          {{ __('Login') }}
+          Login
         </a>
         <a href="{{ route('register') }}" class="header item">
-          {{ __('Register') }}
+          Register
         </a>
       @else
         <div class="ui dropdown header item">
@@ -35,7 +35,7 @@
             <a class="item" href="{{ route('logout') }}"
                onclick="event.preventDefault();
                              document.getElementById('logout-form').submit();">
-                {{ __('Logout') }}
+                Logout
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
