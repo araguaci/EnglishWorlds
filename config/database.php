@@ -10,12 +10,6 @@
 | to its respective variable names.
 */
 
-$url = parse_url(env('DATABASE_URL'));
-$host = $url['host'];
-$username = $url['user'];
-$password = $url['pass'];
-$database = substr($url['path'], 1);
-
 return [
 
     /*
@@ -78,10 +72,10 @@ return [
 
         'pgsql' => [
             'driver'   => 'pgsql',
-            'host'     => $host,
-            'database' => $database,
-            'username' => $username,
-            'password' => $password,
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
             'port'     => env('DB_PORT', '5432'),
             'charset'  => 'utf8',
             'prefix'   => '',
