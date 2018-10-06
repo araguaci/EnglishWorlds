@@ -1,15 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Heroku database connection
-|--------------------------------------------------------------------------
-|
-| Here I'm parsing the database URL provided in Heroku's config variables.
-| Imploding the string into an array and assigning indexes of it
-| to its respective variable names.
-*/
-
 return [
 
     /*
