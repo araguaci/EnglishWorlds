@@ -131,10 +131,11 @@
   ;
 }
 #body.index .masthead .container {
-  height: 55vh;
+  height: 100vh;
   margin-left: auto !important;
   margin-right: auto !important;
   min-height: 600px;
+  margin-bottom: 15px;
 
   -webkit-box-align: center;
   -webkit-align-items: center;
