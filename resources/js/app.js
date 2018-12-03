@@ -14,16 +14,16 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+window.Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-const app = new Vue({
+new window.Vue({
     el: '#app'
 });
 
-$(document).ready(function() {
-  $('.ui.dropdown').dropdown();
-  $('.ui.search.dropdown').dropdown({maxSelections: 5});
-  $('#post-status-form').form({
+window.$(document).ready(function() {
+  window.$('.ui.dropdown').dropdown();
+  window.$('.ui.search.dropdown').dropdown({maxSelections: 5});
+  window.$('#post-status-form').form({
     on: 'blur',
     fields: {
       body: {
