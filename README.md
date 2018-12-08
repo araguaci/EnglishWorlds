@@ -10,6 +10,7 @@ As such, all unit tests are failing at the moment for the master branch in contr
 [![Laravel](https://img.shields.io/badge/Powered%20by-Laravel%20Framework-red.svg)](https://laravel.com/)
 [![Gitter](https://img.shields.io/gitter/room/EnglishDz/Lobby.svg?style=flat-square)](https://gitter.im/EnglishDz/Lobby)
 [![StyleCI](https://github.styleci.io/repos/69740118/shield?branch=develop)](https://github.styleci.io/repos/69740118)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 This is the underlying source code of the English Worlds Social Networking website.  
 The website addresses All active Algerians seeking to either learn or have fun and chat in English online.
