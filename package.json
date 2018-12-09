@@ -19,6 +19,7 @@
         "lato-webfont": "^2.15.1",
         "raleway-webfont": "^3.0.1",
         "semantic-ui-css": "^2.4.1",
-        "vue": "^2.5.17"
+        "vue": "^2.5.17",
+        "vue-infinite-scroll": "^2.0.2"
     }
 }

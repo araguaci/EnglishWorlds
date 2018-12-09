@@ -1,27 +1,43 @@
 {
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es6": true,
-        "node": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:vue/recommended"
-    ],
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        }
-    },
-    "rules": {
-        "no-const-assign": "warn",
-        "no-this-before-super": "warn",
-        "no-undef": "warn",
-        "no-unreachable": "warn",
-        "no-unused-vars": "warn",
-        "constructor-super": "warn",
-        "valid-typeof": "warn",
-        "eqeqeq":"warn"
-    }
+	"env": {
+		"browser": true,
+		"commonjs": true,
+		"es6": true,
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:vue/recommended"
+	],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"rules": {
+		"indent": [2, "tab"],
+		"no-tabs": 0,
+		"no-undef": 0,
+		"no-const-assign": "error",
+		"no-this-before-super": "error",
+		"no-unreachable": "error",
+		"no-unused-vars": "error",
+		"constructor-super": "error",
+		"valid-typeof": "error",
+		"no-multi-spaces": "error",
+		"eqeqeq": "error",
+		"vue/html-indent": 0,
+		"vue/html-closing-bracket-newline": ["error", {
+			"singleline": "never",
+			"multiline": "never"
+		}],
+		"vue/max-attributes-per-line": ["error", {
+			"singleline": 3,
+			"multiline": {
+				"max": 1,
+				"allowFirstLine": false
+			}
+		}],
+		"no-console": 0
+	}
 }

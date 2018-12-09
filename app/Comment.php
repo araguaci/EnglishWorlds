@@ -6,15 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $fillable = ['user_id', 'status_id', 'body'];
+	protected $appends = ['ownerName', 'longAgo'];
 
-    public function ownerName()
-    {
-        return $this->owner->username;
-    }
+	protected $fillable = ['user_id', 'status_id', 'body'];
 
-    public function owner()
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+	public function getOwnerNameAttribute()
+	{
+		return $this->owner->username;
+	}
+
+	public function getLongAgoAttribute()
+	{
+		return $this->created_at->diffForHumans();
+	}
+
+	public function owner()
+	{
+		return $this->belongsTo(User::class, 'user_id');
+	}
 }
