@@ -25,18 +25,6 @@ class EngageInStatusTest extends TestCase
      */
 
     /** @test */
-    public function an_authenticated_user_may_engage_in_a_status()
-    {
-        // Set the currently logged in user for the application.
-        $this->login();
-
-        $this->post($this->status->path().'/comment', $this->comment);
-
-        $this->get($this->status->path())
-          ->assertSee($this->comment['body']);
-    }
-
-    /** @test */
     public function a_comment_required_a_body()
     {
         $this->login();
