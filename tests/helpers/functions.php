@@ -1,6 +1,6 @@
 <?php
 
-function create($model, $properties = [], $method = 'create')
+function create($model, $properties = [], $method = 'create', $times = null)
 {
-    return factory($model)->$method($properties);
+	return factory($model, $times)->$method($properties);
 }

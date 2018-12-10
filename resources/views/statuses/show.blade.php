@@ -23,7 +23,7 @@
 						</div>
 					</form>
 					@else
-						<div class="ui center aligned container">
+						<div class="ui fluid center aligned container">
 							<div class="ui compact floating message">
 								<p>Please <a href="{{ route('login') }}">Login</a> to comment.</p>
 							</div>

@@ -28,7 +28,7 @@ class StatusesController extends Controller
 	/**
 	 * Display a listing of the statuses.
 	 *
-	 * @param Tag           $tag
+	 * @param Tag $tag
 	 * @param StatusFilters $filters
 	 *
 	 * @return \Illuminate\Http\Response
@@ -36,7 +36,6 @@ class StatusesController extends Controller
 	public function index(Tag $tag, StatusFilters $filters)
 	{
 		$statuses = $this->getStatuses($tag, $filters);
-
 		return view('statuses.index', compact('statuses'));
 	}
 
@@ -50,18 +49,18 @@ class StatusesController extends Controller
 	public function store(Request $request)
 	{
 		$this->validate($request, [
-		  'body'   => 'required',
-		  'tags'   => 'required|between:1,5',
-		  'tags.*' => 'exists:tags,id|distinct',
+			'body'   => 'required',
+			'tags'   => 'required|between:1,5',
+			'tags.*' => 'exists:tags,id|distinct',
 		], [
-		  'tags.between'  => 'You can only choose up to 5 tags',
-		  'tags.required' => 'You must pick at least 1 tag',
-		  'body.required' => 'Can\'t post an empty status',
+			'tags.between'  => 'You can only choose up to 5 tags',
+			'tags.required' => 'You must pick at least 1 tag',
+			'body.required' => 'Can\'t post an empty status',
 		]);
 
 		$status = Status::create([
-		  'user_id' => auth()->id(),
-		  'body'    => $request->body,
+			'user_id' => auth()->id(),
+			'body'    => $request->body,
 		]);
 
 		foreach ($request->tags as $tag) {

@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
 				$statuses = factory('English\Status', 50)->create();
 				// Let's find a way to attach some tags to each status
 				$statuses->each(function ($status) {
-					factory('English\Comment', 100)->create([
+					factory('English\Comment', 20)->create([
 						'status_id' => $status->id,
 					]);
 					$status->tags()->attach(rand(1, 4));
