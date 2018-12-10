@@ -25,18 +25,6 @@ class StatusesController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
-    /**
-     * Display a listing of the statuses.
-     *
-     * @param Tag           $tag
-     * @param StatusFilters $filters
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Tag $tag, StatusFilters $filters)
-    {
-        $statuses = $this->getStatuses($tag, $filters);
-
 	/**
 	 * Display a listing of the statuses.
 	 *
