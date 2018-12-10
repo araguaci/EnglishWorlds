@@ -7,7 +7,7 @@ This means it is currently under active development and still contains known bug
 As such, all unit tests are failing at the moment for the master branch in contrast to develop branch
 ```
 [![Build Status](https://travis-ci.org/CaddyDz/EnglishWorlds.svg?branch=develop)](https://travis-ci.org/CaddyDz/EnglishWorlds)
-[![codecov](https://codecov.io/gh/CaddyDz/EnglishWorlds/branch/master/graph/badge.svg)](https://codecov.io/gh/CaddyDz/EnglishWorlds)
+[![codecov](https://codecov.io/gh/CaddyDz/EnglishWorlds/branch/develop/graph/badge.svg)](https://codecov.io/gh/CaddyDz/EnglishWorlds)
 [![Laravel](https://img.shields.io/badge/Powered%20by-Laravel%20Framework-red.svg)](https://laravel.com/)
 [![Gitter](https://img.shields.io/gitter/room/EnglishDz/Lobby.svg?style=flat-square)](https://gitter.im/EnglishDz/Lobby)
 [![StyleCI](https://github.styleci.io/repos/69740118/shield?branch=develop)](https://github.styleci.io/repos/69740118)
