@@ -8,9 +8,10 @@ As such, all unit tests are failing at the moment for the master branch in contr
 ```
 [![Build Status](https://travis-ci.org/CaddyDz/EnglishWorlds.svg?branch=develop)](https://travis-ci.org/CaddyDz/EnglishWorlds)
 [![codecov](https://codecov.io/gh/CaddyDz/EnglishWorlds/branch/develop/graph/badge.svg)](https://codecov.io/gh/CaddyDz/EnglishWorlds)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/CaddyDz/EnglishWorlds/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/CaddyDz/EnglishWorlds/?branch=develop)
+[![StyleCI](https://github.styleci.io/repos/69740118/shield?branch=develop)](https://github.styleci.io/repos/69740118)
 [![Laravel](https://img.shields.io/badge/Powered%20by-Laravel%20Framework-red.svg)](https://laravel.com/)
 [![Gitter](https://img.shields.io/gitter/room/EnglishDz/Lobby.svg?style=flat-square)](https://gitter.im/EnglishDz/Lobby)
-[![StyleCI](https://github.styleci.io/repos/69740118/shield?branch=develop)](https://github.styleci.io/repos/69740118)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 This is the underlying source code of the English Worlds Social Networking website.  
