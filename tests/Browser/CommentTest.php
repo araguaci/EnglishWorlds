@@ -10,7 +10,7 @@ class CommentTest extends DuskTestCase
     private $status;
     private $comment;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->user = create('English\User');
