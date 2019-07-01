@@ -21,30 +21,29 @@ class StatusTest extends TestCase
      */
 
     /** @test */
-    public function a_status_has_comments()
+    public function aStatusHasComments()
     {
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->status->comments);
     }
 
     /** @test */
-    public function it_has_an_owner()
+    public function itHasAnOwner()
     {
         $this->assertInstanceOf('English\User', $this->status->owner);
     }
 
     /** @test */
-    public function it_can_has_a_comment()
+    public function itCanHaveAComment()
     {
         $this->status->addComment([
-        'body'    => 'Foobar',
-        'user_id' => 1,
-      ]);
-
+            'body'    => 'Foobar',
+            'user_id' => 1,
+        ]);
         $this->assertCount(1, $this->status->comments);
     }
 
     /** @test */
-    public function it_has_a_tag()
+    public function itHasATag()
     {
         $status = create('English\Status');
         $status->tags()->attach(create('English\Tag'));

@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Support\Carbon;
 use Tests\TestCase;
 
 class ReadStatusesTest extends TestCase
@@ -16,7 +15,7 @@ class ReadStatusesTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_view_all_statuses()
+    public function aUserCanViewAllStatuses()
     {
         // Hit the root route and assert that the created status body can be seen
         $this->get('/')
@@ -24,7 +23,7 @@ class ReadStatusesTest extends TestCase
     }
 
     /** @test */
-    public function they_can_read_a_single_status()
+    public function theyCanReadASingleStatus()
     {
         // Create a status
         $this->get($this->status->path())
@@ -32,7 +31,7 @@ class ReadStatusesTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_filter_statuses_according_to_a_tag()
+    public function aUserCanFilterStatusesByTag()
     {
         $tag = create('English\Tag');
         $statusInTag = create('English\Status');
@@ -44,7 +43,7 @@ class ReadStatusesTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_filter_statuses_according_to_a_user()
+    public function aUserCanFilterStatusesByUser()
     {
         $this->login(create('English\User', ['username' => 'JohnDoe']));
 
@@ -58,22 +57,20 @@ class ReadStatusesTest extends TestCase
     }
 
     /** @test */
-    public function a_user_can_filter_statuses_by_popularity()
+    public function aUserCanFilterStatusesByPopularity()
     {
-        // This way we don't get a false green caused by all three threads getting created in the same second.
-        $statusWithTwoComments = create('English\Status', ['created_at' => new Carbon('-2 minutes')]);
+        // This way we don't get a false green caused by all three statuses getting created in the same second.
+        $statusWithTwoComments = create('English\Status', ['created_at' => now()->subMinutes(2)]);
         create('English\Comment', ['status_id' => $statusWithTwoComments->id], 'create', 2);
 
-        $statusWithThreeComments = create('English\Status', ['created_at' => new Carbon('-1 minutes')]);
+        $statusWithThreeComments = create('English\Status', ['created_at' => now()->subMinute()]);
         create('English\Comment', ['status_id' => $statusWithThreeComments->id], 'create', 3);
-
-        $statusWithZeroComments = $this->status;
 
         $response = $this->getJson('/?popular');
         $response->assertSeeInOrder([
             '3 comments',
             '2 comments',
-            '0 comments',
+            '0 comments', // Status created in constructor
         ]);
     }
 }

@@ -25,7 +25,7 @@ class EngageInStatusTest extends TestCase
      */
 
     /** @test */
-    public function a_comment_required_a_body()
+    public function aCommentRequiresABody()
     {
         $this->login();
         $comment = create('English\Comment', ['body' => null], 'raw');
@@ -41,7 +41,7 @@ class EngageInStatusTest extends TestCase
      */
 
     /** @test */
-    public function unauthenticated_users_shall_not_comment()
+    public function unauthenticatedUsersShallNotComment()
     {
         $this->withoutExceptionHandling();
         $this->expectException('Illuminate\Auth\AuthenticationException');

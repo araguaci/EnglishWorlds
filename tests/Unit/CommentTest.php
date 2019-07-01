@@ -7,7 +7,7 @@ use Tests\TestCase;
 class CommentTest extends TestCase
 {
     /** @test */
-    public function a_comment_has_an_owner()
+    public function aCommentHasAnOwner()
     {
         $this->assertInstanceOf('English\User', create('English\Comment')->owner);
     }

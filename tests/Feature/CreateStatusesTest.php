@@ -18,7 +18,7 @@ class CreateStatusesTest extends TestCase
      */
 
     /** @test */
-    public function guests_shall_not_create_statuses()
+    public function guestsShallNotCreateStatuses()
     {
         $this->get('/')->assertDontSee('Write status');
         $this->withoutExceptionHandling();
@@ -41,7 +41,7 @@ class CreateStatusesTest extends TestCase
      */
 
     /** @test */
-    public function users_can_create_statuses()
+    public function usersCanCreateStatuses()
     {
         $this->login();
         $status = create('English\Status', [], 'raw');
@@ -51,14 +51,14 @@ class CreateStatusesTest extends TestCase
     }
 
     /** @test */
-    public function a_status_requires_a_body()
+    public function aStatusRequiresABody()
     {
         $this->publishStatus(['body' => null])
              ->assertSessionHasErrors('body');
     }
 
     /** @test */
-    public function a_status_requires_a_tag()
+    public function aStatusRequiresATag()
     {
         factory('English\Tag', 2)->create();
 
