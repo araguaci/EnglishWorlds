@@ -2,9 +2,9 @@
 
 namespace Tests\Browser;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class LoginTest extends DuskTestCase
 {
@@ -17,7 +17,7 @@ class LoginTest extends DuskTestCase
      */
 
     /** @test */
-    public function a_user_can_login()
+    public function aUserCanLogin()
     {
         $user = create('English\User', ['email' => 'salim@english.dz']);
 

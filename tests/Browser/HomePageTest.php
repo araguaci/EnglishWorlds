@@ -2,8 +2,8 @@
 
 namespace Tests\Browser;
 
-use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
 
 class HomePageTest extends DuskTestCase
 {
@@ -14,7 +14,7 @@ class HomePageTest extends DuskTestCase
      */
 
     /** @test */
-    public function the_app_name_is_visible_on_home_page()
+    public function theAppNameIsVisibleOnTheHomePage()
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')

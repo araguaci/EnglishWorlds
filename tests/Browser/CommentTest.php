@@ -28,7 +28,7 @@ class CommentTest extends DuskTestCase
      */
 
     /** @test */
-    public function an_authenticated_user_may_engage_in_a_status()
+    public function anAuthenticatedUserMayEngageInAStatus()
     {
         $user = $this->user;
         $status = $this->status;
@@ -51,7 +51,7 @@ class CommentTest extends DuskTestCase
      */
 
     /** @test */
-    public function they_can_read_comments_that_are_associated_with_a_status()
+    public function theyCanReadCommentsThatAreAssociatedWithAStatus()
     {
         $user = $this->user;
         $status = $this->status;
