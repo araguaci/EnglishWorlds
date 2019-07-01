@@ -11,10 +11,10 @@
     },
     "devDependencies": {
         "cross-env": "^5.1",
-        "laravel-mix": "^2.0"
+        "laravel-mix": "^4.0.7"
     },
     "dependencies": {
-        "axios": "^0.18.0",
+        "axios": "^0.19",
         "jquery": "^3.2.1",
         "lato-webfont": "^2.15.1",
         "raleway-webfont": "^3.0.1",
