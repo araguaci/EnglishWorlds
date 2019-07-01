@@ -150,8 +150,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Laravel\Dusk\DuskServiceProvider::class,
-        Sentry\SentryLaravel\SentryLaravelServiceProvider::class,
         /*
          * Application Service Providers...
          */
