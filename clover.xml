@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1561997500">
-  <project timestamp="1561997500">
+<coverage generated="1562000710">
+  <project timestamp="1562000710">
     <package name="English">
       <file name="/home/caddy/Sites/English/app/Comment.php">
         <class name="English\Comment" namespace="English">
@@ -74,14 +74,16 @@
     <package name="English\Exceptions">
       <file name="/home/caddy/Sites/English/app/Exceptions/Handler.php">
         <class name="English\Exceptions\Handler" namespace="English\Exceptions">
-          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
+          <metrics complexity="4" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="7" coveredelements="5"/>
         </class>
-        <line num="38" type="method" name="report" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="38" type="method" name="report" visibility="public" complexity="3" crap="3.14" count="4"/>
+        <line num="40" type="stmt" count="4"/>
+        <line num="41" type="stmt" count="0"/>
         <line num="43" type="stmt" count="4"/>
         <line num="44" type="stmt" count="4"/>
         <line num="54" type="method" name="render" visibility="public" complexity="1" crap="1" count="4"/>
         <line num="56" type="stmt" count="4"/>
-        <metrics loc="58" ncloc="23" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
+        <metrics loc="58" ncloc="29" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="7" coveredelements="5"/>
       </file>
     </package>
     <package name="English\Filters">
@@ -364,6 +366,6 @@
         <metrics loc="17" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
       </file>
     </package>
-    <metrics files="29" loc="1108" ncloc="697" classes="22" methods="50" coveredmethods="32" conditionals="0" coveredconditionals="0" statements="119" coveredstatements="76" elements="169" coveredelements="108"/>
+    <metrics files="29" loc="1108" ncloc="703" classes="22" methods="50" coveredmethods="31" conditionals="0" coveredconditionals="0" statements="121" coveredstatements="77" elements="171" coveredelements="108"/>
   </project>
 </coverage>
