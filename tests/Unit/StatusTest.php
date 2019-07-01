@@ -6,7 +6,7 @@ use Tests\TestCase;
 
 class StatusTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         // Create a status globally
         parent::setUp();

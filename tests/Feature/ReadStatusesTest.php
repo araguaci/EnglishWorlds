@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 class ReadStatusesTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         // Create a status globally
         parent::setUp();
