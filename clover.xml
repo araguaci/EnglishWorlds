@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1544453565">
-  <project timestamp="1544453565">
+<coverage generated="1561997500">
+  <project timestamp="1561997500">
     <package name="English">
-      <file name="/home/vagrant/code/English/app/Comment.php">
+      <file name="/home/caddy/Sites/English/app/Comment.php">
         <class name="English\Comment" namespace="English">
           <metrics complexity="3" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="1" elements="6" coveredelements="2"/>
         </class>
@@ -14,7 +14,7 @@
         <line num="25" type="stmt" count="1"/>
         <metrics loc="27" ncloc="27" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="1" elements="6" coveredelements="2"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Status.php">
+      <file name="/home/caddy/Sites/English/app/Status.php">
         <class name="English\Status" namespace="English">
           <metrics complexity="8" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="20" coveredelements="20"/>
         </class>
@@ -40,7 +40,7 @@
         <line num="51" type="stmt" count="6"/>
         <metrics loc="53" ncloc="53" classes="1" methods="8" coveredmethods="8" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="12" elements="20" coveredelements="20"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Tag.php">
+      <file name="/home/caddy/Sites/English/app/Tag.php">
         <class name="English\Tag" namespace="English">
           <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
         </class>
@@ -50,7 +50,7 @@
         <line num="16" type="stmt" count="2"/>
         <metrics loc="18" ncloc="18" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
       </file>
-      <file name="/home/vagrant/code/English/app/User.php">
+      <file name="/home/caddy/Sites/English/app/User.php">
         <class name="English\User" namespace="English">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
@@ -58,7 +58,7 @@
       </file>
     </package>
     <package name="English\Console">
-      <file name="/home/vagrant/code/English/app/Console/Kernel.php">
+      <file name="/home/caddy/Sites/English/app/Console/Kernel.php">
         <class name="English\Console\Kernel" namespace="English\Console">
           <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
         </class>
@@ -72,22 +72,20 @@
       </file>
     </package>
     <package name="English\Exceptions">
-      <file name="/home/vagrant/code/English/app/Exceptions/Handler.php">
+      <file name="/home/caddy/Sites/English/app/Exceptions/Handler.php">
         <class name="English\Exceptions\Handler" namespace="English\Exceptions">
-          <metrics complexity="4" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="7" coveredelements="5"/>
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
         </class>
-        <line num="38" type="method" name="report" visibility="public" complexity="3" crap="3.14" count="4"/>
-        <line num="40" type="stmt" count="4"/>
-        <line num="41" type="stmt" count="0"/>
+        <line num="38" type="method" name="report" visibility="public" complexity="1" crap="1" count="4"/>
         <line num="43" type="stmt" count="4"/>
         <line num="44" type="stmt" count="4"/>
         <line num="54" type="method" name="render" visibility="public" complexity="1" crap="1" count="4"/>
         <line num="56" type="stmt" count="4"/>
-        <metrics loc="58" ncloc="29" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="4" elements="7" coveredelements="5"/>
+        <metrics loc="58" ncloc="23" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
       </file>
     </package>
     <package name="English\Filters">
-      <file name="/home/vagrant/code/English/app/Filters/Filters.php">
+      <file name="/home/caddy/Sites/English/app/Filters/Filters.php">
         <class name="English\Filters\Filters" namespace="English\Filters">
           <metrics complexity="5" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="11" coveredelements="11"/>
         </class>
@@ -104,7 +102,7 @@
         <line num="64" type="stmt" count="6"/>
         <metrics loc="66" ncloc="36" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="11" coveredelements="11"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Filters/StatusFilters.php">
+      <file name="/home/caddy/Sites/English/app/Filters/StatusFilters.php">
         <class name="English\Filters\StatusFilters" namespace="English\Filters">
           <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
         </class>
@@ -118,7 +116,7 @@
       </file>
     </package>
     <package name="English\Http\Controllers">
-      <file name="/home/vagrant/code/English/app/Http/Controllers/ApiController.php">
+      <file name="/home/caddy/Sites/English/app/Http/Controllers/ApiController.php">
         <class name="English\Http\Controllers\ApiController" namespace="English\Http\Controllers">
           <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
         </class>
@@ -128,7 +126,7 @@
         <line num="17" type="stmt" count="0"/>
         <metrics loc="19" ncloc="19" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Http/Controllers/CommentsController.php">
+      <file name="/home/caddy/Sites/English/app/Http/Controllers/CommentsController.php">
         <class name="English\Http\Controllers\CommentsController" namespace="English\Http\Controllers">
           <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="4" elements="11" coveredelements="5"/>
         </class>
@@ -145,13 +143,13 @@
         <line num="38" type="stmt" count="0"/>
         <metrics loc="40" ncloc="28" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="4" elements="11" coveredelements="5"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Http/Controllers/Controller.php">
+      <file name="/home/caddy/Sites/English/app/Http/Controllers/Controller.php">
         <class name="English\Http\Controllers\Controller" namespace="English\Http\Controllers">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="13" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Http/Controllers/HomeController.php">
+      <file name="/home/caddy/Sites/English/app/Http/Controllers/HomeController.php">
         <class name="English\Http\Controllers\HomeController" namespace="English\Http\Controllers">
           <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
         </class>
@@ -162,7 +160,7 @@
         <line num="24" type="stmt" count="0"/>
         <metrics loc="26" ncloc="16" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="5" coveredelements="0"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Http/Controllers/StatusesController.php">
+      <file name="/home/caddy/Sites/English/app/Http/Controllers/StatusesController.php">
         <class name="English\Http\Controllers\StatusesController" namespace="English\Http\Controllers">
           <metrics complexity="6" methods="5" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="12" elements="21" coveredelements="16"/>
         </class>
@@ -191,7 +189,7 @@
       </file>
     </package>
     <package name="English\Http\Controllers\Auth">
-      <file name="/home/vagrant/code/English/app/Http/Controllers/Auth/ForgotPasswordController.php">
+      <file name="/home/caddy/Sites/English/app/Http/Controllers/Auth/ForgotPasswordController.php">
         <class name="English\Http\Controllers\Auth\ForgotPasswordController" namespace="English\Http\Controllers\Auth">
           <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
         </class>
@@ -200,7 +198,7 @@
         <line num="31" type="stmt" count="0"/>
         <metrics loc="32" ncloc="17" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Http/Controllers/Auth/LoginController.php">
+      <file name="/home/caddy/Sites/English/app/Http/Controllers/Auth/LoginController.php">
         <class name="English\Http\Controllers\Auth\LoginController" namespace="English\Http\Controllers\Auth">
           <metrics complexity="4" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
         </class>
@@ -216,7 +214,7 @@
         <line num="64" type="stmt" count="0"/>
         <metrics loc="67" ncloc="35" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="10" coveredelements="0"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Http/Controllers/Auth/RegisterController.php">
+      <file name="/home/caddy/Sites/English/app/Http/Controllers/Auth/RegisterController.php">
         <class name="English\Http\Controllers\Auth\RegisterController" namespace="English\Http\Controllers\Auth">
           <metrics complexity="3" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="11" coveredelements="0"/>
         </class>
@@ -233,7 +231,7 @@
         <line num="71" type="stmt" count="0"/>
         <metrics loc="74" ncloc="40" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="11" coveredelements="0"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Http/Controllers/Auth/ResetPasswordController.php">
+      <file name="/home/caddy/Sites/English/app/Http/Controllers/Auth/ResetPasswordController.php">
         <class name="English\Http\Controllers\Auth\ResetPasswordController" namespace="English\Http\Controllers\Auth">
           <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="0" elements="3" coveredelements="0"/>
         </class>
@@ -244,7 +242,7 @@
       </file>
     </package>
     <package name="English\Http">
-      <file name="/home/vagrant/code/English/app/Http/Kernel.php">
+      <file name="/home/caddy/Sites/English/app/Http/Kernel.php">
         <class name="English\Http\Kernel" namespace="English\Http">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
@@ -252,13 +250,13 @@
       </file>
     </package>
     <package name="English\Http\Middleware">
-      <file name="/home/vagrant/code/English/app/Http/Middleware/EncryptCookies.php">
+      <file name="/home/caddy/Sites/English/app/Http/Middleware/EncryptCookies.php">
         <class name="English\Http\Middleware\EncryptCookies" namespace="English\Http\Middleware">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="17" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Http/Middleware/RedirectIfAuthenticated.php">
+      <file name="/home/caddy/Sites/English/app/Http/Middleware/RedirectIfAuthenticated.php">
         <class name="English\Http\Middleware\RedirectIfAuthenticated" namespace="English\Http\Middleware">
           <metrics complexity="2" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
         </class>
@@ -268,19 +266,19 @@
         <line num="25" type="stmt" count="0"/>
         <metrics loc="27" ncloc="18" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Http/Middleware/TrimStrings.php">
+      <file name="/home/caddy/Sites/English/app/Http/Middleware/TrimStrings.php">
         <class name="English\Http\Middleware\TrimStrings" namespace="English\Http\Middleware">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="18" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Http/Middleware/TrustProxies.php">
+      <file name="/home/caddy/Sites/English/app/Http/Middleware/TrustProxies.php">
         <class name="English\Http\Middleware\TrustProxies" namespace="English\Http\Middleware">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
         <metrics loc="23" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Http/Middleware/VerifyCsrfToken.php">
+      <file name="/home/caddy/Sites/English/app/Http/Middleware/VerifyCsrfToken.php">
         <class name="English\Http\Middleware\VerifyCsrfToken" namespace="English\Http\Middleware">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
         </class>
@@ -288,22 +286,20 @@
       </file>
     </package>
     <package name="English\Providers">
-      <file name="/home/vagrant/code/English/app/Providers/AppServiceProvider.php">
+      <file name="/home/caddy/Sites/English/app/Providers/AppServiceProvider.php">
         <class name="English\Providers\AppServiceProvider" namespace="English\Providers">
-          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="6" elements="9" coveredelements="7"/>
+          <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="5" elements="7" coveredelements="5"/>
         </class>
-        <line num="15" type="method" name="boot" visibility="public" complexity="1" crap="1" count="17"/>
-        <line num="19" type="stmt" count="17"/>
-        <line num="21" type="stmt" count="7"/>
-        <line num="22" type="stmt" count="17"/>
+        <line num="16" type="method" name="boot" visibility="public" complexity="1" crap="1.00" count="17"/>
+        <line num="20" type="stmt" count="17"/>
+        <line num="22" type="stmt" count="7"/>
         <line num="23" type="stmt" count="17"/>
-        <line num="30" type="method" name="register" visibility="public" complexity="1" crap="1.04" count="17"/>
-        <line num="33" type="stmt" count="0"/>
-        <line num="34" type="stmt" count="17"/>
-        <line num="35" type="stmt" count="17"/>
-        <metrics loc="36" ncloc="22" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="6" elements="9" coveredelements="7"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="17"/>
+        <line num="27" type="stmt" count="17"/>
+        <metrics loc="28" ncloc="19" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="5" elements="7" coveredelements="5"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Providers/AuthServiceProvider.php">
+      <file name="/home/caddy/Sites/English/app/Providers/AuthServiceProvider.php">
         <class name="English\Providers\AuthServiceProvider" namespace="English\Providers">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
         </class>
@@ -312,7 +308,7 @@
         <line num="28" type="stmt" count="17"/>
         <metrics loc="29" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Providers/BroadcastServiceProvider.php">
+      <file name="/home/caddy/Sites/English/app/Providers/BroadcastServiceProvider.php">
         <class name="English\Providers\BroadcastServiceProvider" namespace="English\Providers">
           <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
         </class>
@@ -322,7 +318,7 @@
         <line num="20" type="stmt" count="0"/>
         <metrics loc="21" ncloc="16" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Providers/EventServiceProvider.php">
+      <file name="/home/caddy/Sites/English/app/Providers/EventServiceProvider.php">
         <class name="English\Providers\EventServiceProvider" namespace="English\Providers">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
         </class>
@@ -331,7 +327,7 @@
         <line num="31" type="stmt" count="17"/>
         <metrics loc="32" ncloc="20" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
       </file>
-      <file name="/home/vagrant/code/English/app/Providers/RouteServiceProvider.php">
+      <file name="/home/caddy/Sites/English/app/Providers/RouteServiceProvider.php">
         <class name="English\Providers\RouteServiceProvider" namespace="English\Providers">
           <metrics complexity="4" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="18" coveredelements="18"/>
         </class>
@@ -357,7 +353,7 @@
       </file>
     </package>
     <package name="English\ViewComponents">
-      <file name="/home/vagrant/code/English/app/ViewComponents/NavbarComponent.php">
+      <file name="/home/caddy/Sites/English/app/ViewComponents/NavbarComponent.php">
         <class name="English\ViewComponents\NavbarComponent" namespace="English\ViewComponents">
           <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
         </class>
@@ -368,6 +364,6 @@
         <metrics loc="17" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
       </file>
     </package>
-    <metrics files="29" loc="1116" ncloc="706" classes="22" methods="51" coveredmethods="32" conditionals="0" coveredconditionals="0" statements="122" coveredstatements="78" elements="173" coveredelements="110"/>
+    <metrics files="29" loc="1108" ncloc="697" classes="22" methods="50" coveredmethods="32" conditionals="0" coveredconditionals="0" statements="119" coveredstatements="76" elements="169" coveredelements="108"/>
   </project>
 </coverage>
