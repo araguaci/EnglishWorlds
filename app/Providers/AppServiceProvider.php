@@ -3,6 +3,7 @@
 namespace English\Providers;
 
 use English\Tag;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,21 +16,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         // Aliasing Components subdirectory
-        // See https://laravel.com/docs/5.6/blade#components-and-slots
-        \Blade::component('components.segment', 'segment');
-        \View::composer('*', function ($view) {
+        // See https://laravel.com/docs/blade#components-and-slots
+        Blade::component('components.segment', 'segment');
+        view()->composer('*', function ($view) {
             $view->with('tags', Tag::all());
         });
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        \Blade::directive('render', function ($component) {
+        Blade::directive('render', function ($component) {
             return "<?php echo (app($component))->toHtml(); ?>";
         });
     }
