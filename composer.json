@@ -9,12 +9,12 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
-        "sentry/sentry-laravel": "^0.8.0"
+        "sentry/sentry-laravel": "^1.0.2"
     },
     "require-dev": {
         "filp/whoops": "^2.0",
         "fzaninotto/faker": "^1.4",
-        "laravel/dusk": "^3.0",
+        "laravel/dusk": "^5.2",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^2.0",
         "phpunit/phpunit": "^8.2"
