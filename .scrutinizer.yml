@@ -1,6 +1,9 @@
 build:
   nodes:
     analysis:
+      environment:
+          php:
+            version: 7.2  # or any other released version
       tests:
         override:
           - php-scrutinizer-run
