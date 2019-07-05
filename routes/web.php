@@ -2,8 +2,6 @@
 
 Auth::routes();
 
-Route::get('home', 'HomeController@index')->name('home');
-
 Route::get('/', 'StatusesController@index');
 Route::get('tags/{tag}', 'StatusesController@index');
 Route::post('/', 'StatusesController@store')->name('statuses');
