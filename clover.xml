@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1562335961">
-  <project timestamp="1562335961">
+<coverage generated="1562337221">
+  <project timestamp="1562337221">
     <package name="English">
       <file name="/home/caddy/Sites/English/app/Comment.php">
         <class name="English\Comment" namespace="English">
@@ -130,20 +130,18 @@
       </file>
       <file name="/home/caddy/Sites/English/app/Http/Controllers/CommentsController.php">
         <class name="English\Http\Controllers\CommentsController" namespace="English\Http\Controllers">
-          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="4" elements="11" coveredelements="5"/>
+          <metrics complexity="2" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="2" elements="9" coveredelements="3"/>
         </class>
         <line num="15" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
         <line num="18" type="stmt" count="2"/>
         <line num="19" type="stmt" count="2"/>
-        <line num="26" type="method" name="store" visibility="public" complexity="1" crap="1.36" count="1"/>
-        <line num="28" type="stmt" count="1"/>
-        <line num="29" type="stmt" count="1"/>
-        <line num="32" type="stmt" count="0"/>
-        <line num="33" type="stmt" count="0"/>
+        <line num="26" type="method" name="store" visibility="public" complexity="1" crap="2.00" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
         <line num="34" type="stmt" count="0"/>
-        <line num="35" type="stmt" count="0"/>
-        <line num="38" type="stmt" count="0"/>
-        <metrics loc="40" ncloc="28" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="4" elements="11" coveredelements="5"/>
+        <metrics loc="36" ncloc="24" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="2" elements="9" coveredelements="3"/>
       </file>
       <file name="/home/caddy/Sites/English/app/Http/Controllers/Controller.php">
         <class name="English\Http\Controllers\Controller" namespace="English\Http\Controllers">
@@ -287,6 +285,18 @@
         <metrics loc="17" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
     </package>
+    <package name="English\Http\Requests">
+      <file name="/home/caddy/Sites/English/app/Http/Requests/PostCommentRequest.php">
+        <class name="English\Http\Requests\PostCommentRequest" namespace="English\Http\Requests">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+        </class>
+        <line num="14" type="method" name="authorize" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="16" type="stmt" count="1"/>
+        <line num="24" type="method" name="rules" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="27" type="stmt" count="1"/>
+        <metrics loc="30" ncloc="20" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="4" coveredelements="4"/>
+      </file>
+    </package>
     <package name="English\Providers">
       <file name="/home/caddy/Sites/English/app/Providers/AppServiceProvider.php">
         <class name="English\Providers\AppServiceProvider" namespace="English\Providers">
@@ -366,6 +376,6 @@
         <metrics loc="17" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
       </file>
     </package>
-    <metrics files="29" loc="1108" ncloc="703" classes="22" methods="50" coveredmethods="31" conditionals="0" coveredconditionals="0" statements="121" coveredstatements="77" elements="171" coveredelements="108"/>
+    <metrics files="30" loc="1134" ncloc="719" classes="23" methods="52" coveredmethods="33" conditionals="0" coveredconditionals="0" statements="121" coveredstatements="77" elements="173" coveredelements="110"/>
   </project>
 </coverage>
