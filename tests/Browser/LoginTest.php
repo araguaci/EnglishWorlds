@@ -2,9 +2,10 @@
 
 namespace Tests\Browser;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Laravel\Dusk\Browser;
+use English\User;
 use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class LoginTest extends DuskTestCase
 {
@@ -19,7 +20,7 @@ class LoginTest extends DuskTestCase
     /** @test */
     public function aUserCanLogin()
     {
-        $user = create('English\User', ['email' => 'salim@english.dz']);
+        $user = create(User::class, ['email' => 'salim@english.dz']);
 
         $this->browse(function (Browser $browser) use ($user) {
             $browser->maximize();
