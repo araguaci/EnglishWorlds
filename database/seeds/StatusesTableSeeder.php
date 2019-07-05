@@ -14,7 +14,7 @@ class StatusesTableSeeder extends Seeder
     public function run()
     {
         factory(Status::class, 50)->create()->each(function ($status) {
-            factory(Comment::class, 20)->create([
+            factory(Comment::class, rand(1, 20))->create([
                 'status_id' => $status->id,
             ]);
             $status->tags()->attach(rand(1, 4));
