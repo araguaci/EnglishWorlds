@@ -15,9 +15,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Aliasing Components subdirectory
-        // See https://laravel.com/docs/blade#components-and-slots
-        Blade::component('components.segment', 'segment');
         view()->composer('*', function ($view) {
             $view->with('tags', Tag::all());
         });

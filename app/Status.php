@@ -50,4 +50,17 @@ class Status extends Model
     {
         return $filters->apply($query);
     }
+
+    public function likes()
+    {
+        return $this->morphMany(React::class, 'reacted');
+    }
+
+    public function like()
+    {
+        $attributes = ['user_id' => auth()->id(), 'reacted_kind' => 'like'];
+        if (!$this->likes()->where($attributes)->exists()) {
+            $this->likes()->create($attributes);
+        }
+    }
 }

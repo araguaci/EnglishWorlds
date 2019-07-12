@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="ui raised very padded container segments">
-	@segment
+	<div class="ui segment">
 		<p>Statuses</p>
-	@endsegment
+	</div>
 	@includeWhen(Auth::check(), 'statuses.create')
 	<div class="level">
-		@segment
+		<div class="ui segment">
 			@foreach ($statuses as $status)
 				<a class="flex" href="{{ $status->path() }}">Read more</a>
 				<a class="comments-count" href="{{ $status->path() }}">
@@ -16,7 +16,7 @@
 				<p>{{ $status->body }}</p>
 				<hr>
 			@endforeach
-		@endsegment
+		</div>
 	</div>
 </div>
 @endsection

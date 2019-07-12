@@ -3,22 +3,22 @@
 		v-infinite-scroll="loadMore"
 		infinite-scroll-disabled="busy"
 		infinite-scroll-distance="15">
-	<div v-for="comment in comments" :key="comment.id" class="comment">
-	<div class="content">
-		<a class="author" href="#">
-			{{ comment.ownerName }}
-		</a>
-		<div class="metadata">
-			<span class="date">
-				{{ comment.longAgo }}
-			</span>
-		</div>
-		<div class="text">
-			{{ comment.body }}
+	<div v-for="comment in comments" :key="comment.id" class="comment ui segment">
+		<div class="content">
+			<a class="author" href="#">
+				{{ comment.ownerName }}
+			</a>
+			<div class="metadata">
+				<span class="date">
+					{{ comment.longAgo }}
+				</span>
+			</div>
+			<div class="text">
+				{{ comment.body }}
+			</div>
 		</div>
 	</div>
-</div>
-</div>
+	</div>
 </template>
 
 <script>
