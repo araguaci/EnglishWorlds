@@ -5,7 +5,8 @@ build:
         override:
           - 'true'
       environment:
-        php: 7.2.13
+        php:
+          version: 7.2, 7.3
       tests:
         override:
           - php-scrutinizer-run
