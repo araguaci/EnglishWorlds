@@ -1,21 +1,30 @@
 build:
   nodes:
     analysis:
+      project-setup:
+        override:
+          - 'true'
       environment:
-          php: 7.2.13
+        php: 7.2.13
       tests:
         override:
           - php-scrutinizer-run
+          - js-scrutinizer-run
 
 filter:
+  paths:
+    - 'app/*'
   excluded_paths:
-    - "tests/"
-    - "build/"
-    - "docs/"
-    - "framework/messages/"
+    - 'app/views/*'
+    - 'app/config/*'
+    - 'app/database/*'
   dependency_paths:
     - "vendor/"
 
+checks:
+  php: true
+  javascript: true
+
 tools:
-    external_code_coverage:
-        timeout: 2100 # Timeout in seconds.
+  external_code_coverage:
+  timeout: 2100 # Timeout in seconds.

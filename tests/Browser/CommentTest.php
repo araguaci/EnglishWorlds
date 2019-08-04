@@ -28,7 +28,7 @@ class CommentTest extends DuskTestCase
      */
 
     /** @test */
-    public function anAuthenticatedUserMayEngageInAStatus()
+    public function an_authenticated_user_may_engage_in_a_status()
     {
         $user = $this->user;
         $status = $this->status;
@@ -57,7 +57,7 @@ class CommentTest extends DuskTestCase
         $status = $this->status;
         $comment = create('English\Comment', ['status_id' => $this->status->id]);
 
-        $this->browse(function ($browser) use ($user, $status, $comment) {
+        $this->browse(function ($browser) use ($status, $comment) {
             $browser->visit($status->path())
                     ->assertPathIs($status->path())
                     ->pause(1000)
