@@ -1,0 +1,36 @@
+build:
+    nodes:
+        analysis:
+            project_setup:
+                override:
+                    - 'true'
+            environment:
+                php:
+                    version: '7.2'
+            tests:
+                override:
+                    - php-scrutinizer-run
+                    -
+                        command: phpcs-run
+                        use_website_config: false
+                    - js-scrutinizer-run
+        tests: true
+filter:
+    paths:
+        - 'app/*'
+    excluded_paths:
+        - 'app/views/*'
+        - 'app/config/*'
+        - 'app/database/*'
+checks:
+    javascript:
+        no_var: true
+        no_param_assign: true
+        no_loop_var_assign: true
+        no_implicit_undefined_return: true
+        no_else_return: true
+        no_alert: true
+        eqeqeq: true
+tools:
+  external_code_coverage:
+    timeout: 2100 # Timeout in seconds.
