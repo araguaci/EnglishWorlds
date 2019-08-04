@@ -17,7 +17,7 @@ class CommentsController extends Controller
     public function __construct()
     {
         // Apply the auth middleware only on the store method
-        $this->middleware('auth', ['only' => ['store']]);
+        $this->middleware('auth', [ 'only' => [ 'store' ] ]);
     }
 
     /**
@@ -28,9 +28,9 @@ class CommentsController extends Controller
     public function store(Status $status, PostCommentRequest $request)
     {
         $status->addComment(([
-          'body'      => $request->body,
-          'status_id' => $status->id,
-          'user_id'   => auth()->id(),
+            'body'      => $request->body,
+            'status_id' => $status->id,
+            'user_id'   => auth()->id(),
         ]));
 
         return back();

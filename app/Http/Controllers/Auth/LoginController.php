@@ -34,7 +34,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        session(['url.intended' => url()->previous()]);
+        session([ 'url.intended' => url()->previous() ]);
         $this->redirectTo = session()->get('url.intended');
         $this->middleware('guest')->except('logout');
     }
@@ -62,8 +62,8 @@ class LoginController extends Controller
         $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
         return [
-             $field     => $login,
-             'password' => request()->get('password'),
-         ];
+                $field     => $login,
+                'password' => request()->get('password'),
+            ];
     }
 }
