@@ -4,7 +4,7 @@ namespace Tests\Browser;
 
 use Tests\DuskTestCase;
 
-class CommentTest extends DuskTestCase
+class CommentBrowserTest extends DuskTestCase
 {
     private $user;
     private $status;
@@ -15,7 +15,10 @@ class CommentTest extends DuskTestCase
         parent::setUp();
         $this->user = create('English\User');
         $this->status = create('English\Status', ['user_id' => $this->user->id]);
-        $this->comment = create('English\Comment', ['status_id' => $this->status->id, 'user_id' => $this->user->id]);
+        $this->comment = create('English\Comment', [
+            'status_id' => $this->status->id,
+            'user_id' => $this->user->id
+        ]);
     }
 
     /**
@@ -51,9 +54,8 @@ class CommentTest extends DuskTestCase
      */
 
     /** @test */
-    public function theyCanReadCommentsThatAreAssociatedWithAStatus()
+    public function they_can_read_comments_that_are_associated_with_a_status()
     {
-        $user = $this->user;
         $status = $this->status;
         $comment = create('English\Comment', ['status_id' => $this->status->id]);
 

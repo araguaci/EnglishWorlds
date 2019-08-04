@@ -2,15 +2,12 @@
 
 namespace Tests\Unit;
 
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 class TagTest extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
-    public function aTagConsistsOfStatuses()
+    public function a_tag_consists_of_many_statuses()
     {
         $tag = create('English\Tag');
         $status = create('English\Status');

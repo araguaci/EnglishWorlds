@@ -12,7 +12,9 @@ class ReactsTest extends TestCase
      *
      * @return void
      */
-    public function testGuestsCanNotLikeAnything()
+
+    /** @test */
+    public function guests_shall_not_react_on_anything()
     {
         $this->post('/api/statuses/1/likes')
              ->assertRedirect('login');
@@ -23,7 +25,9 @@ class ReactsTest extends TestCase
      *
      * @return void
      */
-    public function testUsersCanLikeStatuses()
+
+    /** @test */
+    public function users_can_like_statuses()
     {
         $this->withoutExceptionHandling();
         $status = create(Status::class);
@@ -32,7 +36,8 @@ class ReactsTest extends TestCase
         $this->assertCount(1, $status->likes);
     }
 
-    public function testAnAuthenticatedUserMayOnlyReactToAStatusOnce()
+    /** @test */
+    public function authenticated_users_may_only_react_to_statuses_once()
     {
         $this->withoutExceptionHandling();
         $status = create(Status::class);

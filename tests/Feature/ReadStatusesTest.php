@@ -15,23 +15,23 @@ class ReadStatusesTest extends TestCase
     }
 
     /** @test */
-    public function aUserCanViewAllStatuses()
+    public function a_user_can_view_all_statuses()
     {
         // Hit the root route and assert that the created status body can be seen
         $this->get('/')
-          ->assertSee($this->status->body);
+             ->assertSee($this->status->body);
     }
 
     /** @test */
-    public function theyCanReadASingleStatus()
+    public function they_can_read_a_single_status()
     {
         // Create a status
         $this->get($this->status->path())
-          ->assertSee($this->status->body);
+             ->assertSee($this->status->body);
     }
 
     /** @test */
-    public function aUserCanFilterStatusesByTag()
+    public function a_user_can_filter_statuses_by_tag()
     {
         $tag = create('English\Tag');
         $statusInTag = create('English\Status');
@@ -43,7 +43,7 @@ class ReadStatusesTest extends TestCase
     }
 
     /** @test */
-    public function aUserCanFilterStatusesByUser()
+    public function a_user_can_filter_statuses_by_user()
     {
         $this->login(create('English\User', ['username' => 'JohnDoe']));
 
@@ -57,7 +57,7 @@ class ReadStatusesTest extends TestCase
     }
 
     /** @test */
-    public function aUserCanFilterStatusesByPopularity()
+    public function a_user_can_filter_statuses_by_popularity()
     {
         // This way we don't get a false green caused by all three statuses getting created in the same second.
         $statusWithTwoComments = create('English\Status', ['created_at' => now()->subMinutes(2)]);
