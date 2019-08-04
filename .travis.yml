@@ -31,4 +31,4 @@ script:
 after_success:
     - bash <(curl -s https://codecov.io/bash) -t c82aad14-75da-40f2-bb27-e539fe75af92
     - wget https://scrutinizer-ci.com/ocular.phar
-    - php ocular.phar code-coverage:upload --access-token="5351c027a4422c7c4da50b04c51092c40c546b4f44224040357786a780e6e471" --format=php-clover coverage.clover
+    - php ocular.phar code-coverage:upload --access-token="5351c027a4422c7c4da50b04c51092c40c546b4f44224040357786a780e6e471" --format=php-clover coverage.xml

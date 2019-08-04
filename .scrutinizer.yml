@@ -2,8 +2,7 @@ build:
   nodes:
     analysis:
       environment:
-          php:
-            version: 7.2  # or any other released version
+          php: 7.2.13
       tests:
         override:
           - php-scrutinizer-run
@@ -18,4 +17,5 @@ filter:
     - "vendor/"
 
 tools:
-    external_code_coverage: true
+    external_code_coverage:
+        timeout: 2100 # Timeout in seconds.
