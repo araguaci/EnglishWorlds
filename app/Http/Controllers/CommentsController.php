@@ -28,9 +28,9 @@ class CommentsController extends Controller
     public function store(Status $status, PostCommentRequest $request)
     {
         $status->addComment(([
-          'body'      => $request->body,
-          'status_id' => $status->id,
-          'user_id'   => auth()->id(),
+            'body'      => $request->body,
+            'status_id' => $status->id,
+            'user_id'   => auth()->id(),
         ]));
 
         return back();
