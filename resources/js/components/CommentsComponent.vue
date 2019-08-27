@@ -3,21 +3,21 @@
 		v-infinite-scroll="loadMore"
 		infinite-scroll-disabled="busy"
 		infinite-scroll-distance="15">
-	<div v-for="comment in comments" :key="comment.id" class="comment ui segment">
-		<div class="content">
-			<a class="author" href="#">
-				{{ comment.ownerName }}
-			</a>
-			<div class="metadata">
-				<span class="date">
-					{{ comment.longAgo }}
-				</span>
-			</div>
-			<div class="text">
-				{{ comment.body }}
+		<div v-for="comment in comments" :key="comment.id" class="comment ui segment">
+			<div class="content">
+				<a class="author" :href="comment.owner">
+					{{ comment.owner.username }}
+				</a>
+				<div class="metadata">
+					<span class="date">
+						{{ comment.longAgo }}
+					</span>
+				</div>
+				<div class="text">
+					{{ comment.body }}
+				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 </template>
 
@@ -46,7 +46,6 @@ export default {
 		loadMore: function() {
 			this.busy = true;
 			this.fetchMoreComments();
-			// this.comments.push();
 			this.busy = false;
 		},
 		getInitialComments() { // Get initial comments (just 5 on page load)

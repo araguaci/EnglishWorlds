@@ -19,21 +19,17 @@ class StatusTest extends TestCase
      *
      * @return void
      */
-
-    /** @test */
-    public function aStatusHasComments()
+    public function test_a_status_has_comments()
     {
         $this->assertInstanceOf('Illuminate\Database\Eloquent\Collection', $this->status->comments);
     }
 
-    /** @test */
-    public function itHasAnOwner()
+    public function test_a_status_has_an_owner()
     {
         $this->assertInstanceOf('English\User', $this->status->owner);
     }
 
-    /** @test */
-    public function itCanHaveAComment()
+    public function test_a_status_can_have_a_comment()
     {
         $this->status->addComment([
             'body'    => 'Foobar',
@@ -42,8 +38,7 @@ class StatusTest extends TestCase
         $this->assertCount(1, $this->status->comments);
     }
 
-    /** @test */
-    public function itHasATag()
+    public function test_a_status_has_a_tag()
     {
         $status = create('English\Status');
         $status->tags()->attach(create('English\Tag'));

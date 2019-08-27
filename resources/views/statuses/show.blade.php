@@ -7,9 +7,14 @@
 			{{-- Status itself --}}
 			<div class="ui twelve wide column">
 				<div class="ui segment">
-					<a href="#">
-						{{ $status->ownerName }}
-					</a> posted
+					<div class="level">
+						<h5 class="flex">
+							<a href="#">
+									{{ $status->ownerName }}
+							</a> posted
+						</h5>
+						<react-button></react-button>
+					</div>
 				</div>
 				<div class="ui segment">
 						{{ $status->body }}

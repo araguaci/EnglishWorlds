@@ -30,8 +30,7 @@ class CommentBrowserTest extends DuskTestCase
      * @return void
      */
 
-    /** @test */
-    public function an_authenticated_user_may_engage_in_a_status()
+    public function test_an_authenticated_user_may_engage_in_a_status()
     {
         $user = $this->user;
         $status = $this->status;
@@ -53,8 +52,7 @@ class CommentBrowserTest extends DuskTestCase
      * Then we should see the comments.
      */
 
-    /** @test */
-    public function they_can_read_comments_that_are_associated_with_a_status()
+    public function test_a_user_can_read_comments_that_are_associated_with_a_status()
     {
         $status = $this->status;
         $comment = create('English\Comment', ['status_id' => $this->status->id]);

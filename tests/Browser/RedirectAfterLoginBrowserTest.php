@@ -2,19 +2,17 @@
 
 namespace Tests\Browser;
 
-use English\Status;
 use English\User;
-use Laravel\Dusk\Browser;
+use English\Status;
 use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
 
 class RedirectAfterLoginBrowserTest extends DuskTestCase
 {
     /**
      * Assert that users gets redirected back to status page after login.
      */
-
-    /** @test */
-    public function authenticated_users_are_redirected_back_to_intended_url()
+    public function test_authenticated_users_are_redirected_back_to_intended_url()
     {
         $user = create(User::class);
         $status = create(Status::class);

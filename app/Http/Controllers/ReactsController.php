@@ -2,8 +2,8 @@
 
 namespace English\Http\Controllers;
 
-use English\Http\Requests\LikeStatusRequest;
 use English\Status;
+use English\Http\Requests\ReactToStatusRequest;
 
 class ReactsController extends Controller
 {
@@ -16,19 +16,20 @@ class ReactsController extends Controller
     }
 
     /**
-     * like a status.
+     * react to a status.
      *
-     * Store a like record associated with the status
+     * Store a reaction record associated with the status
      *
-     * @param Status                                  $status  The status model
-     * @param English\Http\Requests\LikeStatusRequest $request Valid request object
+     * @param Status $status  The status model
+     * @param English\Http\Requests\ReactToStatusRequest $request Valid request object
      *
      * @throws StatusNotFoundException
      *
      * @return Illuminate\Http\Response
      **/
-    public function like(Status $status, LikeStatusRequest $request)
+    public function react(Status $status, ReactToStatusRequest $request)
     {
-        return $status->like();
+        $reacter = $request->user()->viaLoveReacter();
+        $reacter->reactTo($status, $request->reaction_type);
     }
 }

@@ -4,7 +4,7 @@ namespace English\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LikeStatusRequest extends FormRequest
+class ReactToStatusRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class LikeStatusRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'reaction_type' => 'bail|required|in:like,dislike,love,hate,angry,haha,wow'
         ];
     }
 }

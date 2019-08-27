@@ -2,8 +2,8 @@
 
 namespace English\Http\Controllers;
 
-use English\Http\Requests\PostCommentRequest;
 use English\Status;
+use English\Http\Requests\PostCommentRequest;
 
 class CommentsController extends Controller
 {

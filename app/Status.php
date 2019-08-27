@@ -3,9 +3,13 @@
 namespace English;
 
 use Illuminate\Database\Eloquent\Model;
+use Cog\Laravel\Love\Reactable\Models\Traits\Reactable;
+use Cog\Contracts\Love\Reactable\Models\Reactable as ReactableContract;
 
-class Status extends Model
+class Status extends Model implements ReactableContract
 {
+    use Reactable;
+
     protected $fillable = ['body', 'user_id'];
 
     protected static function boot()
