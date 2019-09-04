@@ -60,29 +60,29 @@
         },
         {
             "name": "cybercog/laravel-love",
-            "version": "8.0.0",
+            "version": "8.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cybercog/laravel-love.git",
-                "reference": "d1538b6e96e7a82434765d3eda3f81d510f2d1fc"
+                "reference": "b303a65d9ea160049ac1a5da465951a4b34fe810"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cybercog/laravel-love/zipball/d1538b6e96e7a82434765d3eda3f81d510f2d1fc",
-                "reference": "d1538b6e96e7a82434765d3eda3f81d510f2d1fc",
+                "url": "https://api.github.com/repos/cybercog/laravel-love/zipball/b303a65d9ea160049ac1a5da465951a4b34fe810",
+                "reference": "b303a65d9ea160049ac1a5da465951a4b34fe810",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "5.7.*|5.8.*",
-                "illuminate/support": "5.7.*|5.8.*",
+                "illuminate/database": "5.7.*|5.8.*|^6.0",
+                "illuminate/support": "5.7.*|5.8.*|^6.0",
                 "php": "^7.1.3"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.10",
                 "mockery/mockery": "^1.0",
-                "orchestra/database": "~3.7.0|~3.8.0",
-                "orchestra/testbench": "~3.7.0|~3.8.0",
-                "phpunit/phpunit": "^7.5"
+                "orchestra/database": "~3.7.0|~3.8.0|^4.0",
+                "orchestra/testbench": "~3.7.0|~3.8.0|^4.0",
+                "phpunit/phpunit": "^7.5|^8.0"
             },
             "type": "library",
             "extra": {
@@ -105,9 +105,9 @@
             "authors": [
                 {
                     "name": "Anton Komarev",
-                    "role": "Developer",
                     "email": "anton@komarev.com",
-                    "homepage": "https://komarev.com"
+                    "homepage": "https://komarev.com",
+                    "role": "Developer"
                 }
             ],
             "description": "Make Laravel Eloquent models reactable with any type of emotions in a minutes!",
@@ -138,7 +138,7 @@
                 "trait",
                 "undislike"
             ],
-            "time": "2019-08-08T09:39:09+00:00"
+            "time": "2019-09-03T16:56:27+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -4766,18 +4766,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Library for handling version information and constraints",
@@ -5048,8 +5048,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that provides collection, processing, and rendering functionality for PHP code coverage information.",
@@ -5099,8 +5099,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "FilterIterator implementation that filters files based on a list of suffixes.",
@@ -5141,8 +5141,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Simple template engine.",
@@ -5190,8 +5190,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Utility class for timing",
@@ -5320,8 +5320,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -5897,8 +5897,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Collection of value objects that represent the types of the PHP type system",
@@ -5940,8 +5940,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
