@@ -60,16 +60,16 @@
         },
         {
             "name": "cybercog/laravel-love",
-            "version": "8.1.0",
+            "version": "8.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cybercog/laravel-love.git",
-                "reference": "b303a65d9ea160049ac1a5da465951a4b34fe810"
+                "reference": "6aec09748e47803962037b46e9d7c1077304cf6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cybercog/laravel-love/zipball/b303a65d9ea160049ac1a5da465951a4b34fe810",
-                "reference": "b303a65d9ea160049ac1a5da465951a4b34fe810",
+                "url": "https://api.github.com/repos/cybercog/laravel-love/zipball/6aec09748e47803962037b46e9d7c1077304cf6b",
+                "reference": "6aec09748e47803962037b46e9d7c1077304cf6b",
                 "shasum": ""
             },
             "require": {
@@ -138,7 +138,7 @@
                 "trait",
                 "undislike"
             ],
-            "time": "2019-09-03T16:56:27+00:00"
+            "time": "2019-09-13T18:57:45+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -5981,8 +5981,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
