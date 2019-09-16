@@ -5,6 +5,7 @@ namespace English;
 use Cog\Contracts\Love\Reactable\Models\Reactable as ReactableContract;
 use Cog\Laravel\Love\Reactable\Models\Traits\Reactable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Status extends Model implements ReactableContract
 {
@@ -38,6 +39,11 @@ class Status extends Model implements ReactableContract
     public function getOwnerNameAttribute()
     {
         return $this->owner->username;
+    }
+
+    public function getCommentsPluralAttribute()
+    {
+        return Str::plural('comment', $this->comments_count);
     }
 
     public function addComment($comment)

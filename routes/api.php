@@ -12,4 +12,4 @@
 */
 
 Route::post('getPostComments', 'ApiController@getComments');
-Route::post('statuses/{status}/likes', 'ReactsController@like');
+Route::post('statuses/{status}/likes', 'ReactsController@react');

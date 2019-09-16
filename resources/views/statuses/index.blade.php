@@ -11,7 +11,7 @@
 			@foreach ($statuses as $status)
 				<a class="flex" href="{{ $status->path() }}">Read more</a>
 				<a class="comments-count" href="{{ $status->path() }}">
-					{{ $status->comments_count }} {{ str_plural('comment', $status->comments_count) }}
+					{{ $status->comments_count }} {{ $status->commentsPlural }}
 				</a>
 				<p>{{ $status->body }}</p>
 				<hr>
