@@ -43,7 +43,7 @@
 			{{-- Metadata --}}
 			<div class="ui four wide column">
 					<div class="ui segment">
-						This status was published {{ $status->created_at->diffForHumans() }} by <a href="#">{{ $status->ownerName }}</a> and currently has {{ $status->comments_count }} {{ str_plural('comment', $status->comments_count) }}.
+						This status was published {{ $status->created_at->diffForHumans() }} by <a href="#">{{ $status->ownerName }}</a> and currently has {{ $status->comments_count }} {{ $status->commentsPlural }}.
 					</div>
 			</div>
 		</div>
