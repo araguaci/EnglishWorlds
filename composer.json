@@ -9,7 +9,7 @@
         "cybercog/laravel-love": "^8.0",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "6.6.*",
-        "laravel/tinker": "^1.0",
+        "laravel/tinker": "^2.0",
         "sentry/sentry-laravel": "^1.0.2"
     },
     "require-dev": {
