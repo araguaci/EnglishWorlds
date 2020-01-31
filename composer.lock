@@ -60,16 +60,16 @@
         },
         {
             "name": "cybercog/laravel-love",
-            "version": "8.1.2",
+            "version": "8.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cybercog/laravel-love.git",
-                "reference": "3b39103b87b7ecd0eaa0aaa907b0eccfa3389202"
+                "reference": "44aa6e830882eef0871f050908e69fa45909034e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cybercog/laravel-love/zipball/3b39103b87b7ecd0eaa0aaa907b0eccfa3389202",
-                "reference": "3b39103b87b7ecd0eaa0aaa907b0eccfa3389202",
+                "url": "https://api.github.com/repos/cybercog/laravel-love/zipball/44aa6e830882eef0871f050908e69fa45909034e",
+                "reference": "44aa6e830882eef0871f050908e69fa45909034e",
                 "shasum": ""
             },
             "require": {
@@ -111,7 +111,7 @@
                 }
             ],
             "description": "Make Laravel Eloquent models reactable with any type of emotions in a minutes!",
-            "homepage": "https://github.com/cybercog/laravel-love",
+            "homepage": "https://komarev.com/sources/laravel-love",
             "keywords": [
                 "Rate",
                 "Rating",
@@ -138,7 +138,7 @@
                 "trait",
                 "undislike"
             ],
-            "time": "2019-09-22T00:59:32+00:00"
+            "time": "2020-01-30T06:20:46+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
