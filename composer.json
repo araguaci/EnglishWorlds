@@ -1,15 +1,19 @@
 {
     "name": "caddy-dz/english-worlds",
     "description": "Social network for non native English speakers",
-    "keywords": ["social", "english"],
+    "keywords": [
+        "social",
+        "english"
+    ],
     "license": "GPL",
     "type": "project",
     "require": {
         "php": "^7.2",
         "cybercog/laravel-love": "^8.0",
         "fideloper/proxy": "^4.0",
-        "laravel/framework": "6.18.*",
+        "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
+        "laravel/ui": "^2.0",
         "sentry/sentry-laravel": "^1.0.2"
     },
     "require-dev": {
@@ -17,7 +21,7 @@
         "fzaninotto/faker": "^1.4",
         "laravel/dusk": "^6.0",
         "mockery/mockery": "^1.0",
-        "nunomaduro/collision": "^3.0",
+        "nunomaduro/collision": "^4.1",
         "phpunit/phpunit": "^9.1"
     },
     "autoload": {
@@ -33,14 +37,13 @@
         "psr-4": {
             "Tests\\": "tests/"
         },
-        "files" : [
-          "tests/helpers/functions.php"
+        "files": [
+            "tests/helpers/functions.php"
         ]
     },
     "extra": {
         "laravel": {
-            "dont-discover": [
-            ]
+            "dont-discover": []
         }
     },
     "scripts": {
