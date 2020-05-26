@@ -7,6 +7,9 @@ build:
             environment:
                 php:
                     version: '7.2'
+
+                pecl_extensions:
+                    - zip
             tests:
                 override:
                     - php-scrutinizer-run
