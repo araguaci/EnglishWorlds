@@ -1,5 +1,5 @@
 # English Worlds Social Network
-# *Please note that the current code is undergoing a **major** overhaul!*  
+# *Please note that the current code is undergoing a **major** overhaul!*
 &#x26A0;&nbsp; please note:
 ```
 The application is currently in pre-alpha.
@@ -13,8 +13,9 @@ As such, all unit tests are failing at the moment for the master branch in contr
 [![Laravel](https://img.shields.io/badge/Powered%20by-Laravel%20Framework-red.svg)](https://laravel.com/)
 [![Gitter](https://img.shields.io/gitter/room/EnglishDz/Lobby.svg?style=flat-square)](https://gitter.im/EnglishDz/Lobby)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/CaddyDz/EnglishWorlds/badges/code-intelligence.svg?b=develop)](https://scrutinizer-ci.com/code-intelligence)
 
-This is the underlying source code of the English Worlds Social Networking website.  
+This is the underlying source code of the English Worlds Social Networking website.
 The website addresses All active Algerians seeking to either learn or have fun and chat in English online.
 
 ## System Requirements
