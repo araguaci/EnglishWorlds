@@ -16,7 +16,7 @@ build:
                     - js-scrutinizer-run
             dependencies:
                 before:
-                - sudo apt-get install -y php-zip
+                - pecl install zip
         tests: true
 filter:
     paths:
