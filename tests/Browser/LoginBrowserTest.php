@@ -3,8 +3,8 @@
 namespace Tests\Browser;
 
 use English\User;
-use Laravel\Dusk\Browser;
 use Tests\DuskTestCase;
+use Laravel\Dusk\Browser;
 
 class LoginBrowserTest extends DuskTestCase
 {
@@ -20,10 +20,10 @@ class LoginBrowserTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($user) {
             $browser->maximize();
             $browser->visit('/login')
-                    ->type('login', $user->email)
-                    ->type('password', 'secret')
-                    ->press('Login')
-                    ->assertPathIs('/');
+                ->type('login', $user->email)
+                ->type('password', 'secret')
+                ->press('Login')
+                ->assertPathIs('/');
         });
     }
 }
