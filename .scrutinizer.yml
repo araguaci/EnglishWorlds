@@ -17,7 +17,7 @@ build:
             dependencies:
                 before:
                 - pecl install zip
-        tests: true
+        tests: false
 filter:
     paths:
         - 'app/*'
