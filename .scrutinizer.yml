@@ -14,10 +14,6 @@ build:
                         command: phpcs-run
                         use_website_config: false
                     - js-scrutinizer-run
-            dependencies:
-                before:
-                - pecl install zip
-        tests: true
 filter:
     paths:
         - 'app/*'
@@ -34,6 +30,3 @@ checks:
         no_else_return: true
         no_alert: true
         eqeqeq: true
-tools:
-  external_code_coverage:
-    timeout: 2100 # Timeout in seconds.
