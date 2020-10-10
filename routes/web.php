@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 Auth::routes();
 
 Route::get('/', 'StatusesController@index');

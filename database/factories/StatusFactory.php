@@ -1,12 +1,32 @@
 <?php
 
-use Faker\Generator as Faker;
+declare(strict_types=1);
 
-$factory->define(English\Status::class, function (Faker $faker) {
-    return [
-        'user_id' => function () {
-            return factory('English\User')->create()->id;
-        },
-        'body' => $faker->text($maxNbChars = 500),
-    ];
-});
+namespace Database\Factories\English;
+
+use English\User;
+use English\Status;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+class StatusFactory extends Factory
+{
+	/**
+	 * The name of the factory's corresponding model.
+	 *
+	 * @var string
+	 */
+	protected $model = Status::class;
+
+	/**
+	 * Define the model's default state.
+	 *
+	 * @return array
+	 */
+	public function definition(): array
+	{
+		return [
+			'user_id' => fn () => User::factory()->create()->id,
+			'body' => $this->faker->text($maxNbChars = 500),
+		];
+	}
+}

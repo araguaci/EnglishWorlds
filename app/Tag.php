@@ -1,18 +1,23 @@
 <?php
 
+declare(strict_types=1);
+
 namespace English;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tag extends Model
 {
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
+	use HasFactory;
 
-    public function statuses()
-    {
-        return $this->belongsToMany(Status::class);
-    }
+	public function getRouteKeyName()
+	{
+		return 'slug';
+	}
+
+	public function statuses()
+	{
+		return $this->belongsToMany(Status::class);
+	}
 }
