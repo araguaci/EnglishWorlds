@@ -22,9 +22,9 @@ The website addresses All active Algerians seeking to either learn or have fun a
 
 The following installations are required for the app to function properly.
 
-* [PHP 7.2+](http://php.net/manual/en/install.php)
-* [Laravel 5.6+](https://laravel.com/docs/5.6#installation)
-* [MySQL 5.7+](https://dev.mysql.com/doc/refman/5.7/en/installing.html)
+* [PHP 7.4+](http://php.net/manual/en/install.php)
+* [Laravel 8.x](https://laravel.com/docs/8.x#installation)
+* [MySQL 8.0+](https://dev.mysql.com/doc/refman/8.0/en/installing.html)
 * [Composer](https://getcomposer.org/doc/00-intro.md)
 
 ## Installation
