@@ -1,12 +1,16 @@
 language: php
 os: linux
-dist: trusty
+dist: bionic
 
 php:
   - 7.4
 
 addons:
   chrome: stable
+
+before_install:
+  - phpenv config-rm xdebug.ini
+  - yes | pecl install zip
 
 install:
   - rm .env.example
