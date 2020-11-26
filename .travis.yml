@@ -18,7 +18,6 @@ install:
 
 before_script:
   - touch ./database/database.sqlite
-  - php artisan key:generate
   - php artisan migrate --database=sqlite --no-interaction
   - npm install
   - npm run prod
